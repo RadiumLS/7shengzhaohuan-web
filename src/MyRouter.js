@@ -5,16 +5,17 @@ import {
 } from "react-router-dom";
 import "./index.css";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
+const routerMap = {
+  wellcom: {
+    path: '/',
     element: <div>Hello world!</div>,
   },
-  {
-    path: "/xx",
+  tweak: {
+    path: '/xx',
     element: <div>Hello xxx!</div>,
-  },
-]);
+  }
+}
+const router = createBrowserRouter(Object.entries(routerMap).map(([key, value]) => value));
 
 function MyRouter() {
   return (
@@ -22,4 +23,7 @@ function MyRouter() {
   )
 }
 
-export default MyRouter;
+export {
+  MyRouter,
+  routerMap,
+};
