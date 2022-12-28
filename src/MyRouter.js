@@ -3,12 +3,17 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import "./index.css";
+import Wellcom from "./pages/Welcom";
+import About from "./pages/About";
 
 const routerMap = {
   wellcom: {
     path: '/',
-    element: <div>Hello world!</div>,
+    element: <Wellcom/>,
+  },
+  about: {
+    path: '/about',
+    element: <About/>,
   },
   tweak: {
     path: '/xx',

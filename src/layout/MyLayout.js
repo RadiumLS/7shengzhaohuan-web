@@ -16,7 +16,13 @@ function MyLayout({ children }) {
       >
       MyLayout
       </Sider>
-      <Content>
+      <Content
+        style={{
+          padding: 24,
+          margin: 0,
+          minHeight: 280,
+        }}
+      >
         {children}
       </Content>
     </Layout>
