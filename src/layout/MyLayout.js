@@ -1,4 +1,6 @@
 import { Layout } from 'antd';
+import MyMenu from './Menu';
+
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -14,7 +16,7 @@ function MyLayout({ children }) {
           bottom: 0,
         }}
       >
-      MyLayout
+        <MyMenu/>
       </Sider>
       <Content
         style={{
