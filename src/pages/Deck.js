@@ -5,6 +5,7 @@ import backgroundPic from '../static/deck_background2.png';
 import { charCards } from '../data/Character';
 import cards from '../static/cards/5369.png';
 import cards2 from '../static/cards/5480.png'
+import CharCard from '../components/CharCard';
 
 const demoDeckCards = [];
 for(let i = 0; i < 30; i++) {
@@ -14,7 +15,7 @@ for(let i = 0; i < 30; i++) {
 }
 // TODO: 使用有意义的卡组信息
 const deckCards = demoDeckCards;
-function CharCard({ id, style }) {
+function _CharCard({ id, style }) {
   const char = charCards[id];
   return <div style={style}>
     <div style={{
@@ -65,21 +66,21 @@ function Deck({ children }) {
       backgroundSize: 'cover',
       position: 'relative',
     }}>
-      <CharCard id='5369' style={{
+      <CharCard id='5369' size='small' style={{
         width: '8.3vh',
         height: '14.4vh',
         position: 'absolute',
         left: '21.7vh',
         top: '11vh',
       }}/>
-      <CharCard id='5369' style={{
+      <CharCard id='5369' size='small' style={{
         width: '8.3vh',
         height: '14.4vh',
         position: 'absolute',
         left: '31.7vh',
         top: '11vh',
       }}/>
-      <CharCard id='5369' style={{
+      <CharCard id='5369' size='small' style={{
         width: '8.3vh',
         height: '14.4vh',
         position: 'absolute',
