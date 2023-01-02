@@ -66,21 +66,21 @@ function Deck({ children }) {
       backgroundSize: 'cover',
       position: 'relative',
     }}>
-      <CharCard id='5369' size='small' style={{
+      <CharCard id='5524' size='small' style={{
         width: '8.3vh',
         height: '14.4vh',
         position: 'absolute',
         left: '21.7vh',
         top: '11vh',
       }}/>
-      <CharCard id='5369' size='small' style={{
+      <CharCard id='5358' size='small' style={{
         width: '8.3vh',
         height: '14.4vh',
         position: 'absolute',
         left: '31.7vh',
         top: '11vh',
       }}/>
-      <CharCard id='5369' size='small' style={{
+      <CharCard id='5528' size='small' style={{
         width: '8.3vh',
         height: '14.4vh',
         position: 'absolute',
