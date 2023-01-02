@@ -6,6 +6,7 @@ import { charCards } from '../data/Character';
 import cards from '../static/cards/5369.png';
 import cards2 from '../static/cards/5480.png'
 import CharCard from '../components/CharCard';
+import ActionCard from '../components/ActionCard';
 
 const demoDeckCards = [];
 for(let i = 0; i < 30; i++) {
@@ -27,7 +28,7 @@ function _CharCard({ id, style }) {
     </div>
   </div>;
 }
-function ActionCard({ id, style }) {
+function _ActionCard({ id, style }) {
   return <div style={style}>
     <div style={{
       width: '100%',
@@ -80,7 +81,7 @@ function Deck({ children }) {
         left: '31.7vh',
         top: '11vh',
       }}/>
-      <CharCard id='5528' size='small' style={{
+      <CharCard id='5359' size='small' style={{
         width: '8.3vh',
         height: '14.4vh',
         position: 'absolute',
