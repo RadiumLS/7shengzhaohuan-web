@@ -1,15 +1,28 @@
 // 武器牌
-import cardsPicBig from '../static/cards/weapon_big.jpg';
-import cardsPicSmall from '../static/cards/weapon_small.jpg';
+import cardsPicBig from '../static/cards/common_big.jpg';
+import cardsPicSmall from '../static/cards/common_small.jpg';
 
 const getPosition = function(id) {
   let row = 0;
   let column = 0;
-  if(id >= 5406 && id <= 5420) {
-    const index = id - 5406;
-    row = Math.floor(index / 5);
-    column = index - row * 5;
+  let index = 0;
+  if(id >= 5399 && id <= 5402) {
+    index = id - 5399;
   }
+  if(id >= 5480 && id <= 5482) {
+    index = 4 + id - 5480;
+  }
+  if(id >= 5485 && id <= 5490) {
+    index = 7 + id - 5485;
+  }
+  if(id == 5492) {
+    index = 13
+  }
+  if(id == 5530) {
+    index = 14
+  }
+  row = Math.floor(index / 5);
+  column = index - row * 5;
   // XXX: 后续的更多卡牌可能不符合这个规律，需要额外处理
   return {
     row,
@@ -17,7 +30,7 @@ const getPosition = function(id) {
   }
 };
 
-function WeaponCard({ id, style, size }) {
+function CommonCard({ id, style, size }) {
   const pic = size === 'small' ? cardsPicSmall : cardsPicBig;
   const { row, column } = getPosition(id);
   return <div style={style}>
@@ -31,4 +44,4 @@ function WeaponCard({ id, style, size }) {
     </div>
   </div>;
 }
-export default WeaponCard;
+export default CommonCard;

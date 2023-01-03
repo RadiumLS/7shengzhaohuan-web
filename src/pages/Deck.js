@@ -11,7 +11,7 @@ import ActionCard from '../components/ActionCard';
 const demoDeckCards = [];
 for(let i = 0; i < 30; i++) {
   demoDeckCards.push({
-    id: 5480,
+    id: 5481,
   });
 }
 // TODO: 使用有意义的卡组信息
