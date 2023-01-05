@@ -19,7 +19,7 @@ const getMiyousheDeck = async function(deckId) {
     const cardId = oneCard.attribs.href.split('/')[6];
     cardIds.push(cardId);
     const $a = cheerio.load(oneCard);
-    if ($a.toString().indexOf('wC+mZ7')) {
+    if ($a.html().indexOf('wC+mZ7') != -1) {
       // 如果能找到这个串，则说明是两张
       cardIds.push(cardId);
     }
