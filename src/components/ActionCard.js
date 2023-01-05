@@ -55,13 +55,14 @@ for(let i = 5379; i<= 5385; i++) {
 // XXX?: add sort function here
 
 function ActionCard({ id, style, size }) {
-  if(weaponCardIds.indexOf(id) > 0) return <WeaponCard id={id} style={style} size={size}></WeaponCard>
-  if(equipmentCardIds.indexOf(id) > 0) return <EquipmentCard id={id} style={style} size={size}></EquipmentCard>
-  if(supportCardIds.indexOf(id) > 0) return <SupportCard id={id} style={style} size={size}></SupportCard>
-  if(commonCardIds.indexOf(id) > 0) return <CommonCard id={id} style={style} size={size}></CommonCard>
-  if(foodCardIds.indexOf(id) > 0) return <FoodCard id={id} style={style} size={size}></FoodCard>
-  if(elementCardIds.indexOf(id) > 0) return <ElementCard id={id} style={style} size={size}></ElementCard>
-  if(talentCardIds.indexOf(id) > 0) return <TalentCard id={id} style={style} size={size}></TalentCard>
+  if(weaponCardIds.indexOf(id) != -1) return <WeaponCard id={id} style={style} size={size}></WeaponCard>
+  if(equipmentCardIds.indexOf(id) != -1) return <EquipmentCard id={id} style={style} size={size}></EquipmentCard>
+  if(supportCardIds.indexOf(id) != -1) return <SupportCard id={id} style={style} size={size}></SupportCard>
+  if(commonCardIds.indexOf(id) != -1) return <CommonCard id={id} style={style} size={size}></CommonCard>
+  if(foodCardIds.indexOf(id) != -1) return <FoodCard id={id} style={style} size={size}></FoodCard>
+  if(elementCardIds.indexOf(id) != -1) return <ElementCard id={id} style={style} size={size}></ElementCard>
+  if(talentCardIds.indexOf(id) != -1) return <TalentCard id={id} style={style} size={size}></TalentCard>
+  debugger;
   return <TalentCard id={id} style={style} size={size}></TalentCard>
 }
 export default ActionCard;
