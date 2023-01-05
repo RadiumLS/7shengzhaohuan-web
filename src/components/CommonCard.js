@@ -10,10 +10,10 @@ const getPosition = function(id) {
     index = id - 5399;
   }
   if(id >= 5480 && id <= 5482) {
-    index = 4 + id - 5480;
+    index = id - 5480 + 4;
   }
   if(id >= 5485 && id <= 5490) {
-    index = 7 + id - 5485;
+    index = id - 5485 + 7;
   }
   if(id == 5492) {
     index = 13

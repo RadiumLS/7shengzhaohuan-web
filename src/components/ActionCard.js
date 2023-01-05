@@ -18,12 +18,12 @@ for(let i = 5421; i<= 5440; i++) {
   equipmentCardIds.push(`${i}`);
 }
 // 初始版本的支援牌id
-const supportCardIds = [5483, 5484];
+const supportCardIds = ['5483', '5484'];
 for(let i = 5446; i<= 5463; i++) {
   supportCardIds.push(`${i}`);
 }
 // 初始版本的通用行动牌id
-const commonCardIds = [5492, 5530, 5480, 5481, 5482];
+const commonCardIds = ['5492', '5530', '5480', '5481', '5482'];
 for(let i = 5399; i<= 5402; i++) {
   commonCardIds.push(`${i}`);
 }
@@ -31,17 +31,17 @@ for(let i = 5485; i<= 5490; i++) {
   commonCardIds.push(`${i}`);
 }
 // 初始版本的食物牌id
-const foodCardIds = [5491, 5529];
+const foodCardIds = ['5491', '5529'];
 for(let i = 5474; i<= 5479; i++) {
   foodCardIds.push(`${i}`);
 }
 // 初始版本的元素牌id
-const elementCardIds = [5377];
-for(let i = 5386; i<= 5394; i++) {
+const elementCardIds = ['5377'];
+for(let i = 5386; i<= 5398; i++) {
   elementCardIds.push(`${i}`);
 }
 // 初始版本的天赋牌id
-const talentCardIds = [5377];
+const talentCardIds = [];
 for(let i = 5441; i<= 5445; i++) {
   talentCardIds.push(`${i}`);
 }

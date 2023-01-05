@@ -1,5 +1,4 @@
 // 牌组页，用于展示牌组的信息
-import { Layout } from 'antd';
 // import backgroundPic from '../static/deck_background.png'
 import backgroundPic from '../static/deck_background2.png';
 import { charCards } from '../data/Character';
@@ -7,39 +6,15 @@ import cards from '../static/cards/5369.png';
 import cards2 from '../static/cards/5480.png'
 import CharCard from '../components/CharCard';
 import ActionCard from '../components/ActionCard';
+import { getMiyousheDeck } from '../data/MiyousheDeck';
+import { useState, useEffect } from 'react';
 
-const demoDeckCards = [];
-for(let i = 0; i < 30; i++) {
-  demoDeckCards.push({
-    id: 5481,
-  });
-}
+const demoDeckCards = [
+];
 // TODO: 使用有意义的卡组信息
-const deckCards = demoDeckCards;
-function _CharCard({ id, style }) {
-  const char = charCards[id];
-  return <div style={style}>
-    <div style={{
-      width: '100%',
-      height: '100%',
-      backgroundImage: `url(${cards})`,
-      backgroundSize: 'cover',
-    }}>
-    </div>
-  </div>;
-}
-function _ActionCard({ id, style }) {
-  return <div style={style}>
-    <div style={{
-      width: '100%',
-      height: '100%',
-      backgroundImage: `url(${cards2})`,
-      backgroundSize: 'cover',
-    }}>
-    </div>
-  </div>;
-}
-function AllActionCard() {
+const _deckCards = demoDeckCards;
+// const deckCards = cardIds;
+function AllActionCard({deckCards}) {
   return deckCards.map((oneCard, index) => {
     const row = Math.floor(index/6);
     const column = index - (row * 6);
@@ -53,11 +28,16 @@ function AllActionCard() {
   })
 }
     // <img src={require(`${cardsStaticPath}${char.icon}`).default} alt={char.name}></img>
-function Deck({ children }) {
+function Deck() {
+  const [deckCards, setDeckCards] = useState([]);
+  useEffect(() => {
+    getMiyousheDeck(2662).then(({cardIds}) => {
+      setDeckCards(cardIds.map((oneId) => {
+        return { id: oneId }
+      }));
+    });
+  }, []);
 
-  // TODO: add background
-  // TODO: show charCards
-  // TODO: show deckCards
   return <>
     <div style={{
       backgroundImage: `url(${backgroundPic})`,
@@ -88,7 +68,7 @@ function Deck({ children }) {
         left: '41.7vh',
         top: '11vh',
       }}/>
-      <AllActionCard/>
+      <AllActionCard deckCards={deckCards}/>
     </div>
   </>
 }

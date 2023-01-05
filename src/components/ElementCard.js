@@ -9,8 +9,8 @@ const getPosition = function(id) {
   if(id == 5377) {
     index = 0;
   }
-  if(id >= 5386 && id <= 5394) {
-    index = id - 5386;
+  if(id >= 5386 && id <= 5398) {
+    index = id - 5386 + 1;
   }
   // XXX: 后续的更多卡牌可能不符合这个规律，需要额外处理
   row = Math.floor(index / 7);
