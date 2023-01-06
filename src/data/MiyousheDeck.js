@@ -9,7 +9,6 @@ const getMiyousheDeck = async function(deckId) {
       content_id: deckId
     }
   });
-  console.log(resp);
   const $ = cheerio.load(resp.data.data.content.contents[0].text);
   const charCardNames = [0, 1, 2].map((index) => $(`div.group-item:nth(${index}) + p.card-name`).html());
   const allActionCards = $('a.group-center-item');

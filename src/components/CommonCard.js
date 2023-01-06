@@ -1,4 +1,4 @@
-// 武器牌
+// 通用行动牌
 import cardsPicBig from '../static/cards/common_big.jpg';
 import cardsPicSmall from '../static/cards/common_small.jpg';
 

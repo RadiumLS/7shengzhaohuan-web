@@ -11,11 +11,11 @@ const getPosition = function(id) {
     column = index - row * 7;
   }
   // XXX: 后续的更多卡牌可能不符合这个规律，需要额外处理
-  if(id === 5483) {
+  if(id == 5483) {
     row = 2;
     column = 4;
   }
-  if(id === 5484) {
+  if(id == 5484) {
     row = 2;
     column = 5;
   }
