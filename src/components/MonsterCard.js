@@ -1,12 +1,13 @@
 // 原魔角色卡牌，用于展示角色卡牌
-import cardsPicBig from '../static/cards/yuanmo_big.jpg';
-import cardsPicSmall from '../static/cards/yuanmo_small.jpg';
+import cardsPicBig from '../static/cards/monster_big.jpg';
+import cardsPicSmall from '../static/cards/monster_small.jpg';
 
 const getPosition = function(id) {
   let row = 0;
   let column = 0;
+  let index = 0
   if(id >= 5523 && id <= 5528) {
-    const index = id - 5523;
+    index = id - 5523;
     row = Math.floor(index / 4);
     column = index - row * 4;
   }
@@ -17,7 +18,7 @@ const getPosition = function(id) {
   }
 };
 
-function YuanmoCard({ id, style, size }) {
+function MonsterCard({ id, style, size }) {
   const pic = size === 'small' ? cardsPicSmall : cardsPicBig;
   const { row, column } = getPosition(id);
   return <div style={style}>
@@ -31,7 +32,7 @@ function YuanmoCard({ id, style, size }) {
     </div>
   </div>;
 }
-export default YuanmoCard;
+export default MonsterCard;
 
 
 

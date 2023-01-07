@@ -1,6 +1,6 @@
 // 装备-圣遗物牌
-import cardsPicBig from '../static/cards/equipment_big.jpg';
-import cardsPicSmall from '../static/cards/equipment_small.jpg';
+import cardsPicBig from '../static/cards/artifact_big.jpg';
+import cardsPicSmall from '../static/cards/artifact_small.jpg';
 
 const getPosition = function(id) {
   let row = 0;
@@ -17,7 +17,7 @@ const getPosition = function(id) {
   }
 };
 
-function EquipmentCard({ id, style, size }) {
+function ArtifactCard({ id, style, size }) {
   const pic = size === 'small' ? cardsPicSmall : cardsPicBig;
   const { row, column } = getPosition(id);
   return <div style={style}>
@@ -31,4 +31,4 @@ function EquipmentCard({ id, style, size }) {
     </div>
   </div>;
 }
-export default EquipmentCard;
+export default ArtifactCard;

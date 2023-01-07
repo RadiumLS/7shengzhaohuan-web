@@ -9,10 +9,10 @@ const getPosition = function(id) {
   if(id >= 5474 && id <= 5479) {
     index = id - 5474;
   }
-  if(id === 5491) {
+  if(id == 5491) {
     index = 6
   }
-  if(id === 5529) {
+  if(id == 5529) {
     index = 7
   }
   // XXX: 后续的更多卡牌可能不符合这个规律，需要额外处理

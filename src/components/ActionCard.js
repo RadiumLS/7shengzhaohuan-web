@@ -1,6 +1,6 @@
 // 行动牌，用于展示卡牌
 import WeaponCard from './WeaponCard'
-import EquipmentCard from './EquipmentCard'
+import ArtifactCard from './ArtifactCard'
 import SupportCard from './SupportCard';
 import CommonCard from './CommonCard';
 import FoodCard from './FoodCard';
@@ -12,10 +12,10 @@ const weaponCardIds = [];
 for(let i = 5406; i<= 5420; i++) {
   weaponCardIds.push(`${i}`);
 }
-const equipmentCardIds = [];
+const artifactCardIds = [];
 // 初始版本的圣遗物卡牌id
 for(let i = 5421; i<= 5440; i++) {
-  equipmentCardIds.push(`${i}`);
+  artifactCardIds.push(`${i}`);
 }
 // 初始版本的支援牌id
 const supportCardIds = ['5483', '5484'];
@@ -56,7 +56,7 @@ for(let i = 5379; i<= 5385; i++) {
 
 function ActionCard({ id, style, size }) {
   if(weaponCardIds.indexOf(id) != -1) return <WeaponCard id={id} style={style} size={size}></WeaponCard>
-  if(equipmentCardIds.indexOf(id) != -1) return <EquipmentCard id={id} style={style} size={size}></EquipmentCard>
+  if(artifactCardIds.indexOf(id) != -1) return <ArtifactCard id={id} style={style} size={size}></ArtifactCard>
   if(supportCardIds.indexOf(id) != -1) return <SupportCard id={id} style={style} size={size}></SupportCard>
   if(commonCardIds.indexOf(id) != -1) return <CommonCard id={id} style={style} size={size}></CommonCard>
   if(foodCardIds.indexOf(id) != -1) return <FoodCard id={id} style={style} size={size}></FoodCard>
