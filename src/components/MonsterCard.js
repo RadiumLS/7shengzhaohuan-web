@@ -1,6 +1,8 @@
 // 原魔角色卡牌，用于展示角色卡牌
 import cardsPicBig from '../static/cards/monster_big.jpg';
 import cardsPicSmall from '../static/cards/monster_small.jpg';
+const picRow = 2;
+const picColumn = 4;
 
 const getPosition = function(id) {
   let row = 0;
@@ -26,8 +28,8 @@ function MonsterCard({ id, style, size }) {
       width: '100%',
       height: '100%',
       backgroundImage: `url(${pic})`,
-      backgroundSize: '400%',
-      backgroundPosition: `-${100 * column}% -${100 * row}%`
+      backgroundSize: `${picColumn * 100}%`,
+      backgroundPosition: `-${100 * column}% ${row * (100/(picRow - 1))}%`
     }}>
     </div>
   </div>;

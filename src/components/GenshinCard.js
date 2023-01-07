@@ -1,8 +1,8 @@
 // 原神角色卡牌，用于展示角色卡牌
-import { Layout } from 'antd';
-import { charCards } from '../data/Character';
 import cardsPicBig from '../static/cards/character_big.jpg';
 import cardsPicSmall from '../static/cards/character_small.jpg';
+const picRow = 3;
+const picColumn = 7;
 
 const getPosition = function(id) {
   let row = 0;
@@ -27,8 +27,8 @@ function GenshinCard({ id, style, size }) {
       width: '100%',
       height: '100%',
       backgroundImage: `url(${pic})`,
-      backgroundSize: '700%',
-      backgroundPosition: `-${100 * column}% -${100 * row}%`
+      backgroundSize: `${picColumn * 100}%`,
+      backgroundPosition: `-${100 * column}% ${row * (100/(picRow - 1))}%`
     }}>
     </div>
   </div>;

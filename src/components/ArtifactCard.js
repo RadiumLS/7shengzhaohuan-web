@@ -1,6 +1,8 @@
 // 装备-圣遗物牌
 import cardsPicBig from '../static/cards/artifact_big.jpg';
 import cardsPicSmall from '../static/cards/artifact_small.jpg';
+const picRow = 3;
+const picColumn = 7;
 
 const getPosition = function(id) {
   let row = 0;
@@ -25,8 +27,8 @@ function ArtifactCard({ id, style, size }) {
       width: '100%',
       height: '100%',
       backgroundImage: `url(${pic})`,
-      backgroundSize: '700%',
-      backgroundPosition: `-${100 * column}% -${100 * row}%`
+      backgroundSize: `${picColumn * 100}%`,
+      backgroundPosition: `-${100 * column}% ${row * (100/(picRow - 1))}%`
     }}>
     </div>
   </div>;
