@@ -28,7 +28,7 @@ const cardInfos = [{
   story: '他很擅长在他人身上发掘出「骑士般的美德」。',
 }, {
   id: 5374,
-  title: "重云",
+  name: "重云",
   life: 10,
   energy: 3,
   element: t('冰'),
@@ -39,7 +39,7 @@ const cardInfos = [{
   story: "「夏天啊，你还是悄悄过去吧…」"
 }, {
   id: 5373,
-  title: "神里绫华",
+  name: "神里绫华",
   life: 10,
   energy: 3,
   element: t('冰'),
@@ -50,7 +50,7 @@ const cardInfos = [{
   story: "如霜凝华，如鹭在庭。"
 }, {
   id: 5372,
-  title: "芭芭拉",
+  name: "芭芭拉",
   life: 10,
   energy: 3,
   element: t('水'),
@@ -61,7 +61,7 @@ const cardInfos = [{
   story: "无论何时都能治愈人心。"
 }, {
   id: 5371,
-  title: "行秋",
+  name: "行秋",
   life: 10,
   energy: 2,
   element: t('水'),
@@ -72,7 +72,7 @@ const cardInfos = [{
   story: "「怎么最近小说里的主角，都是些私塾里的学生…」"
 }, {
   id: 5370,
-  title: "莫娜",
+  name: "莫娜",
   life: 10,
   energy: 3,
   element: t('水'),
@@ -83,7 +83,8 @@ const cardInfos = [{
   story: "无论胜负平弃，都是命当如此。"
 }, {
   id: 5369,
-  title: "迪卢克",
+  name: "迪卢克",
+  nickName: ['卢姥爷', '卢锅巴', '卢卢伯爵', '地卢克', '卢迪克'],
   life: 10,
   energy: 3,
   element: t('火'),
@@ -94,7 +95,7 @@ const cardInfos = [{
   story: "他的心是他最大的敌人。"
 }, {
   id: 5368,
-  title: "香菱",
+  name: "香菱",
   life: 10,
   energy: 2,
   element: t('火'),
@@ -105,7 +106,7 @@ const cardInfos = [{
   story: "身为一个厨师，她几乎什么都做得到。"
 }, {
   id: 5367,
-  title: "班尼特",
+  name: "班尼特",
   life: 10,
   energy: 2,
   element: t('火'),
@@ -116,7 +117,7 @@ const cardInfos = [{
   story: "当你知道自己一定会输时，那你肯定也知道如何能赢。"
 }, {
   id: 5366,
-  title: "宵宫",
+  name: "宵宫",
   life: 10,
   energy: 2,
   element: t('火'),
@@ -127,7 +128,7 @@ const cardInfos = [{
   story: "花见坂第十一届全街邀请赛「长野原队」队长兼首发牌手。"
 }, {
   id: 5365,
-  title: "菲谢尔",
+  name: "菲谢尔",
   life: 10,
   energy: 3,
   element: t('雷'),
@@ -138,7 +139,7 @@ const cardInfos = [{
   story: "「奥兹！我之眷属，展开羽翼，替我在幽夜中寻求全新的命运之线吧！」「小姐，我可没办法帮你换一张牌啊…」"
 }, {
   id: 5364,
-  title: "雷泽",
+  name: "雷泽",
   life: 10,
   energy: 3,
   element: t('雷'),
@@ -149,7 +150,7 @@ const cardInfos = [{
   story: "「牌，难。」「但，有朋友…」"
 }, {
   id: 5363,
-  title: "刻晴",
+  name: "刻晴",
   life: 10,
   energy: 3,
   element: t('雷'),
@@ -160,7 +161,7 @@ const cardInfos = [{
   story: "她能构筑出许多从未设想过的牌组，拿下许多难以想象的胜利。"
 }, {
   id: 5362,
-  title: "赛诺",
+  name: "赛诺",
   life: 10,
   energy: 2,
   element: t('雷'),
@@ -171,7 +172,7 @@ const cardInfos = [{
   story: "卡牌中蕴藏的，是大风纪官如沙漠烈日般炙热的喜爱之情。"
 }, {
   id: 5361,
-  title: "砂糖",
+  name: "砂糖",
   life: 10,
   energy: 2,
   element: t('风'),
@@ -182,7 +183,7 @@ const cardInfos = [{
   story: "「没有实战过的牌组不值得判断强度！」"
 }, {
   id: 5360,
-  title: "琴",
+  name: "琴",
   life: 10,
   energy: 3,
   element: t('风'),
@@ -193,7 +194,7 @@ const cardInfos = [{
   story: "在夺得最终的胜利之前，她总是认为自己做得还不够好。"
 }, {
   id: 5359,
-  title: "凝光",
+  name: "凝光",
   life: 10,
   energy: 3,
   element: t('岩'),
@@ -204,7 +205,8 @@ const cardInfos = [{
   story: "她保守着一个最大的秘密，那就是自己保守着璃月港的许多秘密。"
 }, {
   id: 5358,
-  title: "诺艾尔",
+  name: "诺艾尔",
+  nickName: ['女仆'],
   life: 10,
   energy: 2,
   element: t('岩'),
@@ -215,7 +217,7 @@ const cardInfos = [{
   story: "整理牌桌这种事，真的可以交给她。"
 }, {
   id: 5357,
-  title: "柯莱",
+  name: "柯莱",
   life: 10,
   energy: 2,
   element: t('草'),
@@ -226,7 +228,7 @@ const cardInfos = [{
   story: "「大声喊出卡牌的名字会让它威力加倍…这一定是虚构的吧?」"
 }, {
   id: 5356,
-  title: "迪奥娜",
+  name: "迪奥娜",
   life: 10,
   energy: 3,
   element: t('冰'),
@@ -246,7 +248,12 @@ for(let i = 0; i < cardInfos.length; i++) {
 const getCardByNickName = function(nickName) {
   let card = cardNameMap[nickName];
   if (card === undefined) {
-    //TODO: 尝试从nickName去找对应的卡片
+    for(let i = 0; i < cardInfos.length; i++) {
+      const oneCard = cardInfos[i];
+      if(oneCard.nickName && oneCard.nickName.indexOf(nickName) > -1) {
+        card = oneCard;
+      }
+    }
   }
   return card;
 };

@@ -44,6 +44,7 @@ const cardInfos = [
   {
     id: 5525,
     name: "魔偶剑鬼",
+    nickName: ['魔剑偶鬼', '魔鬼剑偶', '魔剑鬼偶'],
     icon: "https://uploadstatic.mihoyo.com/ys-obc/2022/12/05/12109492/5b21d3abb8dd7245a8f5f540d8049fcb_8786428691685397533.png",
     life: 10,
     energy: 3,
@@ -56,6 +57,7 @@ const cardInfos = [
   {
     id: 5524,
     name: "丘丘岩盔王",
+    nickName: ['岩盔丘丘王'],
     icon: "https://uploadstatic.mihoyo.com/ys-obc/2022/12/05/12109492/db05474f6bdc3a5080e141d72c876548_7546553703798415565.png",
     life: 8,
     energy: 2,
@@ -89,7 +91,12 @@ for(let i = 0; i < cardInfos.length; i++) {
 const getCardByNickName = function(nickName) {
   let card = cardNameMap[nickName];
   if (card === undefined) {
-    //TODO: 尝试从nickName去找对应的卡片
+    for(let i = 0; i < cardInfos.length; i++) {
+      const oneCard = cardInfos[i];
+      if(oneCard.nickName && oneCard.nickName.indexOf(nickName) > -1) {
+        card = oneCard;
+      }
+    }
   }
   return card;
 };
@@ -135,7 +142,3 @@ export {
   getCardByNickName,
   isMonsterCard,
 };
-
-
-
-
