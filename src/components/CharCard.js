@@ -1,10 +1,19 @@
 // 角色卡牌，用于展示角色卡牌
-import { GenshinCard, isGenshinCard } from './GenshinCard'
-import { MonsterCard, isMonsterCard }from './MonsterCard'
+import { GenshinCard, isGenshinCard, getCardByNickName as checkGenshinNick } from './GenshinCard'
+import { MonsterCard, isMonsterCard, getCardByNickName as checkMonsterNick}from './MonsterCard'
+
+const getCardByNickName = function(nickName) {
+  let card = checkGenshinNick(nickName);
+  if (card === undefined) card = checkMonsterNick(nickName);
+  return card;
+};
 
 function CharCard({ id, style, size }) {
   if(isGenshinCard(id)) return <GenshinCard id={id} style={style} size={size}></GenshinCard>
   if(isMonsterCard(id)) return <MonsterCard id={id} style={style} size={size}></MonsterCard>
-  return <MonsterCard id={id} style={style} size={size}></MonsterCard>
+  return <></>
 }
-export default CharCard;
+export { 
+  getCardByNickName,
+  CharCard,
+};
