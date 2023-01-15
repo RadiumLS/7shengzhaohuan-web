@@ -1,16 +1,10 @@
 // 角色卡牌，用于展示角色卡牌
 import { GenshinCard, isGenshinCard } from './GenshinCard'
-import MonsterCard from './MonsterCard'
-
-const monsterCardIds = [];
-// 初始版本的原魔卡牌id
-for(let i = 5523; i<= 5528; i++) {
-  monsterCardIds.push(`${i}`);
-}
+import { MonsterCard, isMonsterCard }from './MonsterCard'
 
 function CharCard({ id, style, size }) {
   if(isGenshinCard(id)) return <GenshinCard id={id} style={style} size={size}></GenshinCard>
-  if(monsterCardIds.indexOf(id) > 0) return <MonsterCard id={id} style={style} size={size}></MonsterCard>
+  if(isMonsterCard(id)) return <MonsterCard id={id} style={style} size={size}></MonsterCard>
   return <MonsterCard id={id} style={style} size={size}></MonsterCard>
 }
 export default CharCard;
