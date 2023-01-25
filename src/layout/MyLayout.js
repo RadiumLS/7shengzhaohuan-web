@@ -23,6 +23,8 @@ function MyLayout({ children }) {
           padding: 24,
           margin: 0,
           minHeight: 280,
+          height: '100vh',
+          overflow: 'auto',
         }}
       >
         {children}
