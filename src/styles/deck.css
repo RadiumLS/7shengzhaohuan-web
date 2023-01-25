@@ -1,0 +1,10 @@
+.miyoushe-deck {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 1%;
+  vertical-align: top;
+  width: 30%;
+}
+.miyoushe-deck>p {
+  padding: 0 4%;
+}

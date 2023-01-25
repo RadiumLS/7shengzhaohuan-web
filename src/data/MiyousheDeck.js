@@ -2,8 +2,23 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
 
-const api = 'https://api-static.mihoyo.com/common/blackboard/ys_strategy/v1/content/info?app_sn=ys_strategy';
-const getMiyousheDeck = async function(deckId) {
+const getMiyousheDeckList = async function () {
+  const api = 'https://api-static.mihoyo.com/common/blackboard/ys_strategy/v1/home/content/list?app_sn=ys_strategy&channel_id=279';
+  const resp = await axios.get(api, {
+  });
+  const deckList = resp.data.data.list[0].children[0].list.map((oneDeck) => {
+    return {
+      ext: JSON.parse(oneDeck.ext).c_281,
+      title: oneDeck.title,
+      summary: oneDeck.summary,
+      icon: oneDeck.icon,
+      deckId: oneDeck.content_id,
+    }
+  });
+  return deckList;
+}
+const getMiyousheDeck = async function (deckId) {
+  const api = 'https://api-static.mihoyo.com/common/blackboard/ys_strategy/v1/content/info?app_sn=ys_strategy';
   const resp = await axios.get(api, {
     params: {
       content_id: deckId
@@ -31,4 +46,5 @@ const getMiyousheDeck = async function(deckId) {
 // &content_id=2662'
 export {
   getMiyousheDeck,
+  getMiyousheDeckList,
 };

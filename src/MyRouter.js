@@ -6,6 +6,7 @@ import {
 import Wellcom from "./pages/Welcom";
 import About from "./pages/About";
 import Deck from "./pages/Deck";
+import MiyousheDeck from "./pages/MiyousheDeck";
 
 const routerMap = {
   wellcom: {
@@ -15,6 +16,14 @@ const routerMap = {
   about: {
     path: '/about',
     element: <About/>,
+  },
+  miyoushe: {
+    path: '/miyoushe',
+    element: <MiyousheDeck/>,
+  },
+  miyoushe_deck: {
+    path: '/miyoushe/:deckId',
+    element: <MiyousheDeck/>,
   },
   deck: {
     path: '/deck',
