@@ -1,10 +1,8 @@
 // 牌组页，用于展示牌组的信息
 // import backgroundPic from '../static/deck_background.png'
 import backgroundPic from '../static/deck_background2.png';
-import { CharCard, getCardByNickName } from '../components/CharCard';
+import { CharCard } from '../components/CharCard';
 import ActionCard from '../components/ActionCard';
-import { getMiyousheDeck } from '../data/MiyousheDeck';
-import { useState, useEffect } from 'react';
 
 const demoDeckCards = [
 ];
@@ -12,6 +10,7 @@ const demoDeckCards = [
 const _deckCards = demoDeckCards;
 // const deckCards = cardIds;
 function AllActionCard({deckCards}) {
+  if(deckCards === undefined) return <></>;
   return deckCards.map((oneCard, index) => {
     const row = Math.floor(index/6);
     const column = index - (row * 6);
@@ -25,21 +24,7 @@ function AllActionCard({deckCards}) {
   })
 }
     // <img src={require(`${cardsStaticPath}${char.icon}`).default} alt={char.name}></img>
-function Deck() {
-  const [charCards, setCharCards] = useState([]);
-  const [deckCards, setDeckCards] = useState([]);
-  useEffect(() => {
-    getMiyousheDeck(2661).then(({charCardNames, cardIds}) => {
-      setDeckCards(cardIds.map((oneId) => {
-        return { id: oneId }
-      }));
-      setCharCards(charCardNames.map((oneName) => {
-        const card = getCardByNickName(oneName);
-        return card === undefined ? 0 : card.id;
-      }))
-    });
-  }, []);
-
+function Deck({charCards, deckCards}) {
   return <>
     <div style={{
       backgroundImage: `url(${backgroundPic})`,
@@ -49,21 +34,21 @@ function Deck() {
       backgroundSize: 'cover',
       position: 'relative',
     }}>
-      <CharCard id={charCards && charCards[0]} size='small' style={{
+      <CharCard id={charCards && charCards[0] && charCards[0].id} size='small' style={{
         width: '8.3vh',
         height: '14.4vh',
         position: 'absolute',
         left: '21.7vh',
         top: '11vh',
       }}/>
-      <CharCard id={charCards && charCards[1]} size='small' style={{
+      <CharCard id={charCards && charCards[1] && charCards[1].id} size='small' style={{
         width: '8.3vh',
         height: '14.4vh',
         position: 'absolute',
         left: '31.7vh',
         top: '11vh',
       }}/>
-      <CharCard id={charCards && charCards[2]} size='small' style={{
+      <CharCard id={charCards && charCards[2] && charCards[2].id} size='small' style={{
         width: '8.3vh',
         height: '14.4vh',
         position: 'absolute',

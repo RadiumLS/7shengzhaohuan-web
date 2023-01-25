@@ -1,21 +1,47 @@
 // 米游社牌组页，用于展示米游社的牌组列表以及牌组信息
 import { useParams, useNavigate, redirect } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import { getMiyousheDeckList } from '../data/MiyousheDeck';
+import { getMiyousheDeck, getMiyousheDeckList } from '../data/MiyousheDeck';
+import { getCardByNickName } from '../components/CharCard';
+import Deck from './Deck.js';
 import '../styles/deck.css'
 function MiyousheDeck() {
   const { deckId } = useParams();
   const [ deckList, setDeckList] = useState([]);
+  const [charCards, setCharCards] = useState([]);
+  const [deckCards, setDeckCards] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     getMiyousheDeckList().then((deckList) => {
       setDeckList(deckList);
     });
   }, []);
+  useEffect(() => {
+    if(deckId) {
+      getMiyousheDeck(deckId).then(({charCardNames, cardIds}) => {
+        if (cardIds !== undefined) {
+          setDeckCards(cardIds.map((oneId) => {
+            return { id: oneId }
+          }));
+        }
+        setCharCards(charCardNames.map((oneName) => {
+          const card = getCardByNickName(oneName);
+          return card === undefined ? { id: 0 } : card;
+        }))
+      });
+    }
+  }, [deckId]);
   if(deckId) {
-    return <>单个卡组的页面 {deckId}</>
+    return <>
+      <a onClick={() => {
+        navigate(`/miyoushe`);
+      }}>返回卡组列表</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a target="_blank" href={`https://bbs.mihoyo.com/ys/strategy/content/${deckId}/detail`}>去米游社的页面查看</a>
+      <Deck charCards={charCards} deckCards={deckCards}/>
+    </>
   }
   return <>
-  展示卡组列表，然后点击之后展示对应卡组的图片
+  米游社卡组列表，点击查看卡组图片
   <p>
     <DeckList deckList={deckList}/>
   </p>
