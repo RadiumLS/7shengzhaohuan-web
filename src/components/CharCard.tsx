@@ -9,8 +9,8 @@ const getCardByNickName = function(nickName) {
 };
 
 function CharCard({ id, style, size }) {
-  if(isGenshinCard(id)) return <GenshinCard id={id} style={style} size={size}></GenshinCard>
-  if(isMonsterCard(id)) return <MonsterCard id={id} style={style} size={size}></MonsterCard>
+  if(isGenshinCard(id)) return <GenshinCard id={id} style={style} size={size} className={"hhhhh"}></GenshinCard>
+  if(isMonsterCard(id)) return <MonsterCard id={id} style={style} size={size} class={"hhhhh"}></MonsterCard>
   return <></>
 }
 export { 

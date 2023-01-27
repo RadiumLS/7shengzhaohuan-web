@@ -1,5 +1,5 @@
 import './App.css';
-import { MyLayout } from './layout/MyLayout.tsx';
+import { MyLayout } from './layout/MyLayout';
 import { MyRouter } from './MyRouter';
 
 function App() {

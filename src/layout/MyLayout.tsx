@@ -1,5 +1,5 @@
 import { Layout } from 'antd';
-import { MyMenu } from './Menu.tsx';
+import { MyMenu } from './Menu';
 
 const { Header, Content, Footer, Sider } = Layout;
 

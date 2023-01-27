@@ -3,7 +3,7 @@ import { useParams, useNavigate, redirect } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { getMiyousheDeck, getMiyousheDeckList } from '../data/MiyousheDeck';
 import { getCardByNickName } from '../components/CharCard';
-import Deck from './Deck.js';
+import Deck from './Deck';
 import '../styles/deck.css'
 function MiyousheDeck() {
   const { deckId } = useParams();
