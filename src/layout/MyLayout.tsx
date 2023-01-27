@@ -1,5 +1,5 @@
 import { Layout } from 'antd';
-import MyMenu from './Menu';
+import { MyMenu } from './Menu.tsx';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -33,4 +33,6 @@ function MyLayout({ children }) {
   )
 }
 
-export default MyLayout;
+export {
+  MyLayout
+};

@@ -28,4 +28,6 @@ function MyMenu() {
 }
 
 
-export default MyMenu;
+export {
+  MyMenu
+};

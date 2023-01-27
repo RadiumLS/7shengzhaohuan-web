@@ -1,5 +1,5 @@
 import './App.css';
-import MyLayout from './layout/MyLayout';
+import { MyLayout } from './layout/MyLayout.tsx';
 import { MyRouter } from './MyRouter';
 
 function App() {
@@ -10,4 +10,6 @@ function App() {
   </>;
 }
 
-export default App;
+export {
+  App
+};
