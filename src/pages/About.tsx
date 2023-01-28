@@ -1,7 +1,7 @@
 // 关于页，放点工程的相关信息在这里
 import { Layout } from 'antd';
 
-function About({ children }) {
+function About() {
   return <Layout>
       <p>
           本工程主要目标是《原神》中的七圣召唤卡牌游戏模拟。

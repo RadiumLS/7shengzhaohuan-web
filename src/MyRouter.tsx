@@ -5,8 +5,7 @@ import {
 } from "react-router-dom";
 import Wellcom from "./pages/Welcom";
 import About from "./pages/About";
-import Deck from "./pages/Deck";
-import MiyousheDeck from "./pages/MiyousheDeck";
+import { MiyousheDeck } from "./pages/MiyousheDeck";
 
 const routerMap = {
   wellcom: {
@@ -24,10 +23,6 @@ const routerMap = {
   miyoushe_deck: {
     path: '/miyoushe/:deckId',
     element: <MiyousheDeck/>,
-  },
-  deck: {
-    path: '/deck',
-    element: <Deck/>,
   },
   tweak: {
     path: '/xx',

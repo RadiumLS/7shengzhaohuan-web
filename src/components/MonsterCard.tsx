@@ -1,10 +1,11 @@
 // 原魔角色卡牌，用于展示角色卡牌
 import cardsPicBig from '../static/cards/monster_big.jpg';
 import cardsPicSmall from '../static/cards/monster_small.jpg';
+import { CardInfo, CardOption } from '../type/card';
 // 未来扩展一下i18n，先放个函数包一下
-const t = (i18n) => i18n;
+const t = (i18n: string) => i18n;
 
-const cardInfos = [
+const cardInfos: CardInfo[] = [
   {
     id: 5528,
     name: "纯水精灵·洛蒂娅",
@@ -80,15 +81,15 @@ const cardInfos = [
     story: '悄声静听，可以听到幽林之中，蕈类王者巡视领土的脚步…',
   },
 ];
-const cardIdMap = {};
-const cardNameMap = {};
+const cardIdMap: {[key: number]: CardInfo} = {};
+const cardNameMap: {[key: string]: CardInfo} = {};
 for(let i = 0; i < cardInfos.length; i++) {
   const oneCard = cardInfos[i];
   cardIdMap[oneCard.id] = oneCard;
   cardNameMap[oneCard.name] = oneCard;
 }
 
-const getCardByNickName = function(nickName) {
+const getCardByNickName = function(nickName: string) {
   let card = cardNameMap[nickName];
   if (card === undefined) {
     for(let i = 0; i < cardInfos.length; i++) {
@@ -100,14 +101,14 @@ const getCardByNickName = function(nickName) {
   }
   return card;
 };
-const isMonsterCard = function(id) {
+const isMonsterCard = function(id: number) {
   return cardIdMap[id] !== undefined;
 }
 
 const picRow = 2;
 const picColumn = 4;
 
-const getPosition = function(id) {
+const getPosition = function(id: number) {
   let row = 0;
   let column = 0;
   let index = 0
@@ -123,9 +124,9 @@ const getPosition = function(id) {
   }
 };
 
-function MonsterCard({ id, style, size }) {
+function MonsterCard({ id, style, size }: CardOption) {
   const pic = size === 'small' ? cardsPicSmall : cardsPicBig;
-  const { row, column } = getPosition(id);
+  const { row, column } = getPosition(parseInt(id));
   return <div style={style}>
     <div style={{
       width: '100%',

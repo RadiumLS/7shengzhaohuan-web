@@ -1,10 +1,11 @@
 // 原神角色卡牌，用于展示角色卡牌
 import cardsPicBig from '../static/cards/character_big.jpg';
 import cardsPicSmall from '../static/cards/character_small.jpg';
+import { CardInfo, CardOption } from '../type/card';
 // 未来扩展一下i18n，先放个函数包一下
-const t = (i18n) => i18n;
+const t = (i18n: string) => i18n;
 
-const cardInfos = [{
+const cardInfos: CardInfo[] = [{
   id: 5376,
   name: '甘雨',
   icon: 'https://uploadstatic.mihoyo.com/ys-obc/2022/12/07/195563531/e5c7d702f8033c4361f3b25a7f0b8b30_7432225060782505988.png',
@@ -237,15 +238,15 @@ const cardInfos = [{
   title: '猫尾特调',
   story: "用1%的力气调酒，99%的力气⋯拒绝失败。"
 }];
-const cardIdMap = {};
-const cardNameMap = {};
+const cardIdMap: {[key: number]: CardInfo} = {};
+const cardNameMap: {[key: string]: CardInfo} = {};
 for(let i = 0; i < cardInfos.length; i++) {
   const oneCard = cardInfos[i];
   cardIdMap[oneCard.id] = oneCard;
   cardNameMap[oneCard.name] = oneCard;
 }
 
-const getCardByNickName = function(nickName) {
+const getCardByNickName = function(nickName:string) {
   let card = cardNameMap[nickName];
   if (card === undefined) {
     for(let i = 0; i < cardInfos.length; i++) {
@@ -257,14 +258,14 @@ const getCardByNickName = function(nickName) {
   }
   return card;
 };
-const isGenshinCard = function(id) {
+const isGenshinCard = function(id: number) {
   return cardIdMap[id] !== undefined;
 }
 
 // 图片的规格，3行7列
 const picRow = 3;
 const picColumn = 7;
-const getPosition = function(id) {
+const getPosition = function(id: number) {
   let row = 0;
   let column = 0;
   if(id >= 5356 && id <= 5376) {
@@ -279,9 +280,9 @@ const getPosition = function(id) {
   }
 };
 
-function GenshinCard({ id, style, size }) {
+function GenshinCard({ id, style, size }: CardOption) {
   const pic = size === 'small' ? cardsPicSmall : cardsPicBig;
-  const { row, column } = getPosition(id);
+  const { row, column } = getPosition(parseInt(id, 10));
   return <div style={style}>
     <div style={{
       width: '100%',

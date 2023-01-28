@@ -8,3 +8,15 @@
 .miyoushe-deck>p {
   padding: 0 4%;
 }
+
+.deck-panel {
+  /*
+  backgroundImage: `url(${backgroundPic})`;
+  */
+  background-image: url('../static/deck_background2.png');
+  width: 73vh;
+  height: 100vh;
+  margin: 0 auto;
+  background-size: cover;
+  position: relative;
+}

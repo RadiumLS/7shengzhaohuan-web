@@ -1,10 +1,11 @@
 // 元素共鸣牌
 import cardsPicBig from '../static/cards/element_big.jpg';
 import cardsPicSmall from '../static/cards/element_small.jpg';
+import { CardOption } from '../type/card';
 const picRow = 2;
 const picColumn = 7;
 
-const getPosition = function(id) {
+const getPosition = function(id: number) {
   let row = 0;
   let column = 0;
   let index = 0;
@@ -23,9 +24,9 @@ const getPosition = function(id) {
   }
 };
 
-function ElementCard({ id, style, size }) {
+function ElementCard({ id, style, size }: CardOption) {
   const pic = size === 'small' ? cardsPicSmall : cardsPicBig;
-  const { row, column } = getPosition(id);
+  const { row, column } = getPosition(parseInt(id, 10));
   return <div style={style}>
     <div style={{
       width: '100%',

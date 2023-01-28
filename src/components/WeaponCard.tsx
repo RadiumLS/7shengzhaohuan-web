@@ -1,10 +1,12 @@
 // 武器牌
 import cardsPicBig from '../static/cards/weapon_big.jpg';
 import cardsPicSmall from '../static/cards/weapon_small.jpg';
+import { CardOption } from '../type/card';
+
 const picRow = 3;
 const picColumn = 5;
 
-const getPosition = function(id) {
+const getPosition = function(id: number) {
   let row = 0;
   let column = 0;
   if(id >= 5406 && id <= 5420) {
@@ -19,9 +21,9 @@ const getPosition = function(id) {
   }
 };
 
-function WeaponCard({ id, style, size }) {
+function WeaponCard({ id, style, size }: CardOption) {
   const pic = size === 'small' ? cardsPicSmall : cardsPicBig;
-  const { row, column } = getPosition(id);
+  const { row, column } = getPosition(parseInt(id, 10));
   return <div style={style}>
     <div style={{
       width: '100%',

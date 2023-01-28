@@ -6,13 +6,15 @@ import CommonCard from './CommonCard';
 import FoodCard from './FoodCard';
 import ElementCard from './ElementCard';
 import TalentCard from './TalentCard';
+import { CSSProperties } from 'react';
+import { CardOption } from '../type/card';
 
-const weaponCardIds = [];
+const weaponCardIds:string[] = [];
 // 初始版本的武器卡牌id
 for(let i = 5406; i<= 5420; i++) {
   weaponCardIds.push(`${i}`);
 }
-const artifactCardIds = [];
+const artifactCardIds:string[] = [];
 // 初始版本的圣遗物卡牌id
 for(let i = 5421; i<= 5440; i++) {
   artifactCardIds.push(`${i}`);
@@ -41,7 +43,7 @@ for(let i = 5386; i<= 5398; i++) {
   elementCardIds.push(`${i}`);
 }
 // 初始版本的天赋牌id
-const talentCardIds = [];
+const talentCardIds:string[] = [];
 for(let i = 5441; i<= 5445; i++) {
   talentCardIds.push(`${i}`);
 }
@@ -54,7 +56,7 @@ for(let i = 5379; i<= 5385; i++) {
 
 // XXX?: add sort function here
 
-function ActionCard({ id, style, size }) {
+function ActionCard({ id, style, size }: CardOption) {
   if(weaponCardIds.indexOf(id) != -1) return <WeaponCard id={id} style={style} size={size}></WeaponCard>
   if(artifactCardIds.indexOf(id) != -1) return <ArtifactCard id={id} style={style} size={size}></ArtifactCard>
   if(supportCardIds.indexOf(id) != -1) return <SupportCard id={id} style={style} size={size}></SupportCard>
@@ -65,8 +67,6 @@ function ActionCard({ id, style, size }) {
   debugger;
   return <TalentCard id={id} style={style} size={size}></TalentCard>
 }
-export default ActionCard;
-
-
-
-
+export {
+  ActionCard
+};

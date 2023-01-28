@@ -1,12 +1,13 @@
 // 从米游社拉取卡组信息的方法
 import axios from 'axios';
 import cheerio from 'cheerio';
+import { MiyousheDeck } from '../type/card';
 
-const getMiyousheDeckList = async function () {
+const getMiyousheDeckList  = async function (): Promise<MiyousheDeck[]> {
   const api = 'https://api-static.mihoyo.com/common/blackboard/ys_strategy/v1/home/content/list?app_sn=ys_strategy&channel_id=279';
   const resp = await axios.get(api, {
   });
-  const deckList = resp.data.data.list[0].children[0].list.map((oneDeck) => {
+  const deckList = resp.data.data.list[0].children[0].list.map((oneDeck: MiyousheDeck) => {
     return {
       ext: JSON.parse(oneDeck.ext).c_281,
       title: oneDeck.title,
@@ -17,7 +18,7 @@ const getMiyousheDeckList = async function () {
   });
   return deckList;
 }
-const getMiyousheDeck = async function (deckId) {
+const getMiyousheDeck = async function (deckId: number | string) {
   const api = 'https://api-static.mihoyo.com/common/blackboard/ys_strategy/v1/content/info?app_sn=ys_strategy';
   const resp = await axios.get(api, {
     params: {
@@ -25,7 +26,7 @@ const getMiyousheDeck = async function (deckId) {
     }
   });
   const $ = cheerio.load(resp.data.data.content.contents[0].text);
-  const charCardNames = [0, 1, 2].map((index) => $(`div.group-item:nth(${index}) + p.card-name`).html());
+  const charCardNames = [0, 1, 2].map((index) => $(`div.group-item:nth(${index}) + p.card-name`).html() || '');
   const allActionCards = $('a.group-center-item');
   const cardIds = [];
   for (let i = 0; i < allActionCards.length; i++) {

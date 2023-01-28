@@ -1,10 +1,11 @@
 // 装备-圣遗物牌
 import cardsPicBig from '../static/cards/artifact_big.jpg';
 import cardsPicSmall from '../static/cards/artifact_small.jpg';
+import { CardOption } from '../type/card';
 const picRow = 3;
 const picColumn = 7;
 
-const getPosition = function(id) {
+const getPosition = function(id: number) {
   let row = 0;
   let column = 0;
   if(id >= 5421 && id <= 5440) {
@@ -19,9 +20,9 @@ const getPosition = function(id) {
   }
 };
 
-function ArtifactCard({ id, style, size }) {
+function ArtifactCard({ id, style, size }: CardOption) {
   const pic = size === 'small' ? cardsPicSmall : cardsPicBig;
-  const { row, column } = getPosition(id);
+  const { row, column } = getPosition(parseInt(id, 10));
   return <div style={style}>
     <div style={{
       width: '100%',

@@ -1,10 +1,11 @@
 import { Layout } from 'antd';
+import { ReactElement } from 'react';
 import { MyMenu } from './Menu';
 
 const { Header, Content, Footer, Sider } = Layout;
 
 
-function MyLayout({ children }) {
+function MyLayout({ children }: {children: ReactElement}) {
   return (
     <Layout hasSider>
       <Sider

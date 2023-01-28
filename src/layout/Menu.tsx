@@ -6,9 +6,6 @@ const menuItems = [{
     key: 'wellcom',
     label: <a href={routerMap.wellcom.path}>欢迎页</a>,
   }, {
-    key: 'deck',
-    label: <a href={routerMap.deck.path}>卡组模拟</a>,
-  }, {
     key: 'miyoushe',
     label: <a href={routerMap.miyoushe.path}>米游社卡组</a>,
   }, {

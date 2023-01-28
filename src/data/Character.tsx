@@ -8,7 +8,7 @@ const charCards = {
   }
 };
 
-const getCardsUrl = (charName) => {
+const getCardsUrl = (charName: any) => {
 }
 
 export {

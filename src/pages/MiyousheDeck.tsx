@@ -3,13 +3,14 @@ import { useParams, useNavigate, redirect } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { getMiyousheDeck, getMiyousheDeckList } from '../data/MiyousheDeck';
 import { getCardByNickName } from '../components/CharCard';
+import { CardInfo, CardSimpleInfo, MiyousheDeck as MiyousheDeckInfo  } from '../type/card';
 import Deck from './Deck';
 import '../styles/deck.css'
 function MiyousheDeck() {
   const { deckId } = useParams();
-  const [ deckList, setDeckList] = useState([]);
-  const [charCards, setCharCards] = useState([]);
-  const [deckCards, setDeckCards] = useState([]);
+  const [ deckList, setDeckList] = useState<MiyousheDeckInfo[]>([]);
+  const [charCards, setCharCards] = useState<CardSimpleInfo[]>([]);
+  const [deckCards, setDeckCards] = useState<CardSimpleInfo[]>([]);
   const navigate = useNavigate();
   useEffect(() => {
     getMiyousheDeckList().then((deckList) => {
@@ -21,7 +22,7 @@ function MiyousheDeck() {
       getMiyousheDeck(deckId).then(({charCardNames, cardIds}) => {
         if (cardIds !== undefined) {
           setDeckCards(cardIds.map((oneId) => {
-            return { id: oneId }
+            return { id: parseInt(oneId, 10) }
           }));
         }
         setCharCards(charCardNames.map((oneName) => {
@@ -47,16 +48,20 @@ function MiyousheDeck() {
   </p>
   </>
 }
-function DeckList({ deckList }) {
+function DeckList({ deckList }: {deckList: MiyousheDeckInfo[]}) {
   const navigate = useNavigate();
-  return deckList.map((oneDeck, index) => {
+  return <>
+  {deckList.map((oneDeck) => {
     return <div className="miyoushe-deck" onClick={() => {
       navigate(`/miyoushe/${oneDeck.deckId}`);
     }}>
       <h4>{oneDeck.title}</h4>
       <p>{oneDeck.summary}</p>
     </div>;
-  })
+  })}
+  </>
 }
 
-export default MiyousheDeck;
+export { 
+  MiyousheDeck
+};
