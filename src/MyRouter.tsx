@@ -24,6 +24,10 @@ const routerMap = {
     path: '/miyoushe/:deckId',
     element: <MiyousheDeck/>,
   },
+  bp: {
+    path: '/bp',
+    element: <span>bp模拟页面</span>,
+  },
   tweak: {
     path: '/xx',
     element: <div>Hello xxx!</div>,

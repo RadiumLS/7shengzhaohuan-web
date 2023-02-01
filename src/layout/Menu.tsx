@@ -9,6 +9,9 @@ const menuItems = [{
     key: 'miyoushe',
     label: <a href={routerMap.miyoushe.path}>米游社卡组</a>,
   }, {
+    key: 'bp',
+    label: <a href={routerMap.bp.path}>bp模拟</a>,
+  }, {
     key: 'about',
     label: <a href={routerMap.about.path}>关于</a>,
   }
