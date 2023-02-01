@@ -20,3 +20,13 @@
   background-size: cover;
   position: relative;
 }
+.deck-char-card {
+  width: 8.3vh;
+  height: 14.4vh;
+  position: absolute;
+}
+.deck-action-card {
+  height: 9.5vh;
+  width: 5.6vh;
+  position: absolute;
+}

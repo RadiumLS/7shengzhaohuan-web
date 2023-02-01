@@ -2,8 +2,9 @@ import { CSSProperties } from 'react';
 
 interface CardOption {
   id: string,
-  style: CSSProperties,
+  style?: CSSProperties,
   size?: 'big' | 'small',
+  className?: string,
 }
 
 interface CardSimpleInfo {
