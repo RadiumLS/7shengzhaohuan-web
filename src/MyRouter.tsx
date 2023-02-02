@@ -6,6 +6,7 @@ import {
 import Wellcom from "./pages/Welcom";
 import About from "./pages/About";
 import { MiyousheDeck } from "./pages/MiyousheDeck";
+import { Banpick } from "./pages/Banpick";
 
 const routerMap = {
   wellcom: {
@@ -26,7 +27,7 @@ const routerMap = {
   },
   bp: {
     path: '/bp',
-    element: <span>bp模拟页面</span>,
+    element: <Banpick/>
   },
   tweak: {
     path: '/xx',
