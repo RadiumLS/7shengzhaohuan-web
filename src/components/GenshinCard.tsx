@@ -6,6 +6,28 @@ import { CardInfo, CardOption } from '../type/card';
 const t = (i18n: string) => i18n;
 
 const cardInfos: CardInfo[] = [{
+  id: 5886,
+  name: '北斗',
+  icon: 'https://uploadstatic.mihoyo.com/ys-obc/2023/01/16/12109492/20a9053476de0a5b82ae38f678df287b_1479624244948739352.png',
+  life: 10,
+  energy: 3,
+  element: t('雷'),
+  weapon: t('双手剑'),
+  camp: t('璃月'),
+  title: '无冕的龙王',
+  story: '「记住这一天，你差点赢了南十字船队老大的钱。」',
+},{
+  id: 5885,
+  name: '可莉',
+  icon: 'https://uploadstatic.mihoyo.com/ys-obc/2023/01/16/12109492/69fb352f7c86836d42648a2bd9c61773_8899766719245799680.png',
+  life: 10,
+  energy: 3,
+  element: t('火'),
+  weapon: t('法器'),
+  camp: t('蒙德'),
+  title: '逃跑的太阳',
+  story: '每一次抽牌，都可能带来一次「爆炸性惊喜」。',
+},{
   id: 5376,
   name: '甘雨',
   icon: 'https://uploadstatic.mihoyo.com/ys-obc/2022/12/07/195563531/e5c7d702f8033c4361f3b25a7f0b8b30_7432225060782505988.png',
