@@ -2,6 +2,7 @@
 import { createPool } from '../redux/banpickCharPool'
 import { useState } from 'react';
 import { Button, Space } from 'antd';
+import { BanpickRule } from '../components/BanpickRule';
 import '../styles/bp.css';
 import { useAppDispatch, useAppSelector } from './../redux/hooks';
 
@@ -27,8 +28,8 @@ const Banpick = (function() {
   return <>
     <Space>
       <Button onClick={() => setBping(true)}>{t('开始单人BP')}</Button>
-      <Button>{t('修改BP配置')}</Button>
     </Space>
+    <BanpickRule></BanpickRule>
     <br></br>TODO: 增加BP的相关配置
   </>
 })
