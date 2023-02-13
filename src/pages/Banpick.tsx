@@ -12,7 +12,7 @@ const t = (i18n: string) => i18n;
 const Banpick = (function() {
   // 是否正在进行bp
   const [ bping, setBping] = useState<Boolean>(false);
-  const cc = useAppSelector((state) => state.banpick);
+  const cc = useAppSelector((state) => state.banpick.xx);
   const dd = useAppDispatch();
   // 正在bp时展示bp的相关信息
   if(bping) {
