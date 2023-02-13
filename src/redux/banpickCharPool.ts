@@ -16,22 +16,22 @@ interface CharPool {
 }
 // BP阶段
 interface BPPhase {
-  id: string,
+  name: string,
   type: 'ban' | 'pick',
   // 由哪个玩家进行bp，有可能出现规则bp的情况
   player: Player,
   // 需要ban或者pick多少个角色
   count: number,
   // 已经ban或者pick的角色的列表
-  chars: CharCard[],
+  chars?: CharCard[],
   // 时间限制
-  timeLimit: number,
+  timeLimit?: number,
   // 时间限制类型，单个角色BP限时或者是整个阶段限时
-  tlType: 'char' | 'phase',
+  tlType?: 'char' | 'phase',
   // XXX: 可能需要处理公共时间的情况，类似dota2的bp时间限制
 }
 interface BanpickState {
-  xx: string[],
+  // TODO: 考虑增加更多属性以方便进行持久化
   publicPool: CharPool,
   playerPool: {
     [key: Player]: CharPool,
@@ -41,21 +41,36 @@ interface BanpickState {
 }
 
 let initialState: BanpickState = {
-  xx: [],
-  bpRule: [],
+  bpRule: [{
+    name: '橙色选3',
+    type: 'pick',
+    player: 'orange',
+    count: 3,
+  },{
+    name: '蓝色选3',
+    type: 'pick',
+    player: 'blue',
+    count: 3,
+  }],
   publicPool: {
     chars: [],
   },
-  playerPool: {}
+  playerPool: {
+    // 蓝色和橙色选手
+    blue: {
+      chars: [],
+    },
+    orange: {
+      chars: [],
+    }
+  }
 };
 
 const banpickCharPoolSlice = createSlice({
   name: 'banpickCharPool',
   initialState,
   reducers: {
-    
     createPool: function(state, action: PayloadAction<string>) {
-      state.xx.push(action.payload);
     }
   }
 });

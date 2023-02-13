@@ -12,8 +12,8 @@ const t = (i18n: string) => i18n;
 const Banpick = (function() {
   // 是否正在进行bp
   const [ bping, setBping] = useState<Boolean>(false);
-  const cc = useAppSelector((state) => state.banpick.xx);
-  const dd = useAppDispatch();
+  // const bpRule = useAppSelector((state) => state.banpick.bpRule);
+  // const dispatch = useAppDispatch();
   // 正在bp时展示bp的相关信息
   if(bping) {
     return <div className="bp-main-panel" style={{
@@ -21,14 +21,13 @@ const Banpick = (function() {
     }}>
       <Button onClick={() => setBping(false)}>{t('返回BP页')}</Button>
       <br></br>
-      {cc}
       TODO: main banpick page
     </div>;
   }
   return <>
     <Space>
       <Button onClick={() => setBping(true)}>{t('开始单人BP')}</Button>
-      <Button onClick={() => dd(createPool('hhh'))}>{t('修改BP配置')}</Button>
+      <Button>{t('修改BP配置')}</Button>
     </Space>
     <br></br>TODO: 增加BP的相关配置
   </>
