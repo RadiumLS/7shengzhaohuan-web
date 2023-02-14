@@ -1,4 +1,5 @@
 import { Button } from "antd";
+import { addBpPhase, delBpPhaseAt } from "../redux/banpickCharPool";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
 // 未来扩展一下i18n，先放个函数包一下
@@ -9,10 +10,14 @@ function BanpickRule() {
   const bpRule = useAppSelector((state) => state.banpick.bpRule);
   const dispatch = useAppDispatch();
   return <div>
-    <Button>{t('修改BP配置')}</Button>
+    <h3>{t('BP配置')}</h3>
     <p className="bp-rule-wrapper">
-      TODO: 增加一组输入框，用于创建bp阶段
-      TODO: 实现真实的删除阶段功能
+      <Button onClick={() => dispatch(addBpPhase({
+        name: '新增的bp阶段',
+        type: "ban",
+        player: "blue",
+        count: 1
+      })) }>{t('增加bp阶段')}</Button>
       <table>
         <thead>
           <tr>
@@ -30,7 +35,9 @@ function BanpickRule() {
             <th>{onePhase.name}</th>
             <th>{`${onePhase.player} 选手 ${onePhase.type} ${onePhase.count} 个角色`}</th>
             <th>{onePhase.timeLimit}</th>
-            <th><a>{t('删除')}</a></th>
+            <th><a onClick={() => {
+              dispatch(delBpPhaseAt(index));
+            }}>{t('删除')}</a></th>
           </tr>
         </>)
       }

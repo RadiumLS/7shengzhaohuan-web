@@ -71,9 +71,20 @@ const banpickCharPoolSlice = createSlice({
   initialState,
   reducers: {
     createPool: function(state, action: PayloadAction<string>) {
-    }
+    },
+    addBpPhase: function(state, action: PayloadAction<BPPhase>) {
+      state.bpRule.push(action.payload);
+    },
+    delBpPhaseAt: function (state, action: PayloadAction<number>) {
+      const index = action.payload;
+      state.bpRule = state.bpRule.slice(0, index).concat(state.bpRule.slice(index + 1));
+    },
   }
 });
 
-export const { createPool } = banpickCharPoolSlice.actions
+export const {
+  createPool,
+  addBpPhase,
+  delBpPhaseAt,
+} = banpickCharPoolSlice.actions
 export default banpickCharPoolSlice.reducer
