@@ -2,7 +2,15 @@ import { createSlice, CreateSliceOptions } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 import { CardInfo } from '../type/card';
 
-type Player = string;
+interface Player {
+  name: string,
+  nickName?: string,
+  color?: string,
+  // 头像
+  icon?: string,
+  uid?: string,
+  biliId?: string,
+};
 interface CharCard extends CardInfo {
   // 持有者
   owner?: Player,
@@ -33,8 +41,9 @@ interface BPPhase {
 interface BanpickState {
   // TODO: 考虑增加更多属性以方便进行持久化
   publicPool: CharPool,
+  playerList: Player[],
   playerPool: {
-    [key: Player]: CharPool,
+    [key: string]: CharPool,
   },
   // bp规则，是bp阶段的集合
   bpRule: BPPhase[],
@@ -44,12 +53,16 @@ let initialState: BanpickState = {
   bpRule: [{
     name: '橙色选3',
     type: 'pick',
-    player: 'orange',
+    player: {
+      name:'orange',
+    },
     count: 3,
-  },{
+  }, {
     name: '蓝色选3',
     type: 'pick',
-    player: 'blue',
+    player: {
+      name:'blue',
+    },
     count: 3,
   }],
   publicPool: {
@@ -63,7 +76,12 @@ let initialState: BanpickState = {
     orange: {
       chars: [],
     }
-  }
+  },
+  playerList: [{
+    name: 'blue',
+  }, {
+    name: 'orange',
+  }]
 };
 
 const banpickCharPoolSlice = createSlice({
