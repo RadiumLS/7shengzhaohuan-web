@@ -1,5 +1,5 @@
 import { Button, Input, List, Modal, Space, Form, Table } from "antd";
-import { addBpPhase, addPlayer, delBpPhaseAt, delPlayerAt } from "../redux/banpickCharPool";
+import { addBpPhase, addPlayer, delAllBpPhase, delBpPhaseAt, delPlayerAt } from "../redux/banpickCharPool";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { render } from '@testing-library/react';
 import { useState } from "react";
@@ -31,7 +31,6 @@ function BanpickRule() {
           width: '50%'
         }}
         dataSource={bpPlayer}
-        // TODO: 增加玩家表格配置
         columns={[{
           dataIndex: 'name',
           title: <b>玩家名</b>,
@@ -56,8 +55,7 @@ function BanpickRule() {
             </Space>
           </>,
         }]}
-      >
-      </Table>
+      />
       <Modal
         open={showPlayerModal}
         onCancel={() => setShowPlayerModal(false)}
@@ -97,40 +95,60 @@ function BanpickRule() {
           >
             <Input/>
           </Form.Item>
-
         </Form>
       </Modal>
       <h4>{t('bp阶段配置')}</h4>
-      <Button onClick={() => dispatch(addBpPhase({
-        name: '新增的bp阶段',
-        type: "ban",
-        player: { name: "blue" },
-        count: 1
-      })) }>{t('增加bp阶段')}</Button>
-      <table>
-        <thead>
-          <tr>
-            <th>{t('阶段序号')}</th>
-            <th>{t('阶段名称')}</th>
-            <th>{t('阶段行为')}</th>
-            <th>{t('时间限制')}</th>
-            <th>{t('操作')}</th>
-          </tr>
-        </thead>
-      {
-        bpRule.map((onePhase, index) => <>
-          <tr>
-            <th>{index + 1}</th>
-            <th>{onePhase.name}</th>
-            <th>{`${onePhase.player.name} 选手 ${onePhase.type} ${onePhase.count} 个角色`}</th>
-            <th>{onePhase.timeLimit}</th>
-            <th><a onClick={() => {
-              dispatch(delBpPhaseAt(index));
-            }}>{t('删除')}</a></th>
-          </tr>
-        </>)
-      }
-      </table>
+      <Space>
+        <Button onClick={() => dispatch(addBpPhase({
+          name: '新增的bp阶段',
+          type: "ban",
+          player: { name: "blue" },
+          count: 1
+        })) }>{t('增加bp阶段')}</Button>
+        <Button onClick={() => dispatch(delAllBpPhase()) }>{t('清除所有BP阶段')}</Button>
+      </Space>
+      <Table
+        pagination={false}
+        style={{
+          width: '80%'
+        }}
+        dataSource={bpRule}
+        columns={[{
+          dataIndex: 'index',
+          title: <b>阶段序号</b>,
+          // width: '50%',
+          render: (_, _record, index) => <span>{index + 1}</span>,
+        },{
+          dataIndex: 'name',
+          title: <b>阶段名称</b>,
+          // width: '50%',
+          render: (phaseName) => <span>{phaseName}</span>,
+        },{
+          dataIndex: 'summary',
+          title: <b>阶段行为</b>,
+          // width: '50%',
+          render: (_, onePhase) => <span>{`${onePhase.player.name} 选手 ${onePhase.type} ${onePhase.count} 个角色`}</span>,
+        },{
+          dataIndex: 'timeLimit',
+          title: <b>时间限制</b>,
+          // width: '50%',
+          render: (tl) => <span>{tl || t('无')}</span>,
+        },{
+          dataIndex: 'action',
+          title: <b>操作</b>,
+          // width: '50%',
+          render: (_, _record, index) => 
+            <Space>
+              <Button onClick={() => {
+                alert('TODO: 还没想好怎么做修改');
+              }}>{t('修改')}</Button>
+              <Button onClick={() => {
+                dispatch(delBpPhaseAt(index));
+              }}>{t('删除')}</Button>
+            </Space>
+        },{
+        }]}
+      />
     </p>
   </div>
 }

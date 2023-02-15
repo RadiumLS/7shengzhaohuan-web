@@ -104,6 +104,9 @@ const banpickCharPoolSlice = createSlice({
       const index = action.payload;
       state.bpRule = state.bpRule.slice(0, index).concat(state.bpRule.slice(index + 1));
     },
+    delAllBpPhase: function(state, action: PayloadAction) {
+      state.bpRule = [];
+    }
   }
 });
 
@@ -113,5 +116,6 @@ export const {
   delPlayerAt,
   addBpPhase,
   delBpPhaseAt,
+  delAllBpPhase,
 } = banpickCharPoolSlice.actions
 export default banpickCharPoolSlice.reducer
