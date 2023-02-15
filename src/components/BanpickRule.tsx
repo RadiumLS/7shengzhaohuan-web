@@ -1,4 +1,4 @@
-import { Button, Input, List, Modal, Space, Form, Table } from "antd";
+import { Button, Input, List, Modal, Space, Form, Table, Select } from "antd";
 import { addBpPhase, addPlayer, delAllBpPhase, delBpPhaseAt, delPlayerAt } from "../redux/banpickCharPool";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { render } from '@testing-library/react';
@@ -161,7 +161,6 @@ function BanpickRule() {
             setShowPhaseModal(false);
           }).catch(e => {
             console.log(e)
-            debugger;
           });
         }}
       >
@@ -201,11 +200,16 @@ function BanpickRule() {
               {
                 required: true,
                 message: t('玩家名称不能为空')
-            // TODO： 换成下拉选取
               },
             ]}
           >
-            <Input/>
+            <Select>
+              {
+                bpPlayer.map(onePlayer => 
+                <Select.Option value={onePlayer.name}>{onePlayer.name}</Select.Option>
+                )
+              }
+            </Select>
           </Form.Item>
           <Form.Item
             label={t('行为')}
@@ -218,7 +222,10 @@ function BanpickRule() {
               },
             ]}
           >
-            <Input/>
+            <Select>
+              <Select.Option value={'ban'}>{t('ban')}</Select.Option>
+              <Select.Option value={'pick'}>{t('pick')}</Select.Option>
+            </Select>
           </Form.Item>
           <Form.Item
             label={t('角色数量')}
