@@ -11,7 +11,6 @@ const t = (i18n: string) => i18n;
 function BanpickRule() {
   const bpRule = useAppSelector((state) => state.banpick.bpRule);
   const bpPlayer = useAppSelector((state) => state.banpick.playerList);
-  const [curPlayer, setCurPlayer] = useState({name:''});
   const [showPlayerModal, setShowPlayerModal] = useState<boolean>(false);
   const [playModalType, setPlayModalType] = useState<'add' | 'modify'>('add');
   const [form] = Form.useForm();
@@ -23,7 +22,6 @@ function BanpickRule() {
       <Button onClick={() => {
         setShowPlayerModal(true);
         setPlayModalType('add');
-        setCurPlayer({name: ''});
       }}>{t('新增玩家')}</Button>
       <Table
         pagination={false}
@@ -45,7 +43,6 @@ function BanpickRule() {
               <Button onClick={() => {
                 setShowPlayerModal(true);
                 setPlayModalType('modify');
-                setCurPlayer(player);
               }}>{t('修改')}</Button>
               <Button onClick={() => {
                 // TODO: 如果bp规则中有引用该玩家，则进行提示
