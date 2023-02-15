@@ -29,8 +29,7 @@ const Banpick = (function() {
     <Space>
       <Button onClick={() => setBping(true)}>{t('开始单人BP')}</Button>
     </Space>
-    <BanpickRule></BanpickRule>
-    <br></br>TODO: 增加BP的相关配置
+    <BanpickRule/>
   </>
 })
 
