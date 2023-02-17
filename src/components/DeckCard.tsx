@@ -8,10 +8,9 @@ import { CardOption } from "../type/card";
 function DeckCard({ id, style, size, className }: CardOption) {
   // 卡牌id决定图片路径
   // 约定好图片都放在/static路径下
-  const imgSrc = `/static/icons/${id}.png`;
   // TODO: size考虑直接使用阿里云oss的相关querystring参数，直接获取特定的大小以及质量
   return <div style={style} className={className}>
-    <img src={imgSrc} style={{
+    <img src={`/static/icons/${id}.png`} style={{
       width: '100%',
       height: '100%',
     }}>

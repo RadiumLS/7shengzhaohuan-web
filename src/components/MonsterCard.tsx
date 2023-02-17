@@ -142,4 +142,5 @@ export {
   MonsterCard,
   getCardByNickName,
   isMonsterCard,
+  cardInfos,
 };

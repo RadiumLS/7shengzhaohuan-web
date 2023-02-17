@@ -320,4 +320,5 @@ export {
   GenshinCard,
   getCardByNickName,
   isGenshinCard,
+  cardInfos,
 };

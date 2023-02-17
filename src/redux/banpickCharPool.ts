@@ -1,6 +1,8 @@
 import { createSlice, CreateSliceOptions } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 import { CardInfo } from '../type/card';
+import { cardInfos as genshinCardInfos } from '../components/GenshinCard';
+import { cardInfos as monsterCardInfos } from '../components/MonsterCard';
 
 interface Player {
   name: string,
@@ -15,7 +17,7 @@ interface CharCard extends CardInfo {
   // 持有者
   owner?: Player,
   // 状态：被ban，被选，还在池中
-  state: 'banned' | 'picked' | '',
+  state?: 'banned' | 'picked' | '',
 }
 // 角色池
 interface CharPool {
@@ -66,15 +68,15 @@ let initialState: BanpickState = {
     count: 3,
   }],
   publicPool: {
-    chars: [],
+    chars: genshinCardInfos.concat(monsterCardInfos),
   },
   playerPool: {
     // 蓝色和橙色选手
     blue: {
-      chars: [],
+      chars: [...genshinCardInfos.slice(0,3)],
     },
     orange: {
-      chars: [],
+      chars: [...monsterCardInfos.slice(0,3)],
     }
   },
   playerList: [{
