@@ -24,6 +24,12 @@ interface CharPool {
   // owner: 'pick' | 'blue' | 'orange',
   chars: CharCard[],
 }
+// BP行为
+interface BPAction {
+  type: 'ban' | 'pick',
+  playerName: string,
+  cardId: number,
+}
 // BP阶段
 interface BPPhase {
   name: string,
@@ -49,9 +55,12 @@ interface BanpickState {
   },
   // bp规则，是bp阶段的集合
   bpRule: BPPhase[],
+  // bp行为记录
+  bpActions: BPAction[],
 }
 
 let initialState: BanpickState = {
+  bpActions: [],
   bpRule: [{
     name: '橙色选3',
     type: 'pick',
@@ -108,7 +117,21 @@ const banpickCharPoolSlice = createSlice({
     },
     delAllBpPhase: function(state, action: PayloadAction) {
       state.bpRule = [];
-    }
+    },
+    bpPublicChar: function (state, action: PayloadAction<BPAction>) {
+      state.bpActions.push(action.payload);
+      const { type, playerName, cardId } = action.payload;
+      const card = state.publicPool.chars.find((oneCard) => oneCard.id === cardId);
+      if(card !== undefined) {
+        if (type === 'pick') {
+          card.owner = { name: playerName };
+          card.state = 'picked';
+          state.playerPool[playerName].chars.push({...card});
+        } else if (type === 'ban') {
+          card.state = 'banned';
+        }
+      }
+    },
   }
 });
 
@@ -119,5 +142,6 @@ export const {
   addBpPhase,
   delBpPhaseAt,
   delAllBpPhase,
+  bpPublicChar,
 } = banpickCharPoolSlice.actions
 export default banpickCharPoolSlice.reducer
