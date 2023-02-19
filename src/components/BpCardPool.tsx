@@ -2,25 +2,33 @@
 
 import { Button } from "antd";
 import { useState } from "react";
+import { bpPublicChar } from "../redux/banpickCharPool";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { DeckCard } from "./DeckCard";
-// import xx from "@static/cards/5369.png";
-// import xx from "../static/cards/5369.png";
 
 // 可能需要显示额外的信息
 function BpCardPool() {
   const pool = useAppSelector((state) => state.banpick.publicPool.chars);
   const [focusCardIndex, setFocusCardIndex] = useState(-1);
+  const curPhase = useAppSelector((state) => state.banpick.curPhase);
   const dispatch = useAppDispatch();
   return <div className={'bp-char-pool-wrapper'}>
     {
       pool.map((oneChar, index) =>
         <div className='bp-char-pool-one-char' onClick={() => setFocusCardIndex(index)}>
           { oneChar.state === 'banned' && <>banned</>}
-          { oneChar.state === 'picked' && <>{oneChar.owner} picked</>}
+          { oneChar.state === 'picked' && <>{oneChar.owner?.name} picked</>}
           {
             index === focusCardIndex && <div className='bp-char-pool-action'>
-                <Button className='bp-bp-btn' onClick={() => alert('TODO: 处理bp的事件，根据当前bp阶段处理')}>Ban/Pick</Button>
+                <Button className='bp-bp-btn' onClick={() => {
+                  if(curPhase) {
+                    dispatch(bpPublicChar({
+                      type: curPhase.type,
+                      playerName: curPhase.player.name,
+                      cardId: oneChar.id,
+                    }))
+                  }
+                }}>Ban/Pick</Button>
               </div>
           }
           <DeckCard id={oneChar.id.toString()} className={'bp-public-pool-card'}/>

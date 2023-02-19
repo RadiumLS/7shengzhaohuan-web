@@ -4,6 +4,12 @@
   width: 100%;
   position: relative;
 }
+.bp-cur-phase {
+  position: absolute;
+  width: 15%;
+  height: 20vh;
+  top: 35vh;
+}
 .bp-char-pool-wrapper {
   position: absolute;
   width: 65%;

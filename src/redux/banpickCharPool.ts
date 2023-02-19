@@ -39,7 +39,7 @@ interface BPPhase {
   // 需要ban或者pick多少个角色
   count: number,
   // 已经ban或者pick的角色的列表
-  chars?: CharCard[],
+  chars: CharCard[],
   // 时间限制
   timeLimit?: number,
   // 时间限制类型，单个角色BP限时或者是整个阶段限时
@@ -55,6 +55,8 @@ interface BanpickState {
   },
   // bp规则，是bp阶段的集合
   bpRule: BPPhase[],
+  // 当前BP阶段
+  curPhase: BPPhase | null,
   // bp行为记录
   bpActions: BPAction[],
 }
@@ -67,6 +69,7 @@ let initialState: BanpickState = {
     player: {
       name:'orange',
     },
+    chars: [],
     count: 3,
   }, {
     name: '蓝色选3',
@@ -74,18 +77,20 @@ let initialState: BanpickState = {
     player: {
       name:'blue',
     },
+    chars: [],
     count: 3,
   }],
+  curPhase: null,
   publicPool: {
     chars: genshinCardInfos.concat(monsterCardInfos),
   },
   playerPool: {
     // 蓝色和橙色选手
     blue: {
-      chars: [...genshinCardInfos.slice(0,3)],
+      chars: [],
     },
     orange: {
-      chars: [...monsterCardInfos.slice(0,3)],
+      chars: [],
     }
   },
   playerList: [{
@@ -118,6 +123,16 @@ const banpickCharPoolSlice = createSlice({
     delAllBpPhase: function(state, action: PayloadAction) {
       state.bpRule = [];
     },
+    startBP: function(state) {
+      state.curPhase = state.bpRule[0];
+    },
+    nextBPPhase: function(state) {
+      const pIndex = state.bpRule.findIndex((onePhase) => onePhase.name === state.curPhase?.name);
+      state.curPhase = state.bpRule[pIndex + 1];
+    },
+    setCurPhaseIndex: function(state, action: PayloadAction<number>) {
+      state.curPhase = state.bpRule[action.payload];
+    },
     bpPublicChar: function (state, action: PayloadAction<BPAction>) {
       state.bpActions.push(action.payload);
       const { type, playerName, cardId } = action.payload;
@@ -129,6 +144,11 @@ const banpickCharPoolSlice = createSlice({
           state.playerPool[playerName].chars.push({...card});
         } else if (type === 'ban') {
           card.state = 'banned';
+        }
+        state.curPhase?.chars.push(card);
+        if(state.curPhase?.chars.length === state.curPhase?.count) {
+          const pIndex = state.bpRule.findIndex((onePhase) => onePhase.name === state.curPhase?.name);
+          state.curPhase = state.bpRule[pIndex + 1];
         }
       }
     },
@@ -142,6 +162,9 @@ export const {
   addBpPhase,
   delBpPhaseAt,
   delAllBpPhase,
+  startBP,
+  nextBPPhase,
+  setCurPhaseIndex,
   bpPublicChar,
 } = banpickCharPoolSlice.actions
 export default banpickCharPoolSlice.reducer

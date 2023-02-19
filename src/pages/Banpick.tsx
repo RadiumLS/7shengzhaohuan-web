@@ -1,11 +1,11 @@
 // bp模拟页
-import { createPool } from '../redux/banpickCharPool'
+import { startBP } from '../redux/banpickCharPool'
 import { useState } from 'react';
 import { Button, Space } from 'antd';
 import { BanpickRule } from '../components/BanpickRule';
 import '../styles/bp.css';
 import { BpCardPool } from '../components/BpCardPool';
-import { useAppSelector } from '../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { DeckCard } from '../components/DeckCard';
 
 // 未来扩展一下i18n，先放个函数包一下
@@ -17,13 +17,27 @@ const Banpick = (function() {
   const [ bping, setBping] = useState<Boolean>(false);
   const playerList = useAppSelector((state) => state.banpick.playerList);
   const playerPool = useAppSelector((state) => state.banpick.playerPool);
-  // const dispatch = useAppDispatch();
+  const curPhase = useAppSelector((state) => state.banpick.curPhase);
+  const bpActions = useAppSelector((state) => state.banpick.bpActions);
+  const dispatch = useAppDispatch();
   // 正在bp时展示bp的相关信息
   if(bping) {
     return <div className="bp-main-panel" style={{
        backgroundImage: 'url("/static/bg/bp_bg.png")',
     }}>
       <Button onClick={() => setBping(false)}>{t('返回BP页')}</Button>
+      <div className='bp-cur-phase'>
+        <h5>当前BP阶段: {curPhase?.name}</h5>
+        <h5>玩家: {curPhase?.player.name}</h5>
+        <h5>{curPhase?.type} {curPhase?.count} 个角色</h5>
+        <h5>TODO: 时间限制以及倒计时</h5>
+        <Button>TODO: 空ban按钮</Button>
+      </div>
+      <div className='bp-bp-actions'>
+        {bpActions.map((oneAction) => <>
+          {JSON.stringify(oneAction)}
+        </>)}
+      </div>
       <div className='bp-up-player-pool'>
         {
         playerPool[playerList[0].name].chars.map((oneChar) =>
@@ -37,16 +51,14 @@ const Banpick = (function() {
           <DeckCard id={oneChar.id.toString()} className={'bp-down-pool-card'}/>)
         }
       </div>
-      <br></br>
-      TODO: 页面布局 <br></br>
-      TODO：英雄池的展示 <br></br>
-      TODO：bp操作的进行 <br></br>
-      TODO：bp阶段的流转<br></br>
     </div>;
   }
   return <>
     <Space>
-      <Button onClick={() => setBping(true)}>{t('开始单人BP')}</Button>
+      <Button onClick={() => {
+        setBping(true);
+        dispatch(startBP());
+      }}>{t('开始单人BP')}</Button>
     </Space>
     <BanpickRule/>
   </>
