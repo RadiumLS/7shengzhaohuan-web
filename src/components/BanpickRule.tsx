@@ -168,7 +168,7 @@ function BanpickRule() {
           form={phaseForm}
           onFinish={(phase) => {
             if(phaseModalType === 'add') {
-              dispatch(addBpPhase(phase));
+              dispatch(addBpPhase({chars: [], ...phase, count: parseInt(phase.count)}));
             } else {
               // TODO: 还没想好怎么搞修改的情况，默认名字应该是不能改的。
             }
