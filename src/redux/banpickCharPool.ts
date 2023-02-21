@@ -61,9 +61,18 @@ interface BanpickState {
   bpActions: BPAction[],
 }
 
+const initialCharPool = genshinCardInfos.concat(monsterCardInfos);
 let initialState: BanpickState = {
   bpActions: [],
   bpRule: [{
+    name: '橙色禁用1',
+    type: 'ban',
+    player: {
+      name:'orange',
+    },
+    chars: [],
+    count: 1,
+  }, {
     name: '橙色选3',
     type: 'pick',
     player: {
@@ -82,7 +91,7 @@ let initialState: BanpickState = {
   }],
   curPhase: null,
   publicPool: {
-    chars: genshinCardInfos.concat(monsterCardInfos),
+    chars: initialCharPool,
   },
   playerPool: {
     // 蓝色和橙色选手
@@ -125,6 +134,17 @@ const banpickCharPoolSlice = createSlice({
     },
     startBP: function(state) {
       state.curPhase = state.bpRule[0];
+      state.bpActions = [];
+      state.playerPool = {};
+      for(let i = 0; i < state.playerList.length; i++) {
+        const playerName = state.playerList[i].name;
+        state.playerPool[playerName] = {
+          chars: [],
+        };
+      }
+      state.publicPool = {
+        chars: initialCharPool,
+      };
     },
     nextBPPhase: function(state) {
       const pIndex = state.bpRule.findIndex((onePhase) => onePhase.name === state.curPhase?.name);
