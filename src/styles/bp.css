@@ -10,6 +10,17 @@
   height: 20vh;
   top: 35vh;
 }
+.bp-cur-phase>p{
+  font-size: 2vh;
+  margin: 4px;
+  font-weight: bold;
+  color: #fff;
+}
+.bp-cur-phase .bp-cur-phase-color {
+  width: 2vh;
+  height: 2vh;
+  display: inline-block;
+}
 .bp-play-color {
   width: 4vh;
   height: 4vh;

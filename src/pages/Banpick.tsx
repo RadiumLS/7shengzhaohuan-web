@@ -27,11 +27,24 @@ const Banpick = (function() {
     }}>
       <Button onClick={() => setBping(false)}>{t('返回BP页')}</Button>
       <div className='bp-cur-phase'>
-        <h5>当前BP阶段: {curPhase?.name}</h5>
-        <h5>玩家: {curPhase?.player.name}</h5>
-        <h5>{curPhase?.type} {curPhase?.count} 个角色</h5>
-        <h5>TODO: 时间限制以及倒计时</h5>
+        { curPhase && <>
+          <p>当前BP阶段: {curPhase?.name}</p>
+          <p>玩家: {playerList.find((p) => p.name === curPhase?.player.name)?.nickName}</p>
+          <p>
+            颜色: <div className='bp-cur-phase-color' style={{backgroundColor: playerList.find((p) => p.name === curPhase?.player.name)?.color}}></div>
+          </p>
+          <p>行动: {curPhase?.type} {curPhase?.count} 个角色</p>
+          <p>剩余时间: {curPhase?.timeLimit || '无限制'}</p>
+        </>
+        }
+        { !curPhase && <>
+          <p>BP已经结束</p>
+        </>
+        }
+        {/*
+        <p>TODO: 时间限制以及倒计时</p>
         <Button>TODO: 空ban按钮</Button>
+        */}
       </div>
       <div className='bp-bp-actions'>
         {bpActions.map((oneAction) => <>
