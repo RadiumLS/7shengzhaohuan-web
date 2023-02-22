@@ -22,7 +22,10 @@ function BpCardPool() {
           setFocusCardIndex(index != focusCardIndex ? index : -1);
         }}>
           { oneChar.state === 'banned' && <div className='bp-char-pool-mask bp-char-pool-banned'>{t('已禁用')}</div>}
-          { oneChar.state === 'picked' && <div className='bp-char-pool-mask bp-char-pool-picked'>{oneChar.owner?.name} {t('已选用')}</div>}
+          { oneChar.state === 'picked' &&
+            <div className='bp-char-pool-mask bp-char-pool-picked' style={{borderColor: oneChar.owner?.color, backgroundColor: `${oneChar.owner?.color}CC`}}>
+              {oneChar.owner?.nickName} {t('已选用')}
+            </div>}
           {
             index === focusCardIndex  && <div className='bp-char-pool-mask bp-char-pool-action'>
               { !oneChar.state && curPhase &&

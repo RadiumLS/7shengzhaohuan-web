@@ -106,11 +106,11 @@ let initialState: BanpickState = {
   playerList: [{
     name: 'blue',
     nickName: '蓝色方',
-    color: '##5688CA',
+    color: '#0693E3',
   }, {
     name: 'orange',
     nickName: '橙色方',
-    color: '#DDAD4A',
+    color: '#FF6900',
   }]
 };
 
@@ -172,7 +172,7 @@ const banpickCharPoolSlice = createSlice({
       const card = state.publicPool.chars.find((oneCard) => oneCard.id === cardId);
       if(card !== undefined) {
         if (type === 'pick') {
-          card.owner = { name: playerName };
+          card.owner = state.playerList.find((onePlayer) => onePlayer.name === playerName);
           card.state = 'picked';
           state.playerPool[playerName].chars.push({...card});
         } else if (type === 'ban') {

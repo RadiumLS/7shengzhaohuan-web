@@ -3,6 +3,7 @@ import { addBpPhase, addPlayer, delAllBpPhase, delBpPhaseAt, delPlayerAt, editPl
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { render } from '@testing-library/react';
 import { useState } from "react";
+import { Colorpicker } from "antd-colorpicker";
 
 // 未来扩展一下i18n，先放个函数包一下
 const t = (i18n: string) => i18n;
@@ -39,6 +40,11 @@ function BanpickRule() {
           width: '50%',
           render: (oneName) => <span>{oneName}</span>,
         },{
+          dataIndex: 'color',
+          title: <b>颜色</b>,
+          width: '50%',
+          render: (colorStr) => <div className='bp-play-color' style={{backgroundColor: colorStr}}></div>,
+        },{
           dataIndex: 'action',
           title: <b>操作</b>,
           width: '50%',
@@ -73,7 +79,6 @@ function BanpickRule() {
         <Form
           form={playerForm}
           onFinish={(player) => {
-            debugger;
             if(playModalType === 'add') {
               dispatch(addPlayer(player));
             } else {
@@ -92,17 +97,29 @@ function BanpickRule() {
               {
                 required: true,
                 message: t('玩家名称不能为空')
-              }, (() => ({
-                validator(_, pName) {
-                  if(bpPlayer.find((onePlayer) => onePlayer.nickName === pName)) {
-                    return Promise.reject(new Error(t('玩家名称不能相同')));
-                  }
-                  return Promise.resolve();
-                },
-              })),
+              }
             ]}
           >
             <Input/>
+          </Form.Item>
+          <Form.Item
+            label={t('颜色')}
+            name={'color'}
+          >
+            <Colorpicker
+              picker='TwitterPicker'
+              onColorResult={colorObj => {
+                return colorObj.hex;
+              }}
+              popoverProps={{
+                getPopupContainer: (t:HTMLElement) => t,
+                destroyTooltipOnHide: true,
+                // autoAdjustOverflow: false,
+                // placement: 'rightBottom',
+                placement: 'bottomLeft',
+              }}
+              popup={true}
+            />
           </Form.Item>
         </Form>
       </Modal>
