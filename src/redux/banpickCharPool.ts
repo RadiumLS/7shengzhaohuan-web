@@ -7,6 +7,7 @@ import { cardInfos as monsterCardInfos } from '../components/MonsterCard';
 interface Player {
   name: string,
   nickName?: string,
+  // 代表色
   color?: string,
   // 头像
   icon?: string,
@@ -104,8 +105,12 @@ let initialState: BanpickState = {
   },
   playerList: [{
     name: 'blue',
+    nickName: '蓝色方',
+    color: '##5688CA',
   }, {
     name: 'orange',
+    nickName: '橙色方',
+    color: '#DDAD4A',
   }]
 };
 
@@ -117,6 +122,14 @@ const banpickCharPoolSlice = createSlice({
     },
     addPlayer: function(state, action: PayloadAction<Player>) {
       state.playerList.push(action.payload);
+    },
+    editPlayer: function(state, action: PayloadAction<Player>) {
+      const { name, nickName, color } = action.payload;
+      const originPlayer = state.playerList.find(onePlayer => onePlayer.name === name);
+      if(originPlayer) {
+        originPlayer.nickName = nickName ? nickName : originPlayer.nickName;
+        originPlayer.color = color ? color : originPlayer.color;
+      }
     },
     delPlayerAt: function(state, action: PayloadAction<number>) {
       const index = action.payload;
@@ -178,6 +191,7 @@ const banpickCharPoolSlice = createSlice({
 export const {
   createPool,
   addPlayer,
+  editPlayer,
   delPlayerAt,
   addBpPhase,
   delBpPhaseAt,

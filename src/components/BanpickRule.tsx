@@ -1,5 +1,5 @@
 import { Button, Input, List, Modal, Space, Form, Table, Select } from "antd";
-import { addBpPhase, addPlayer, delAllBpPhase, delBpPhaseAt, delPlayerAt } from "../redux/banpickCharPool";
+import { addBpPhase, addPlayer, delAllBpPhase, delBpPhaseAt, delPlayerAt, editPlayer } from "../redux/banpickCharPool";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { render } from '@testing-library/react';
 import { useState } from "react";
@@ -34,7 +34,7 @@ function BanpickRule() {
         }}
         dataSource={bpPlayer}
         columns={[{
-          dataIndex: 'name',
+          dataIndex: 'nickName',
           title: <b>玩家名</b>,
           width: '50%',
           render: (oneName) => <span>{oneName}</span>,
@@ -49,10 +49,12 @@ function BanpickRule() {
                 setPlayModalType('modify');
                 playerForm.setFieldsValue(player);
               }}>{t('修改')}</Button>
+              {/* // 暂时不允许删除玩家
               <Button onClick={() => {
                 // TODO: 如果bp规则中有引用该玩家，则进行提示
                 dispatch(delPlayerAt(index))
               }}>{t('删除')}</Button>
+              */}
               <Button onClick={() => alert('TODO: 直接设置已经选择的角色，用于bp中断后继续的情况')}>{t('设置已选角色')}</Button>
             </Space>
           </>,
@@ -71,23 +73,28 @@ function BanpickRule() {
         <Form
           form={playerForm}
           onFinish={(player) => {
+            debugger;
             if(playModalType === 'add') {
               dispatch(addPlayer(player));
             } else {
-              // TODO: 还没想好怎么搞修改的情况，默认名字应该是不能改的。
+              dispatch(editPlayer(player));
             }
           }}
         >
           <Form.Item
-            label={t('玩家名称')}
             name={'name'}
+            hidden={true}
+          ></Form.Item>
+          <Form.Item
+            label={t('玩家名称')}
+            name={'nickName'}
             rules={[
               {
                 required: true,
                 message: t('玩家名称不能为空')
               }, (() => ({
                 validator(_, pName) {
-                  if(bpPlayer.find((onePlayer) => onePlayer.name === pName)) {
+                  if(bpPlayer.find((onePlayer) => onePlayer.nickName === pName)) {
                     return Promise.reject(new Error(t('玩家名称不能相同')));
                   }
                   return Promise.resolve();
@@ -132,7 +139,9 @@ function BanpickRule() {
         },{
           dataIndex: 'summary',
           title: <b>阶段行为</b>,
-          render: (_, onePhase) => <span>{`${onePhase.player.name} 选手 ${onePhase.type} ${onePhase.count} 个角色`}</span>,
+          render: (_, onePhase) => <span>
+            {`${bpPlayer.find((onePlayer) => onePlayer.name === onePhase.player.name)?.nickName} 选手 ${onePhase.type} ${onePhase.count} 个角色`}
+          </span>,
         },{
           dataIndex: 'timeLimit',
           title: <b>时间限制</b>,
@@ -206,7 +215,7 @@ function BanpickRule() {
             <Select>
               {
                 bpPlayer.map(onePlayer => 
-                <Select.Option value={onePlayer.name}>{onePlayer.name}</Select.Option>
+                <Select.Option value={onePlayer.name}>{onePlayer.nickName}</Select.Option>
                 )
               }
             </Select>
