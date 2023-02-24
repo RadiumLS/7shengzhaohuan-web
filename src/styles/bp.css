@@ -21,6 +21,16 @@
   height: 2vh;
   display: inline-block;
 }
+.bp-bp-actions {
+  position: absolute;
+  top: 60vh;
+  height: 20vh;
+  width: 15%;
+  border: 2px solid #fff;
+  background-color: #fffc;
+  overflow: auto;
+  padding-left: 1%;
+}
 .bp-play-color {
   width: 4vh;
   height: 4vh;

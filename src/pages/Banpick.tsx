@@ -17,6 +17,7 @@ const Banpick = (function() {
   const [ bping, setBping] = useState<Boolean>(false);
   const playerList = useAppSelector((state) => state.banpick.playerList);
   const playerPool = useAppSelector((state) => state.banpick.playerPool);
+  const publicPool = useAppSelector((state) => state.banpick.publicPool);
   const curPhase = useAppSelector((state) => state.banpick.curPhase);
   const bpActions = useAppSelector((state) => state.banpick.bpActions);
   const dispatch = useAppDispatch();
@@ -47,9 +48,17 @@ const Banpick = (function() {
         */}
       </div>
       <div className='bp-bp-actions'>
-        {bpActions.map((oneAction) => <>
-          {JSON.stringify(oneAction)}
-        </>)}
+        {bpActions.map((oneAction) => {
+          const player = playerList.find(onePlayer => onePlayer.name === oneAction.playerName)
+          const charCard = publicPool.chars.find((oneChar) => oneChar.id == oneAction.cardId );
+          return <>
+            <p>
+              <span style={{color: player?.color }}>{`${player?.nickName}`}</span>
+              {`${t(oneAction.type === 'ban' ? '禁用了' : '选取了')}`}
+              {`${charCard?.name}`}
+            </p>
+          </>
+        })}
       </div>
       <div className='bp-up-player-pool'>
         {
