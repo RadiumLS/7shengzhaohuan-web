@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import banpickCharPoolReducer from './banpickCharPool'
+import bpRuleReducer from './rules'
 
 export const myStore = configureStore({
   reducer: {
     banpick: banpickCharPoolReducer,
+    bpRule: bpRuleReducer,
   }
 })
 

@@ -12,6 +12,9 @@ const menuItems = [{
     key: 'bp',
     label: <a href={routerMap.bp.path}>bp模拟</a>,
   }, {
+    key: 'rules',
+    label: <a href={routerMap.rules.path}>规则列表</a>,
+  }, {
     key: 'about',
     label: <a href={routerMap.about.path}>关于</a>,
   }
