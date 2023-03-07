@@ -1,25 +1,31 @@
 import { Button, Input, List, Modal, Space, Form, Table, Select } from "antd";
-import { addBpPhase, addPlayer, delAllBpPhase, delBpPhaseAt, delPlayerAt, editPlayer } from "../redux/banpickCharPool";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { render } from '@testing-library/react';
 import { useState } from "react";
 import { Colorpicker } from "antd-colorpicker";
+import { BPPhase, Player } from "../type/bp";
 
 // 未来扩展一下i18n，先放个函数包一下
 const t = (i18n: string) => i18n;
 type ModalType = 'add' | 'modify';
+type BanpickRuleOption = {
+  bpRule: BPPhase[],
+  bpPlayer: Player[],
+  addPlayer: (playerToAdd: Player) => void,
+  editPlayer: (playerToEdit: Player) => void,
+  addBpPhase: (phaseToAdd: BPPhase) => void,
+  delBpPhaseAt: (index: number) => void,
+}
+
 
 // BP规则组件
-function BanpickRule() {
-  const bpRule = useAppSelector((state) => state.banpick.bpRule);
-  const bpPlayer = useAppSelector((state) => state.banpick.playerList);
+function BanpickRule({ bpRule, bpPlayer, addPlayer, editPlayer, addBpPhase, delBpPhaseAt }: BanpickRuleOption) {
+  // const bpRule = useAppSelector((state) => state.banpick.bpRule);
+  // const bpPlayer = useAppSelector((state) => state.banpick.playerList);
   const [showPlayerModal, setShowPlayerModal] = useState<boolean>(false);
   const [showPhaseModal, setShowPhaseModal] = useState<boolean>(false);
   const [playModalType, setPlayModalType] = useState<ModalType>('add');
   const [phaseModalType, setPhaseModalType] = useState<ModalType>('add');
   const [playerForm] = Form.useForm();
   const [phaseForm] = Form.useForm();
-  const dispatch = useAppDispatch();
   return <div>
     <h3>{t('BP配置')}</h3>
     <p className="bp-rule-wrapper">
@@ -80,9 +86,9 @@ function BanpickRule() {
           form={playerForm}
           onFinish={(player) => {
             if(playModalType === 'add') {
-              dispatch(addPlayer(player));
+              addPlayer(player);
             } else {
-              dispatch(editPlayer(player));
+              editPlayer(player);
             }
           }}
         >
@@ -135,9 +141,9 @@ function BanpickRule() {
             player: { name: "blue" },
             count: 1
           }));
+        <Button onClick={() => dispatch(delAllBpPhase()) }>{t('清除所有BP阶段')}</Button>
           */
         }}>{t('增加bp阶段')}</Button>
-        <Button onClick={() => dispatch(delAllBpPhase()) }>{t('清除所有BP阶段')}</Button>
       </Space>
       <Table
         pagination={false}
@@ -173,7 +179,7 @@ function BanpickRule() {
                 setPhaseModalType('modify');
               }}>{t('修改')}</Button>
               <Button onClick={() => {
-                dispatch(delBpPhaseAt(index));
+                delBpPhaseAt(index);
               }}>{t('删除')}</Button>
             </Space>
         }]}
@@ -194,7 +200,7 @@ function BanpickRule() {
           form={phaseForm}
           onFinish={(phase) => {
             if(phaseModalType === 'add') {
-              dispatch(addBpPhase({chars: [], ...phase, count: parseInt(phase.count)}));
+              addBpPhase({chars: [], ...phase, count: parseInt(phase.count)});
             } else {
               // TODO: 还没想好怎么搞修改的情况，默认名字应该是不能改的。
             }

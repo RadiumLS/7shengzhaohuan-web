@@ -2,11 +2,13 @@
 import { startBP } from '../redux/banpickCharPool'
 import { useState } from 'react';
 import { Button, Space } from 'antd';
+import { addBpPhase, addPlayer, delAllBpPhase, delBpPhaseAt, delPlayerAt, editPlayer } from "../redux/banpickCharPool";
 import { BanpickRule } from '../components/BanpickRule';
 import '../styles/bp.css';
 import { BpCardPool } from '../components/BpCardPool';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { DeckCard } from '../components/DeckCard';
+import { Player, BPPhase } from '../type/bp';
 
 // 未来扩展一下i18n，先放个函数包一下
 const t = (i18n: string) => i18n;
@@ -15,6 +17,8 @@ const t = (i18n: string) => i18n;
 const Banpick = (function() {
   // 是否正在进行bp
   const [ bping, setBping] = useState<Boolean>(false);
+  const bpRule = useAppSelector((state) => state.banpick.bpRule);
+  // const bpPlayer = useAppSelector((state) => state.banpick.playerList);
   const playerList = useAppSelector((state) => state.banpick.playerList);
   const playerPool = useAppSelector((state) => state.banpick.playerPool);
   const publicPool = useAppSelector((state) => state.banpick.publicPool);
@@ -82,7 +86,22 @@ const Banpick = (function() {
         dispatch(startBP());
       }}>{t('开始单人BP')}</Button>
     </Space>
-    <BanpickRule/>
+    <BanpickRule
+      bpRule={bpRule}
+      bpPlayer={playerList}
+      addPlayer={(playerToAdd) => {
+        dispatch(addPlayer(playerToAdd));
+      }}
+      editPlayer={(playerToEdit) => {
+        dispatch(editPlayer(playerToEdit));
+      }}
+      addBpPhase={(phaseToAdd) => {
+        dispatch(addBpPhase(phaseToAdd));
+      }}
+      delBpPhaseAt={(index) => {
+        dispatch(delBpPhaseAt(index));
+      }}
+    />
   </>
 })
 
