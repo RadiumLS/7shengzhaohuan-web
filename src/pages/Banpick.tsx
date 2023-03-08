@@ -8,6 +8,7 @@ import '../styles/bp.css';
 import { BpCardPool } from '../components/BpCardPool';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { DeckCard } from '../components/DeckCard';
+import copy from 'copy-to-clipboard';
 import { Player, BPPhase, BPActionType } from '../type/bp';
 
 // 未来扩展一下i18n，先放个函数包一下
@@ -52,6 +53,14 @@ const Banpick = (function() {
         }
         { !curPhase && <>
           <p>BP已经结束</p>
+          <Button onClick={() => {
+            const copyStr = bpActions.map((oneAction) => {
+              const player = playerList.find(onePlayer => onePlayer.name === oneAction.playerName)
+              const charCard = publicPool.chars.find((oneChar) => oneChar.id == oneAction.cardId);
+              return `${player?.nickName}${t(ACTION_TYPE_DICT[oneAction.type])}${charCard?.name}`;
+            }).join('\r\n');
+            copy(copyStr , {debug: true});
+          }}>{t('复制bp记录')}</Button>
         </>
         }
         {/*
