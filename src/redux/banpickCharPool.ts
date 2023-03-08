@@ -8,26 +8,42 @@ const initialCharPool = genshinCardInfos.concat(monsterCardInfos);
 let initialState: BanpickState = {
   bpActions: [],
   bpRule: [{
-    name: '橙色禁用1',
-    type: 'ban',
-    player: {
-      name:'orange',
-    },
-    chars: [],
-    count: 1,
-  }, {
-    name: '橙色选3',
-    type: 'pick',
+    name: '第一轮 橙色随机选3',
+    type: 'random_pick',
     player: {
       name:'orange',
     },
     chars: [],
     count: 3,
   }, {
-    name: '蓝色选3',
-    type: 'pick',
+    name: '第二轮 橙色随机选3',
+    type: 'random_pick',
     player: {
-      name:'blue',
+      name:'orange',
+    },
+    chars: [],
+    count: 3,
+  }, {
+    name: '第三轮 橙色随机选3',
+    type: 'random_pick',
+    player: {
+      name:'orange',
+    },
+    chars: [],
+    count: 3,
+  }, {
+    name: '第四轮 橙色随机选3',
+    type: 'random_pick',
+    player: {
+      name:'orange',
+    },
+    chars: [],
+    count: 3,
+  }, {
+    name: '第五轮 橙色随机选3',
+    type: 'random_pick',
+    player: {
+      name:'orange',
     },
     chars: [],
     count: 3,

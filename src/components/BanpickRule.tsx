@@ -257,6 +257,8 @@ function BanpickRule({ bpRule, bpPlayer, addPlayer, editPlayer, addBpPhase, delB
             <Select>
               <Select.Option value={'ban'}>{t('ban')}</Select.Option>
               <Select.Option value={'pick'}>{t('pick')}</Select.Option>
+              <Select.Option value={'random_ban'}>{t('随机ban')}</Select.Option>
+              <Select.Option value={'random_pick'}>{t('随机pick')}</Select.Option>
             </Select>
           </Form.Item>
           <Form.Item

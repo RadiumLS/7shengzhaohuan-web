@@ -21,16 +21,19 @@ interface CharPool {
   // owner: 'pick' | 'blue' | 'orange',
   chars: CharCard[],
 }
+type BPActionType = 'ban' | 'pick' | 'random_ban' | 'random_pick';
+
 // BP行为
 interface BPAction {
-  type: 'ban' | 'pick',
+  // type: 'ban' | 'pick',
+  type: BPActionType
   playerName: string,
   cardId: number,
 }
 // BP阶段
 interface BPPhase {
   name: string,
-  type: 'ban' | 'pick',
+  type: BPActionType,
   // 由哪个玩家进行bp，有可能出现规则bp的情况
   player: Player,
   // 需要ban或者pick多少个角色
