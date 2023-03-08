@@ -129,11 +129,11 @@ const banpickCharPoolSlice = createSlice({
       const { type, playerName, cardId } = action.payload;
       const card = state.publicPool.chars.find((oneCard) => oneCard.id === cardId);
       if(card !== undefined) {
-        if (type === 'pick') {
+        if (type === 'pick' || type === 'random_pick') {
           card.owner = state.playerList.find((onePlayer) => onePlayer.name === playerName);
           card.state = 'picked';
           state.playerPool[playerName].chars.push({...card});
-        } else if (type === 'ban') {
+        } else if (type === 'ban' || type === 'random_ban') {
           card.state = 'banned';
         }
         state.curPhase?.chars.push(card);

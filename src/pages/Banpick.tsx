@@ -8,10 +8,18 @@ import '../styles/bp.css';
 import { BpCardPool } from '../components/BpCardPool';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { DeckCard } from '../components/DeckCard';
-import { Player, BPPhase } from '../type/bp';
+import { Player, BPPhase, BPActionType } from '../type/bp';
 
 // 未来扩展一下i18n，先放个函数包一下
 const t = (i18n: string) => i18n;
+const ACTION_TYPE_DICT: {
+    [key: string]: string
+} = {
+  ban: '禁用了',
+  pick: '选取了',
+  random_ban: '随机禁用了',
+  random_pick: '随机选取了',
+};
 
 // const Banpick = connect(mapStateToProps, mapDispatchToProps)(function({xx}: {xx:string[]}) {
 const Banpick = (function() {
@@ -58,7 +66,7 @@ const Banpick = (function() {
           return <>
             <p>
               <span style={{color: player?.color }}>{`${player?.nickName}`}</span>
-              {`${t(oneAction.type === 'ban' ? '禁用了' : '选取了')}`}
+              {`${t(ACTION_TYPE_DICT[oneAction.type])}`}
               {`${charCard?.name}`}
             </p>
           </>

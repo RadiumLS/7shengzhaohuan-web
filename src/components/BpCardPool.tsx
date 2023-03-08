@@ -17,6 +17,26 @@ function BpCardPool() {
   const dispatch = useAppDispatch();
   return <div className={'bp-char-pool-wrapper'}>
     {
+      curPhase?.type.startsWith('random') && <div className={'bp-char-random-wrapper'}>
+        <Button onClick={(e) => {
+          e.stopPropagation();
+          const randomCardPool = pool.filter((oneCard) => !oneCard.state);
+          let i = randomCardPool.length;
+          while (i) {
+            let j = Math.floor(Math.random() * i--);
+            [randomCardPool[j], randomCardPool[i]] = [randomCardPool[i], randomCardPool[j]];
+
+          }
+          dispatch(bpPublicChar({
+            type: curPhase.type,
+            playerName: curPhase.player.name,
+            cardId: randomCardPool[0].id,
+          }))
+        }}
+        >随机ban/pick 一个角色</Button>
+      </div>
+    }
+    {
       pool.map((oneChar, index) =>
         <div className='bp-char-pool-one-char' key={oneChar.id} onClick={(e) => {
           setFocusCardIndex(index != focusCardIndex ? index : -1);
@@ -28,7 +48,7 @@ function BpCardPool() {
             </div>}
           {
             index === focusCardIndex  && <div className='bp-char-pool-mask bp-char-pool-action'>
-              { !oneChar.state && curPhase &&
+              { !oneChar.state && (curPhase?.type === 'ban' || curPhase?.type === 'pick') &&
                 <Button className='bp-bp-btn' onClick={(e) => {
                   if(curPhase) {
                     setFocusCardIndex(-1);
