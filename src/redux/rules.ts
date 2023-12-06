@@ -13,10 +13,12 @@ interface BPRule {
   name: string,
   // 规则作者名
   author?: string,
+  // 规则描述
+  desc?: string,
   // 玩家列表
   playerList: Player[],
   // 玩家name映射
-  playerMap: {
+  playerMap?: {
     [key: PlayerName]: Player,
   }
   // 英雄池
@@ -29,7 +31,7 @@ interface RuleState {
   ruleMap: {
     [key: RuleName]: BPRule,
   },
-  curRule: BPRule,
+  curRule: BPRule | null,
 }
 
 const initialPlayerList: Player[]= [{
@@ -48,6 +50,7 @@ const initialCharPool = genshinCardInfos.concat(monsterCardInfos);
 const initialBPRule: BPRule= {
   name: '默认规则',
   author: '苟码',
+  desc: '开发途中使用的默认规则',
   playerList: initialPlayerList,
   playerMap: initialPlayerMap,
   publicCharPool: {
@@ -85,16 +88,20 @@ let initialState: RuleState = {
   ruleMap: {
     '默认规则': initialBPRule
   },
-  curRule: initialBPRule,
+  curRule: null,
 };
 
 const bpRuleSlice = createSlice({
   name: 'bpRule',
   initialState,
   reducers: {
+    setCurrRule: function(state, action: PayloadAction<BPRule>) {
+      state.curRule = action.payload;
+    },
   }
 });
 
 export const {
+  setCurrRule
 } = bpRuleSlice.actions
 export default bpRuleSlice.reducer
