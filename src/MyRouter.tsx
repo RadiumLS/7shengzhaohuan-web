@@ -8,6 +8,7 @@ import About from "./pages/About";
 import { MiyousheDeck } from "./pages/MiyousheDeck";
 import { Banpick } from "./pages/Banpick";
 import { Rules } from "./pages/Rules";
+import Play from "./pages/Play";
 
 const routerMap = {
   wellcom: {
@@ -33,6 +34,10 @@ const routerMap = {
   rules: {
     path: '/rules',
     element: <Rules/>,
+  },
+  play: {
+    path: '/play',
+    element: <Play/>,
   },
   tweak: {
     path: '/xx',

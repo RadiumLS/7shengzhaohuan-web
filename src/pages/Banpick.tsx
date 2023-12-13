@@ -37,7 +37,7 @@ const Banpick = (function() {
   // 正在bp时展示bp的相关信息
   if(bping) {
     return <div className="bp-main-panel" style={{
-       backgroundImage: 'url("/static/bg/bp_bg.png")',
+      backgroundImage: 'url("/static/bg/bp_bg.png")',
     }}>
       <Button onClick={() => setBping(false)}>{t('返回BP页')}</Button>
       <div className='bp-cur-phase'>
