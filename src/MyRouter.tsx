@@ -8,6 +8,7 @@ import About from "./pages/About";
 import { MiyousheDeck } from "./pages/MiyousheDeck";
 import { Banpick } from "./pages/Banpick";
 import { Rules } from "./pages/Rules";
+import ShareDeck from "./pages/ShareDeck";
 import Play from "./pages/Play";
 
 const routerMap = {
@@ -38,6 +39,10 @@ const routerMap = {
   play: {
     path: '/play',
     element: <Play/>,
+  },
+  shareDeck: {
+    path: '/share-deck',
+    element: <ShareDeck defaultDeckCode=""/>,
   },
   tweak: {
     path: '/xx',

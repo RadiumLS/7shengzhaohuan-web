@@ -50,7 +50,7 @@ interface CardBase {
   nickName?: string[];
   cardType: CardType;
 }
-  // cost: CardCost;
+
 /**
  * 角色牌
  * @property {number} health 生命值
