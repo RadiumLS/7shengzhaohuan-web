@@ -1,10 +1,13 @@
 // 卡组中使用的卡牌组件
 
-import { CardOption } from "../type/card";
+import { CardOption, CharCard } from "../type/card";
 // import xx from "@static/cards/5369.png";
 // import xx from "../static/cards/5369.png";
 
 // 相对其他地方来说，只需要展示图片和位置
+/**
+ * @deprecated 
+ */
 function DeckCard({ id, style, size, className }: CardOption) {
   // 卡牌id决定图片路径
   // 约定好图片都放在/static路径下
@@ -17,6 +20,30 @@ function DeckCard({ id, style, size, className }: CardOption) {
     </img>
   </div>;
 }
+/**
+ * 卡组中展示的角色牌组件
+ */
+function DeckCharCard(card: Partial<Pick<CharCard, 'id' | 'health'> & {showHealth: boolean}>) {
+  const {id, health} = card;
+  // TODO: 展示生命值
+  return <img src={`/static/icons/${id}.png`} style={{
+      width: '100%',
+      height: '100%',
+    }}>
+  </img>;
+}
+/**
+ * 卡组中展示的行动牌牌组件
+ */
+function DeckActionCard(id: number) {
+  return <img src={`/static/icons/${id}.png`} style={{
+      width: '100%',
+      height: '100%',
+    }}>
+  </img>;
+}
 export {
-  DeckCard
+  DeckCard,
+  DeckCharCard,
+  DeckActionCard
 }
