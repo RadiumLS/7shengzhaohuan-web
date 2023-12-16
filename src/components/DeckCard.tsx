@@ -1,6 +1,6 @@
 // 卡组中使用的卡牌组件
 
-import { CardOption, CharCard } from "../type/card";
+import { ActionCard, CardOption, CharCard } from "../type/card";
 // import xx from "@static/cards/5369.png";
 // import xx from "../static/cards/5369.png";
 
@@ -35,7 +35,8 @@ function DeckCharCard(card: Partial<Pick<CharCard, 'id' | 'health'> & {showHealt
 /**
  * 卡组中展示的行动牌牌组件
  */
-function DeckActionCard(id: number) {
+function DeckActionCard(card: Partial<Pick<ActionCard, 'id' | 'cost'> & {showCost: boolean}>) {
+  const {id, cost} = card;
   return <img src={`/static/icons/${id}.png`} style={{
       width: '100%',
       height: '100%',
