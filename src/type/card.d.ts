@@ -11,8 +11,8 @@ enum Element {
   Cryo = 'cryo', // 冰
   Anemo = 'anemo', // 风
 }
-/** 卡牌消耗类型, 分元素骰, 无属性骰, 还有充能 */
-type CostType = Element | 'unaligned' | 'energy';
+/** 卡牌消耗类型, 分元素骰, 同属性骰, 无属性骰, 还有充能 */
+type CostType = Element | 'matching' |'unaligned' | 'energy';
 /** 消耗, 记录数量和类型*/
 type Cost = {
   type: CostType,
@@ -74,6 +74,7 @@ enum ActionCardType {
   Food = 'food', // 食物 料理
   Companion = 'companion', // 伙伴
   Location = 'location', // 场地
+  Item = 'item', // 道具
   Resonance = 'resonance', // 共鸣牌, 包括骰子牌和共鸣牌
   Arcane = 'arcane', // 秘传牌
 }
