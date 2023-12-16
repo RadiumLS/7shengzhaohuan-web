@@ -6,6 +6,9 @@ const menuItems = [{
     key: 'wellcom',
     label: <a href={routerMap.wellcom.path}>欢迎页</a>,
   }, {
+    key: 'share_deck',
+    label: <a href={routerMap.shareDeck.path}>卡组管理（主要，可用，施工中）</a>,
+  }, {
     key: 'play',
     label: <a href={routerMap.play.path}>对局模拟（主要，施工中）</a>,
   }, {
