@@ -41,19 +41,19 @@ function ShareDeck({defaultDeckCode}: ShareDeckProps) {
         left: '21.7vh',
         top: '11vh',
       }}>
-        <DeckCharCard id={5369} showHealth={showHealth}/>
+        <DeckCharCard id={cardIdList[0]} showHealth={showHealth}/>
       </div>
       <div className='deck-char-card' style={{
         left: '31.7vh',
         top: '11vh',
       }}>
-        <DeckCharCard id={5369} showHealth={showHealth}/>
+        <DeckCharCard id={cardIdList[1]} showHealth={showHealth}/>
       </div>
       <div className='deck-char-card' style={{
         left: '41.7vh',
         top: '11vh',
       }}>
-        <DeckCharCard id={5369} showHealth={showHealth}/>
+        <DeckCharCard id={cardIdList[2]} showHealth={showHealth}/>
       </div>
       TODO: 行动牌展示
     </div>
