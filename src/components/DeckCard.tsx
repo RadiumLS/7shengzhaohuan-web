@@ -26,11 +26,15 @@ function DeckCard({ id, style, size, className }: CardOption) {
 function DeckCharCard(card: Partial<Pick<CharCard, 'id' | 'health'> & {showHealth: boolean}>) {
   const {id, health} = card;
   // TODO: 展示生命值
-  return <img src={`/static/icons/${id}.png`} style={{
-      width: '100%',
-      height: '100%',
-    }}>
-  </img>;
+  if(id) {
+    return <img src={`/static/icons/${id}.png`} style={{
+        width: '100%',
+        height: '100%',
+      }}>
+    </img>;
+  } else {
+    return <></>
+  }
 }
 /**
  * 卡组中展示的行动牌牌组件

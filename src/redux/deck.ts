@@ -4,7 +4,7 @@ import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 type Deck = {
   deckTitle?: string;
   deckCode: string;
-  cardIds: number[];
+  cardIds?: number[];
 }
 /**
  * 卡组State
@@ -13,16 +13,21 @@ interface DeckState {
   deckList?: Deck[];
 }
 
-let initialState: DeckState = {
-  deckList: [],
-};
+const loadFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem('deckList') || '[]');
+}
 
 /**
  * TODO: 保存到localStorage
  * @param state 
  */
-const saveToLocalStorage = (state: DeckState) => {
+const saveToLocalStorage = (deckList: Deck[]) => {
+  localStorage.setItem('deckList', JSON.stringify(deckList));
 }
+
+let initialState: DeckState = {
+  deckList: loadFromLocalStorage(),
+};
 
 const deckSlice = createSlice({
   name: 'deck',
@@ -30,11 +35,26 @@ const deckSlice = createSlice({
   reducers: {
     setDeckList: function(state, action: PayloadAction<Deck[]>) {
       state.deckList = action.payload;
+      saveToLocalStorage(action.payload);
     },
+    removeOneDeck: function(state, action: PayloadAction<number>) {
+      const index = action.payload;
+      const newDeckList = state.deckList?.filter((_, i) => i !== index);
+      state.deckList = newDeckList;
+      saveToLocalStorage(newDeckList || []);
+    },
+    addOneDeck: function(state, action: PayloadAction<Deck>) {
+      const newDeckList = [...state.deckList || []];
+      newDeckList.push(action.payload);
+      state.deckList = newDeckList;
+      saveToLocalStorage(newDeckList || []);
+    }
   }
 });
 
 export const {
-  setDeckList
+  setDeckList,
+  removeOneDeck,
+  addOneDeck,
 } = deckSlice.actions
 export default deckSlice.reducer
