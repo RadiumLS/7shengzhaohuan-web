@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 
-type Deck = {
+export type Deck = {
   deckTitle?: string;
   deckCode: string;
   cardIds?: number[];
