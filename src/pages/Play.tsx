@@ -5,6 +5,15 @@ import { PlayerName, setPlayerDeckCode } from "../redux/play";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { Deck } from "../redux/deck";
 
+const developDeck1: Deck = {
+  deckTitle: '开发用卡组1',
+  deckCode: 'AUBw9Q0PAmCQ9kkPBXAw+FMPB5CQ+okPCLCg/KIPCtGQCrUQC7GADcIQDOGAEPIRDxAA',
+};
+const developDeck2: Deck = {
+  deckTitle: '开发用卡组2',
+  deckCode: 'ATBA5BIOAkAg8U4PBTDg9l4PCWBw/ZwPCdHAC7wQC7HQDsEQDPGQD8kRDRHgE+MRDjAA',
+}
+
 function Play() {
   const [ playing, setPlaying] = useState<Boolean>(false);
   const [ offensive, setOffensive] = useState<PlayerName>('boku');
@@ -17,6 +26,10 @@ function Play() {
   }
   const bokuDeck = useAppSelector((state) => state.play.bokuState.deck);
   const kimiDeck = useAppSelector((state) => state.play.kimiState.deck);
+
+  const goPlay = () => {
+    setPlaying(true);
+  }
 
   if(playing) {
     return <div className="bp-main-panel" style={{
@@ -40,11 +53,11 @@ function Play() {
     TODO: 卡组选择
     <div>
       <label>对手牌组: {kimiDeck?.deckTitle || '未知卡组'}</label><br/>
-      <button onClick={() => {}}>选择牌组</button>
+      <button onClick={() => setDeck('kimi', developDeck1)}>选择牌组</button>
     </div>
     <div>
       <label>本方牌组: {bokuDeck?.deckTitle ||  '未知卡组'}</label><br/>
-      <button onClick={() => {}}>选择牌组</button>
+      <button onClick={() => setDeck('boku', developDeck2)}>选择牌组</button>
     </div>
     TODO: 猜先<br/>
     <button onClick={() => setOffensive('boku')}>本方先手</button>
@@ -53,7 +66,7 @@ function Play() {
       先手方: {offensive === 'kimi' ? '对方' : '本方'}
     </div>
     <div>
-      <button onClick={() => setPlaying(true)}>开始模拟</button>
+      <button onClick={goPlay}>开始模拟</button>
     </div>
   </div>
 }
