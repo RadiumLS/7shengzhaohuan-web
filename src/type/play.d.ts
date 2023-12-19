@@ -39,3 +39,62 @@ interface LogicEntity {
   switchStartTrigger?: Trigger[],
   // 先写这么点……好像还有非常多……
 }
+interface EquipmentEngity extends LogicEntity {
+}
+/**
+ * 支援实体
+ */
+interface SupportEntity extends LogicEntity {
+};
+/**
+ * 召唤物实体
+ */
+interface SummonsEntity extends LogicEntity {
+};
+/**
+ * 角色状态实体, 注意与出战状态区分
+ */
+interface CharStateEntity extends LogicEntity {
+}
+/**
+ * 出战状态实体, 注意与角色状态区分
+ */
+interface ActiveStateEntity extends LogicEntity {
+}
+/**
+ * 角色实体
+ */
+interface CharEntity extends LogicEntity {
+  /**
+   * 角色牌名称
+   */
+  name: string,
+  /**
+   * 当前生命值
+   */
+  health: number,
+  /**
+   * 当前充能
+   */
+  energy: number,
+  /**
+   * 角色状态
+   */
+  charState: CharStateEntity[],
+  /**
+   * 附着元素
+   */
+  appledElement: Element[],
+  /**
+   * 武器
+   */
+  weapon: EquipmentEngity,
+  /**
+   * 圣遗物
+   */
+  equipment: EquipmentEngity,
+  /**
+   * 天赋
+   */
+  talent: EquipmentEngity,
+}

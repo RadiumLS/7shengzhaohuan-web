@@ -11,15 +11,17 @@ import { ActionCard } from '../type/card';
  * @param omni 万能骰
  */
 type Dice = Element | 'omni';
-type Support = string;
 /**
  * 对局中的玩家状态
  * @member deck 卡组
  */
 interface PlayerState {
-  deck: Deck,
+  deck?: Deck,
   dice: Dice[],
   hand: ActionCard[],
+  support: SupportEntity[],
+  summons: SummonsEntity[],
+  chars: CharEntity[],
 }
 // 用boku和kimi来指代两个玩家
 // boku kimi
@@ -29,6 +31,8 @@ interface PlayerState {
  * @param kimiDeck 对手方的卡组
  */
 interface PlayState {
+  bokuState: PlayerState,
+  kimiState: PlayerState,
 }
 
 const loadFromLocalStorage = () => {
@@ -43,6 +47,20 @@ const saveToLocalStorage = () => {
 }
 
 let initialState: PlayState = {
+  bokuState: {
+    dice: [],
+    hand: [],
+    support: [],
+    summons: [],
+    chars: [],
+  },
+  kimiState: {
+    dice: [],
+    hand: [],
+    support: [],
+    summons: [],
+    chars: [],
+  }
 };
 
 const playSlice = createSlice({
