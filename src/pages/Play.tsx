@@ -1,9 +1,22 @@
 // 游玩页, 用于对局模拟
 
 import { useState } from "react";
+import { PlayerName, setPlayerDeckCode } from "../redux/play";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { Deck } from "../redux/deck";
 
 function Play() {
   const [ playing, setPlaying] = useState<Boolean>(false);
+  const [ offensive, setOffensive] = useState<PlayerName>('boku');
+  const dispatch = useAppDispatch();
+  const setDeck = (player: PlayerName, deck: Deck) => {
+    dispatch(setPlayerDeckCode({
+      player: player,
+      deck: deck,
+    }));
+  }
+  const bokuDeck = useAppSelector((state) => state.play.bokuState.deck);
+  const kimiDeck = useAppSelector((state) => state.play.kimiState.deck);
 
   if(playing) {
     return <div className="bp-main-panel" style={{
@@ -26,16 +39,21 @@ function Play() {
   return <div>
     TODO: 卡组选择
     <div>
-      <label>对手牌组:</label><br/>
+      <label>对手牌组: {kimiDeck?.deckTitle || '未知卡组'}</label><br/>
       <button onClick={() => {}}>选择牌组</button>
     </div>
     <div>
-      <label>本方牌组:</label><br/>
+      <label>本方牌组: {bokuDeck?.deckTitle ||  '未知卡组'}</label><br/>
       <button onClick={() => {}}>选择牌组</button>
     </div>
-    TODO: 猜先
+    TODO: 猜先<br/>
+    <button onClick={() => setOffensive('boku')}>本方先手</button>
+    <button onClick={() => setOffensive('kimi')}>对方先手</button>
     <div>
-      先手方: 
+      先手方: {offensive === 'kimi' ? '对方' : '本方'}
+    </div>
+    <div>
+      <button onClick={() => setPlaying(true)}>开始模拟</button>
     </div>
   </div>
 }

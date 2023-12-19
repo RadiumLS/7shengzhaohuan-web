@@ -11,6 +11,7 @@ import { ActionCard } from '../type/card';
  * @param omni 万能骰
  */
 type Dice = Element | 'omni';
+export type PlayerName = 'boku' | 'kimi';
 /**
  * 对局中的玩家状态
  * @member deck 卡组
@@ -72,9 +73,18 @@ const playSlice = createSlice({
   name: 'play',
   initialState,
   reducers: {
+    setPlayerDeckCode: function(state, action: PayloadAction<{deck: Deck, player: PlayerName}>) {
+      const { deck, player } = action.payload;
+      if(player === 'boku') {
+        state.bokuState.deck = { ...deck };
+      } else {
+        state.kimiState.deck = { ...deck };
+      }
+    },
   }
 });
 
 export const {
+  setPlayerDeckCode,
 } = playSlice.actions
 export default playSlice.reducer
