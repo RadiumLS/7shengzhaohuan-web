@@ -3,7 +3,11 @@
 /**
  * 触发器, 在不同的阶段被触发, 然后执行一些操作
  */
-type Trigger = () => void;
+type Trigger = () => LogicRecord[];
+/**
+ * 逻辑记录, 用来记录所有的逻辑操作
+ */
+type LogicRecord = {};
 /**
  * 逻辑实体, 被用来反复遍历以确定卡牌效果等
  */
@@ -97,4 +101,37 @@ interface CharEntity extends LogicEntity {
    * 天赋
    */
   talent: EquipmentEngity,
+}
+
+/**
+ * 对局中的各个阶段的基类
+ */
+interface RoundPhase {
+  /**
+   * 阶段的id
+   */
+  id: number,
+  /**
+   * 阶段的名称
+   */
+  name: string,
+  /**
+   * 阶段发生的逻辑记录的列表
+   */
+  record: LogicRecord[],
+}
+/**
+ * 投掷阶段
+ */
+interface RollPhase extends RoundPhase {
+}
+/**
+ * 行动阶段
+ */
+interface ActionPhase extends RoundPhase {
+}
+/**
+ * 结束阶段
+ */
+interface EndPhase extends RoundPhase {
 }

@@ -27,12 +27,16 @@ interface PlayerState {
 // boku kimi
 /**
  * 对局State
- * @param bokuDeck 本方的卡组
- * @param kimiDeck 对手方的卡组
+ * @member bokuDeck 本方的卡组
+ * @member kimiDeck 对手方的卡组
+ * @member historyPhase 对局历史, 以阶段为单位
+ * @member nextPhase 下个阶段
  */
 interface PlayState {
   bokuState: PlayerState,
   kimiState: PlayerState,
+  historyPhase: RoundPhase[],
+  nextPhase?: RoundPhase,
 }
 
 const loadFromLocalStorage = () => {
@@ -60,7 +64,8 @@ let initialState: PlayState = {
     support: [],
     summons: [],
     chars: [],
-  }
+  },
+  historyPhase: [],
 };
 
 const playSlice = createSlice({
