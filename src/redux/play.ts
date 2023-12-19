@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 import type { Deck } from './deck';
 import { ActionCard } from '../type/card';
+import { CharEntity, RoundPhase, SummonsEntity, SupportEntity } from '../type/play';
 
 // TODO: 需要大量设计
 /**

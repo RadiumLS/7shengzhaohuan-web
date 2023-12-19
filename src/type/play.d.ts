@@ -1,5 +1,7 @@
 // 对局模拟中使用到的大量类型定义
 
+import { PlayerName } from "../redux/play";
+
 /**
  * 触发器, 在不同的阶段被触发, 然后执行一些操作
  */
@@ -119,6 +121,15 @@ interface RoundPhase {
    * 阶段发生的逻辑记录的列表
    */
   record: LogicRecord[],
+}
+/**
+ * 对局开始阶段
+ */
+interface StartPhase extends RoundPhase {
+  /**
+   * 先手方
+   */
+  offensive: PlayerName,
 }
 /**
  * 投掷阶段
