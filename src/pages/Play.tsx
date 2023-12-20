@@ -1,9 +1,10 @@
 // 游玩页, 用于对局模拟
 
 import { useState } from "react";
-import { PlayerName, setPlayerDeckCode } from "../redux/play";
+import { PlayerName, initPlayersChar, setPlayerDeckCode } from "../redux/play";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { Deck } from "../redux/deck";
+import MovableWrapper from "../components/play/movable_wrapper";
 
 const developDeck1: Deck = {
   deckTitle: '开发用卡组1',
@@ -26,15 +27,42 @@ function Play() {
   }
   const bokuDeck = useAppSelector((state) => state.play.bokuState.deck);
   const kimiDeck = useAppSelector((state) => state.play.kimiState.deck);
+  const bokuChars = useAppSelector((state) => state.play.bokuState.chars);
+  const kimiChars = useAppSelector((state) => state.play.kimiState.chars);
 
   const goPlay = () => {
     setPlaying(true);
+    dispatch(initPlayersChar());
   }
 
   if(playing) {
     return <div className="bp-main-panel" style={{
       backgroundImage: 'url("/static/bg/bp_bg.png")',
+      position: 'relative',
     }}>
+      <MovableWrapper defaultPostion={{
+        top: '0',
+        left: '0',
+        width: '20vw',
+        height: '20vh',
+      }} >
+        <div style={{
+          display: 'flex',
+          width: '100%',
+          height: '100%'
+        }}>
+          {
+            bokuChars.map((oneChar) => {
+              const {id} = oneChar;
+              // TODO: 应当改成使用专门的对局中角色展示组件
+              return <img src={`/static/icons/${id}.png`} style={{
+                flex: '1 1',
+              }}>
+              </img>;
+            })
+          }
+        </div>
+      </MovableWrapper>
       对局模拟的组件/页面
       TODO: 初始抽卡，替换初始卡牌
       TODO: 骰子投掷，骰子重投，固定骰子

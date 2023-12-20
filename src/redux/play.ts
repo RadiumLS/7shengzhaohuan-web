@@ -4,6 +4,7 @@ import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 import type { Deck } from './deck';
 import { ActionCard } from '../type/card';
 import { CharEntity, RoundPhase, SummonsEntity, SupportEntity } from '../type/play';
+import { decode, encode } from '../utils/share_code';
 
 // TODO: 需要大量设计
 /**
@@ -82,10 +83,43 @@ const playSlice = createSlice({
         state.kimiState.deck = { ...deck };
       }
     },
+    initPlayersChar: function(state)  {
+      // TODO: 开始游玩之前从Deck初始化两人的英雄状态
+      const bokuDeck = state.bokuState.deck;
+      const kimiDeck = state.kimiState.deck;
+      const bokuCharIds = decode(bokuDeck?.deckCode || '').slice(0,3);
+      const kimiCharIds = decode(kimiDeck?.deckCode || '').slice(0,3);
+      // TODO: 角色牌可能有自身的角色状态
+      // TODO: 根据角色牌的血量等信息进行初始化
+      // XXX: 这里先写假的, 方便调组件使用
+      const bokuCharEntity = bokuCharIds.map((charId, index) => {
+        return {
+          id: charId,
+          name: `开发角色_${index}`,
+          health: 10,
+          energy: 0,
+          charState: [],
+          appledElement: [],
+        };
+      })
+      const kimiCharEntity = kimiCharIds.map((charId, index) => {
+        return {
+          id: charId,
+          name: `开发角色_${index}`,
+          health: 10,
+          energy: 0,
+          charState: [],
+          appledElement: [],
+        }
+      })
+      state.bokuState.chars = bokuCharEntity;
+      state.kimiState.chars = kimiCharEntity;
+    }
   }
 });
 
 export const {
   setPlayerDeckCode,
+  initPlayersChar,
 } = playSlice.actions
 export default playSlice.reducer

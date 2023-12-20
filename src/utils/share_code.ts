@@ -40,7 +40,7 @@ const bytesSaltOut = (bytes: number, salt: number) => {
  * @param code The code string to decode.
  * @returns An array of numbers.
  */
-export function decode(code: string): any[] {
+export function decode(code: string): number[] {
   const bytes = Buffer.from(code, 'base64');
   const salt = bytes[bytes.length - 1];
   const newBytes = Buffer.alloc(50);

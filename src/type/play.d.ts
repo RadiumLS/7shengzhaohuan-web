@@ -71,6 +71,7 @@ interface ActiveStateEntity extends LogicEntity {
  * 角色实体
  */
 interface CharEntity extends LogicEntity {
+  id: number,
   /**
    * 角色牌名称
    */
@@ -94,15 +95,15 @@ interface CharEntity extends LogicEntity {
   /**
    * 武器
    */
-  weapon: EquipmentEngity,
+  weapon?: EquipmentEngity,
   /**
    * 圣遗物
    */
-  equipment: EquipmentEngity,
+  equipment?: EquipmentEngity,
   /**
    * 天赋
    */
-  talent: EquipmentEngity,
+  talent?: EquipmentEngity,
 }
 
 /**
