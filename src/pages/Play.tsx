@@ -5,6 +5,7 @@ import { PlayerName, initPlayersChar, setPlayerDeckCode } from "../redux/play";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { Deck } from "../redux/deck";
 import MovableWrapper from "../components/play/movable_wrapper";
+import CharArea from "../components/play/char_area";
 
 const developDeck1: Deck = {
   deckTitle: '开发用卡组1',
@@ -41,28 +42,22 @@ function Play() {
       position: 'relative',
     }}>
       <MovableWrapper defaultPostion={{
+        title: '对方角色',
+        top: '12%',
+        left: '35%',
+        width: '20vw',
+        height: '20vh',
+      }} >
+        <CharArea player='kimi'/>
+      </MovableWrapper>
+      <MovableWrapper defaultPostion={{
         title: '本方角色',
         top: '65%',
         left: '35%',
         width: '20vw',
         height: '20vh',
       }} >
-        <div style={{
-          display: 'flex',
-          width: '100%',
-          height: '100%'
-        }}>
-          {
-            bokuChars.map((oneChar) => {
-              const {id} = oneChar;
-              // TODO: 应当改成使用专门的对局中角色展示组件
-              return <img src={`/static/icons/${id}.png`} style={{
-                flex: '1 1',
-              }}>
-              </img>;
-            })
-          }
-        </div>
+        <CharArea player='boku'/>
       </MovableWrapper>
       对局模拟的组件/页面
       TODO: 初始抽卡，替换初始卡牌
