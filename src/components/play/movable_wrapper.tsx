@@ -2,10 +2,11 @@ import { PropsWithChildren, useState } from "react";
 
 // 应用在Play模式下的可移动组件
 export type MovablePosition = {
+  title?: string,
   top: string,
   left: string,
-  width: string,
-  height: string,
+  width?: string,
+  height?: string,
 }
 
 const MovableWrapper: React.FC<PropsWithChildren<{defaultPostion: MovablePosition}>> = (props) => {
@@ -58,13 +59,17 @@ const MovableWrapper: React.FC<PropsWithChildren<{defaultPostion: MovablePositio
   }}
     onContextMenu={onContextMenu}
   >
-    { showBtn && <button
-      onMouseDown={onMouseDown}
-      onMouseMove={onMouseMove}
-      onMouseLeave={() => setIsMoving(false)}
-    >
-      按住，慢慢拖动
-    </button>}
+    { showBtn && <p>
+      <button
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseLeave={() => setIsMoving(false)}
+        onMouseUp={onMouseUp}
+      >
+        按住，慢慢拖动
+      </button>
+      {defaultPostion.title}
+    </p>}
     {children}
   </div>
 }

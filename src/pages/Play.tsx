@@ -41,8 +41,9 @@ function Play() {
       position: 'relative',
     }}>
       <MovableWrapper defaultPostion={{
-        top: '0',
-        left: '0',
+        title: '本方角色',
+        top: '65%',
+        left: '35%',
         width: '20vw',
         height: '20vh',
       }} >
