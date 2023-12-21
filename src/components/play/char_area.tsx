@@ -20,17 +20,15 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
 }
 const BokuCharArea : React.FC = () => {
   const bokuChars = useAppSelector((state) => state.play.bokuState.chars);
-  return <div style={{
-    display: 'flex',
-    width: '100%',
-    height: '100%'
-  }}>
+  return <div
+    className="flex w-full h-full"
+  >
     {
       bokuChars.map((oneChar) => {
         const {id} = oneChar;
-        return <img src={`/static/icons/${id}.png`} style={{
-          flex: '1 1',
-        }}>
+        return <img src={`/static/icons/${id}.png`}
+          className="flex-1"
+        >
         </img>;
       })
     }
