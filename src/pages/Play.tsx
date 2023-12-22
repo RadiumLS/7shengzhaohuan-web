@@ -42,19 +42,19 @@ function Play() {
       position: 'relative',
     }}>
       <MovableWrapper defaultPostion={{
-        title: '对方角色',
+        title: '对方角色区域',
         top: '12%',
         left: '35%',
-        width: '20vw',
+        width: '30vw',
         height: '20vh',
       }} >
         <CharArea player='kimi'/>
       </MovableWrapper>
       <MovableWrapper defaultPostion={{
-        title: '本方角色',
+        title: '本方角色区域',
         top: '65%',
         left: '35%',
-        width: '20vw',
+        width: '30vw',
         height: '20vh',
       }} >
         <CharArea player='boku'/>

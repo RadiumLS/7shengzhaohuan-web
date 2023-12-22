@@ -58,17 +58,21 @@ const MovableWrapper: React.FC<PropsWithChildren<{defaultPostion: MovablePositio
     height: height,
   }}
     onContextMenu={onContextMenu}
+    className={showBtn ? 'border-solid border-2 border-red-500' : ""}
   >
-    { showBtn && <p>
+    { showBtn && <p className="absolute -top-12">
       <button
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseLeave={() => setIsMoving(false)}
         onMouseUp={onMouseUp}
+        className="p-4"
       >
         按住，慢慢拖动
       </button>
-      {defaultPostion.title}
+      <span className="bg-white color-black ml-4 p-4">
+        {defaultPostion.title}
+      </span>
     </p>}
     {children}
   </div>
