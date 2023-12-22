@@ -6,6 +6,8 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { Deck } from "../redux/deck";
 import MovableWrapper from "../components/play/movable_wrapper";
 import CharArea from "../components/play/char_area";
+import { StartPhase } from "../type/play";
+import StaringHands from "../components/play/starting_hands";
 
 const developDeck1: Deck = {
   deckTitle: '开发用卡组1',
@@ -30,6 +32,7 @@ function Play() {
   const kimiDeck = useAppSelector((state) => state.play.kimiState.deck);
   const bokuChars = useAppSelector((state) => state.play.bokuState.chars);
   const kimiChars = useAppSelector((state) => state.play.kimiState.chars);
+  const currPhase = useAppSelector((state) => state.play.currPhase);
 
   const goPlay = () => {
     setPlaying(true);
@@ -42,6 +45,16 @@ function Play() {
       backgroundImage: 'url("/static/bg/bp_bg.png")',
       position: 'relative',
     }}>
+      {(currPhase as StartPhase).offensive && <MovableWrapper defaultPostion={{
+        title: '起始手牌区域',
+        top: '20%',
+        left: '20%',
+        width: '60%',
+        height: '45%',
+      }}>
+        <StaringHands />
+      </MovableWrapper>
+      }
       <MovableWrapper defaultPostion={{
         title: '对方角色区域',
         top: '12%',
