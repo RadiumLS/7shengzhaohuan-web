@@ -1,7 +1,7 @@
 // 游玩页, 用于对局模拟
 
 import { useState } from "react";
-import { PlayerName, initPlayersChar, setPlayerDeckCode } from "../redux/play";
+import { PlayerName, initPlayersChar, setPlayerDeckCode, startDuel } from "../redux/play";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { Deck } from "../redux/deck";
 import MovableWrapper from "../components/play/movable_wrapper";
@@ -34,6 +34,7 @@ function Play() {
   const goPlay = () => {
     setPlaying(true);
     dispatch(initPlayersChar());
+    dispatch(startDuel({offensive: offensive}));
   }
 
   if(playing) {
@@ -61,6 +62,7 @@ function Play() {
       </MovableWrapper>
       对局模拟的组件/页面
       TODO: 初始抽卡，替换初始卡牌
+      TODO: 决定出战角色
       TODO: 骰子投掷，骰子重投，固定骰子
       TODO: 打牌
       TODO: 打牌-技能使用

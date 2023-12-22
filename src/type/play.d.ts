@@ -9,7 +9,12 @@ type Trigger = () => LogicRecord[];
 /**
  * 逻辑记录, 用来记录所有的逻辑操作
  */
-type LogicRecord = {};
+type LogicRecord = {
+  player?: PlayerName,
+  entity?: LogicEntity,
+  phase?: RoundPhase,
+  record?: string,
+};
 /**
  * 逻辑实体, 被用来反复遍历以确定卡牌效果等
  */
@@ -118,6 +123,14 @@ interface RoundPhase {
    * 阶段的名称
    */
   name: string,
+  /**
+   * 是否是当前阶段
+   */
+  isActive: boolean,
+  /**
+   * 阶段所对应的玩家
+   */
+  player?: PlayerName,
   /**
    * 阶段发生的逻辑记录的列表
    */

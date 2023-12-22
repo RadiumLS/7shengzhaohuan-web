@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 import type { Deck } from './deck';
 import { ActionCard } from '../type/card';
-import { CharEntity, RoundPhase, SummonsEntity, SupportEntity } from '../type/play';
+import { CharEntity, LogicRecord, RoundPhase, StartPhase, SummonsEntity, SupportEntity } from '../type/play';
 import { decode, encode } from '../utils/share_code';
 
 // TODO: 需要大量设计
@@ -39,6 +39,7 @@ interface PlayState {
   bokuState: PlayerState,
   kimiState: PlayerState,
   historyPhase: RoundPhase[],
+  currPhase?: RoundPhase,
   nextPhase?: RoundPhase,
 }
 
@@ -114,12 +115,45 @@ const playSlice = createSlice({
       })
       state.bokuState.chars = bokuCharEntity;
       state.kimiState.chars = kimiCharEntity;
-    }
+    },
+    // 开始对局, 产生一对新的StartPhase
+    startDuel: function(state, action: PayloadAction<{offensive: PlayerName}>)  {
+      // TODO: 如果是真实对局, 那么两人的StartPhase是同时开始的
+      const { offensive } = action.payload;
+      const offensiveStartPhase: StartPhase = {
+        offensive: offensive,
+        player: offensive,
+        id: 0,
+        name: '开始阶段_先手抽牌',
+        isActive: true,
+        record: []
+      };
+      const defensiveStartPhase: StartPhase = {
+        offensive: offensive,
+        player: offensive === 'boku' ? 'kimi' : 'boku',
+        id: 0,
+        name: '开始阶段_后手抽牌',
+        isActive: false,
+        record: []
+      };
+      state.currPhase = offensiveStartPhase;
+      state.nextPhase = defensiveStartPhase;
+    },
+    // 朝当前阶段添加一条逻辑记录
+    addRecordToCurrPhase: function(state, action: PayloadAction<{record: LogicRecord}>) {
+      const { record } = action.payload;
+      state.currPhase?.record.push(record);
+    },
+    goNextPhase: function(state, action: PayloadAction<{nextPhase: RoundPhase}>) {
+      // TODO: 完成当前阶段, 跳到下一阶段
+    },
   }
 });
 
 export const {
   setPlayerDeckCode,
   initPlayersChar,
+  startDuel,
+  addRecordToCurrPhase,
 } = playSlice.actions
 export default playSlice.reducer
