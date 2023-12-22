@@ -23,8 +23,6 @@ const MovableWrapper: React.FC<PropsWithChildren<{defaultPostion: MovablePositio
   // 记录点击时候的坐标
   const [downX, setDownX] = useState(0);
   const [downY, setDownY] = useState(0);
-  const [parentLeft, setParentLeft] = useState(0);
-  const [parentTop, setParentTop] = useState(0);
   const onContextMenu = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     setShowBtn((currShowBtn) => !currShowBtn);
     e.preventDefault();
@@ -33,8 +31,11 @@ const MovableWrapper: React.FC<PropsWithChildren<{defaultPostion: MovablePositio
     setIsMoving(true);
     setDownX(e.screenX);
     setDownY(e.screenY);
-    setParentLeft(e.currentTarget.parentElement?.clientLeft || 0);
-    setParentTop(e.currentTarget.parentElement?.clientTop || 0);
+    if(e.currentTarget.parentElement?.parentElement) {
+      const ppElement = e.currentTarget.parentElement.parentElement;
+      setLeft(`${ppElement.offsetLeft}px`);
+      setTop(`${ppElement.offsetTop}px`);
+    }
   };
   const onMouseUp = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setIsMoving(false);
