@@ -1,0 +1,3634 @@
+[
+  {
+    "id": 61,
+    "name": "唯此一心",
+    "itemId": 211011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/083704719cc71df7acf68d115902abc0.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5384/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "cryo",
+        "cost": 5
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "name": "猫爪冰摇",
+    "itemId": 211021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/dca9846f0d335643b3de10ce308bbb9b.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5497/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "cryo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "name": "冷血之剑",
+    "itemId": 211031,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/4e43917f11dd62361767860eab88cb8f.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5498/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "cryo",
+        "cost": 4
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "name": "吐纳真定",
+    "itemId": 211041,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/71586509e069d21e989e0c89e308f478.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5444/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "cryo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "name": "寒天宣命祝词",
+    "itemId": 211051,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/dee83c86ffa159b97a613972e967c748.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5499/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "cryo",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "name": "战欲涌现",
+    "itemId": 211061,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/4b770ec8a113b6512b5e6500de5fe80f.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6171/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "cryo",
+        "cost": 3
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "name": "忘玄",
+    "itemId": 211071,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/10b9170507e6815f0868181668c43e41.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6580/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "cryo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "name": "起死回骸",
+    "itemId": 211081,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/e9cad6a03c20f7253b265db80c71af65.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500042/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "cryo",
+        "cost": 5
+      },
+      {
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 288,
+    "name": "归芒携信",
+    "itemId": 211091,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/be8c0b0a09ac8a8ef7eaba13d60473ed.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500455/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "cryo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "name": "光辉的季节",
+    "itemId": 212011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/5496c8affc7860e2d58de1c695ba4ad7.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5496/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "hydro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "name": "重帘留香",
+    "itemId": 212021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/c317d89a60f3ef0e878d57bc40be17c3.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5500/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "hydro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "name": "沉没的预言",
+    "itemId": 212031,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/6fd32e42f0010f031a3b4f8a9e6588f7.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5442/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "hydro",
+        "cost": 3
+      },
+      {
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "name": "深渊之灾·凝水盛放",
+    "itemId": 212041,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/a54d785ace180c83b26d95ec8a88e05c.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6581/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "hydro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "name": "匣中玉栉",
+    "itemId": 212051,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/2bf5b22b4cd91e86210e097001095b8d.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6170/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "hydro",
+        "cost": 3
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "name": "镜华风姿",
+    "itemId": 212061,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/dddeed26884e3228b32a067e120f40e7.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6322/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "hydro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "name": "衍溢的汐潮",
+    "itemId": 212071,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/c53d5f43dc5fcbf8229c64e3d911b5dd.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500021/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "hydro",
+        "cost": 3
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "name": "星天的花雨",
+    "itemId": 212081,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/de855d79708c3e49b293a54116d782ae.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500302/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "hydro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 289,
+    "name": "猜先有方",
+    "itemId": 212091,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/cb897aa59bf98008f15597a4f0e42f14.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500464/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "hydro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "name": "流火焦灼",
+    "itemId": 213011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/fcd2028053cc1d44b954f5fdad21c5f6.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5445/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "pryo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "name": "交叉火力",
+    "itemId": 213021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d654dc1097c549a463eaf0f905ee1270.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5501/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "pryo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "name": "冒险憧憬",
+    "itemId": 213031,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/f74be96ba25d75f35f1eccb34aa01feb.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5385/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "pryo",
+        "cost": 4
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "name": "一触即发",
+    "itemId": 213041,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/36d9c2e45c3694a17b55a3af5a6a640e.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6579/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "pryo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "name": "长野原龙势流星群",
+    "itemId": 213051,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/888afeb8100e6a10d5c73ab57cb4e73f.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5502/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "pryo",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "name": "砰砰礼物",
+    "itemId": 213061,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/3d44c5f427f2c21305151042f87fb6f0.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5873/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "pryo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "name": "血之灶火",
+    "itemId": 213071,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/41fa4e9b01a563f26fa56e0b09c1d7d4.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6582/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "pryo",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "name": "最终解释权",
+    "itemId": 213081,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/72906a78e82057d6ea9de0e5faff4999.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500019/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "pryo",
+        "cost": 1
+      },
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "name": "崇诚之真",
+    "itemId": 213091,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/fd11fe3889277c315b588af2a77af843.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500189/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "pryo",
+        "cost": 4
+      }
+    ]
+  },
+  {
+    "id": 290,
+    "name": "完场喝彩",
+    "itemId": 213101,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d82b81628d22c1f9d70a9505741da569.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500442/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "pryo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "name": "噬星魔鸦",
+    "itemId": 214011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/de051cd313f572ca16cfca9dd1a135bd.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5504/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "electro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "name": "觉醒",
+    "itemId": 214021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/378b7df80d6bc504324a55825a232691.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5506/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "electro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 88,
+    "name": "抵天雷罚",
+    "itemId": 214031,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/8aa1186741391f5c6b5b7d3b21a8da1f.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5505/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "electro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 89,
+    "name": "落羽的裁择",
+    "itemId": 214041,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/4559a81eaad9a29888c9fd895d775b21.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5503/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "electro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "name": "霹雳连霄",
+    "itemId": 214051,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/f41d2bde454f646b054f8a493062f49e.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5874/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "electro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "name": "我界",
+    "itemId": 214061,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/0279727c241baf2b83308c22b1e352ef.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6169/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "electro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 92,
+    "name": "万千的愿望",
+    "itemId": 214071,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/29a7f3f8ac4bd9bc59a6ac9bff8174b7.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6578/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "electro",
+        "cost": 4
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 93,
+    "name": "神篱之御荫",
+    "itemId": 214081,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/b1e9dd174fe0057c0bf1a7515a47ef16.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6577/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "electro",
+        "cost": 3
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 94,
+    "name": "脉冲的魔女",
+    "itemId": 214091,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/e0582efd01d627c89b71a586b7697aec.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500047/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "electro",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 95,
+    "name": "酌盈剂虚",
+    "itemId": 214101,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/b8b122af2b60bd895f6eab7c9b60bb4d.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500301/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "electro",
+        "cost": 3
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 96,
+    "name": "混元熵增论",
+    "itemId": 215011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d95a82564a5dd8d796187146c7c6b918.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5507/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "anemo",
+        "cost": 3
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "name": "蒲公英的国土",
+    "itemId": 215021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/96b705042721e87c304211776aeb32f5.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5508/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "anemo",
+        "cost": 4
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "name": "绪风之拥",
+    "itemId": 215031,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/9fb216bfb6655e76e11e516817d7e8b3.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6576/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "anemo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "name": "降魔·护法夜叉",
+    "itemId": 215041,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/975aa8f1f4824d54234363b6aa89c4a2.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6575/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "anemo",
+        "cost": 3
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "name": "风物之诗咏",
+    "itemId": 215051,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/ab3a7403a76e51a2344cbd66a6937a1e.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500020/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "anemo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 291,
+    "name": "如影流露的冷刃",
+    "itemId": 215081,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/33483214973f9f4e2e7fb1596ba11433.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500443/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "anemo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 101,
+    "name": "梦迹一风",
+    "itemId": 215061,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/bb882f385b91035c8f7b088ceb4c5a0e.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500190/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "anemo",
+        "cost": 4
+      }
+    ]
+  },
+  {
+    "id": 102,
+    "name": "储之千日，用之一刻",
+    "itemId": 216011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/83c2e366791de4d01d384705c068d7d8.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5510/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "geo",
+        "cost": 4
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "name": "支援就交给我吧",
+    "itemId": 216021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/dc1f9d7ae0c3142ca72c950ae359deff.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5511/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "geo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 104,
+    "name": "炊金馔玉",
+    "itemId": 216031,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/98da9a00b39d615beb0876c51caba0bf.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6574/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "geo",
+        "cost": 5
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "name": "神性之陨",
+    "itemId": 216041,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/70999fbb3cd2076826f07c2f8e302c7f.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500041/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "geo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 106,
+    "name": "荒泷第一",
+    "itemId": 216051,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/c5e66d6a236556fe4f3c955e6449146d.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6323/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "geo",
+        "cost": 1
+      },
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 292,
+    "name": "犬奔·疾如风",
+    "itemId": 216061,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/3c008d2a928a13f3065eacefc0cfc26e.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500441/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "geo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 107,
+    "name": "飞叶迴斜",
+    "itemId": 217011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/1fcc8064fe249728e7805264977de166.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5441/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "dendro",
+        "cost": 4
+      }
+    ]
+  },
+  {
+    "id": 108,
+    "name": "眼识殊明",
+    "itemId": 217021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/bfe4a8004696bc4da18bec4d61f14971.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6324/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "dendro",
+        "cost": 4
+      }
+    ]
+  },
+  {
+    "id": 109,
+    "name": "心识蕴藏之种",
+    "itemId": 217031,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/314dc297297d240eb039fea217a91d8b.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6623/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "dendro",
+        "cost": 3
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 110,
+    "name": "慈惠仁心",
+    "itemId": 217041,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/c89fa91b48a81ad02bd2b2e6b135364f.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500191/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "dendro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 111,
+    "name": "在地为化",
+    "itemId": 217051,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/5e953de1f88a6c7734198ed430890a16.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500300/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "dendro",
+        "cost": 4
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 293,
+    "name": "正理",
+    "itemId": 217061,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/5ebaee325d5656aece8f4d311752ab1f.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500440/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "dendro",
+        "cost": 3
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 112,
+    "name": "冰萤寒光",
+    "itemId": 221011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/5556350bde77f8b078c0f23cbed5212a.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6622/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "cryo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 294,
+    "name": "苦痛奉还",
+    "itemId": 221021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/3532c003bde3de01cba10c953cf8a322.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500438/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 113,
+    "name": "百川奔流",
+    "itemId": 222011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/bdff99f176a5f7802077e4de78ceb0c9.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5509/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "hydro",
+        "cost": 4
+      },
+      {
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 114,
+    "name": "镜锢之笼",
+    "itemId": 222021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/78e191f06321cbbc7c98a7c32305015b.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5382/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "hydro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 115,
+    "name": "悉数讨回",
+    "itemId": 223011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/ebe052faa2245085071b19140ccaa63f.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5443/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "pryo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 116,
+    "name": "烬火重燃",
+    "itemId": 223021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/ff4650efb892cb9dcf0c5f60a4c897dc.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6621/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "pryo",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 295,
+    "name": "魔蝎烈祸",
+    "itemId": 223031,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/ad67cc640fee9be29fb02f4136290481.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500456/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "pryo",
+        "cost": 3
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 117,
+    "name": "汲能棱晶",
+    "itemId": 224011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d5a36346a5e433cbf2b0a5ccec3dcddf.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6620/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "electro",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 296,
+    "name": "悲号回唱",
+    "itemId": 224021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/7d94a9719177875d3ba84043ff59039a.png",
+    "iconSmall": "",
+    "wiki": "",
+    "type": "talent",
+    "cost": []
+  },
+  {
+    "id": 118,
+    "name": "机巧神通",
+    "itemId": 225011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/00a077d75e281483de972b49b5bf3696.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5381/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "anemo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 297,
+    "name": "毁裂风涡",
+    "itemId": 225021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/722ca70e2c9332c06eafe4552251d250.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500439/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "anemo",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 119,
+    "name": "重铸：岩盔",
+    "itemId": 226011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/07239ffff362e9b835ce44bf8efd2866.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5380/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "geo",
+        "cost": 4
+      },
+      {
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 298,
+    "name": "晦朔千引",
+    "itemId": 226022,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/b58dbb18b9c5689fbe8769b992703884.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500437/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 120,
+    "name": "孢子增殖",
+    "itemId": 227011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d2f390149eeb1600b7bbb96515d6d594.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5379/detail?bbs_presentation_style=no_header",
+    "type": "talent",
+    "cost": [
+      {
+        "type": "dendro",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 121,
+    "name": "魔导绪论",
+    "itemId": 311101,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/211c8e85673142db767d2c5970670913.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5406/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "catalyst",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 122,
+    "name": "祭礼残章",
+    "itemId": 311102,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/e7e72c7e62e757c34186c5a357c72f26.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5407/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "catalyst",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 123,
+    "name": "天空之卷",
+    "itemId": 311103,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/9121054988ad0c9da67895d03444e8a9.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5408/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "catalyst",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 124,
+    "name": "千夜浮梦",
+    "itemId": 311104,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/528c3305ddd621dc93d776e02029d914.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6619/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "catalyst",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 125,
+    "name": "盈满之实",
+    "itemId": 311105,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/1d3a42715cbe91a4e71ddf8d9c7526a6.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500022/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "catalyst",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 299,
+    "name": "四风原典",
+    "itemId": 311106,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/e8f7699892d7976da9b6188e9a7951c9.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500424/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "catalyst",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 300,
+    "name": "图莱杜拉的回忆",
+    "itemId": 311107,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/6e0290d4bb076f1c5fe98d29bc56ce39.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500423/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "catalyst",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 126,
+    "name": "鸦羽弓",
+    "itemId": 311201,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/18b9a822c8d081f13382160f0d4acff8.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5409/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "bow",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 127,
+    "name": "祭礼弓",
+    "itemId": 311202,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/5beb4ff250ac58ff6f32ac27f72c3bc2.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5410/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "bow",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 128,
+    "name": "天空之翼",
+    "itemId": 311203,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/1f1078a7e78a67d996bb0b4bf6c506fb.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5411/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "bow",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 129,
+    "name": "阿莫斯之弓",
+    "itemId": 311204,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/617da79abc3936a1aa3164a4f664f88d.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6618/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "bow",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 130,
+    "name": "终末嗟叹之诗",
+    "itemId": 311205,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/3722b68e39896feb15b9d991fbd760e1.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6617/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "bow",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 131,
+    "name": "王下近侍",
+    "itemId": 311206,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/efbfc3856abd655df6c1840c7a401929.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500045/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "bow",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 132,
+    "name": "白铁大剑",
+    "itemId": 311301,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/12f3f056b06f990739d5434469ca453c.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5412/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "claymore",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 133,
+    "name": "祭礼大剑",
+    "itemId": 311302,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/0360e42e3b32b63897f3940adc5aa993.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5413/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "claymore",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 134,
+    "name": "狼的末路",
+    "itemId": 311303,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/79857c7e5fa6d2ad23b972f1c77cf585.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5414/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "claymore",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 135,
+    "name": "天空之傲",
+    "itemId": 311304,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/b5565f33ef1265c44e1bb883a2fa2fc7.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6613/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "claymore",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 136,
+    "name": "钟剑",
+    "itemId": 311305,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/43ca31c77c8f8819f6cbb99c2ebccf8c.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6616/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "claymore",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 301,
+    "name": "苇海信标",
+    "itemId": 311306,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/53230d9c7b8067255db01657c94567ab.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500436/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "claymore",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 137,
+    "name": "白缨枪",
+    "itemId": 311401,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/67f37a0172458cec1846f4af695428cf.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5415/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "Polearm",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 138,
+    "name": "千岩长枪",
+    "itemId": 311402,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/f02e5a21eec10c73cc92384d6e401b2c.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5416/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "Polearm",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 139,
+    "name": "天空之脊",
+    "itemId": 311403,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/c9c81c8b73d44429d2883c266cfba326.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5417/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "Polearm",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 140,
+    "name": "贯虹之槊",
+    "itemId": 311404,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/04436db7157d859db719402ee2d4af66.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6615/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "Polearm",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 141,
+    "name": "薙草之稻光",
+    "itemId": 311405,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/516e8c7418cc5bb043d67fffaec9c113.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6614/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "Polearm",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 142,
+    "name": "贯月矢",
+    "itemId": 311406,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d17e7018128a33ebdc735fde11b403fa.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500196/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "Polearm",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 302,
+    "name": "和璞鸢",
+    "itemId": 311407,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/5c1e8584661ec4117ebbda7718a71d56.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500459/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "Polearm",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 143,
+    "name": "旅行剑",
+    "itemId": 311501,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/60c0eb2eb8e46b989e9244db8f0d6be3.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5418/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "sword",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 144,
+    "name": "祭礼剑",
+    "itemId": 311502,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/e7396535e22514a06fdd9ee91da04172.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5419/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "sword",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 145,
+    "name": "风鹰剑",
+    "itemId": 311503,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/580997f17daaa75acce78be89efcf9ca.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5420/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "sword",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 146,
+    "name": "天空之刃",
+    "itemId": 311504,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/81fee25cf5bd6a350ce640f78ca563f2.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6612/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "sword",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 147,
+    "name": "西风剑",
+    "itemId": 311505,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d22cf2800a60af4214a549bc3ccf4fb1.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6326/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "sword",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 303,
+    "name": "裁叶萃光",
+    "itemId": 311506,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/244e24a4f631191df08f69d3bb0fb259.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500465/detail?bbs_presentation_style=no_header",
+    "type": "weapon",
+    "weaponType": "sword",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 148,
+    "name": "冒险家头带",
+    "itemId": 312001,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/103632309b1a5d5a37cb2a92120b5cc7.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5421/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 149,
+    "name": "幸运儿银冠",
+    "itemId": 312002,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/5bf664b22f41b6f64d6bd364a0add92c.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5422/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 150,
+    "name": "游医的方巾",
+    "itemId": 312003,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/53e4bb0dec588e29d9d7cae0172106b3.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5423/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 151,
+    "name": "赌徒的耳环",
+    "itemId": 312004,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/3d0ef8960a8d33d218de262afadd2d5f.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5424/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 152,
+    "name": "教官的帽子",
+    "itemId": 312005,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/8a8d28b2a2dd5b858043352ba5fba94f.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5425/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 153,
+    "name": "流放者头冠",
+    "itemId": 312006,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/9b39706733bbaacea2e1e7e66765b4ce.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5426/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 154,
+    "name": "华饰之兜",
+    "itemId": 312007,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/05561f98b2797890bc194de9082308a8.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6173/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 155,
+    "name": "绝缘之旗印",
+    "itemId": 312008,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/a538384968202cc7e8b5934a9aa61767.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6611/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 156,
+    "name": "将帅兜鍪",
+    "itemId": 312009,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/ee9d2548a1c8b807f6cef4b73bba2d87.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6172/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 157,
+    "name": "千岩牢固",
+    "itemId": 312010,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/93cee92c8d760f1bce529b79199f9d03.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6610/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 158,
+    "name": "虺雷之姿",
+    "itemId": 312011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/8941bbd43985a780f5a9ce21a3daf5bf.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6609/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 159,
+    "name": "辰砂往生录",
+    "itemId": 312012,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/3abe624c59bed6b115c0468e0414d78b.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6608/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 160,
+    "name": "无常之面 ",
+    "itemId": 312013,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/c407371206509ffb682a3f81fdaee5f2.png",
+    "iconSmall": "",
+    "wiki": "",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 161,
+    "name": "追忆之注连",
+    "itemId": 312014,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/994ce6c1df0ab8167dc4d29838253a40.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6625/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 162,
+    "name": "海祇之冠",
+    "itemId": 312015,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/b4f72d9b8eb2043a8c45513a89f8e1a2.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500188/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 163,
+    "name": "海染砗磲",
+    "itemId": 312016,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/f3cf0dcb4067e76075de05ef9a976507.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500295/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 164,
+    "name": "沙王的投影",
+    "itemId": 312017,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/c0cd8a39b044a8c825f1f2874512ee75.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500296/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 304,
+    "name": "饰金之梦",
+    "itemId": 312018,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/1151c70a274892caf1f2ec660162db0e.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500453/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 305,
+    "name": "浮溯之珏",
+    "itemId": 312019,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/8ca41d90399075b3729d5ac33f3aa904.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500454/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": []
+  },
+  {
+    "id": 306,
+    "name": "来歆余响",
+    "itemId": 312020,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/e9ff85fc9624f057f6137ae5859e191d.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500451/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 307,
+    "name": "灵光明烁之心",
+    "itemId": 312021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/eb550e9b41c5ff82327563a3570a1f01.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500434/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": []
+  },
+  {
+    "id": 308,
+    "name": "花海甘露之光",
+    "itemId": 312022,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/60ebd09ba1d32267ddec6a2dabebe4b4.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500435/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 165,
+    "name": "破冰踏雪的回音",
+    "itemId": 312101,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d424c7acb6dfa72b15efda3987a81946.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5427/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 166,
+    "name": "冰风迷途的勇士",
+    "itemId": 312102,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/a90c0763682a9f2da4eedec27b98e497.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5428/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 167,
+    "name": "酒渍船帽",
+    "itemId": 312201,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/5cb5fd56e2198ae5b7316da2109f3323.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5429/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 168,
+    "name": "沉沦之心",
+    "itemId": 312202,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/85919ac95fa446599830f0f79129c051.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5430/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 169,
+    "name": "焦灼的魔女帽",
+    "itemId": 312301,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/e6f388d69977ccb57ae7ee049069a0f0.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5431/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 170,
+    "name": "炽烈的炎之魔女",
+    "itemId": 312302,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/67e65ec61229358b2b91d071d26bd8f7.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5432/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 171,
+    "name": "唤雷的头冠",
+    "itemId": 312401,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/941cd25cac6a7a071854ea097ef15e1f.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5433/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 172,
+    "name": "如雷的盛怒",
+    "itemId": 312402,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/6c8ec1599d95b76d3217bb42c66703d3.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5434/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 173,
+    "name": "翠绿的猎人之冠",
+    "itemId": 312501,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d0fab17b8b941ed564615ad8b2fb3ba4.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5435/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 174,
+    "name": "翠绿之影",
+    "itemId": 312502,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/079a0aacba9e302d638030679446dbb7.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5436/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 175,
+    "name": "不动玄石之相",
+    "itemId": 312601,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/bcb63a5ff4def752ff01626bf314c52b.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5437/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 176,
+    "name": "悠古的磐岩",
+    "itemId": 312602,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/b895bf1277bb22bdb7b472f50c6ec553.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5438/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 177,
+    "name": "月桂的宝冠",
+    "itemId": 312701,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/1f7619cfde19dbf35c77aaa35a35b592.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5439/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 178,
+    "name": "深林的记忆",
+    "itemId": 312702,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/7629c3beccc71ecbc5ca64e231fdc9bf.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5440/detail?bbs_presentation_style=no_header",
+    "type": "equipment",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 179,
+    "name": "璃月港口",
+    "itemId": 321001,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/0e9912116f5e8ba3962bfbd8555443ec.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5460/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 180,
+    "name": "骑士团图书馆",
+    "itemId": 321002,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/6011213fbb62496bcd54a693968053b0.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5462/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 181,
+    "name": "群玉阁",
+    "itemId": 321003,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/49c84885ccdce685c61466082c338c3b.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5484/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": []
+  },
+  {
+    "id": 182,
+    "name": "晨曦酒庄",
+    "itemId": 321004,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/0874fb8ab38dad2bbe50c5dedbe1ee14.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5461/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 183,
+    "name": "望舒客栈",
+    "itemId": 321005,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/2a36989837dcf67615b43fa87cb70b86.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5463/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 184,
+    "name": "西风大教堂",
+    "itemId": 321006,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/e66e9671f02e6bd1ea8199a0f5879784.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5459/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 185,
+    "name": "天守阁",
+    "itemId": 321007,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/222ceba40ccc9f599b000abc6ed0b081.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6606/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 186,
+    "name": "鸣神大社",
+    "itemId": 321008,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/a3dc90a7da9856f42303491bd0024d1d.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6325/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 187,
+    "name": "珊瑚宫",
+    "itemId": 321009,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/6dc5c393de816aa1233e8955ce3c3482.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6605/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 188,
+    "name": "须弥城",
+    "itemId": 321010,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/5f3116f9182514689e2de278ca513cbc.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6604/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 189,
+    "name": "桓那兰那",
+    "itemId": 321011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/1ef2dcf6bec8848eb5c384192ea57107.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6603/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": []
+  },
+  {
+    "id": 190,
+    "name": "镇守之森",
+    "itemId": 321012,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/81ede1f8ab76051861077399a9f38156.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6602/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 191,
+    "name": "黄金屋",
+    "itemId": 321013,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/56f22fe842e6cfc157fe7af9ce747d32.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500046/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": []
+  },
+  {
+    "id": 192,
+    "name": "化城郭",
+    "itemId": 321014,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/4df0d36e41b8748401d607cc2a08f6c8.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500197/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 193,
+    "name": "风龙废墟",
+    "itemId": 321015,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/f28ae3d276337285d01fdc98efca6be5.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500297/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 309,
+    "name": "湖中垂柳",
+    "itemId": 321016,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/f870c4e754bb891f078313bfb35c95fa.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500427/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 310,
+    "name": "欧庇克莱歌剧院",
+    "itemId": 321017,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/f444bf80942f5aa8f41aa5b72eabaf8c.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500450/detail?bbs_presentation_style=no_header",
+    "type": "location",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 194,
+    "name": "派蒙",
+    "itemId": 322001,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/a17dacfc39f114e5cd04d451c63c309a.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5448/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 195,
+    "name": "凯瑟琳",
+    "itemId": 322002,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d7edd6160916ca07908e4484f52d5923.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5450/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 196,
+    "name": "蒂玛乌斯",
+    "itemId": 322003,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/79dad204fe94fd9c82eb1bfac1c9dde2.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5451/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 197,
+    "name": "瓦格纳",
+    "itemId": 322004,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/a4f177c2495c8991d60580fd0bcffc94.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5452/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 198,
+    "name": "卯师傅",
+    "itemId": 322005,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/24daf53573495383244d5561e8f99bc3.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5453/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 199,
+    "name": "阿圆",
+    "itemId": 322006,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/3ffd443ab885cecb61a1fafd46a335e9.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5454/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 200,
+    "name": "提米",
+    "itemId": 322007,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/5780794af2b51f64f80b60e40291e777.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5449/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": []
+  },
+  {
+    "id": 201,
+    "name": "立本",
+    "itemId": 322008,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/2fe17763eb253ecc7560f6e9cb475e20.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5455/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": []
+  },
+  {
+    "id": 202,
+    "name": "常九爷",
+    "itemId": 322009,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/3288ac95b9aa31d70873e21f50865e2a.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5456/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": []
+  },
+  {
+    "id": 203,
+    "name": "艾琳",
+    "itemId": 322010,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/49f8a94c8195b0afd52d0fd10075cbac.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5457/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 204,
+    "name": "田铁嘴",
+    "itemId": 322011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/642295fa37b0b7aab9ed49b2b16b7084.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5458/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 205,
+    "name": "刘苏",
+    "itemId": 322012,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d98e25ea9d4a51f257e5535d621b9c9e.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5483/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 206,
+    "name": "花散里",
+    "itemId": 322013,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/78b119c1ba75710fcb8ad31825373b29.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6601/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": []
+  },
+  {
+    "id": 207,
+    "name": "鲸井小弟",
+    "itemId": 322014,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/41f7130a5739c20a634e0a7db508fa0e.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6600/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": []
+  },
+  {
+    "id": 208,
+    "name": "旭东",
+    "itemId": 322015,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/dcc6084ea120aa7a5fb72946d60bb958.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6599/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 209,
+    "name": "迪娜泽黛",
+    "itemId": 322016,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/e5df014d3a91f13ad4b553ff740f5e78.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6598/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 210,
+    "name": "拉娜",
+    "itemId": 322017,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/85bdb3b01608d94c51d52fe922a5c65e.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6597/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 211,
+    "name": "老章",
+    "itemId": 322018,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/7b87d38e45b128782ff59c5e5e801c28.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500023/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 212,
+    "name": "塞塔蕾",
+    "itemId": 322019,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/83854f198b81982dff1afaaaef3ba8b8.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500068/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 213,
+    "name": "弥生七月",
+    "itemId": 322020,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/17199f124430f2b3d6e8022ac3a105ff.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500199/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 311,
+    "name": "玛梅赫",
+    "itemId": 322021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/4ce16d24b220d8e9ba3138535423b56c.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500449/detail?bbs_presentation_style=no_header",
+    "type": "companion",
+    "cost": []
+  },
+  {
+    "id": 214,
+    "name": "参量质变仪",
+    "itemId": 323001,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d5f6d4d8e01919a582a5da94597af2f7.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5446/detail?bbs_presentation_style=no_header",
+    "type": "item",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 215,
+    "name": "便携营养袋",
+    "itemId": 323002,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/9147f786b2fd6280c90e7b349b814175.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5447/detail?bbs_presentation_style=no_header",
+    "type": "item",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 216,
+    "name": "红羽团扇",
+    "itemId": 323003,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/efd595dca509c09cd6ad4f2d88d3eb6f.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6596/detail?bbs_presentation_style=no_header",
+    "type": "item",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 217,
+    "name": "寻宝仙灵",
+    "itemId": 323004,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/37d81997bb99bb2ebb698e17c05b3734.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6595/detail?bbs_presentation_style=no_header",
+    "type": "item",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 312,
+    "name": "化种匣",
+    "itemId": 323005,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/b1b5f4a027ed68635d2975de8ea1ec2a.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500444/detail?bbs_presentation_style=no_header",
+    "type": "item",
+    "cost": []
+  },
+  {
+    "id": 313,
+    "name": "留念镜",
+    "itemId": 323006,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/f7d9763beb3fecaeadf9adb840c634dd.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500452/detail?bbs_presentation_style=no_header",
+    "type": "item",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 218,
+    "name": "旧时庭园",
+    "itemId": 330001,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/775946fb3f9cc945cd12312337c0e794.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500025/detail?bbs_presentation_style=no_header",
+    "type": "arcane",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 0
+      },
+      {
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 219,
+    "name": "磐岩盟契",
+    "itemId": 330002,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/224533ab10bca417c2ec9e2481d450ec.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500024/detail?bbs_presentation_style=no_header",
+    "type": "arcane",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 0
+      },
+      {
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 220,
+    "name": "愉舞欢游",
+    "itemId": 330003,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/0c19d2fa1206e2b3048bac1b69688385.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500044/detail?bbs_presentation_style=no_header",
+    "type": "arcane",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 0
+      },
+      {
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 221,
+    "name": "自由的新风",
+    "itemId": 330004,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/af2c3e57e98e3b1cd66160f992fc5533.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500198/detail?bbs_presentation_style=no_header",
+    "type": "arcane",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 0
+      },
+      {
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 222,
+    "name": "万家灶火",
+    "itemId": 330005,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/00efd397b364080ff304ad73e981719a.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500298/detail?bbs_presentation_style=no_header",
+    "type": "arcane",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 0
+      },
+      {
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 314,
+    "name": "裁定之时",
+    "itemId": 330006,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/35a3268b61bc91007f7e45281dbd0114.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500458/detail?bbs_presentation_style=no_header",
+    "type": "arcane",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      },
+      {
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 223,
+    "name": "元素共鸣：交织之冰",
+    "itemId": 331101,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/abb14b2589d7b7667be6e1ba30fe38a0.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5377/detail?bbs_presentation_style=no_header",
+    "type": "resonance",
+    "cost": []
+  },
+  {
+    "id": 224,
+    "name": "元素共鸣：粉碎之冰",
+    "itemId": 331102,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/8fd729bc9070fb7f0067c6bd78309ee2.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5386/detail?bbs_presentation_style=no_header",
+    "type": "resonance",
+    "cost": [
+      {
+        "type": "cryo",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 225,
+    "name": "元素共鸣：交织之水",
+    "itemId": 331201,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/91155dc2328b73f7b3fcbe9be0e05d5b.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5387/detail?bbs_presentation_style=no_header",
+    "type": "resonance",
+    "cost": []
+  },
+  {
+    "id": 226,
+    "name": "元素共鸣：愈疗之水",
+    "itemId": 331202,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/942ea48846b5fb188b39a03ab1e7307b.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5388/detail?bbs_presentation_style=no_header",
+    "type": "resonance",
+    "cost": [
+      {
+        "type": "hydro",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 227,
+    "name": "元素共鸣：交织之火",
+    "itemId": 331301,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/a08044a9716676c2816d6b8e133dba4c.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5389/detail?bbs_presentation_style=no_header",
+    "type": "resonance",
+    "cost": []
+  },
+  {
+    "id": 228,
+    "name": "元素共鸣：热诚之火",
+    "itemId": 331302,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/89ecbb3108be57c2695a6526d8f5fdac.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5390/detail?bbs_presentation_style=no_header",
+    "type": "resonance",
+    "cost": [
+      {
+        "type": "pryo",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 229,
+    "name": "元素共鸣：交织之雷",
+    "itemId": 331401,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/2cfd8de9efc70c99892833c77b8a2a3c.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5391/detail?bbs_presentation_style=no_header",
+    "type": "resonance",
+    "cost": []
+  },
+  {
+    "id": 230,
+    "name": "元素共鸣：强能之雷",
+    "itemId": 331402,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/b44843d0b8e52b50362835b67e83521e.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5392/detail?bbs_presentation_style=no_header",
+    "type": "resonance",
+    "cost": [
+      {
+        "type": "electro",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 231,
+    "name": "元素共鸣：交织之风",
+    "itemId": 331501,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/e82ad91ec863b4ed5d0776e19c771931.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5393/detail?bbs_presentation_style=no_header",
+    "type": "resonance",
+    "cost": []
+  },
+  {
+    "id": 232,
+    "name": "元素共鸣：迅捷之风",
+    "itemId": 331502,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/95e54e170876cd00dfafb911b432c08a.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5394/detail?bbs_presentation_style=no_header",
+    "type": "resonance",
+    "cost": [
+      {
+        "type": "anemo",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 233,
+    "name": "元素共鸣：交织之岩",
+    "itemId": 331601,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/352d5cf02805cde49983c1a6edbc7807.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5395/detail?bbs_presentation_style=no_header",
+    "type": "resonance",
+    "cost": []
+  },
+  {
+    "id": 234,
+    "name": "元素共鸣：坚定之岩",
+    "itemId": 331602,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/10efc292b72b89f3c631e21b280e3216.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5396/detail?bbs_presentation_style=no_header",
+    "type": "resonance",
+    "cost": [
+      {
+        "type": "geo",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 235,
+    "name": "元素共鸣：交织之草",
+    "itemId": 331701,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/73129d86d49a793372bb95979fecbd12.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5397/detail?bbs_presentation_style=no_header",
+    "type": "resonance",
+    "cost": []
+  },
+  {
+    "id": 236,
+    "name": "元素共鸣：蔓生之草",
+    "itemId": 331702,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/f80e0cc0b1a33d7b22da7489562f9d57.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5398/detail?bbs_presentation_style=no_header",
+    "type": "resonance",
+    "cost": [
+      {
+        "type": "dendro",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 237,
+    "name": "风与自由",
+    "itemId": 331801,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/e6cf2c353ece199b870d38da82b42dd1.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6590/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": []
+  },
+  {
+    "id": 238,
+    "name": "岩与契约",
+    "itemId": 331802,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/de8ed9fd35bf33e7f2368733132b6bf9.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6591/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 239,
+    "name": "雷与永恒",
+    "itemId": 331803,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/f88356f0d9f0b3176a176b87ab714e42.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6592/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": []
+  },
+  {
+    "id": 240,
+    "name": "草与智慧",
+    "itemId": 331804,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/e6d5d023722091f1381bdacf1ad31907.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6593/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 241,
+    "name": "最好的伙伴！",
+    "itemId": 332001,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/ac4ae170ecf0633e86d125a099f574d9.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5480/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 242,
+    "name": "换班时间",
+    "itemId": 332002,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/859555ed96fb14f1df7f49f06ec15452.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5488/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": []
+  },
+  {
+    "id": 243,
+    "name": "一掷乾坤",
+    "itemId": 332003,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/34b63f6aab75e2c066385ac073a67a87.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5530/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": []
+  },
+  {
+    "id": 244,
+    "name": "运筹帷幄",
+    "itemId": 332004,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/23093aabbd5e40aa6486eb887f8b8f17.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5481/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 245,
+    "name": "本大爷还没有输！",
+    "itemId": 332005,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/b9c93b2d84f41b72d450575583d17ee3.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5490/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": []
+  },
+  {
+    "id": 246,
+    "name": "交给我吧！",
+    "itemId": 332006,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/25424b0a384bd2fa1d371e3bc5b6ab74.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5487/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": []
+  },
+  {
+    "id": 247,
+    "name": "鹤归之时",
+    "itemId": 332007,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/9f417f71782ebffed924f1277c0b3ec4.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5489/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 248,
+    "name": "星天之兆",
+    "itemId": 332008,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/ad8a0036274f8985e2cbac04a55b10fa.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5482/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 249,
+    "name": "白垩之术",
+    "itemId": 332009,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/f3e625e462ba9bc966cc0b61ff1553fe.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5492/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 250,
+    "name": "诸武精通",
+    "itemId": 332010,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/5fe35d23002d3b3a9e7a25294b9eddea.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5399/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": []
+  },
+  {
+    "id": 251,
+    "name": "神宝迁宫祝词",
+    "itemId": 332011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/dfebdf3d18f86b09e71c7a9ba70b96de.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5485/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": []
+  },
+  {
+    "id": 252,
+    "name": "快快缝补术",
+    "itemId": 332012,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/f5a2594f220ed84e3b9bf07345ae6397.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5486/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 253,
+    "name": "送你一程",
+    "itemId": 332013,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/caa657e37ab8cb8f044800cc65cb6e19.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5402/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 254,
+    "name": "护法之誓",
+    "itemId": 332014,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/c7283573a438d9c3a73f05439a6d16c9.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5401/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 4
+      }
+    ]
+  },
+  {
+    "id": 255,
+    "name": "深渊的呼唤",
+    "itemId": 332015,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/c6f7d3d0e9a0785b75abac1942d99e0a.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5400/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 256,
+    "name": "愚人众的阴谋",
+    "itemId": 332016,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/9f3138092de7453b56b2aeb0eff32881.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6607/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 257,
+    "name": "下落斩",
+    "itemId": 332017,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/b1ec56e73bf1d7dc8aef72e8f29b59b1.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6583/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 258,
+    "name": "重攻击",
+    "itemId": 332018,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/b71c55fe23c001c7cf53156b22ae1f87.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6584/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 259,
+    "name": "温妮莎传奇",
+    "itemId": 332019,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/30e3c0828c7e0e7f7b94794c07e93170.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6585/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "id": 260,
+    "name": "永远的友谊",
+    "itemId": 332020,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d747b4fedd183061da71e7fa59233218.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6684/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 261,
+    "name": "大梦的曲调",
+    "itemId": 332021,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/0efc4591ca7f218b3e3fd96e200c40ab.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500026/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": []
+  },
+  {
+    "id": 262,
+    "name": "藏锋何处",
+    "itemId": 332022,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/0ab451591805c12eafc21a3135ecc049.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500043/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": []
+  },
+  {
+    "id": 263,
+    "name": "拳力斗技！",
+    "itemId": 332023,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/ed15efe8aec375d35a5b238779f2c686.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500187/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": []
+  },
+  {
+    "id": 264,
+    "name": "琴音之诗",
+    "itemId": 332024,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/0d5a78272bb72d5f48ccc74f1b391f43.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500299/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": []
+  },
+  {
+    "id": 315,
+    "name": "野猪公主",
+    "itemId": 332025,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/bd681fd2fdf37f42fc69980eda0bcb54.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500447/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": []
+  },
+  {
+    "id": 316,
+    "name": "坍陷与契机",
+    "itemId": 332026,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/5d4d25b836138a519f61727e342359ec.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500448/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 317,
+    "name": "浮烁的四叶印",
+    "itemId": 332027,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/c1e245f4f1f981d1a8f4d0dc815718fb.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500446/detail?bbs_presentation_style=no_header",
+    "type": "event",
+    "cost": []
+  },
+  {
+    "id": 265,
+    "name": "绝云锅巴",
+    "itemId": 333001,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/3e67ec3993031e51fd62be55719debea.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5479/detail?bbs_presentation_style=no_header",
+    "type": "food",
+    "cost": []
+  },
+  {
+    "id": 266,
+    "name": "仙跳墙",
+    "itemId": 333002,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d32351c031be5a6553417fd3b9e71f4d.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5474/detail?bbs_presentation_style=no_header",
+    "type": "food",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 267,
+    "name": "莲花酥",
+    "itemId": 333003,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/4f4fa63a3021e73886be2974f89b824c.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5477/detail?bbs_presentation_style=no_header",
+    "type": "food",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 268,
+    "name": "北地烟熏鸡",
+    "itemId": 333004,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/0e8f8dacd1b76df07d972adfd8d43fb4.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5491/detail?bbs_presentation_style=no_header",
+    "type": "food",
+    "cost": []
+  },
+  {
+    "id": 269,
+    "name": "甜甜花酿鸡",
+    "itemId": 333005,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/7a7fd4021d222ebae2b059fb40444435.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5475/detail?bbs_presentation_style=no_header",
+    "type": "food",
+    "cost": []
+  },
+  {
+    "id": 270,
+    "name": "蒙德土豆饼",
+    "itemId": 333006,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/3104bb01785e41a8d72bdd328fc9fbd5.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5529/detail?bbs_presentation_style=no_header",
+    "type": "food",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 271,
+    "name": "烤蘑菇披萨",
+    "itemId": 333007,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/96b367d0bf0b043f89084fa81efc3713.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5478/detail?bbs_presentation_style=no_header",
+    "type": "food",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 272,
+    "name": "兽肉薄荷卷",
+    "itemId": 333008,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/0ca48fc803adb2d7ed02436064ca55bb.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/5476/detail?bbs_presentation_style=no_header",
+    "type": "food",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 273,
+    "name": "提瓦特煎蛋",
+    "itemId": 333009,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/d90cae606cec439d92c71333712cfb7f.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6586/detail?bbs_presentation_style=no_header",
+    "type": "food",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 274,
+    "name": "刺身拼盘",
+    "itemId": 333010,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/0a613b09e14ce72c0abcabbcb759b355.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6587/detail?bbs_presentation_style=no_header",
+    "type": "food",
+    "cost": [
+      {
+        "type": "matching",
+        "cost": 1
+      }
+    ]
+  },
+  {
+    "id": 275,
+    "name": "唐杜尔烤鸡",
+    "itemId": 333011,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/6f069e79bf1d150334e5568469c129d2.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6588/detail?bbs_presentation_style=no_header",
+    "type": "food",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 276,
+    "name": "黄油蟹蟹",
+    "itemId": 333012,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/b7116d834cd9f288d787020fc4037475.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/6589/detail?bbs_presentation_style=no_header",
+    "type": "food",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  },
+  {
+    "id": 318,
+    "name": "炸鱼薯条",
+    "itemId": 333013,
+    "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_card_face_u033pf/88a1a7a0fdeddad3ed4bb1f24e58a71e.png",
+    "iconSmall": "",
+    "wiki": "https://bbs.mihoyo.com/ys/obc/content/500445/detail?bbs_presentation_style=no_header",
+    "type": "food",
+    "cost": [
+      {
+        "type": "unaligned",
+        "cost": 2
+      }
+    ]
+  }
+]
