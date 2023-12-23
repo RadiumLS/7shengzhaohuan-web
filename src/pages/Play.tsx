@@ -1,7 +1,7 @@
 // 游玩页, 用于对局模拟
 
 import { useState } from "react";
-import { PlayerName, initPlayersChar, setPlayerDeckCode, startDuel } from "../redux/play";
+import { PlayerName, initPlayersChar, initPlayersPile, setPlayerDeckCode, startDuel } from "../redux/play";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { Deck } from "../redux/deck";
 import MovableWrapper from "../components/play/movable_wrapper";
@@ -37,6 +37,7 @@ function Play() {
   const goPlay = () => {
     setPlaying(true);
     dispatch(initPlayersChar());
+    dispatch(initPlayersPile());
     dispatch(startDuel({offensive: offensive}));
   }
 

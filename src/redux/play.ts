@@ -2,9 +2,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 import type { Deck } from './deck';
-import { ActionCard } from '../type/card';
+import { ActionCard, ActionCardType, CostType } from '../type/card';
 import { CharEntity, LogicRecord, RoundPhase, StartPhase, SummonsEntity, SupportEntity } from '../type/play';
 import { decode, encode } from '../utils/share_code';
+import actionCardData from '../data/action_card.json';
 
 // TODO: 需要大量设计
 /**
@@ -25,6 +26,10 @@ interface PlayerState {
   support: SupportEntity[],
   summons: SummonsEntity[],
   chars: CharEntity[],
+  /**
+   * 对局开始后, 牌堆中的牌的列表
+   */
+  pileCards?: ActionCard[];
 }
 // 用boku和kimi来指代两个玩家
 // boku kimi
@@ -116,6 +121,45 @@ const playSlice = createSlice({
       state.bokuState.chars = bokuCharEntity;
       state.kimiState.chars = kimiCharEntity;
     },
+    // 初始化两个玩家的牌堆
+    initPlayersPile: function(state) {
+      const bokuDeck = state.bokuState.deck;
+      const kimiDeck = state.kimiState.deck;
+      const bokuActionIds = decode(bokuDeck?.deckCode || '').slice(3);
+      const kimiActionIds = decode(kimiDeck?.deckCode || '').slice(3);
+      const actionCardIdSet = new Set([...bokuActionIds, ...kimiActionIds]);
+      const actionCardMap: Record<number, ActionCard> = {};
+      for(let i = 0; i < actionCardData.length; i++) {
+        const oneCard = actionCardData[i];
+        if(actionCardIdSet.has(oneCard.id)) {
+          actionCardMap[oneCard.id] = {
+            ...oneCard,
+            id: oneCard.id,
+            name: oneCard.name,
+            cost: oneCard.cost.map((oneCost) => ({
+              type: oneCost.type as CostType,
+              cost: oneCost.cost,
+            })),
+            type: oneCard.type as ActionCardType,
+            cardType: 'action',
+            tag: [],
+          }
+        }
+      }
+      state.bokuState.pileCards = bokuActionIds.map((id) => actionCardMap[id]);
+      state.kimiState.pileCards = kimiActionIds.map((id) => actionCardMap[id]);
+    },
+    // 从牌堆随机抽牌
+    drawCardsFromPile: function(state, action: PayloadAction<{
+      player: PlayerName,
+      count: number,
+      type?: ActionCardType,
+    }>) {
+      // TODO: 洗牌并且抽牌
+      // TODO: 从牌堆按要求抽牌
+    },
+    // TODO: 把牌放回牌堆
+
     // 开始对局, 产生一对新的StartPhase
     startDuel: function(state, action: PayloadAction<{offensive: PlayerName}>)  {
       // TODO: 如果是真实对局, 那么两人的StartPhase是同时开始的
@@ -153,6 +197,7 @@ const playSlice = createSlice({
 export const {
   setPlayerDeckCode,
   initPlayersChar,
+  initPlayersPile,
   startDuel,
   addRecordToCurrPhase,
 } = playSlice.actions
