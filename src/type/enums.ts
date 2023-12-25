@@ -1,3 +1,14 @@
+export enum ActionCardType {
+  Equipment = 'equipment', // 圣遗物
+  Weapon = 'weapon', // 武器
+  Talent = 'talent', // 天赋
+  Food = 'food', // 食物 料理
+  Companion = 'companion', // 伙伴
+  Location = 'location', // 场地
+  Item = 'item', // 道具
+  Resonance = 'resonance', // 共鸣牌, 包括骰子牌和共鸣牌
+  Arcane = 'arcane', // 秘传牌
+}
 export enum PhaseType {
   /**
    * 对局开始阶段, 抽5张牌

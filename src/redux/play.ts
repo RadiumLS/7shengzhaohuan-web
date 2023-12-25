@@ -2,12 +2,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 import type { Deck } from './deck';
-import { ActionCard, ActionCardType, CostType } from '../type/card';
+import { ActionCard, CostType } from '../type/card';
 import { CharEntity, LogicRecord, RoundPhase, StartPhase, SummonsEntity, SupportEntity } from '../type/play';
 import { decode, encode } from '../utils/share_code';
 import actionCardData from '../data/action_card.json';
 import arrayShuffle from 'array-shuffle';
-import { PhaseType } from '../type/enums';
+import { ActionCardType, PhaseType } from '../type/enums';
 
 // TODO: 需要大量设计
 /**
@@ -204,10 +204,10 @@ const playSlice = createSlice({
       }
 
       if(player === 'boku') {
-        state.bokuState.tempCards = drawCards;
+        state.bokuState.tempCards.push(...drawCards);
         state.bokuState.pileCards = newPile;
       } else {
-        state.kimiState.tempCards = drawCards;
+        state.kimiState.tempCards.push(...drawCards);
         state.kimiState.pileCards = newPile;
       }
     },

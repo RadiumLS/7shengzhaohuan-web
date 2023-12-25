@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { PlayerName, addRecordToCurrPhase, drawCardsFromPile, goNextPhase } from "../../redux/play";
-import { PhaseType } from "../../type/enums";
+import { ActionCardType, PhaseType } from "../../type/enums";
 import { StartPhase } from "../../type/play";
 
 type ShartingHandPorp = {
@@ -28,13 +28,34 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
 
   const currPhase = useAppSelector((state) => state.play.currPhase);
   const tempCards = useAppSelector((state) => player === 'boku' ? state.play.bokuState.tempCards : state.play.kimiState.tempCards);
+  const pileCards = useAppSelector((state) => player === 'boku' ? state.play.bokuState.pileCards : state.play.kimiState.pileCards);
   // 触发抽5张牌
   const startDraw = () => {
     if(currPhase?.type === PhaseType.StartDraw && currPhase?.player === player && currPhase?.isDone === false) {
-      dispatch(drawCardsFromPile({
-        player: currPhase.player,
-        count: 5,
-      }));
+      let arcaneCount = 0
+      if(pileCards) {
+        for(let i = 0; i < pileCards.length; i++) {
+          if(pileCards[i].type === 'arcane') {
+            arcaneCount++;
+          }
+        }
+      }
+      if(arcaneCount === 0) {
+        dispatch(drawCardsFromPile({
+          player: currPhase.player,
+          count: 5,
+        }));
+      } else {
+        dispatch(drawCardsFromPile({
+          player: currPhase.player,
+          count: arcaneCount,
+          type: ActionCardType.Arcane,
+        }));
+        dispatch(drawCardsFromPile({
+          player: currPhase.player,
+          count: 5 - arcaneCount,
+        }));
+      }
     }
   };
   // 已经抽了5张牌之后就记录并且跳转下一阶段
@@ -42,6 +63,7 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
     if(currPhase?.type === PhaseType.StartDraw && currPhase?.player === player) {
       if(tempCards?.length === 5) {
         dispatch(addRecordToCurrPhase({
+          // TODO: 保存抽取的卡牌的列表到记录中
           record: {
             player: player,
             phase: currPhase,
@@ -70,8 +92,8 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
         <div className="flex gap-2">
           {tempCards.map((oneCard, index) => {
             const {id} = oneCard;
-            return <div className="flex-1 relative" onClick={() => setSwitchMark(index)}>
-              <img src={`/static/icons/${id}.png`} key={`temp_card_${index}`}
+            return <div className="flex-1 relative" onClick={() => setSwitchMark(index)} key={`temp_card_${index}`}>
+              <img src={`/static/icons/${id}.png`} 
                 className="w-full"
               />
               {switchMarkList[index] && <div className="absolute w-full h-1/2 bg-slate-400 top-1/4">

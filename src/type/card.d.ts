@@ -1,4 +1,5 @@
 import { CSSProperties } from 'react';
+import { type ActionCardType } from "./enums";
 
 /** 七种元素类型 */
 enum Element {
@@ -66,17 +67,6 @@ interface CharCard extends CardBase {
   engry?: number;
 }
 
-enum ActionCardType {
-  Equipment = 'equipment', // 圣遗物
-  Weapon = 'weapon', // 武器
-  Talent = 'talent', // 天赋
-  Food = 'food', // 食物 料理
-  Companion = 'companion', // 伙伴
-  Location = 'location', // 场地
-  Item = 'item', // 道具
-  Resonance = 'resonance', // 共鸣牌, 包括骰子牌和共鸣牌
-  Arcane = 'arcane', // 秘传牌
-}
 
 interface ActionCard extends CardBase {
   cost: CardCost;
