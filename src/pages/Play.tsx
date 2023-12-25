@@ -50,27 +50,6 @@ function Play() {
       backgroundImage: 'url("/static/bg/bp_bg.png")',
       position: 'relative',
     }}>
-      {(currPhase?.type === PhaseType.StartDraw || currPhase?.type === PhaseType.StartSwitch) && 
-        currPhase.player === 'boku' ? <MovableWrapper defaultPostion={{
-            title: '本方起始手牌区域',
-            top: '20%',
-            left: '20%',
-            width: '60%',
-            height: '45%',
-          }}>
-            <StaringHands player="boku"/>
-          </MovableWrapper>
-          :
-          <MovableWrapper defaultPostion={{
-            title: '对方起始手牌区域',
-            top: '20%',
-            left: '20%',
-            width: '60%',
-            height: '45%',
-          }}>
-            <StaringHands player="kimi"/>
-          </MovableWrapper>
-      }
       <MovableWrapper defaultPostion={{
         title: 'developArea',
         top: '12%',
@@ -99,6 +78,27 @@ function Play() {
       }} >
         <CharArea player='boku'/>
       </MovableWrapper>
+      {(currPhase?.type === PhaseType.StartDraw || currPhase?.type === PhaseType.StartSwitch) && 
+        currPhase.player === 'boku' ? <MovableWrapper defaultPostion={{
+            title: '本方起始手牌区域',
+            top: '20%',
+            left: '20%',
+            width: '60%',
+            height: '30%',
+          }}>
+            <StaringHands player="boku"/>
+          </MovableWrapper>
+          :
+          <MovableWrapper defaultPostion={{
+            title: '对方起始手牌区域',
+            top: '20%',
+            left: '20%',
+            width: '60%',
+            height: '30%',
+          }}>
+            <StaringHands player="kimi"/>
+          </MovableWrapper>
+      }
       对局模拟的组件/页面
       TODO: 初始抽卡，替换初始卡牌
       TODO: 决定出战角色
