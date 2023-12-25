@@ -13,6 +13,8 @@ type ShartingHandPorp = {
 const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
   const { player } = prop;
   const [switched, setSwitched] = useState<boolean>(false);
+  // 最后的初始手牌确认
+  const [confirm, setConfirm] = useState<boolean>(false);
   const [s1, setS1] = useState<boolean>(false);
   const [s2, setS2] = useState<boolean>(false);
   const [s3, setS3] = useState<boolean>(false);
@@ -21,6 +23,7 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
   const switchMarkList = [s1, s2, s3, s4, s5];
   const setSwitchMarkList = [setS1, setS2, setS3, setS4, setS5];
   const setSwitchMark = (index: number) => {
+    if(switched) return;
     const funcList = [setS1, setS2, setS3, setS4, setS5];
     funcList[index]((prev) => !prev);
   }
@@ -104,27 +107,6 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
             record: '更换卡牌后初始手牌5张：'
           }
         }));
-        // TODO: tempCards进手牌
-        if((currPhase as StartPhase).offensive === player) {
-          // 当前角色是先手方, 则开启后手方的抽卡
-          const defensivePlayer = player === 'boku' ? 'kimi' : 'boku';
-          const nextPhase: StartPhase = {
-            id: 0,
-            player: defensivePlayer,
-            name: `开始阶段_后手抽牌`,
-            type: PhaseType.StartDraw,
-            isActive: false,
-            record: [],
-            offensive: (currPhase as StartPhase).offensive,
-          };
-          dispatch(goNextPhase({
-            nextPhase, 
-          }))
-          // dispatch(addRecordToCurrPhase({
-        } else {
-          // 当前角色不是先手方, 则开启第一个回合
-          // TODO: 开启第一个回合
-        }
       }
     }
   }, [tempCards]);
@@ -146,6 +128,29 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
     }));
     setSwitched(true);
   };
+  const finalConfirm = () => {
+    setConfirm(true);
+    // TODO: tempCards进手牌
+    if((currPhase as StartPhase).offensive === player) {
+      // 当前角色是先手方, 则开启后手方的抽卡
+      const defensivePlayer = player === 'boku' ? 'kimi' : 'boku';
+      const nextPhase: StartPhase = {
+        id: 0,
+        player: defensivePlayer,
+        name: `开始阶段_后手抽牌`,
+        type: PhaseType.StartDraw,
+        isActive: false,
+        record: [],
+        offensive: (currPhase as StartPhase).offensive,
+      };
+      dispatch(goNextPhase({
+        nextPhase, 
+      }))
+    } else {
+      // 当前角色不是先手方, 则开启第一个回合
+      // TODO: 开启第一个回合
+    }
+  };
 
   if(currPhase?.type === PhaseType.StartDraw || currPhase?.type === PhaseType.StartSwitch) {
     return <div className="">
@@ -164,8 +169,8 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
             </div>
           })}
         </div>
-        TODO 标记要替换的牌，并且替换<br/>
-        <button className="" onClick={switchCards}>确认替换</button>
+        {!switched && <button className="" onClick={switchCards}>确认替换</button>}
+        {switched && !confirm && <button className="" onClick={finalConfirm}>起始手牌确认</button>}
       </div>}
     </div>;
   } else {

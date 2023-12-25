@@ -79,7 +79,7 @@ function Play() {
         <CharArea player='boku'/>
       </MovableWrapper>
       {(currPhase?.type === PhaseType.StartDraw || currPhase?.type === PhaseType.StartSwitch) && 
-        currPhase.player === 'boku' ? <MovableWrapper defaultPostion={{
+        currPhase.player === 'boku' &&  <MovableWrapper defaultPostion={{
             title: '本方起始手牌区域',
             top: '20%',
             left: '20%',
@@ -88,8 +88,9 @@ function Play() {
           }}>
             <StaringHands player="boku"/>
           </MovableWrapper>
-          :
-          <MovableWrapper defaultPostion={{
+      }
+      {(currPhase?.type === PhaseType.StartDraw || currPhase?.type === PhaseType.StartSwitch) && 
+        currPhase.player === 'kimi' &&  <MovableWrapper defaultPostion={{
             title: '对方起始手牌区域',
             top: '20%',
             left: '20%',
