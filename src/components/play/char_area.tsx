@@ -24,12 +24,13 @@ const BokuCharArea : React.FC = () => {
     className="flex w-full h-full gap-4"
   >
     {
-      bokuChars.map((oneChar) => {
+      bokuChars.map((oneChar, index) => {
         const {id} = oneChar;
         return <img src={`/static/icons/${id}.png`}
           // width={420}
           // height={720}
           className="flex-1 max-h-full"
+          key={`boku_char_${index}`}
         >
         </img>;
       })
@@ -44,9 +45,9 @@ const KimiCharArea : React.FC = () => {
     height: '100%'
   }}>
     {
-      kimiChars.map((oneChar) => {
+      kimiChars.map((oneChar, index) => {
         const {id} = oneChar;
-        return <img src={`/static/icons/${id}.png`} style={{
+        return <img src={`/static/icons/${id}.png`} key={`kimi_char_${index}`} style={{
           flex: '1 1',
         }}>
         </img>;
