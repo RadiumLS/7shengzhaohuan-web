@@ -1,5 +1,4 @@
 import { CSSProperties } from 'react';
-import { type } from './../redux/index';
 
 /** 七种元素类型 */
 enum Element {

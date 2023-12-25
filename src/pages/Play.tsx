@@ -6,8 +6,10 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { Deck } from "../redux/deck";
 import MovableWrapper from "../components/play/movable_wrapper";
 import CharArea from "../components/play/char_area";
-import { StartPhase } from "../type/play";
+// import { StartPhase } from "../type/play";
 import StaringHands from "../components/play/starting_hands";
+import { StartPhase } from "../type/play";
+import { PhaseType } from "../type/enums";
 
 const developDeck1: Deck = {
   deckTitle: '开发用卡组1',
@@ -34,6 +36,8 @@ function Play() {
   const kimiChars = useAppSelector((state) => state.play.kimiState.chars);
   const currPhase = useAppSelector((state) => state.play.currPhase);
 
+  const bokuPile = useAppSelector((state) => state.play.bokuState.pileCards);
+
   const goPlay = () => {
     setPlaying(true);
     dispatch(initPlayersChar());
@@ -46,16 +50,37 @@ function Play() {
       backgroundImage: 'url("/static/bg/bp_bg.png")',
       position: 'relative',
     }}>
-      {(currPhase as StartPhase).offensive && <MovableWrapper defaultPostion={{
-        title: '起始手牌区域',
-        top: '20%',
-        left: '20%',
-        width: '60%',
-        height: '45%',
-      }}>
-        <StaringHands />
-      </MovableWrapper>
+      {(currPhase?.type === PhaseType.StartDraw || currPhase?.type === PhaseType.StartSwitch) && 
+        currPhase.player === 'boku' ? <MovableWrapper defaultPostion={{
+            title: '本方起始手牌区域',
+            top: '20%',
+            left: '20%',
+            width: '60%',
+            height: '45%',
+          }}>
+            <StaringHands player="boku"/>
+          </MovableWrapper>
+          :
+          <MovableWrapper defaultPostion={{
+            title: '对方起始手牌区域',
+            top: '20%',
+            left: '20%',
+            width: '60%',
+            height: '45%',
+          }}>
+            <StaringHands player="kimi"/>
+          </MovableWrapper>
       }
+      <MovableWrapper defaultPostion={{
+        title: 'developArea',
+        top: '12%',
+        left: '70%',
+        width: '30vw',
+        height: '20vh',
+      }}>
+        Boku Pile size: {bokuPile?.length}
+        <br/>
+      </MovableWrapper>
       <MovableWrapper defaultPostion={{
         title: '对方角色区域',
         top: '12%',

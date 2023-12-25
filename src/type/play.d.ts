@@ -1,6 +1,8 @@
 // 对局模拟中使用到的大量类型定义
 
 import { PlayerName } from "../redux/play";
+import { type } from './../redux/index';
+import { type PhaseType } from './enums'
 
 /**
  * 触发器, 在不同的阶段被触发, 然后执行一些操作
@@ -124,9 +126,17 @@ interface RoundPhase {
    */
   name: string,
   /**
+   * 阶段的类型
+   */
+  type: PhaseType,
+  /**
    * 是否是当前阶段
    */
   isActive: boolean,
+  /**
+   * 是否已经结束
+   */
+  isDone?: boolean,
   /**
    * 阶段所对应的玩家
    */
@@ -137,7 +147,7 @@ interface RoundPhase {
   record: LogicRecord[],
 }
 /**
- * 对局开始阶段
+ * 对局开始阶段, 被拆分成两步了, 抽牌和替换重抽
  */
 interface StartPhase extends RoundPhase {
   /**

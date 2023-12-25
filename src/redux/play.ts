@@ -7,6 +7,7 @@ import { CharEntity, LogicRecord, RoundPhase, StartPhase, SummonsEntity, Support
 import { decode, encode } from '../utils/share_code';
 import actionCardData from '../data/action_card.json';
 import arrayShuffle from 'array-shuffle';
+import { PhaseType } from '../type/enums';
 
 // TODO: 需要大量设计
 /**
@@ -16,6 +17,7 @@ import arrayShuffle from 'array-shuffle';
  */
 type Dice = Element | 'omni';
 export type PlayerName = 'boku' | 'kimi';
+
 /**
  * 对局中的玩家状态
  * @member deck 卡组
@@ -34,7 +36,7 @@ interface PlayerState {
   /**
    * 起始手牌的替换区, 后续作弊的时候也可以使用这个
    */
-  tempCards?: ActionCard[];
+  tempCards: ActionCard[];
 }
 // 用boku和kimi来指代两个玩家
 // boku kimi
@@ -71,6 +73,7 @@ let initialState: PlayState = {
     support: [],
     summons: [],
     chars: [],
+    tempCards: [],
   },
   kimiState: {
     dice: [],
@@ -78,6 +81,7 @@ let initialState: PlayState = {
     support: [],
     summons: [],
     chars: [],
+    tempCards: [],
   },
   historyPhase: [],
 };
@@ -218,9 +222,13 @@ const playSlice = createSlice({
         player: offensive,
         id: 0,
         name: '开始阶段_先手抽牌',
+        type: PhaseType.StartDraw,
+        // type: PhaseType.StartDraw,
         isActive: true,
+        isDone: false,
         record: []
       };
+      /*
       const defensiveStartPhase: StartPhase = {
         offensive: offensive,
         player: offensive === 'boku' ? 'kimi' : 'boku',
@@ -229,8 +237,9 @@ const playSlice = createSlice({
         isActive: false,
         record: []
       };
+      */
       state.currPhase = offensiveStartPhase;
-      state.nextPhase = defensiveStartPhase;
+      // state.nextPhase = defensiveStartPhase;
     },
     // 朝当前阶段添加一条逻辑记录
     addRecordToCurrPhase: function(state, action: PayloadAction<{record: LogicRecord}>) {
@@ -239,6 +248,16 @@ const playSlice = createSlice({
     },
     goNextPhase: function(state, action: PayloadAction<{nextPhase: RoundPhase}>) {
       // TODO: 完成当前阶段, 跳到下一阶段
+      const currPhase = state.currPhase;
+      if(currPhase) {
+        currPhase.isDone = true;
+        currPhase.isActive = false;
+        state.historyPhase.push(currPhase);
+      }
+      const nextPhase = action.payload.nextPhase;
+      nextPhase.isActive = true;
+      nextPhase.isDone = false;
+      state.currPhase = nextPhase;
     },
   }
 });
@@ -250,5 +269,6 @@ export const {
   startDuel,
   addRecordToCurrPhase,
   drawCardsFromPile,
+  goNextPhase,
 } = playSlice.actions
 export default playSlice.reducer
