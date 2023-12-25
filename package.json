@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.1.1",
     "antd-colorpicker": "^1.0.0",
+    "array-shuffle": "^3.0.0",
     "axios": "^1.2.2",
     "buffer": "^6.0.3",
     "cheerio": "^1.0.0-rc.12",

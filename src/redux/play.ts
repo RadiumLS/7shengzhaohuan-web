@@ -6,6 +6,7 @@ import { ActionCard, ActionCardType, CostType } from '../type/card';
 import { CharEntity, LogicRecord, RoundPhase, StartPhase, SummonsEntity, SupportEntity } from '../type/play';
 import { decode, encode } from '../utils/share_code';
 import actionCardData from '../data/action_card.json';
+import arrayShuffle from 'array-shuffle';
 
 // TODO: 需要大量设计
 /**
@@ -30,6 +31,10 @@ interface PlayerState {
    * 对局开始后, 牌堆中的牌的列表
    */
   pileCards?: ActionCard[];
+  /**
+   * 起始手牌的替换区, 后续作弊的时候也可以使用这个
+   */
+  tempCards?: ActionCard[];
 }
 // 用boku和kimi来指代两个玩家
 // boku kimi
@@ -155,8 +160,52 @@ const playSlice = createSlice({
       count: number,
       type?: ActionCardType,
     }>) {
-      // TODO: 洗牌并且抽牌
-      // TODO: 从牌堆按要求抽牌
+      const {player, count, type} = action.payload;
+      const pool: ActionCard[] = [];
+      const pile = player === 'boku' ? state.bokuState.pileCards : state.kimiState.pileCards;
+      const drawCards: ActionCard[] = [];
+
+      // 如果没有牌堆或者牌堆为空, 那么直接返回
+      if(!pile || pile.length === 0) return;
+
+      // 指定类型的情况下抽卡池的范围不同
+      if(type) {
+        pool.push(...(pile.filter((card) => card.type === type) || []));
+      } else {
+        pool.push(...(pile || []));
+      }
+      // 可抽选卡为空的时候直接返回不做任何处理
+      if(pool.length > 0) {
+        // 如果抽选卡的数量小于抽卡数量, 那么直接所有抽选卡进临时区
+        if(pool.length <= count) {
+          drawCards.push(...pool);
+        } else {
+          drawCards.push(...arrayShuffle(pool).slice(0, count));
+        }
+      }
+      const newPile = [];
+      const drawMarkCards: (ActionCard & {markDraw: boolean})[] = drawCards.map((card) => ({...card, markDraw: false}));
+      for(let i = 0; i < (pile.length || 0); i++) {
+        const oneCard = pile[i];
+        let isDraw = false;
+        for(let j = 0; j < drawMarkCards.length; j++) {
+          const oneDrawCard = drawMarkCards[j];
+          if(oneCard.id === oneDrawCard.id && oneDrawCard.markDraw === false) {
+            oneDrawCard.markDraw = true;
+            isDraw = true;
+            break;
+          }
+        }
+        if(!isDraw) newPile.push(oneCard);
+      }
+
+      if(player === 'boku') {
+        state.bokuState.tempCards = drawCards;
+        state.bokuState.pileCards = newPile;
+      } else {
+        state.kimiState.tempCards = drawCards;
+        state.kimiState.pileCards = newPile;
+      }
     },
     // TODO: 把牌放回牌堆
 
@@ -200,5 +249,6 @@ export const {
   initPlayersPile,
   startDuel,
   addRecordToCurrPhase,
+  drawCardsFromPile,
 } = playSlice.actions
 export default playSlice.reducer
