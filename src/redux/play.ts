@@ -211,6 +211,34 @@ const playSlice = createSlice({
         state.kimiState.pileCards = newPile;
       }
     },
+    /**
+     * 丢弃临时区的牌, 以index为参数 
+     */
+    dropTempCards: function(state, action: PayloadAction<{player: PlayerName, indexs: number[]}>) {
+      const { player, indexs } = action.payload;
+      const originTempCards: (ActionCard & {markDrop?: boolean})[] = [];
+      originTempCards.push(...(player === 'boku' ? state.bokuState.tempCards : state.kimiState.tempCards));
+      for(let i = 0; i < indexs.length; i++) {
+        originTempCards[indexs[i]].markDrop = true;
+      }
+      const newTempCards:ActionCard[] = [];
+      for(let i = 0; i < originTempCards.length; i++) {
+        if(!originTempCards[i].markDrop) {
+          newTempCards.push(originTempCards[i]);
+        }
+      }
+      if(player === 'boku') {
+        state.bokuState.tempCards = newTempCards;
+      } else {
+        state.kimiState.tempCards = newTempCards;
+      }
+    },
+    /**
+     * 直接增加卡牌到临时区, 可以用于作弊
+     */
+    pushTempCards: function(state, action: PayloadAction<{player: PlayerName, cards: ActionCard[]}>) {
+      // TODO:
+    },
     // TODO: 把牌放回牌堆
 
     // 开始对局, 产生一对新的StartPhase
@@ -266,6 +294,7 @@ export const {
   setPlayerDeckCode,
   initPlayersChar,
   initPlayersPile,
+  dropTempCards,
   startDuel,
   addRecordToCurrPhase,
   drawCardsFromPile,
