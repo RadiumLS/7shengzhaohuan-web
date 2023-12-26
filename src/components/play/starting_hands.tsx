@@ -163,7 +163,7 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
   if(currPhase?.type === PhaseType.StartDraw || currPhase?.type === PhaseType.StartSwitch) {
     return <div className="">
       {currPhase.player === player && <div>
-        <button onClick={startDraw}>抽{`${player === 'boku' ? '本方': '对方'}`}起始牌</button>
+        { currPhase?.type === PhaseType.StartDraw && <button onClick={startDraw}>抽{`${player === 'boku' ? '本方': '对方'}`}起始牌</button>}
         <div className="flex gap-2">
           {tempCards.map((oneCard, index) => {
             const {id} = oneCard;
@@ -177,8 +177,8 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
             </div>
           })}
         </div>
-        {!switched && <button className="" onClick={switchCards}>确认替换</button>}
-        {switched && !confirm && <button className="" onClick={finalConfirm}>起始手牌确认</button>}
+        {currPhase?.type === PhaseType.StartSwitch && !switched && <button className="" onClick={switchCards}>确认替换</button>}
+        {switched && !confirm && <button className="" onClick={finalConfirm}>{`${player === 'boku' ? '本方': '对方'}`}起始手牌确认</button>}
       </div>}
     </div>;
   } else {
