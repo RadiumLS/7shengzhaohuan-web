@@ -2,9 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { PlayerName, addRecordToCurrPhase, drawCardsFromPile, dropTempCards, goNextPhase } from "../../redux/play";
+import { PlayerName, addRecordToCurrPhase, drawCardsFromPile, dropTempCards, goNextPhase, returnCardsToPile } from "../../redux/play";
 import { ActionCardType, PhaseType } from "../../type/enums";
 import { StartPhase } from "../../type/play";
+import { ActionCard } from "../../type/card";
 
 type ShartingHandPorp = {
   player: PlayerName,
@@ -27,9 +28,8 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
     const funcList = [setS1, setS2, setS3, setS4, setS5];
     funcList[index]((prev) => !prev);
   }
+  const [returnCards, setReturnCards] = useState<ActionCard[]>([]); // 用于记录要换回的卡牌的index
   const dispatch = useAppDispatch();
-  // TODO: 选择并替换手牌
-  // TODO: 展示区域内容
 
   const currPhase = useAppSelector((state) => state.play.currPhase);
   const tempCards = useAppSelector((state) => player === 'boku' ? state.play.bokuState.tempCards : state.play.kimiState.tempCards);
@@ -107,15 +107,22 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
             record: '更换卡牌后初始手牌5张：'
           }
         }));
+        // 将替换的牌放回牌堆中
+        dispatch(returnCardsToPile({
+          player,
+          cards: returnCards,
+        }))
       }
     }
   }, [tempCards]);
   const switchCards = () => {
     if(switched) return;
     const switchIndex = [];
+    const cardsToReturn = [];
     for(let i = 0; i < switchMarkList.length; i++) {
       if(switchMarkList[i]) {
         switchIndex.push(i);
+        cardsToReturn.push(tempCards[i]);
       }
     }
     dispatch(dropTempCards({
@@ -127,6 +134,7 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
       count: switchIndex.length,
     }));
     setSwitched(true);
+    setReturnCards(cardsToReturn);
   };
   const finalConfirm = () => {
     setConfirm(true);

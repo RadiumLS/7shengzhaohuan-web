@@ -239,7 +239,15 @@ const playSlice = createSlice({
     pushTempCards: function(state, action: PayloadAction<{player: PlayerName, cards: ActionCard[]}>) {
       // TODO:
     },
-    // TODO: 把牌放回牌堆
+    // 把牌放回牌堆
+    returnCardsToPile: function(state, action: PayloadAction<{player: PlayerName, cards: ActionCard[]}>) {
+      const {player, cards} = action.payload;
+      if(player === 'boku') {
+        state.bokuState.pileCards?.push(...cards);
+      } else {
+        state.kimiState.pileCards?.push(...cards);
+      }
+    },
 
     // 开始对局, 产生一对新的StartPhase
     startDuel: function(state, action: PayloadAction<{offensive: PlayerName}>)  {
@@ -298,6 +306,7 @@ export const {
   startDuel,
   addRecordToCurrPhase,
   drawCardsFromPile,
+  returnCardsToPile,
   goNextPhase,
 } = playSlice.actions
 export default playSlice.reducer
