@@ -10,6 +10,7 @@ import CharArea from "../components/play/char_area";
 import StaringHands from "../components/play/starting_hands";
 import { StartPhase } from "../type/play";
 import { PhaseType } from "../type/enums";
+import Hands from "../components/play/hands";
 
 const developDeck1: Deck = {
   deckTitle: '开发用卡组1',
@@ -62,7 +63,7 @@ function Play() {
       </MovableWrapper>
       <MovableWrapper defaultPostion={{
         title: '对方角色区域',
-        top: '12%',
+        top: '22%',
         left: '35%',
         width: '30vw',
         height: '20vh',
@@ -70,14 +71,33 @@ function Play() {
         <CharArea player='kimi'/>
       </MovableWrapper>
       <MovableWrapper defaultPostion={{
+        title: '对方手牌区域',
+        top: '12%',
+        left: '25%',
+        width: '50vw',
+        height: '20vh',
+      }} >
+        <Hands player='kimi'/>
+      </MovableWrapper>
+      <MovableWrapper defaultPostion={{
         title: '本方角色区域',
-        top: '65%',
+        top: '55%',
         left: '35%',
         width: '30vw',
         height: '20vh',
       }} >
         <CharArea player='boku'/>
       </MovableWrapper>
+      <MovableWrapper defaultPostion={{
+        title: '本方手牌区域',
+        top: '72%',
+        left: '25%',
+        width: '50vw',
+        height: '20vh',
+      }} >
+        <Hands player='kimi'/>
+      </MovableWrapper>
+
       {(currPhase?.type === PhaseType.StartDraw || currPhase?.type === PhaseType.StartSwitch) && 
         currPhase.player === 'boku' &&  <MovableWrapper defaultPostion={{
             title: '本方起始手牌区域',
