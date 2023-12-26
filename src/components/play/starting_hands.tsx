@@ -159,8 +159,20 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
         nextPhase, 
       }))
     } else {
-      // 当前角色不是先手方, 则开启第一个回合
-      // TODO: 开启第一个回合
+      // 当前角色不是先手方, 则说明双方初始牌抽取完毕
+      // 开启选择出战角色阶段
+      const nextPhase: StartPhase = {
+        id: 0,
+        player: (currPhase as StartPhase).offensive,
+        name: `开始阶段_先手方选择出战角色`,
+        type: PhaseType.StartSelectChar,
+        isActive: false,
+        record: [],
+        offensive: (currPhase as StartPhase).offensive,
+      };
+      dispatch(goNextPhase({
+        nextPhase, 
+      }))
     }
   };
 

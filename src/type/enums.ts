@@ -19,6 +19,10 @@ export enum PhaseType {
    */
   StartSwitch = 'start_switch',
   /**
+   * 对局开始阶段, 选择出战角色
+   */
+  StartSelectChar = 'start_select_char',
+  /**
    * 回合开始的投掷阶段
    */
   Roll = 'roll',
