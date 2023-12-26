@@ -21,6 +21,10 @@ type LogicRecord = {
  * 逻辑实体, 被用来反复遍历以确定卡牌效果等
  */
 interface LogicEntity {
+  /**
+   * 实体从属于哪一方
+   */
+  owner: PlayerName,
   // TODO: 一大堆的……触发器
   /**
    * 投掷时触发器, 如7种元素的圣遗物

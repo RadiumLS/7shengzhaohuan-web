@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 import type { Deck } from './deck';
 import { ActionCard, CostType } from '../type/card';
-import { CharEntity, LogicRecord, RoundPhase, StartPhase, SummonsEntity, SupportEntity } from '../type/play';
+import { ActiveStateEntity, CharEntity, LogicRecord, RoundPhase, StartPhase, SummonsEntity, SupportEntity } from '../type/play';
 import { decode, encode } from '../utils/share_code';
 import actionCardData from '../data/action_card.json';
 import arrayShuffle from 'array-shuffle';
@@ -29,6 +29,10 @@ interface PlayerState {
   support: SupportEntity[],
   summons: SummonsEntity[],
   chars: CharEntity[],
+  /**
+   * 出战状态实体, 注意不是挂在角色上的状态
+   */
+  activeState: ActiveStateEntity[],
   /**
    * 对局开始后, 牌堆中的牌的列表
    */
@@ -73,6 +77,7 @@ let initialState: PlayState = {
     support: [],
     summons: [],
     chars: [],
+    activeState: [],
     tempCards: [],
   },
   kimiState: {
@@ -81,6 +86,7 @@ let initialState: PlayState = {
     support: [],
     summons: [],
     chars: [],
+    activeState: [],
     tempCards: [],
   },
   historyPhase: [],
@@ -111,6 +117,7 @@ const playSlice = createSlice({
         return {
           id: charId,
           name: `开发角色_${index}`,
+          owner: 'boku' as PlayerName,
           health: 10,
           energy: 0,
           charState: [],
@@ -121,6 +128,7 @@ const playSlice = createSlice({
         return {
           id: charId,
           name: `开发角色_${index}`,
+          owner: 'kimi' as PlayerName,
           health: 10,
           energy: 0,
           charState: [],
