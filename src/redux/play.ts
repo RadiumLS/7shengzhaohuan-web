@@ -248,6 +248,15 @@ const playSlice = createSlice({
         state.kimiState.pileCards?.push(...cards);
       }
     },
+    // 增加卡牌到手牌
+    pushHandCards: function(state, action: PayloadAction<{player: PlayerName, cards: ActionCard[]}>) {
+      const {player, cards} = action.payload;
+      if(player === 'boku') {
+        state.bokuState.hand.push(...cards);
+      } else {
+        state.kimiState.hand.push(...cards);
+      }
+    },
 
     // 开始对局, 产生一对新的StartPhase
     startDuel: function(state, action: PayloadAction<{offensive: PlayerName}>)  {
@@ -307,6 +316,7 @@ export const {
   addRecordToCurrPhase,
   drawCardsFromPile,
   returnCardsToPile,
+  pushHandCards,
   goNextPhase,
 } = playSlice.actions
 export default playSlice.reducer

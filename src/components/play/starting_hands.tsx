@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { PlayerName, addRecordToCurrPhase, drawCardsFromPile, dropTempCards, goNextPhase, returnCardsToPile } from "../../redux/play";
+import { PlayerName, addRecordToCurrPhase, drawCardsFromPile, dropTempCards, goNextPhase, pushHandCards, returnCardsToPile } from "../../redux/play";
 import { ActionCardType, PhaseType } from "../../type/enums";
 import { StartPhase } from "../../type/play";
 import { ActionCard } from "../../type/card";
@@ -138,7 +138,11 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
   };
   const finalConfirm = () => {
     setConfirm(true);
-    // TODO: tempCards进手牌
+    // tempCards进手牌
+    dispatch(pushHandCards({
+      player,
+      cards: tempCards,
+    }));
     if((currPhase as StartPhase).offensive === player) {
       // 当前角色是先手方, 则开启后手方的抽卡
       const defensivePlayer = player === 'boku' ? 'kimi' : 'boku';

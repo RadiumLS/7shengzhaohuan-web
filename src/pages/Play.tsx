@@ -95,7 +95,7 @@ function Play() {
         width: '50vw',
         height: '20vh',
       }} >
-        <Hands player='kimi'/>
+        <Hands player='boku'/>
       </MovableWrapper>
 
       {(currPhase?.type === PhaseType.StartDraw || currPhase?.type === PhaseType.StartSwitch) && 
