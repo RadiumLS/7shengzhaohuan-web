@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import { type ActionCardType } from "./enums";
+import { type ActionCardType, type Weapon } from "./enums";
 
 /** 七种元素类型 */
 enum Element {
@@ -30,14 +30,6 @@ enum Faction {
   Inazuma = 'inazuma', // 稻妻
   Sumeru = 'sumeru', // 须弥
   Fatui = 'fatui', // 愚人众
-}
-enum Weapon {
-  Sword = 'sword', // 单手剑
-  Bow = 'bow', // 弓
-  Claymore = 'claymore', // 双手剑
-  Catalyst = 'catalyst', // 法器
-  Polearm = 'Polearm', // 长柄武器
-  Other = 'other', // 其他武器, 通常是原魔
 }
 
 /**

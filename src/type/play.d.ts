@@ -2,12 +2,18 @@
 
 import { PlayerName } from "../redux/play";
 import { type } from './../redux/index';
-import { type PhaseType } from './enums'
+import { type Weapon, type PhaseType } from './enums'
+import { type PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 
 /**
  * 触发器, 在不同的阶段被触发, 然后执行一些操作
+ * 接受系列payload, 返回处理后的系列payload
+ * 如果需要保存记录, 也通过payload来处理
+ * 实际逻辑处理的时候在某个时间点之后, 通过dispatch来触发全部的payload
  */
-type Trigger = () => LogicRecord[];
+interface Trigger {
+  (action: PayloadAction[]): PayloadAction[];
+}
 /**
  * 逻辑记录, 用来记录所有的逻辑操作
  */
@@ -95,6 +101,14 @@ interface CharEntity extends LogicEntity {
    * 当前充能
    */
   energy: number,
+  /**
+   * 充能上限
+   */
+  energyMax: number,
+  /**
+   * 武器类型
+   */
+  weaponType: Weapon,
   /**
    * 角色状态
    */

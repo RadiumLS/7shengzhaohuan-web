@@ -7,7 +7,7 @@ import { ActiveStateEntity, CharEntity, LogicRecord, RoundPhase, StartPhase, Sum
 import { decode, encode } from '../utils/share_code';
 import actionCardData from '../data/action_card.json';
 import arrayShuffle from 'array-shuffle';
-import { ActionCardType, PhaseType } from '../type/enums';
+import { ActionCardType, PhaseType, Weapon } from '../type/enums';
 
 // TODO: 需要大量设计
 /**
@@ -120,8 +120,10 @@ const playSlice = createSlice({
           owner: 'boku' as PlayerName,
           health: 10,
           energy: 0,
+          energyMax: 3,
           charState: [],
           appledElement: [],
+          weaponType: Weapon.Sword,
         };
       })
       const kimiCharEntity = kimiCharIds.map((charId, index) => {
@@ -131,8 +133,10 @@ const playSlice = createSlice({
           owner: 'kimi' as PlayerName,
           health: 10,
           energy: 0,
+          energyMax: 3,
           charState: [],
           appledElement: [],
+          weaponType: Weapon.Sword,
         }
       })
       state.bokuState.chars = bokuCharEntity;

@@ -35,3 +35,12 @@ export enum PhaseType {
    */
   End = 'end',
 }
+
+export enum Weapon {
+  Sword = 'sword', // 单手剑
+  Bow = 'bow', // 弓
+  Claymore = 'claymore', // 双手剑
+  Catalyst = 'catalyst', // 法器
+  Polearm = 'Polearm', // 长柄武器
+  Other = 'other', // 其他武器, 通常是原魔
+}
