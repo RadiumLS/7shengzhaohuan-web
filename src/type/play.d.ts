@@ -1,6 +1,6 @@
 // 对局模拟中使用到的大量类型定义
 
-import { PlayerName } from "../redux/play";
+import { type PlayState, type PlayerName } from "../redux/play";
 import { type } from './../redux/index';
 import { type Weapon, type PhaseType } from './enums'
 import { type PayloadAction } from '@reduxjs/toolkit/dist/createAction';
@@ -12,7 +12,7 @@ import { type PayloadAction } from '@reduxjs/toolkit/dist/createAction';
  * 实际逻辑处理的时候在某个时间点之后, 通过dispatch来触发全部的payload
  */
 interface Trigger {
-  (action: PayloadAction[]): PayloadAction[];
+  (state: Readonly<PlayState>, actions: PayloadAction<unknown>[]): PayloadAction<unknown>[];
 }
 /**
  * 逻辑记录, 用来记录所有的逻辑操作
@@ -30,36 +30,36 @@ interface LogicEntity {
   /**
    * 实体从属于哪一方
    */
-  owner: PlayerName,
+  player: PlayerName,
   // TODO: 一大堆的……触发器
   /**
    * 投掷时触发器, 如7种元素的圣遗物
    */
-  diceTrigger?: Trigger[],
+  diceTriggers?: Trigger[],
   /**
    * 产生伤害时触发器, 如武器牌和绽放反应产生的草原核
    */
-  damageTrigger?: Trigger[],
+  damageTriggers?: Trigger[],
   /**
    * 造成伤害时触发器, 如结晶盾和减伤状态
    */
-  hitTirgger?: Trigger[],
+  hitTriggers?: Trigger[],
   /**
    * 敌方使用技能后触发器, 如可莉的元素爆发产生的轰轰火花, 还有愚人众的阴谋
    */
-  enemySkillTrigger?: Trigger[],
+  enemySkillTriggers?: Trigger[],
   /**
    * 元素反应触发器, 如草神的蕴种印和支援牌常九爷
    */
-  reactionTrigger?: Trigger[],
+  reactionTriggers?: Trigger[],
   /**
    * 切换人物后触发器, 如凯亚的元素爆发产生的冰棱
    */
-  switchEndTrigger?: Trigger[],
+  switchEndTriggers?: Trigger[],
   /**
    * 切换人物前触发器, 如支援牌凯瑟琳和藏镜仕女天赋牌
    */
-  switchStartTrigger?: Trigger[],
+  switchStartTriggers?: Trigger[],
   // 先写这么点……好像还有非常多……
 }
 interface EquipmentEngity extends LogicEntity {
@@ -89,6 +89,8 @@ interface ActiveStateEntity extends LogicEntity {
  */
 interface CharEntity extends LogicEntity {
   id: number,
+  // 012决定是左中右角色
+  index: number,
   /**
    * 角色牌名称
    */

@@ -3,7 +3,10 @@ import { createSlice } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 import type { Deck } from './deck';
 import { ActionCard, CostType } from '../type/card';
-import { ActiveStateEntity, CharEntity, LogicRecord, RoundPhase, StartPhase, SummonsEntity, SupportEntity } from '../type/play';
+import {
+  ActiveStateEntity, CharEntity, CharStateEntity,
+  LogicRecord, RoundPhase, StartPhase, SummonsEntity, SupportEntity 
+} from '../type/play';
 import { decode, encode } from '../utils/share_code';
 import actionCardData from '../data/action_card.json';
 import arrayShuffle from 'array-shuffle';
@@ -29,6 +32,7 @@ interface PlayerState {
   support: SupportEntity[],
   summons: SummonsEntity[],
   chars: CharEntity[],
+  activeCharIndex?: number,
   /**
    * 出战状态实体, 注意不是挂在角色上的状态
    */
@@ -51,7 +55,7 @@ interface PlayerState {
  * @member historyPhase 对局历史, 以阶段为单位
  * @member nextPhase 下个阶段
  */
-interface PlayState {
+export interface PlayState {
   bokuState: PlayerState,
   kimiState: PlayerState,
   historyPhase: RoundPhase[],
@@ -116,8 +120,9 @@ const playSlice = createSlice({
       const bokuCharEntity = bokuCharIds.map((charId, index) => {
         return {
           id: charId,
+          index: index,
           name: `开发角色_${index}`,
-          owner: 'boku' as PlayerName,
+          player: 'boku' as PlayerName,
           health: 10,
           energy: 0,
           energyMax: 3,
@@ -129,8 +134,9 @@ const playSlice = createSlice({
       const kimiCharEntity = kimiCharIds.map((charId, index) => {
         return {
           id: charId,
+          index: index,
           name: `开发角色_${index}`,
-          owner: 'kimi' as PlayerName,
+          player: 'kimi' as PlayerName,
           health: 10,
           energy: 0,
           energyMax: 3,
@@ -285,18 +291,7 @@ const playSlice = createSlice({
         isDone: false,
         record: []
       };
-      /*
-      const defensiveStartPhase: StartPhase = {
-        offensive: offensive,
-        player: offensive === 'boku' ? 'kimi' : 'boku',
-        id: 0,
-        name: '开始阶段_后手抽牌',
-        isActive: false,
-        record: []
-      };
-      */
       state.currPhase = offensiveStartPhase;
-      // state.nextPhase = defensiveStartPhase;
     },
     // 朝当前阶段添加一条逻辑记录
     addRecordToCurrPhase: function(state, action: PayloadAction<{record: LogicRecord}>) {
@@ -316,6 +311,25 @@ const playSlice = createSlice({
       nextPhase.isDone = false;
       state.currPhase = nextPhase;
     },
+    // 开始处理一个逻辑帧
+    beginFrame: function(state, action: PayloadAction<{startAction: PayloadAction[]}>) {
+      // 注意, 这里是逻辑帧的起始, 也就是说, 一个逻辑帧可能会有多个action
+      // 但是, 这些action是按照顺序处理的
+      const { startAction } = action.payload;
+      // TODO: 这里先提出一个抽象的函数
+      // 这个函数会将遍历全部的entity列表, 然后提取对应的trigger去处理 一个action
+      const xxFunc: (action: PayloadAction[]) => PayloadAction[] = (actions: PayloadAction[]) => {
+        return actions;
+      };
+    },
+    // 创建角色状态
+    createCharState: function(state, action: PayloadAction<{charStateEntity: CharStateEntity, charIndex: number}>) {
+      const { charStateEntity, charIndex } = action.payload;
+      const { player } = charStateEntity;
+      const targetChar = player === 'boku' ? state.bokuState.chars[charIndex] : state.kimiState.chars[charIndex];
+      targetChar.charState.push(charStateEntity);
+    },
+    // TODO: 创建出战状态
   }
 });
 
@@ -329,6 +343,7 @@ export const {
   drawCardsFromPile,
   returnCardsToPile,
   pushHandCards,
+  createCharState,
   goNextPhase,
 } = playSlice.actions
 export default playSlice.reducer
