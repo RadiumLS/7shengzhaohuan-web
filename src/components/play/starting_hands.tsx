@@ -160,7 +160,7 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
       }))
     } else {
       // 当前角色不是先手方, 则说明双方初始牌抽取完毕
-      // 开启选择出战角色阶段
+      // 开启选择出战角色阶段, 由CharArea组件做处理
       const nextPhase: StartPhase = {
         id: 0,
         player: (currPhase as StartPhase).offensive,

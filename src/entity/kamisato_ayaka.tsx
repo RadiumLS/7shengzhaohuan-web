@@ -8,7 +8,7 @@ const t = (s: string) => s;
 
 export class KamisatoAyaka implements CharEntity {
   constructor(player: PlayerName, index: number) {
-    // FIXME: 使用具体的卡牌id
+    // 卡牌id, 用于展示卡牌
     this.id = 5;
     this.index = index;
     this.name = t('神里绫华');

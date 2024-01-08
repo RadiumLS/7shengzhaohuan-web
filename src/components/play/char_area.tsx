@@ -1,8 +1,8 @@
 // 对局过程中的角色牌展示区域
 
 import React from "react";
-import { useAppSelector } from "../../redux/hooks";
-import { PlayerName } from "../../redux/play";
+import { PlayerName } from "@src/redux/play";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 
 const CharArea : React.FC<{player: PlayerName}> = (prop) => {
