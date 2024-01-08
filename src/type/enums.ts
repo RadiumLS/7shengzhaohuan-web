@@ -36,6 +36,16 @@ export enum PhaseType {
   End = 'end',
 }
 
+export enum Element {
+  Pyro = 'pryo', // 火
+  Hydro = 'hydro', // 水
+  Geo = 'geo', // 岩
+  Electro = 'electro', // 雷
+  Dendro = 'dendro', // 草
+  Cryo = 'cryo', // 冰
+  Anemo = 'anemo', // 风
+}
+
 export enum Weapon {
   Sword = 'sword', // 单手剑
   Bow = 'bow', // 弓

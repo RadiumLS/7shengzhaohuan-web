@@ -1,6 +1,6 @@
 // 神里凌华角色牌 以及相关的卡牌的Entity实现
 import { PlayerName, createCharState } from '../redux/play';
-import { Weapon } from '../type/enums';
+import { Weapon, Element } from '../type/enums';
 import { CharEntity, CharStateEntity, EquipmentEngity, Trigger } from '../type/play';
 
 // 预留的i18n函数
@@ -9,7 +9,7 @@ const t = (s: string) => s;
 export class KamisatoAyaka implements CharEntity {
   constructor(player: PlayerName, index: number) {
     // FIXME: 使用具体的卡牌id
-    this.id = 0;
+    this.id = 5;
     this.index = index;
     this.name = t('神里绫华');
     this.player = player;

@@ -11,6 +11,8 @@ import { decode, encode } from '../utils/share_code';
 import actionCardData from '../data/action_card.json';
 import arrayShuffle from 'array-shuffle';
 import { ActionCardType, PhaseType, Weapon } from '../type/enums';
+import {getCharacterEntityClassById} from '../utils/entity_class';
+import { KamisatoAyaka } from '../entity/kamisato_ayaka';
 
 // TODO: 需要大量设计
 /**
@@ -20,6 +22,7 @@ import { ActionCardType, PhaseType, Weapon } from '../type/enums';
  */
 type Dice = Element | 'omni';
 export type PlayerName = 'boku' | 'kimi';
+
 
 /**
  * 对局中的玩家状态
@@ -117,34 +120,10 @@ const playSlice = createSlice({
       // TODO: 角色牌可能有自身的角色状态
       // TODO: 根据角色牌的血量等信息进行初始化
       // XXX: 这里先写假的, 方便调组件使用
-      const bokuCharEntity = bokuCharIds.map((charId, index) => {
-        return {
-          id: charId,
-          index: index,
-          name: `开发角色_${index}`,
-          player: 'boku' as PlayerName,
-          health: 10,
-          energy: 0,
-          energyMax: 3,
-          charState: [],
-          appledElement: [],
-          weaponType: Weapon.Sword,
-        };
-      })
-      const kimiCharEntity = kimiCharIds.map((charId, index) => {
-        return {
-          id: charId,
-          index: index,
-          name: `开发角色_${index}`,
-          player: 'kimi' as PlayerName,
-          health: 10,
-          energy: 0,
-          energyMax: 3,
-          charState: [],
-          appledElement: [],
-          weaponType: Weapon.Sword,
-        }
-      })
+      const characterClass = getCharacterEntityClassById(5);
+      const bokuCharEntity = [0,1,2].map((index) => characterClass('boku', index));
+      const kimiCharEntity = [0,1,2].map((index) => characterClass('kimi', index));
+
       state.bokuState.chars = bokuCharEntity;
       state.kimiState.chars = kimiCharEntity;
     },

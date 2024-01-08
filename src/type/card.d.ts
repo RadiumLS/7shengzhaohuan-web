@@ -1,16 +1,11 @@
 import { CSSProperties } from 'react';
-import { type ActionCardType, type Weapon } from "./enums";
+import {
+  type ActionCardType,
+  type Weapon,
+  type Element,
+} from "./enums";
 
 /** 七种元素类型 */
-enum Element {
-  Pyro = 'pryo', // 火
-  Hydro = 'hydro', // 水
-  Geo = 'geo', // 岩
-  Electro = 'electro', // 雷
-  Dendro = 'dendro', // 草
-  Cryo = 'cryo', // 冰
-  Anemo = 'anemo', // 风
-}
 /** 卡牌消耗类型, 分元素骰, 同属性骰, 无属性骰, 还有充能 */
 type CostType = Element | 'matching' |'unaligned' | 'energy';
 /** 消耗, 记录数量和类型*/

@@ -2,7 +2,11 @@
 
 import { type PlayState, type PlayerName } from "../redux/play";
 import { type } from './../redux/index';
-import { type Weapon, type PhaseType } from './enums'
+import {
+  type Weapon,
+  type PhaseType,
+  type Element,
+} from './enums'
 import { type PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 
 /**
