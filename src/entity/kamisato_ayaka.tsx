@@ -1,6 +1,6 @@
 // 神里凌华角色牌 以及相关的卡牌的Entity实现
 import { PlayerName, createCharState } from '../redux/play';
-import { Weapon, Element } from '../type/enums';
+import { Weapon, Element, TriggerType } from '../type/enums';
 import { CharEntity, CharStateEntity, EquipmentEngity, Trigger } from '../type/play';
 
 // 预留的i18n函数
@@ -19,8 +19,12 @@ export class KamisatoAyaka implements CharEntity {
     this.charState = [];
     this.appledElement = [];
     this.weaponType = Weapon.Sword;
-    this.switchEndTriggers = [this.senhoTrigger];
+    // this.switchEndTriggers = [this.senhoTrigger];
+    this.triggerMap = {
+      [TriggerType.SwitchEnd]: [this.senhoTrigger],
+    }
   }
+  triggerMap: Partial<Record<TriggerType, Trigger[]>>;
   weaponType: Weapon;
   weapon?: EquipmentEngity | undefined;
   equipment?: EquipmentEngity | undefined;
@@ -34,7 +38,6 @@ export class KamisatoAyaka implements CharEntity {
   charState: CharStateEntity[];
   appledElement: Element[];
   player: PlayerName;
-  switchEndTriggers: Trigger[];
   // 切换至神里绫华后, 附属角色状态霰步Senho
   senhoTrigger: Trigger = (state, actions) => {
     const playerState = this.player === 'boku' ? state.bokuState : state.kimiState;
@@ -55,18 +58,12 @@ export class KamisatoAyaka implements CharEntity {
 export class Senho implements CharStateEntity {
   constructor(owner: PlayerName) {
     this.player = owner;
+    this.triggerMap = {};
   }
-  
+  triggerMap: Partial<Record<TriggerType, Trigger[]>>;
   player: PlayerName;
   // TODO: 造成伤害前的Trigger, 伤害变更成冰伤害
   // TODO: 造成伤害前的Trigger, 如果装备了天赋牌, 那么冰伤害+1
-  diceTrigger?: Trigger[] | undefined;
-  damageTrigger?: Trigger[] | undefined;
-  hitTirgger?: Trigger[] | undefined;
-  enemySkillTrigger?: Trigger[] | undefined;
-  reactionTrigger?: Trigger[] | undefined;
-  switchEndTrigger?: Trigger[] | undefined;
-  switchStartTrigger?: Trigger[] | undefined;
 }
 // TODO: 大招召唤物
 // TODO: 天赋牌

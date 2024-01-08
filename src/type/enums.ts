@@ -54,3 +54,35 @@ export enum Weapon {
   Polearm = 'Polearm', // 长柄武器
   Other = 'other', // 其他武器, 通常是原魔
 }
+
+// 触发器类型, 先写这么点……好像还有非常多……
+export enum TriggerType {
+  /**
+   * 投掷时触发器, 如7种元素的圣遗物
+   */
+  Dice = 'dice',
+  /**
+   * 产生伤害时触发器, 如武器牌和绽放反应产生的草原核
+   */
+  Damage = 'damage',
+  /**
+   * 造成伤害时触发器, 如结晶盾和减伤状态
+   */
+  Hit = 'hit',
+  /**
+   * 敌方使用技能后触发器, 如可莉的元素爆发产生的轰轰火花, 还有愚人众的阴谋
+   */
+  EnemySkill = 'enemySkill',
+  /**
+   * 元素反应触发器, 如草神的蕴种印和支援牌常九爷
+   */
+  Reaction = 'reaction',
+  /**
+   * 切换人物后触发器, 如凯亚的元素爆发产生的冰棱
+   */
+  SwitchEnd = 'switchEnd',
+  /**
+   * 切换人物前触发器, 如支援牌凯瑟琳和藏镜仕女天赋牌
+   */
+  SwitchStart = 'switchStart',
+}

@@ -35,37 +35,9 @@ interface LogicEntity {
    * 实体从属于哪一方
    */
   player: PlayerName,
-  // TODO: 一大堆的……触发器
-  /**
-   * 投掷时触发器, 如7种元素的圣遗物
-   */
-  diceTriggers?: Trigger[],
-  /**
-   * 产生伤害时触发器, 如武器牌和绽放反应产生的草原核
-   */
-  damageTriggers?: Trigger[],
-  /**
-   * 造成伤害时触发器, 如结晶盾和减伤状态
-   */
-  hitTriggers?: Trigger[],
-  /**
-   * 敌方使用技能后触发器, 如可莉的元素爆发产生的轰轰火花, 还有愚人众的阴谋
-   */
-  enemySkillTriggers?: Trigger[],
-  /**
-   * 元素反应触发器, 如草神的蕴种印和支援牌常九爷
-   */
-  reactionTriggers?: Trigger[],
-  /**
-   * 切换人物后触发器, 如凯亚的元素爆发产生的冰棱
-   */
-  switchEndTriggers?: Trigger[],
-  /**
-   * 切换人物前触发器, 如支援牌凯瑟琳和藏镜仕女天赋牌
-   */
-  switchStartTriggers?: Trigger[],
-  // 先写这么点……好像还有非常多……
+  triggerMap: Partial<Record<TriggerType, Trigger[]>>;
 }
+
 interface EquipmentEngity extends LogicEntity {
 }
 /**

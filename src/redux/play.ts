@@ -2,11 +2,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 import type { Deck } from './deck';
-import { ActionCard, CostType } from '../type/card';
+import { ActionCard, CostType } from '@src/type/card';
 import {
   ActiveStateEntity, CharEntity, CharStateEntity,
-  LogicRecord, RoundPhase, StartPhase, SummonsEntity, SupportEntity 
-} from '../type/play';
+  LogicEntity,
+  LogicRecord, RoundPhase, StartPhase, SummonsEntity, SupportEntity, Trigger 
+} from '@src/type/play';
 import { decode, encode } from '../utils/share_code';
 import actionCardData from '../data/action_card.json';
 import arrayShuffle from 'array-shuffle';
@@ -290,6 +291,14 @@ const playSlice = createSlice({
       nextPhase.isDone = false;
       state.currPhase = nextPhase;
     },
+    switchChar: function(state, action: PayloadAction<{player: PlayerName, charIndex: number}>) {
+      const { player, charIndex } = action.payload;
+      if(player === 'boku') {
+        state.bokuState.activeCharIndex = charIndex;
+      } else {
+        state.kimiState.activeCharIndex = charIndex;
+      }
+    },
     // 开始处理一个逻辑帧
     beginFrame: function(state, action: PayloadAction<{startAction: PayloadAction[]}>) {
       // 注意, 这里是逻辑帧的起始, 也就是说, 一个逻辑帧可能会有多个action
@@ -324,5 +333,36 @@ export const {
   pushHandCards,
   createCharState,
   goNextPhase,
+  switchChar,
 } = playSlice.actions
+export const getAllEntity = (state: Readonly<PlayState>) => {
+  // XXX: 可能要考虑Entity的顺序问题……或许需要给Trigger增加优先级？
+  const allEntity: LogicEntity[] = [];
+  for(let i = 0; i < 3; i++) {
+    const bokuOneChar = state.bokuState.chars[i];
+    const kimiOneChar = state.kimiState.chars[i];
+
+    allEntity.push(bokuOneChar);
+    allEntity.push(...bokuOneChar.charState);
+    bokuOneChar.equipment && allEntity.push(bokuOneChar.equipment);
+    bokuOneChar.talent && allEntity.push(bokuOneChar.talent);
+    bokuOneChar.weapon && allEntity.push(bokuOneChar.weapon);
+
+    allEntity.push(kimiOneChar);
+    allEntity.push(...kimiOneChar.charState);
+    kimiOneChar.equipment && allEntity.push(kimiOneChar.equipment);
+    kimiOneChar.talent && allEntity.push(kimiOneChar.talent);
+    kimiOneChar.weapon && allEntity.push(kimiOneChar.weapon);
+  }
+  allEntity.push(...state.bokuState.activeState);
+  allEntity.push(...state.kimiState.activeState);
+  allEntity.push(...state.bokuState.support);
+  allEntity.push(...state.kimiState.support);
+  allEntity.push(...state.bokuState.summons);
+  allEntity.push(...state.kimiState.summons);
+
+  return allEntity;
+}
+// TODO: 增加函数, 遍历allEntity, 然后根据指定的trigger来处理并返回action列表
+
 export default playSlice.reducer
