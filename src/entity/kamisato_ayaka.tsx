@@ -72,11 +72,13 @@ export class KamisatoAyaka implements CharEntity {
 // TODO: 角色状态-霰步写在这里
 export class Senho implements CharStateEntity {
   constructor(owner: PlayerName) {
+    this.name = '霰步';
     this.player = owner;
     this.triggerMap = {};
   }
   triggerMap: Partial<Record<TriggerType, Trigger[]>>;
   player: PlayerName;
+  name?: string;
   // TODO: 造成伤害前的Trigger, 伤害变更成冰伤害
   // TODO: 造成伤害前的Trigger, 如果装备了天赋牌, 那么冰伤害+1
   // TODO: 回合结束的Trigger, 移除角色状态

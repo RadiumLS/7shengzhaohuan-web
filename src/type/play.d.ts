@@ -35,6 +35,10 @@ interface LogicEntity {
    * 实体从属于哪一方
    */
   player: PlayerName,
+  /**
+   * 实体的名字, 方便展示
+   */
+  name?: string,
   triggerMap: Partial<Record<TriggerType, Trigger[]>>;
 }
 

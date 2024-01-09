@@ -20,6 +20,7 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
 
   const currPhase = useAppSelector((state) => state.play.currPhase);
   const playState = useAppSelector((state) => state.play);
+  const playerState = useAppSelector((state) => player === 'boku' ? state.play.bokuState : state.play.kimiState);
   const chars = useAppSelector((state) => player === 'boku' ? state.play.bokuState.chars : state.play.kimiState.chars);
   const switchToChar = (index: number) => {
     const initAction = switchChar({player, charIndex: index});
@@ -36,21 +37,56 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
       chars.map((oneChar, index) => {
         const {id} = oneChar;
         return <div
-          className="flex-1  relative" 
+          className={`flex-1 relative ${playerState.activeCharIndex === index && (player === 'boku' ? '-top-8' : 'top-8')}`}
           key={`boku_char_${index}`}
           onClick={() => {
             setSwitchConfirm((prev) => !prev);
             setSwitchIndex(index);
           }}
         >
-          <img src={`/static/icons/${id}.png`} className="max-h-full"/>
-          {switchConfirm && switchIndex === index &&
-            <div className="absolute w-full h-1/2 bg-slate-400 top-1/4">
-              TODO: 标记切换角色的图片
-              <br/>
-              <button onClick={() => {switchToChar(index)}}>确定切换</button>
+          <div className="relative w-full h-full">
+            <div className="absolute w-8 h-8 top-0 left-0 flex text-2xl text-white">
+              {
+                // TODO: 用组件展示血量
+                oneChar.health
+              }
             </div>
-          }
+            <div className="absolute w-8 h-16 top-0 right-0 flex text-2xl text-white">
+              {
+                // TODO: 用组件展示充能
+                oneChar.energy
+              }
+            </div>
+            {
+              // TODO: 展示装备区域, 包括天赋、武器、圣遗物
+            }
+            <img src={`/static/icons/${id}.png`} className="max-h-full"/>
+            <div className="absolute w-full h-8 top-32 flex">
+              {oneChar.charState.map((oneState, index) => {
+                // TODO: 角色状态的展示, 需要补充图片
+                return <div className="flex-1 ">
+                  {oneState.name}
+                </div>
+              })}
+            </div>
+            {switchConfirm && switchIndex === index &&
+              <div className="absolute w-full h-1/2 bg-slate-400 top-1/4">
+                TODO: 标记切换角色的图片
+                <br/>
+                <button onClick={() => {switchToChar(index)}}>确定切换</button>
+              </div>
+            }
+            {playerState.activeCharIndex === index && playerState.activeState.length > 0 &&
+              <div className="absolute w-full h-8 top-full flex">
+                {playerState.activeState.map((oneState, index) => {
+                  // TODO: 出战状态的展示, 需要补充图片
+                  return <div className="flex-1 ">
+                    {oneState.name}
+                  </div>
+                })}
+              </div>
+            }
+          </div>
         </div>;
       })
     }
