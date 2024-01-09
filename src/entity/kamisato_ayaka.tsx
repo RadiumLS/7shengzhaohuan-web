@@ -42,14 +42,29 @@ export class KamisatoAyaka implements CharEntity {
   senhoTrigger: Trigger = (state, actions) => {
     const playerState = this.player === 'boku' ? state.bokuState : state.kimiState;
     const {activeCharIndex, chars } = playerState;
+    let indexAfterSwitch = activeCharIndex;
+    // 检查actions以确认切换后的角色的index
+    for(let i = 0; i < actions.length; i++) {
+      // HACK: 这个type和payload的具体值是从switchChar的reducer拷贝过来的
+      const payload = actions[i].payload as {player: PlayerName, charIndex: number};
+      if(payload.player === this.player && actions[i].type === 'play/switchChar') {
+        indexAfterSwitch = payload.charIndex;
+      }
+    }
     // 检查切换后的角色是否是神里绫华
-    if(activeCharIndex && chars[activeCharIndex].id === this.id) {
-      const senho = new Senho(this.player);
-      const newAction = createCharState({
-        charIndex: activeCharIndex,
-        charStateEntity: senho,
-      });
-      return actions.concat(newAction);
+    if(indexAfterSwitch === this.index && chars[indexAfterSwitch].id === this.id) {
+      const existSenho = this.charState.find((oneCharState) => {
+        return oneCharState instanceof Senho;
+      })
+      // 如果没有附属霰步, 则附属霰步
+      if(!existSenho) {
+        const senho = new Senho(this.player);
+        const newAction = createCharState({
+          charIndex: indexAfterSwitch,
+          charStateEntity: senho,
+        });
+        actions.push(newAction);
+      }
     }
     return actions;
   }
@@ -64,6 +79,7 @@ export class Senho implements CharStateEntity {
   player: PlayerName;
   // TODO: 造成伤害前的Trigger, 伤害变更成冰伤害
   // TODO: 造成伤害前的Trigger, 如果装备了天赋牌, 那么冰伤害+1
+  // TODO: 回合结束的Trigger, 移除角色状态
 }
 // TODO: 大招召唤物
 // TODO: 天赋牌

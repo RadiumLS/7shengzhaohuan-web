@@ -8,12 +8,11 @@ import {
   LogicEntity,
   LogicRecord, RoundPhase, StartPhase, SummonsEntity, SupportEntity, Trigger 
 } from '@src/type/play';
-import { decode, encode } from '../utils/share_code';
+import { decode } from '../utils/share_code';
 import actionCardData from '../data/action_card.json';
 import arrayShuffle from 'array-shuffle';
-import { ActionCardType, PhaseType, Weapon } from '../type/enums';
+import { ActionCardType, PhaseType, TriggerType, Weapon } from '../type/enums';
 import {getCharacterEntityClassById} from '../utils/entity_class';
-import { KamisatoAyaka } from '../entity/kamisato_ayaka';
 
 // TODO: 需要大量设计
 /**
@@ -317,7 +316,6 @@ const playSlice = createSlice({
       const targetChar = player === 'boku' ? state.bokuState.chars[charIndex] : state.kimiState.chars[charIndex];
       targetChar.charState.push(charStateEntity);
     },
-    // TODO: 创建出战状态
   }
 });
 
@@ -363,6 +361,18 @@ export const getAllEntity = (state: Readonly<PlayState>) => {
 
   return allEntity;
 }
-// TODO: 增加函数, 遍历allEntity, 然后根据指定的trigger来处理并返回action列表
+// 遍历allEntity, 然后根据指定的trigger来处理并返回action列表
+export const computeTriggerActions = (state: Readonly<PlayState>, triggerType: TriggerType, initActions: PayloadAction<unknown>[]) => {
+  const allEntity = getAllEntity(state);
+  const allTrigger = [];
+  for(let i = 0; i < allEntity.length; i++) {
+    allTrigger.push(...(allEntity[i].triggerMap[triggerType] || []));
+  }
+  const allActions = allTrigger.reduce((prevActions, trigger) => {
+    return trigger(state, prevActions);
+  }, initActions);
+
+  return allActions;
+}
 
 export default playSlice.reducer
