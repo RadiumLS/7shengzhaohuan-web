@@ -78,7 +78,7 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
         const nextPhase: StartPhase = {
           id: 0,
           player: player,
-          name: `${player}选择替换手牌`,
+          name: `${player === 'boku' ? '本方': '对方'}选择替换手牌`,
           type: PhaseType.StartSwitch,
           isActive: false,
           record: [],
@@ -176,29 +176,25 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
     }
   };
 
-  if(currPhase?.type === PhaseType.StartDraw || currPhase?.type === PhaseType.StartSwitch) {
-    return <div className="">
-      {currPhase.player === player && <div>
-        { currPhase?.type === PhaseType.StartDraw && <button onClick={startDraw}>抽{`${player === 'boku' ? '本方': '对方'}`}起始牌</button>}
-        <div className="flex gap-2">
-          {tempCards.map((oneCard, index) => {
-            const {id} = oneCard;
-            return <div className="flex-1 relative" onClick={() => setSwitchMark(index)} key={`temp_card_${index}`}>
-              <img src={`/static/icons/${id}.png`} 
-                className="w-full"
-              />
-              {switchMarkList[index] && <div className="absolute w-full h-1/2 bg-slate-400 top-1/4">
-                TODO：标记换牌的图片
-              </div>}
-            </div>
-          })}
-        </div>
-        {currPhase?.type === PhaseType.StartSwitch && !switched && <button className="" onClick={switchCards}>确认替换</button>}
-        {switched && !confirm && <button className="" onClick={finalConfirm}>{`${player === 'boku' ? '本方': '对方'}`}起始手牌确认</button>}
-      </div>}
-    </div>;
-  } else {
-    return <></>
-  }
+  return <div className={`border-solid border-4 h-full ${currPhase?.player === 'boku' ? `border-boku bg-bgboku` : `border-kimi bg-bgkimi`}`}>
+    {currPhase?.player === player && <div>
+      { currPhase?.type === PhaseType.StartDraw && <button onClick={startDraw}>抽{`${player === 'boku' ? '本方': '对方'}`}起始牌</button>}
+      <div className="flex gap-2">
+        {tempCards.map((oneCard, index) => {
+          const {id} = oneCard;
+          return <div className="flex-1 relative" onClick={() => setSwitchMark(index)} key={`temp_card_${index}`}>
+            <img src={`/static/icons/${id}.png`} 
+              className="w-full"
+            />
+            {switchMarkList[index] && <div className="absolute w-full h-1/2 bg-slate-400 top-1/4">
+              TODO：标记换牌的图片
+            </div>}
+          </div>
+        })}
+      </div>
+      {currPhase?.type === PhaseType.StartSwitch && !switched && <button className="" onClick={switchCards}>确认替换</button>}
+      {switched && !confirm && <button className="" onClick={finalConfirm}>{`${player === 'boku' ? '本方': '对方'}`}起始手牌确认</button>}
+    </div>}
+  </div>;
 }
 export default StaringHands;

@@ -46,11 +46,22 @@ function Play() {
     dispatch(startDuel({offensive: offensive}));
   }
 
+  const developButtonClick = () => {
+    // 启动一个action , 然后是后续的trigger触发等系列逻辑……
+    // 
+  }
+
   if(playing) {
     return <div className="bp-main-panel" style={{
       backgroundImage: 'url("/static/bg/bp_bg.png")',
       position: 'relative',
     }}>
+      <div className="absolute w-40 min-h-20 border-solid border-4 border-white bg-[#fffa] left-4 top-4">
+        当前阶段: <br/>
+        {currPhase?.name}<br/>
+        当前行动方: <br/>
+        {currPhase?.player && currPhase?.player === 'boku' ? '本方' : '对方'}<br/>
+      </div>
       <MovableWrapper defaultPostion={{
         title: 'developArea',
         top: '12%',
@@ -75,7 +86,7 @@ function Play() {
         top: '12%',
         left: '25%',
         width: '50vw',
-        height: '20vh',
+        height: '120px',
       }} >
         <Hands player='kimi'/>
       </MovableWrapper>
@@ -93,7 +104,7 @@ function Play() {
         top: '72%',
         left: '25%',
         width: '50vw',
-        height: '20vh',
+        height: '120px',
       }} >
         <Hands player='boku'/>
       </MovableWrapper>
@@ -101,10 +112,10 @@ function Play() {
       {(currPhase?.type === PhaseType.StartDraw || currPhase?.type === PhaseType.StartSwitch) && 
         currPhase.player === 'boku' &&  <MovableWrapper defaultPostion={{
             title: '本方起始手牌区域',
-            top: '20%',
+            top: '40%',
             left: '20%',
-            width: '60%',
-            height: '30%',
+            width: '450px',
+            height: '175px',
           }}>
             <StaringHands player="boku"/>
           </MovableWrapper>
@@ -114,8 +125,8 @@ function Play() {
             title: '对方起始手牌区域',
             top: '20%',
             left: '20%',
-            width: '60%',
-            height: '30%',
+            width: '450px',
+            height: '175px',
           }}>
             <StaringHands player="kimi"/>
           </MovableWrapper>
