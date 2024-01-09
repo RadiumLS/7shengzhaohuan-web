@@ -34,6 +34,10 @@ export enum PhaseType {
    * 回合结束阶段, 抽牌, 结算召唤物
    */
   End = 'end',
+  /**
+   * 由于阵亡而导致的强制切换角色阶段
+   */
+  DeadSwitch = 'dead_switch',
 }
 
 export enum Element {
