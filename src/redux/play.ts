@@ -11,8 +11,9 @@ import {
 import { decode } from '../utils/share_code';
 import actionCardData from '../data/action_card.json';
 import arrayShuffle from 'array-shuffle';
-import { ActionCardType, PhaseType, TriggerType, Weapon } from '../type/enums';
+import { ActionCardType, PhaseType, TriggerType, Element } from '../type/enums';
 import {getCharacterEntityClassById} from '../utils/entity_class';
+import { rollRandomDice } from '../utils/dice'
 
 // TODO: 需要大量设计
 /**
@@ -20,7 +21,9 @@ import {getCharacterEntityClassById} from '../utils/entity_class';
  * @param Element 元素骰
  * @param omni 万能骰
  */
-type Dice = Element | 'omni';
+export type Dice = Element | 'omni';
+// 要投掷的骰子类型
+export type RollDice = Dice | 'random';
 export type PlayerName = 'boku' | 'kimi';
 
 
@@ -298,6 +301,40 @@ const playSlice = createSlice({
         state.kimiState.activeCharIndex = charIndex;
       }
     },
+    // 开局阶段投掷骰子, 注意和重新投掷是有区别的
+    rollDice: function(state, action: PayloadAction<{
+      player: PlayerName,
+      count: number,
+      diceType: RollDice,
+    }>) {
+      const { player, count, diceType } = action.payload;
+      const rollResult: Dice[] = [];
+      if(diceType === 'random') {
+        rollResult.push(...rollRandomDice(count));
+      } else {
+        rollResult.push(...(new Array(count).fill(diceType)));
+      }
+      if(player === 'boku') {
+        state.bokuState.dice.push(...rollResult);
+      } else {
+        state.kimiState.dice.push(...rollResult);
+      }
+    },
+    // 开局的重新投掷骰子, 或者由于乾坤一掷等卡牌效果的重新投掷骰子
+    rerollDice: function(state, action: PayloadAction<{
+      player: PlayerName,
+      reroolIndexs: number[],
+    }>) {
+      const { player, reroolIndexs } = action.payload;
+      const originDice = player === 'boku' ? state.bokuState.dice : state.kimiState.dice;
+      const keepDice = originDice.filter((dice, index) => !reroolIndexs.includes(index));
+      const newDice = rollRandomDice(reroolIndexs.length);
+      if(player === 'boku') {
+        state.bokuState.dice = [...keepDice, ...newDice];
+      } else {
+        state.kimiState.dice = [...keepDice, ...newDice];
+      }
+    },
     // 开始处理一个逻辑帧
     beginFrame: function(state, action: PayloadAction<{startAction: PayloadAction[]}>) {
       // 注意, 这里是逻辑帧的起始, 也就是说, 一个逻辑帧可能会有多个action
@@ -332,6 +369,8 @@ export const {
   createCharState,
   goNextPhase,
   switchChar,
+  rollDice,
+  rerollDice,
 } = playSlice.actions
 export const getAllEntity = (state: Readonly<PlayState>) => {
   // XXX: 可能要考虑Entity的顺序问题……或许需要给Trigger增加优先级？
