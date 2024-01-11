@@ -40,6 +40,7 @@ export const OneDice: React.FC<{dice: Dice}> = ({dice}) => {
       className: ""
     }
   }
+  // TODO: 用六边形吧, 常驻的骰子列表也是六边形
   return <div className={`border-solid border-1 border-red ${diceConfig[dice].className}`}>
     <span >
       {diceConfig[dice].name}

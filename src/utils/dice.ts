@@ -19,9 +19,32 @@ export const rollRandomDice = (count: number): Dice[] => {
     // 随机投掷一个骰子
     rollResult.push(randomDice[Math.floor(Math.random() * 8)]);
   }
-  // TODO: 可能需要进行一下排序, 把万能骰往前面放
-  return rollResult;
+  return sortDice(rollResult);
 }
 
-//TODO: 做个骰子牌序展示的工具函数, 优先将指定类型的骰子展示在前方
+//骰子排序, 优先级: 万能 > 优先元素 > 其他; 同优先级按照数量排序;
+export const sortDice = (dice: Dice[], priorElement?: Element[]): Dice[] => {
+  const priorMap: Record<Dice, number> = {
+    omni: 100000,
+    [Element.Pyro]: 1,
+    [Element.Hydro]: 2,
+    [Element.Geo]: 3,
+    [Element.Electro]: 4,
+    [Element.Dendro]: 5,
+    [Element.Cryo]: 6,
+    [Element.Anemo]: 7,
+  };
+  for(let i = 0; i < dice.length; i++) {
+    priorMap[dice[i]] += 1000;
+  }
+  if(priorElement) {
+    for(let i = 0; i < priorElement.length; i++) {
+      priorMap[priorElement[i]] = 10000 + i;
+    }
+  }
+  return dice.sort((a, b) => {
+    return priorMap[b] - priorMap[a];
+  });
+}
+
 //TODO: 做个概率计算的工具函数出来, 方便牌手进行分析
