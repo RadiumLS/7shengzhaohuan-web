@@ -305,11 +305,11 @@ const playSlice = createSlice({
     rollDice: function(state, action: PayloadAction<{
       player: PlayerName,
       count: number,
-      diceType: RollDice,
+      diceType?: RollDice,
     }>) {
       const { player, count, diceType } = action.payload;
       const rollResult: Dice[] = [];
-      if(diceType === 'random') {
+      if(diceType === 'random' || diceType === undefined) {
         rollResult.push(...rollRandomDice(count));
       } else {
         rollResult.push(...(new Array(count).fill(diceType)));

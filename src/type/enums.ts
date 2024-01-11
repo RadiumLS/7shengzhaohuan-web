@@ -27,6 +27,10 @@ export enum PhaseType {
    */
   Roll = 'roll',
   /**
+   * 回合开始或者行动中的重新投掷阶段
+   */
+  Reroll = 'reroll',
+  /**
    * 回合中的行动阶段
    */
   Action = 'action',

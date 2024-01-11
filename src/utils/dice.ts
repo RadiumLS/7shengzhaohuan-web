@@ -22,4 +22,5 @@ export const rollRandomDice = (count: number): Dice[] => {
   return rollResult;
 }
 
+//TODO: 做个骰子牌序展示的工具函数, 优先将指定类型的骰子展示在前方
 //TODO: 做个概率计算的工具函数出来, 方便牌手进行分析

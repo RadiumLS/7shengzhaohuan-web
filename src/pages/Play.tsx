@@ -11,6 +11,7 @@ import StaringHands from "../components/play/starting_hands";
 import { StartPhase } from "../type/play";
 import { PhaseType } from "../type/enums";
 import Hands from "../components/play/hands";
+import { RollDiceArea } from "../components/play/roll_dice_area";
 
 const developDeck1: Deck = {
   deckTitle: '开发用卡组1',
@@ -131,9 +132,29 @@ function Play() {
             <StaringHands player="kimi"/>
           </MovableWrapper>
       }
+      {(currPhase?.type === PhaseType.Roll || currPhase?.type === PhaseType.Reroll) &&
+        currPhase.player === 'kimi' &&  <MovableWrapper defaultPostion={{
+            title: '对方投掷骰子组件',
+            top: '20%',
+            left: '20%',
+            width: '450px',
+            height: '175px',
+          }}>
+            <RollDiceArea player="kimi"/>
+          </MovableWrapper>
+      }
+      {(currPhase?.type === PhaseType.Roll || currPhase?.type === PhaseType.Reroll) &&
+        currPhase.player === 'boku' &&  <MovableWrapper defaultPostion={{
+            title: '本方投掷骰子组件',
+            top: '40%',
+            left: '20%',
+            width: '450px',
+            height: '175px',
+          }}>
+            <RollDiceArea player="boku"/>
+          </MovableWrapper>
+      }
       对局模拟的组件/页面
-      TODO: 初始抽卡，替换初始卡牌
-      TODO: 决定出战角色
       TODO: 骰子投掷，骰子重投，固定骰子
       TODO: 打牌
       TODO: 打牌-技能使用
