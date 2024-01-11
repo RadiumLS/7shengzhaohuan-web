@@ -159,6 +159,24 @@ interface StartPhase extends RoundPhase {
  * 投掷阶段
  */
 interface RollPhase extends RoundPhase {
+  /**
+   * 先手方
+   */
+  offensive: PlayerName,
+}
+/**
+ * 重掷骰子阶段
+ * 投掷阶段后, 行动阶段内都有可能触发重掷骰子
+ */
+interface RerollPhase extends RoundPhase {
+  /**
+   * 分别对应投掷阶段和行动阶段触发的重掷
+   */
+  rerollType: 'roll' | 'action';
+  /**
+   * 先手方
+   */
+  offensive?: PlayerName,
 }
 /**
  * 行动阶段

@@ -19,6 +19,7 @@ export const rollRandomDice = (count: number): Dice[] => {
     // 随机投掷一个骰子
     rollResult.push(randomDice[Math.floor(Math.random() * 8)]);
   }
+  // TODO: 可能需要进行一下排序, 把万能骰往前面放
   return rollResult;
 }
 

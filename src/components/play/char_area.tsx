@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { PlayerName, computeTriggerActions, goNextPhase, switchChar } from "../../redux/play";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { PhaseType, TriggerType } from "../../type/enums";
-import { StartPhase } from "@src/type/play";
+import { RollPhase, StartPhase } from "@src/type/play";
 
 
 const CharArea : React.FC<{player: PlayerName}> = (prop) => {
@@ -63,7 +63,7 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
       } else {
         // 当前角色不是先手方, 则说明双方选择出战角色完毕
         // 开启第一个回合的投掷阶段
-        const nextPhase: StartPhase = {
+        const nextPhase: RollPhase = {
           id: 0,
           player: offensive,
           name: `回合阶段_先手方投掷阶段`,
