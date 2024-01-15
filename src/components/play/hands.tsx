@@ -21,7 +21,7 @@ const Hands : React.FC<HandsPorp> = (prop) => {
     {handCards.map((oneCard, index) => {
       const {id} = oneCard;
       return <div className="flex-1 relative" key={`temp_card_${index}`}>
-        <img src={`/static/icons/${id}.png`} 
+        <img src={`/static/cards/${id}.png`} 
           className="w-full max-w-16"
         />
       </div>

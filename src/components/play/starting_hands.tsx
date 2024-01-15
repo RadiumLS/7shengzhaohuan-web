@@ -183,7 +183,7 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
         {tempCards.map((oneCard, index) => {
           const {id} = oneCard;
           return <div className="flex-1 relative" onClick={() => setSwitchMark(index)} key={`temp_card_${index}`}>
-            <img src={`/static/icons/${id}.png`} 
+            <img src={`/static/cards/${id}.png`} 
               className="w-full"
             />
             {switchMarkList[index] && <div className="absolute w-full h-1/2 bg-slate-400 top-1/4">
