@@ -6,45 +6,14 @@ import { Dice, PlayerName, goNextPhase, rollDice } from "../../redux/play"
 import { ActionPhase, RerollPhase, RollPhase } from "@src/type/play";
 
 export const OneDice: React.FC<{dice: Dice}> = ({dice}) => {
-  const diceConfig: Record<Dice, {name: string, className: string}> = {
-    [Element.Pyro]: {
-      name: "火",
-      className: ""
-    },
-    [Element.Hydro]: {
-      name: "水",
-      className: ""
-    },
-    [Element.Geo]: {
-      name: "岩",
-      className: ""
-    },
-    [Element.Electro]: {
-      name: "雷",
-      className: ""
-    },
-    [Element.Dendro]: {
-      name: "草",
-      className: ""
-    },
-    [Element.Cryo]: {
-      name: "冰",
-      className: ""
-    },
-    [Element.Anemo]: {
-      name: "风",
-      className: ""
-    },
-    omni: {
-      name: "万",
-      className: ""
-    }
-  }
-  // TODO: 用六边形吧, 常驻的骰子列表也是六边形
-  return <div className={`border-solid border-1 border-red ${diceConfig[dice].className}`}>
-    <span >
-      {diceConfig[dice].name}
-    </span>
+  return <div className={`w-16 h-16 border-solid border-1 border-transparent bg-contain flex items-center justify-center`}
+    style={{
+      backgroundImage: `url(/static/dices/${dice.toLowerCase()}_bg.png)`,
+    }}
+  >
+    <img src={`/static/dices/${dice.toLowerCase()}_el.png`} 
+      className="w-8 h-8 absolute flex-1"
+    />
   </div>
 }
 
@@ -119,7 +88,7 @@ export const RollDiceArea : React.FC<{player: PlayerName}> = (prop) => {
     <div className="flex">
       {dices.map((dice) => {
         // TODO: 增加骰子的点击事件以标记需要重掷的骰子
-        return <div >
+        return <div className="w-20">
           <OneDice dice={dice}></OneDice>
         </div>
       })}
