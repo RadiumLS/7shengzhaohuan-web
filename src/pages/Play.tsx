@@ -12,6 +12,7 @@ import { StartPhase } from "../type/play";
 import { PhaseType } from "../type/enums";
 import Hands from "../components/play/hands";
 import { RollDiceArea } from "../components/play/roll_dice_area";
+import { SelectDiceArea } from "../components/play/select_dice_area";
 
 const developDeck1: Deck = {
   deckTitle: '开发用卡组1',
@@ -153,6 +154,28 @@ function Play() {
           }}>
             <RollDiceArea player="boku"/>
           </MovableWrapper>
+      }
+      {(currPhase?.type === PhaseType.Action) &&
+        <>
+          <MovableWrapper defaultPostion={{
+              title: '本方选择骰子组件',
+              top: '20%',
+              left: '80%',
+              width: '75px',
+              height: '500px',
+            }}>
+            <SelectDiceArea player="boku"/>
+          </MovableWrapper>
+          <MovableWrapper defaultPostion={{
+              title: '对方选择骰子组件',
+              top: '20%',
+              left: '20%',
+              width: '75px',
+              height: '500px',
+            }}>
+            <SelectDiceArea player="kimi"/>
+          </MovableWrapper>
+        </>
       }
       对局模拟的组件/页面
       TODO: 骰子投掷，骰子重投，固定骰子
