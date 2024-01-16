@@ -4,6 +4,7 @@ import { PhaseType, Element } from "../../type/enums";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { Dice, PlayerName, goNextPhase, rollDice } from "../../redux/play"
 import { ActionPhase, RerollPhase, RollPhase } from "@src/type/play";
+import { useEffect, useState } from "react";
 
 export const OneDice: React.FC<{dice: Dice}> = ({dice}) => {
   return <div className={`w-16 h-16 border-solid border-1 border-transparent bg-contain flex items-center justify-center`}
@@ -20,11 +21,22 @@ export const OneDice: React.FC<{dice: Dice}> = ({dice}) => {
 export const RollDiceArea : React.FC<{player: PlayerName}> = (prop) => {
   const { player } = prop;
   const pName = player === 'boku' ? '本方' : '对方';
+  const [rerollFlags, setRerollFlags] = useState<boolean[]>([]);
+  const switchRerollIndex = (index: number) => {
+    setRerollFlags((prev) => {
+      const newFlags = [...prev];
+      newFlags[index] = !newFlags[index];
+      return newFlags;
+    })
+  }
 
   const dispatch = useAppDispatch();
 
   const currPhase = useAppSelector((state) => state.play.currPhase);
   const dices = useAppSelector((state) => player === 'boku' ? state.play.bokuState.dice : state.play.kimiState.dice);
+  useEffect(() => {
+    setRerollFlags(new Array(dices.length).fill(false));
+  }, [dices]);
   const startRollDice = () => {
     // TODO: 处理可能的投掷前的Trigger,典型的是元素圣遗物和群玉阁
     dispatch(rollDice({
@@ -76,6 +88,23 @@ export const RollDiceArea : React.FC<{player: PlayerName}> = (prop) => {
       dispatch(goNextPhase({nextPhase}));
     }
   };
+  const tupleDice = [];
+  for(let i = 0; i < dices.length; i += 2) {
+    const oneTuple: {up?: {dice: Dice, index: number}, down?: {dice: Dice, index: number}} = {};
+    if(dices[i]) {
+      oneTuple.up = {
+        dice: dices[i],
+        index: i,
+      }
+    }
+    if(dices[i+1]) {
+      oneTuple.down = {
+        dice: dices[i+1],
+        index: i+1,
+      }
+    }
+    tupleDice.push(oneTuple);
+  }
   return <div className={`border-solid border-4 h-full ${player === 'boku' ? `border-boku bg-bgboku` : `border-kimi bg-bgkimi`}`}>
     {currPhase?.type === PhaseType.Roll && <button onClick={startRollDice}>
       投掷{pName}回合初始骰子
@@ -86,10 +115,19 @@ export const RollDiceArea : React.FC<{player: PlayerName}> = (prop) => {
     </button>
     }
     <div className="flex">
-      {dices.map((dice) => {
+      {tupleDice.map((tuple) => {
         // TODO: 增加骰子的点击事件以标记需要重掷的骰子
-        return <div className="w-20">
-          <OneDice dice={dice}></OneDice>
+        return <div className="w-18 h-36 mr-2 flex flex-col">
+          {tuple.up && <div className={`flex-1 mb-2 ${rerollFlags[tuple.up.index] ? 'bg-red-500' : ''}`}
+            onClick={() => tuple.up && switchRerollIndex(tuple.up.index)}
+          >
+            <OneDice dice={tuple.up.dice}></OneDice>
+          </div>}
+          {tuple.down && <div className={`flex-1 ${rerollFlags[tuple.down.index] ? 'bg-red-500' : ''}`}
+            onClick={() => tuple.down && switchRerollIndex(tuple.down.index)}
+          >
+            <OneDice dice={tuple.down.dice}></OneDice>
+          </div>}
         </div>
       })}
     </div>
