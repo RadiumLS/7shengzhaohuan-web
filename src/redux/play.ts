@@ -13,7 +13,7 @@ import actionCardData from '../data/action_card.json';
 import arrayShuffle from 'array-shuffle';
 import { ActionCardType, PhaseType, TriggerType, Element } from '../type/enums';
 import {getCharacterEntityClassById} from '../utils/entity_class';
-import { rollRandomDice } from '../utils/dice'
+import { rollRandomDice, sortDice } from '../utils/dice'
 
 // TODO: 需要大量设计
 /**
@@ -308,9 +308,13 @@ const playSlice = createSlice({
       diceType?: RollDice,
     }>) {
       const { player, count, diceType } = action.payload;
+      const chars = player === 'boku' ? state.bokuState.chars : state.kimiState.chars;
+      const priorElements = chars.reduce((prev: Element[], char) => {
+        return prev.concat(char.element ? char.element : [])
+      }, []);
       const rollResult: Dice[] = [];
       if(diceType === 'random' || diceType === undefined) {
-        rollResult.push(...rollRandomDice(count));
+        rollResult.push(...(sortDice(rollRandomDice(count), priorElements)));
       } else {
         rollResult.push(...(new Array(count).fill(diceType)));
       }
@@ -320,19 +324,24 @@ const playSlice = createSlice({
         state.kimiState.dice.push(...rollResult);
       }
     },
-    // 开局的重新投掷骰子, 或者由于乾坤一掷等卡牌效果的重新投掷骰子
+    // 重新投掷骰子, 在回合开始投掷阶段或者由于乾坤一掷等卡牌触发
     rerollDice: function(state, action: PayloadAction<{
       player: PlayerName,
       reroolIndexs: number[],
     }>) {
       const { player, reroolIndexs } = action.payload;
+      const chars = player === 'boku' ? state.bokuState.chars : state.kimiState.chars;
+      const priorElements = chars.reduce((prev: Element[], char) => {
+        return prev.concat(char.element ? char.element : [])
+      }, []);
       const originDice = player === 'boku' ? state.bokuState.dice : state.kimiState.dice;
       const keepDice = originDice.filter((dice, index) => !reroolIndexs.includes(index));
       const newDice = rollRandomDice(reroolIndexs.length);
+      const sortedDices = sortDice([...keepDice, ...newDice], priorElements)
       if(player === 'boku') {
-        state.bokuState.dice = [...keepDice, ...newDice];
+        state.bokuState.dice = sortedDices;
       } else {
-        state.kimiState.dice = [...keepDice, ...newDice];
+        state.kimiState.dice = sortedDices;
       }
     },
     // 开始处理一个逻辑帧

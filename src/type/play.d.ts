@@ -76,6 +76,10 @@ interface CharEntity extends LogicEntity {
    */
   name: string,
   /**
+   * 角色牌元素, 用于骰子排序以及检索, 注意是个列表
+   */
+  element?: Element[],
+  /**
    * 当前生命值
    */
   health: number,

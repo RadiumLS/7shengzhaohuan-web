@@ -12,6 +12,7 @@ export class KamisatoAyaka implements CharEntity {
     this.id = 5;
     this.index = index;
     this.name = t('神里绫华');
+    this.element = [Element.Cryo];
     this.player = player;
     this.health = 10;
     this.energy = 0;
@@ -38,6 +39,7 @@ export class KamisatoAyaka implements CharEntity {
   charState: CharStateEntity[];
   appledElement: Element[];
   player: PlayerName;
+  element?: Element[];
   // 切换至神里绫华后, 附属角色状态霰步Senho
   senhoTrigger: Trigger = (state, actions) => {
     const playerState = this.player === 'boku' ? state.bokuState : state.kimiState;

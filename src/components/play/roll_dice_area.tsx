@@ -2,7 +2,7 @@
 
 import { PhaseType, Element } from "../../type/enums";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { Dice, PlayerName, goNextPhase, rollDice } from "../../redux/play"
+import { Dice, PlayerName, goNextPhase, rollDice, rerollDice } from "../../redux/play"
 import { ActionPhase, RerollPhase, RollPhase } from "@src/type/play";
 import { useEffect, useState } from "react";
 
@@ -29,6 +29,7 @@ export const RollDiceArea : React.FC<{player: PlayerName}> = (prop) => {
       return newFlags;
     })
   }
+  const [confirm, setConfirm] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
 
@@ -56,9 +57,21 @@ export const RollDiceArea : React.FC<{player: PlayerName}> = (prop) => {
     };
     dispatch(goNextPhase({nextPhase}));
   };
-  const rerollDice = () => {
-    // TODO: 重新投掷选中的骰子
-    // TODO: 检查所有实体的AfterRerollTrigger, 决定继续重掷还是切换到下一个人投掷
+  const rerollSelectedDice = () => {
+    const rerollIndexes: number[] = rerollFlags.reduce((prev, flag, index) => {
+      const after = [...prev];
+      if(flag) after.push(index);
+      return after;
+    }, [] as number[]);
+    dispatch(rerollDice({
+      player,
+      reroolIndexs: rerollIndexes,
+    }));
+
+    // TODO: 检查所有实体的AfterRerollTrigger, 决定继续重掷还是切换到骰子确认
+    setConfirm(true);
+  }
+  const confirmDice = () => {
     // 如果已经没有额外的重掷过程
     // 如果当前是先手方则启动后手方的投掷
     if((currPhase as RerollPhase).offensive === player) {
@@ -110,8 +123,12 @@ export const RollDiceArea : React.FC<{player: PlayerName}> = (prop) => {
       投掷{pName}回合初始骰子
     </button>
     }
-    {currPhase?.type === PhaseType.Reroll && <button onClick={rerollDice}>
+    {currPhase?.type === PhaseType.Reroll && !confirm && <button onClick={rerollSelectedDice}>
       {pName}重掷选中的骰子
+    </button>
+    }
+    {confirm && <button onClick={confirmDice}>
+      {pName}骰子确认
     </button>
     }
     <div className="flex">
