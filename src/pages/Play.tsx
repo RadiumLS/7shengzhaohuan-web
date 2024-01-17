@@ -8,11 +8,11 @@ import MovableWrapper from "../components/play/movable_wrapper";
 import CharArea from "../components/play/char_area";
 // import { StartPhase } from "../type/play";
 import StaringHands from "../components/play/starting_hands";
-import { ActionPhase, StartPhase } from "../type/play";
 import { PhaseType, TriggerType } from "../type/enums";
 import Hands from "../components/play/hands";
 import { RollDiceArea } from "../components/play/roll_dice_area";
 import { SelectDiceArea } from "../components/play/select_dice_area";
+import { RoundPhase } from "../type/play";
 
 const developDeck1: Deck = {
   deckTitle: '开发用卡组1',
@@ -91,7 +91,7 @@ function Play() {
       player: defensive,
       count: 8,
     }))
-    const nextPhase: ActionPhase = {
+    const nextPhase: RoundPhase = {
       id: 0,
       player: offensive,
       name: `${offensive === 'boku' ? '本方': '对方'}行动阶段`,

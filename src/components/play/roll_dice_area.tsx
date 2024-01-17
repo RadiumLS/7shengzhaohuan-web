@@ -3,7 +3,7 @@
 import { PhaseType, Element } from "../../type/enums";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { Dice, PlayerName, goNextPhase, rollDice, rerollDice } from "../../redux/play"
-import { ActionPhase, RerollPhase, RollPhase } from "@src/type/play";
+import { RerollPhase, RollPhase, RoundPhase } from "@src/type/play";
 import { useEffect, useState } from "react";
 
 export const OneDice: React.FC<{dice: Dice}> = ({dice}) => {
@@ -90,7 +90,7 @@ export const RollDiceArea : React.FC<{player: PlayerName}> = (prop) => {
       // TODO: 注意这里应当是已经判断完是否是行动阶段内重掷的逻辑
       // 如果后手方的重掷也已经完成, 那么启动先手方的行动阶段
       const actionPlayer = player === 'boku' ? 'kimi' : 'boku';
-      const nextPhase: ActionPhase = {
+      const nextPhase: RoundPhase = {
         id: 0,
         player: actionPlayer,
         name: `${actionPlayer === 'boku' ? '本方': '对方'}行动阶段`,

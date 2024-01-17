@@ -150,6 +150,7 @@ interface RoundPhase {
    */
   record: LogicRecord[],
 }
+// FIXME: 大量的阶段类型被移动至PhaseType中, 考虑这里的类型定义是否要保留
 /**
  * 对局开始阶段, 被拆分成两步了, 抽牌和替换重抽
  */
@@ -181,14 +182,4 @@ interface RerollPhase extends RoundPhase {
    * 先手方
    */
   offensive?: PlayerName,
-}
-/**
- * 行动阶段
- */
-interface ActionPhase extends RoundPhase {
-}
-/**
- * 结束阶段
- */
-interface EndPhase extends RoundPhase {
 }

@@ -3,7 +3,6 @@
 import { PhaseType, Element } from "../../type/enums";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { Dice, PlayerName, goNextPhase, rollDice, rerollDice } from "../../redux/play"
-import { ActionPhase, RerollPhase, RollPhase } from "@src/type/play";
 import { useEffect, useState } from "react";
 import { OneDice } from "./roll_dice_area";
 
