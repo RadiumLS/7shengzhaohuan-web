@@ -76,7 +76,7 @@ interface Skill {
   cost: CardCost;
   effect?: (state: Readonly<PlayState>) => PayloadAction<unknown>[];
 }
-// TODO: 被动技能, 与技能不同, 可以作为常驻实体来处理
+// 被动技能, 直接在CharEntity的Trigger中体现, 不直接作为一个实体
 /**
  * 角色实体
  */
