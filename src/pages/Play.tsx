@@ -1,15 +1,15 @@
 // 游玩页, 用于对局模拟
 
-import { useState } from "react";
-import { PlayerName, initPlayersChar, initPlayersPile, setPlayerDeckCode, startDuel } from "../redux/play";
+import { useCallback, useState } from "react";
+import { PlayerName, computeTriggerActions, drawCardsFromPile, goNextPhase, initPlayersChar, initPlayersPile, rollDice, setPlayerDeckCode, startDuel, switchChar } from "../redux/play";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { Deck } from "../redux/deck";
 import MovableWrapper from "../components/play/movable_wrapper";
 import CharArea from "../components/play/char_area";
 // import { StartPhase } from "../type/play";
 import StaringHands from "../components/play/starting_hands";
-import { StartPhase } from "../type/play";
-import { PhaseType } from "../type/enums";
+import { ActionPhase, StartPhase } from "../type/play";
+import { PhaseType, TriggerType } from "../type/enums";
 import Hands from "../components/play/hands";
 import { RollDiceArea } from "../components/play/roll_dice_area";
 import { SelectDiceArea } from "../components/play/select_dice_area";
@@ -33,10 +33,9 @@ function Play() {
       deck: deck,
     }));
   }
+  const playState = useAppSelector((state) => state.play);
   const bokuDeck = useAppSelector((state) => state.play.bokuState.deck);
   const kimiDeck = useAppSelector((state) => state.play.kimiState.deck);
-  const bokuChars = useAppSelector((state) => state.play.bokuState.chars);
-  const kimiChars = useAppSelector((state) => state.play.kimiState.chars);
   const currPhase = useAppSelector((state) => state.play.currPhase);
 
   const bokuPile = useAppSelector((state) => state.play.bokuState.pileCards);
@@ -48,9 +47,59 @@ function Play() {
     dispatch(startDuel({offensive: offensive}));
   }
 
+  const developSwitchChar = useCallback(() => {
+    setPlaying(true);
+    const defensive = offensive === 'boku' ? 'kimi' : 'boku';
+    const offensiveInitAction = switchChar({player: offensive, charIndex: 1});
+    const defensiveInitAction = switchChar({player: defensive, charIndex: 1});
+    const offenSiveSwitchTriggerActions = computeTriggerActions(playState, TriggerType.SwitchEnd, [offensiveInitAction]);
+    for(let i = 0; i < offenSiveSwitchTriggerActions.length; i++) {
+      dispatch(offenSiveSwitchTriggerActions[i]);
+    }
+    const defensiveSwitchTriggerActions = computeTriggerActions(playState, TriggerType.SwitchEnd, [defensiveInitAction]);
+    for(let i = 0; i < defensiveSwitchTriggerActions.length; i++) {
+      dispatch(defensiveSwitchTriggerActions[i]);
+    }
+  }, [playState]);
   const developButtonClick = () => {
-    // 启动一个action , 然后是后续的trigger触发等系列逻辑……
-    // 
+    const defensive = offensive === 'boku' ? 'kimi' : 'boku';
+    dispatch(setPlayerDeckCode({
+      player: offensive,
+      deck: developDeck1,
+    }));
+    dispatch(setPlayerDeckCode({
+      player: defensive,
+      deck: developDeck2,
+    }));
+    dispatch(initPlayersChar());
+    dispatch(initPlayersPile());
+    // dispatch(startDuel({offensive: offensive}));
+    dispatch(drawCardsFromPile({
+      player: offensive,
+      count: 5,
+    }));
+    dispatch(drawCardsFromPile({
+      player: defensive,
+      count: 5,
+    }));
+    dispatch(rollDice({
+      player: offensive,
+      count: 8,
+      diceType: 'omni',
+    }))
+    dispatch(rollDice({
+      player: defensive,
+      count: 8,
+    }))
+    const nextPhase: ActionPhase = {
+      id: 0,
+      player: offensive,
+      name: `${offensive === 'boku' ? '本方': '对方'}行动阶段`,
+      type: PhaseType.Action,
+      isActive: false,
+      record: [],
+    };
+    dispatch(goNextPhase({nextPhase}));
   }
 
   if(playing) {
@@ -208,6 +257,10 @@ function Play() {
     </div>
     <div>
       <button onClick={goPlay}>开始模拟</button>
+    </div>
+    <div>
+      <button onClick={developButtonClick}>Debug专用按钮</button><br/>
+      <button onClick={developSwitchChar}>Debug专用按钮2</button>
     </div>
   </div>
 }
