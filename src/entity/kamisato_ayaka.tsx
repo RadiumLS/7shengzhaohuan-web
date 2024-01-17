@@ -1,7 +1,7 @@
 // 神里凌华角色牌 以及相关的卡牌的Entity实现
 import { PlayerName, createCharState } from '../redux/play';
 import { Weapon, Element, TriggerType } from '../type/enums';
-import { CharEntity, CharStateEntity, EquipmentEngity, Trigger } from '../type/play';
+import { CharEntity, CharStateEntity, EquipmentEngity, Skill, Trigger } from '../type/play';
 
 // 预留的i18n函数
 const t = (s: string) => s;
@@ -23,7 +23,8 @@ export class KamisatoAyaka implements CharEntity {
     // this.switchEndTriggers = [this.senhoTrigger];
     this.triggerMap = {
       [TriggerType.SwitchEnd]: [this.senhoTrigger],
-    }
+    };
+    this.skills = [];
   }
   triggerMap: Partial<Record<TriggerType, Trigger[]>>;
   weaponType: Weapon;
@@ -40,6 +41,7 @@ export class KamisatoAyaka implements CharEntity {
   appledElement: Element[];
   player: PlayerName;
   element?: Element[];
+  skills: Skill[];
   // 切换至神里绫华后, 附属角色状态霰步Senho
   senhoTrigger: Trigger = (state, actions) => {
     const playerState = this.player === 'boku' ? state.bokuState : state.kimiState;

@@ -2,6 +2,7 @@
 
 import { type PlayState, type PlayerName } from "../redux/play";
 import { type } from './../redux/index';
+import { CardCost } from "./card";
 import {
   type Weapon,
   type PhaseType,
@@ -65,6 +66,18 @@ interface CharStateEntity extends LogicEntity {
 interface ActiveStateEntity extends LogicEntity {
 }
 /**
+ * 技能, 但并不是一个常驻实体
+ */
+interface Skill {
+  id: number;
+  icon?: string;
+  name: string;
+  desc?: string;
+  cost: CardCost;
+  effect?: (state: Readonly<PlayState>) => PayloadAction<unknown>[];
+}
+// TODO: 被动技能, 与技能不同, 可以作为常驻实体来处理
+/**
  * 角色实体
  */
 interface CharEntity extends LogicEntity {
@@ -115,6 +128,10 @@ interface CharEntity extends LogicEntity {
    * 天赋
    */
   talent?: EquipmentEngity,
+  /**
+   * 技能列表
+   */
+  skills: Skill[],
 }
 
 /**
