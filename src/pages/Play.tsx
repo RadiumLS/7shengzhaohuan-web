@@ -13,6 +13,7 @@ import Hands from "../components/play/hands";
 import { RollDiceArea } from "../components/play/roll_dice_area";
 import { SelectDiceArea } from "../components/play/select_dice_area";
 import { RoundPhase } from "../type/play";
+import SkillArea from "../components/play/skill_area";
 
 const developDeck1: Deck = {
   deckTitle: '开发用卡组1',
@@ -223,6 +224,15 @@ function Play() {
               height: '500px',
             }}>
             <SelectDiceArea player="kimi"/>
+          </MovableWrapper>
+          <MovableWrapper defaultPostion={{
+              title: '本方技能展示组件',
+              top: '80%',
+              left: '70%',
+              width: '300px',
+              height: '50px',
+            }}>
+            <SkillArea player="kimi"/>
           </MovableWrapper>
         </>
       }
