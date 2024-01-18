@@ -45,22 +45,43 @@ export enum PhaseType {
 }
 
 export enum Element {
-  Pyro = 'pryo', // 火
-  Hydro = 'hydro', // 水
-  Geo = 'geo', // 岩
-  Electro = 'electro', // 雷
-  Dendro = 'dendro', // 草
-  Cryo = 'cryo', // 冰
-  Anemo = 'anemo', // 风
+  /** 火元素 */
+  Pyro = 'pryo',
+  /** 水元素 */
+  Hydro = 'hydro',
+  /** 岩元素 */
+  Geo = 'geo',
+  /** 雷元素 */
+  Electro = 'electro',
+  /** 草元素 */
+  Dendro = 'dendro',
+  /** 冰元素 */
+  Cryo = 'cryo',
+  /** 风元素 */
+  Anemo = 'anemo',
 }
 
 export enum Weapon {
-  Sword = 'sword', // 单手剑
-  Bow = 'bow', // 弓
-  Claymore = 'claymore', // 双手剑
-  Catalyst = 'catalyst', // 法器
-  Polearm = 'Polearm', // 长柄武器
-  Other = 'other', // 其他武器, 通常是原魔
+  /** 单手剑*/
+  Sword = 'sword',
+  /** 弓*/
+  Bow = 'bow',
+  /** 双手剑*/
+  Claymore = 'claymore',
+  /** 法器*/
+  Catalyst = 'catalyst',
+  /** 长柄武器*/
+  Polearm = 'Polearm',
+  /** 其他武器, 通常是原魔*/
+  Other = 'other', 
+}
+export enum SkillType {
+  /** 普通攻击*/
+  NormalAttack = 'normal_attack',
+  /** 元素战技*/
+  ElementalSkill = 'elemental_skill',
+  /** 元素爆发*/
+  ElementalBrust = 'elemental_brust',
 }
 
 // 触发器类型, 先写这么点……好像还有非常多……

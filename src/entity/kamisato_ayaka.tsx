@@ -1,7 +1,9 @@
 // 神里凌华角色牌 以及相关的卡牌的Entity实现
-import { PlayerName, createCharState } from '../redux/play';
-import { Weapon, Element, TriggerType } from '../type/enums';
+import { CardCost } from '@src/type/card';
+import { PlayState, PlayerName, createCharState } from '../redux/play';
+import { Weapon, Element, TriggerType, SkillType } from '../type/enums';
 import { CharEntity, CharStateEntity, EquipmentEngity, Skill, Trigger } from '../type/play';
+import { computeTriggerActions } from './../redux/play';
 
 // 预留的i18n函数
 const t = (s: string) => s;
@@ -24,7 +26,7 @@ export class KamisatoAyaka implements CharEntity {
     this.triggerMap = {
       [TriggerType.SwitchEnd]: [this.senhoTrigger],
     };
-    this.skills = [];
+    this.skills = [new KamisatoArtKabuki(), new KamisatoArtHyouka(), new KamisatoArtSoumetsu()];
   }
   triggerMap: Partial<Record<TriggerType, Trigger[]>>;
   weaponType: Weapon;
@@ -73,7 +75,7 @@ export class KamisatoAyaka implements CharEntity {
     return actions;
   }
 }
-// TODO: 角色状态-霰步写在这里
+// WIP: 角色状态-霰步写在这里
 export class Senho implements CharStateEntity {
   constructor(owner: PlayerName) {
     this.name = '霰步';
@@ -90,3 +92,86 @@ export class Senho implements CharStateEntity {
 // TODO: 大招召唤物
 // TODO: 天赋牌
 
+/**
+ * 普通攻击: 神里流·倾
+ */
+export class KamisatoArtKabuki implements Skill {
+  constructor() {
+    this.id = 0;
+    this.name = t('神里流·倾');
+    this.desc = t('普通攻击, 造成两点物理伤害');
+    // TODO: 使用普通攻击的图片
+    this.icon = '';
+    this.type = SkillType.NormalAttack;
+    this.cost = [{
+      type: Element.Cryo,
+      cost: 1,
+    }, {
+      type: 'unaligned',
+      cost: 2,
+    }];
+  }
+  id: number;
+  icon?: string | undefined;
+  name: string;
+  type: SkillType;
+  desc?: string | undefined;
+  cost: CardCost;
+  effect?: ((state: Readonly<PlayState>) => { payload: unknown; type: string; }[]) | undefined;
+  // TODO: 增加对应的effect
+}
+
+/**
+ * 元素战技: 神里流·冰华
+ */
+export class KamisatoArtHyouka implements Skill {
+  constructor() {
+    this.id = 0;
+    this.name = t('神里流·冰华');
+    this.desc = t('元素战技, 造成三点冰元素伤害');
+    // TODO: 使用神里流·冰华的图片
+    this.icon = '';
+    this.type = SkillType.ElementalSkill;
+    this.cost = [{
+      type: Element.Cryo,
+      cost: 3,
+    }];
+  }
+  id: number;
+  icon?: string | undefined;
+  name: string;
+  type: SkillType;
+  desc?: string | undefined;
+  cost: CardCost;
+  effect?: ((state: Readonly<PlayState>) => { payload: unknown; type: string; }[]) | undefined;
+  // TODO: 增加对应的effect
+}
+
+/**
+ * 元素爆发: 神里流·霜灭
+ */
+export class KamisatoArtSoumetsu implements Skill {
+  constructor() {
+    this.id = 0;
+    this.name = t('神里流·霜灭');
+    this.desc = t('元素爆发, 造成四点冰元素伤害, 召唤霜见雪关扉');
+    // TODO: 使用神里流·霜灭的图片
+    this.icon = '';
+    this.type = SkillType.ElementalSkill;
+    this.cost = [{
+      type: Element.Cryo,
+      cost: 3,
+    },{
+      type: 'energy',
+      cost: 3,
+    }];
+  }
+  id: number;
+  icon?: string | undefined;
+  name: string;
+  type: SkillType;
+  desc?: string | undefined;
+  cost: CardCost;
+  effect?: ((state: Readonly<PlayState>) => { payload: unknown; type: string; }[]) | undefined;
+  // TODO: 增加对应的effect
+}

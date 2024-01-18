@@ -7,6 +7,7 @@ import {
   type Weapon,
   type PhaseType,
   type Element,
+  type SkillType,
 } from './enums'
 import { type PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 
@@ -72,6 +73,7 @@ interface Skill {
   id: number;
   icon?: string;
   name: string;
+  type: SkillType;
   desc?: string;
   cost: CardCost;
   effect?: (state: Readonly<PlayState>) => PayloadAction<unknown>[];
