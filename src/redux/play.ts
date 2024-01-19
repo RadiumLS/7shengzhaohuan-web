@@ -2,11 +2,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 import type { Deck } from './deck';
-import { ActionCard, CostType } from '@src/type/card';
+import { ActionCard, CardCost, CostType } from '@src/type/card';
 import {
   ActiveStateEntity, CharEntity, CharStateEntity,
+  DeltaCost,
   LogicEntity,
-  LogicRecord, RoundPhase, StartPhase, SummonsEntity, SupportEntity, Trigger 
+  LogicRecord, RoundPhase, Skill, StartPhase, SummonsEntity, SupportEntity, Trigger 
 } from '@src/type/play';
 import { decode } from '../utils/share_code';
 import actionCardData from '../data/action_card.json';
@@ -51,6 +52,14 @@ interface PlayerState {
    * 起始手牌的替换区, 后续作弊的时候也可以使用这个
    */
   tempCards: ActionCard[];
+  /** 使用技能/卡牌需要消耗的骰子, 配合骰子选择器使用 */
+  requireCost?: CardCost[];
+  /** 当前要使用的卡牌 */
+  activeCard?: ActionCard;
+  /** 当前要使用的技能 */
+  activeSkill?: Skill;
+  /** 生效了的费用变化实体id */
+  effectedCostEntityIds?: number[];
 }
 // 用boku和kimi来指代两个玩家
 // boku kimi
@@ -344,6 +353,9 @@ const playSlice = createSlice({
         state.kimiState.dice = sortedDices;
       }
     },
+    changeCost: function(state, action:PayloadAction<DeltaCost>) {
+      // TODO: 修改需求的费用, 给骰子选择器使用的requireCost
+    },
     // 开始处理一个逻辑帧
     beginFrame: function(state, action: PayloadAction<{startAction: PayloadAction[]}>) {
       // 注意, 这里是逻辑帧的起始, 也就是说, 一个逻辑帧可能会有多个action
@@ -380,6 +392,7 @@ export const {
   switchChar,
   rollDice,
   rerollDice,
+  changeCost,
 } = playSlice.actions
 export const getAllEntity = (state: Readonly<PlayState>) => {
   // XXX: 可能要考虑Entity的顺序问题……或许需要给Trigger增加优先级？

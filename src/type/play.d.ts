@@ -4,6 +4,7 @@ import { type PlayState, type PlayerName } from "../redux/play";
 import { type } from './../redux/index';
 import { CardCost } from "./card";
 import {
+  type ActionCardType,
   type Weapon,
   type PhaseType,
   type Element,
@@ -201,4 +202,23 @@ interface RerollPhase extends RoundPhase {
    * 先手方
    */
   offensive?: PlayerName,
+}
+
+/**
+ * 描述费用变化的类型
+ */
+interface DeltaCost {
+  // 指定某类卡牌/技能的费用变化
+  player: PlayerName;
+  actionCardTypes: ActionCardType[];
+  skillTypes: SkillType[];
+  // 指定具体的卡牌/技能/角色技能的费用变化
+  charIds?: number[];
+  skillIds?: number[];
+  cardIds?: number[];
+  // TODO: 切人时候的费用变化预计需要额外处理, 比如切换至某角色减费, 从某角色切换走减费
+  /** 具体费用变化了多少 */
+  cost?: CardCost;
+  /** 触发的实体的id */
+  entityId?: number;
 }

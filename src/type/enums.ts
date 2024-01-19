@@ -90,6 +90,10 @@ export enum TriggerType {
    * 投掷时触发器, 如7种元素的圣遗物
    */
   Dice = 'dice',
+  /** 费用计算的触发器, 如7种元素的圣遗物 */
+  CostBefore = 'costBefore',
+  /** 实际消耗费用后的触发器, 扣减次数之类的内容在这里做 */
+  CostAfter = 'costAfter',
   /**
    * 产生伤害时触发器, 如武器牌和绽放反应产生的草原核
    */

@@ -1,9 +1,8 @@
 // 神里凌华角色牌 以及相关的卡牌的Entity实现
 import { CardCost } from '@src/type/card';
-import { PlayState, PlayerName, createCharState } from '../redux/play';
+import { PlayState, PlayerName, changeCost, createCharState } from '../redux/play';
 import { Weapon, Element, TriggerType, SkillType } from '../type/enums';
-import { CharEntity, CharStateEntity, EquipmentEngity, Skill, Trigger } from '../type/play';
-import { computeTriggerActions } from './../redux/play';
+import { CharEntity, CharStateEntity, DeltaCost, EquipmentEngity, Skill, Trigger } from '../type/play';
 
 // 预留的i18n函数
 const t = (s: string) => s;
@@ -157,7 +156,7 @@ export class KamisatoArtSoumetsu implements Skill {
     this.desc = t('元素爆发, 造成四点冰元素伤害, 召唤霜见雪关扉');
     // TODO: 使用神里流·霜灭的图片
     this.icon = '';
-    this.type = SkillType.ElementalSkill;
+    this.type = SkillType.ElementalBrust;
     this.cost = [{
       type: Element.Cryo,
       cost: 3,
