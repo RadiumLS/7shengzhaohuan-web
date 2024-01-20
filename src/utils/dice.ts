@@ -53,7 +53,7 @@ export const sortDice = (dice: Dice[], priorElement?: Element[]): Dice[] => {
  * 计算费用变化, 工具函数, 纯函数
  * @param originCost 原始费用
  * @param deltaCost delta费用
- * @returns 计算后的费用
+ * @returns 计算后的费用, 不会被减到0以下
  */
 export const calculateCost = (originCost: CardCost, deltaCost: CardCost): CardCost => {
   const deltaMap: Partial<Record<CostType, number>> = {};
@@ -66,11 +66,28 @@ export const calculateCost = (originCost: CardCost, deltaCost: CardCost): CardCo
     }
   }
   return originCost.map((cost) => {
+    const newCost = cost.cost + (deltaMap[cost.type] || 0);
     return {
       type: cost.type,
-      cost: (cost.cost + (deltaMap[cost.type] || 0))
+      cost: newCost < 0 ? 0 : newCost,
     }
   });
+}
+/**
+ * 比较两个费用是否完全一致
+ */
+const isSameCost = (a: CardCost, b: CardCost): boolean => {
+  if(a.length !== b.length) return false;
+  const costMap: Partial<Record<CostType, number>> = {};
+  for(let i = 0; i < a.length; i++) {
+    const cost = a[i];
+    costMap[cost.type] = cost.cost;
+  }
+  for(let i = 0; i < b.length; i++) {
+    const cost = b[i];
+    if(costMap[cost.type] !== cost.cost) return false;
+  }
+  return true;
 }
 /**
  * 工具函数: 计算指定技能的费用, 如果不适用减费则会返回原始费用
@@ -90,9 +107,11 @@ export const computeSkillCost = (skill: Skill, deltaCostAction: DeltaCost): {
   // XXX: charId的匹配在外面一层计算, 不在这里计算
   const {skillTypes, /* charIds, */ skillIds, cost} = deltaCostAction;
   if(skillTypes.includes(skill.type) || skillIds?.includes(skill.id)) {
-    // XXX: 注意, 即使费用变化为0, applied也会被标记
-    applied = true;
     computedCost = calculateCost(skill.cost, cost || []);
+    // XXX: 注意, 费用计算后如果没有变化, 则不会标记applied
+    if(!isSameCost(skill.cost, computedCost)) {
+      applied = true;
+    }
   }
   // XXX: 注意, 费用降低到0之后的计算请在外侧进行, 这里是个纯函数
 
