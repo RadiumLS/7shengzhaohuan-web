@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { PlayerName, addRecordToCurrPhase, drawCardsFromPile, dropTempCards, goNextPhase, pushHandCards, returnCardsToPile } from "../../redux/play";
+import { PlayerName, addRecordToCurrPhase, appendHistoryMessages, drawCardsFromPile, dropTempCards, goNextPhase, pushHandCards, returnCardsToPile } from "../../redux/play";
 import { ActionCardType, PhaseType } from "../../type/enums";
 import { StartPhase } from "../../type/play";
 import { ActionCard } from "../../type/card";
@@ -67,14 +67,15 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
     // StartDraw阶段已经抽了5张牌之后就记录并且跳转下一阶段
     if(currPhase?.type === PhaseType.StartDraw && currPhase?.player === player) {
       if(tempCards?.length === 5) {
-        dispatch(addRecordToCurrPhase({
+        dispatch(appendHistoryMessages({
           // TODO: 保存抽取的卡牌的列表到记录中
-          record: {
+          messages: [{
             player: player,
             phase: currPhase,
-            record: '已经抽了5张牌'
-          }
-        }))
+            message: `${player === 'boku' ? '本方': '对方'}已经抽了5张牌`,
+            private: true,
+          }]
+        }));
         const nextPhase: StartPhase = {
           id: 0,
           player: player,
@@ -99,13 +100,14 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
             setSwitchMarkList[i](false);
           }
         }
-        dispatch(addRecordToCurrPhase({
+        dispatch(appendHistoryMessages({
           // TODO: 保存抽取的卡牌的列表到记录中
-          record: {
+          messages: [{
             player: player,
             phase: currPhase,
-            record: '更换卡牌后初始手牌5张：'
-          }
+            message: `${player === 'boku' ? '本方': '对方'}更换卡牌后初始手牌5张：`,
+            private: true,
+          }]
         }));
         // 将替换的牌放回牌堆中
         dispatch(returnCardsToPile({

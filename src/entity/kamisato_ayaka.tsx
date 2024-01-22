@@ -1,6 +1,6 @@
 // 神里凌华角色牌 以及相关的卡牌的Entity实现
 import { CardCost } from '@src/type/card';
-import { PlayState, PlayerName, changeCost, createCharState, getEntityId } from '../redux/play';
+import { PlayState, PlayerName, appendHistoryMessages, changeCost, createCharState, getEntityId } from '../redux/play';
 import { Weapon, Element, TriggerType, SkillType } from '../type/enums';
 import { CharEntity, CharStateEntity, DeltaCost, EquipmentEngity, Skill, Trigger } from '../type/play';
 
@@ -73,6 +73,11 @@ export class KamisatoAyaka implements CharEntity {
           charStateEntity: senho,
         });
         actions.push(newAction);
+        actions.push(appendHistoryMessages({
+          messages: [{
+            message: `${this.name}附属了${senho.name}`,
+          }]
+        }));
       }
     }
     return actions;

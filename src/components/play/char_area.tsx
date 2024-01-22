@@ -1,10 +1,10 @@
 // 对局过程中的角色牌展示区域
 
 import React, { useState } from "react";
-import { PlayerName, computeTriggerActions, goNextPhase, switchChar } from "../../redux/play";
+import { PlayerName, appendHistoryMessages, computeTriggerActions, goNextPhase, switchChar } from "../../redux/play";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { PhaseType, TriggerType } from "../../type/enums";
-import { RollPhase, StartPhase } from "@src/type/play";
+import { HistoryMessage, RollPhase, StartPhase } from "@src/type/play";
 
 
 const CharArea : React.FC<{player: PlayerName}> = (prop) => {
@@ -39,7 +39,12 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
   const switchToChar = (index: number) => {
     // TODO: 根据当前阶段来判断是否需要执行SwitchStart的trigger们
     const initAction = switchChar({player, charIndex: index});
-    const allTriggerAction = computeTriggerActions(playState, TriggerType.SwitchEnd, [initAction]);
+    const historyMessage = appendHistoryMessages({
+      messages: [{
+        message: `${player}切换至角色:${chars[index].name}`,
+      }]
+    })
+    const allTriggerAction = computeTriggerActions(playState, TriggerType.SwitchEnd, [initAction, historyMessage]);
 
     if(currPhase?.type === PhaseType.StartSelectChar) {
       // 如果是开局选择角色阶段, 根据当前是否是先手角色来决定下一阶段是后手开局选择角色还是回合开始的投掷阶段

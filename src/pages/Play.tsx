@@ -38,6 +38,7 @@ function Play() {
   const bokuDeck = useAppSelector((state) => state.play.bokuState.deck);
   const kimiDeck = useAppSelector((state) => state.play.kimiState.deck);
   const currPhase = useAppSelector((state) => state.play.currPhase);
+  const historyMessages = useAppSelector((state) => state.play.historyMessages);
 
   const bokuPile = useAppSelector((state) => state.play.bokuState.pileCards);
 
@@ -115,6 +116,13 @@ function Play() {
         {currPhase?.name}<br/>
         当前行动方: <br/>
         {currPhase?.player && currPhase?.player === 'boku' ? '本方' : '对方'}<br/>
+      </div>
+      <div className="absolute w-40 max-h-200 overflow-auto border-solid border-4 border-white bg-[#fffa] left-4 top-40">
+        {historyMessages.map((message, index) => {
+          return <p>
+            {message.message}
+          </p>;
+        })}
       </div>
       <MovableWrapper defaultPostion={{
         title: 'developArea',

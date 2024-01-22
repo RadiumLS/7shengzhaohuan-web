@@ -300,7 +300,7 @@ const playSlice = createSlice({
       state.currPhase = offensiveStartPhase;
       // 重置了对局消息
       state.historyMessages = [{
-        message: `对局开始, 先手方为{${offensive === 'boku' ? '我方' : '对方'}}`,
+        message: `对局开始, 先手方为${offensive === 'boku' ? '我方' : '对方'}`,
       }];
     },
     // 朝当前阶段添加一条逻辑记录
