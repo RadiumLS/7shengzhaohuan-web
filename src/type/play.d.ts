@@ -34,6 +34,7 @@ type LogicRecord = {
  * 逻辑实体, 被用来反复遍历以确定卡牌效果等
  */
 interface LogicEntity {
+  id: number,
   /**
    * 实体从属于哪一方
    */
@@ -84,13 +85,16 @@ interface Skill {
  * 角色实体
  */
 interface CharEntity extends LogicEntity {
-  id: number,
   // 012决定是左中右角色
   index: number,
   /**
    * 角色牌名称
    */
   name: string,
+  /** 卡牌图片 */
+  icon?: string,
+  /** 卡牌小图片 */
+  smallIcon?: string,
   /**
    * 角色牌元素, 用于骰子排序以及检索, 注意是个列表
    */
@@ -221,4 +225,20 @@ interface DeltaCost {
   cost?: CardCost;
   /** 触发的实体的id */
   entityId?: number;
+}
+
+/**
+ * 对局途中发生的一切都会以HistoryMessage的形式记录下来
+ */
+interface HistoryMessage {
+  id?: number;
+  phase?: RoundPhase;
+  player?: PlayerName;
+  entityName?: string;
+  message: string;
+  /**
+   * 是否私有, 考虑有些信息是只有自己能看到的,
+   * 比如抽到了什么牌, 掷出了什么骰子
+   */
+  private?: boolean;
 }

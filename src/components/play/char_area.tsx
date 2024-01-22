@@ -88,7 +88,7 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
   >
     {
       chars.map((oneChar, index) => {
-        const {id} = oneChar;
+        const {id, icon} = oneChar;
         return <div
           className={`flex-1 relative ${playerState.activeCharIndex === index && (player === 'boku' ? '-top-8' : 'top-8')}`}
           key={`boku_char_${index}`}
@@ -112,7 +112,7 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
             {
               // TODO: 展示装备区域, 包括天赋、武器、圣遗物
             }
-            <img src={`/static/cards/${id}.png`} className="max-h-full"/>
+            <img src={`${icon}`} className="max-h-full"/>
             <div className="absolute w-full h-8 top-32 flex">
               {oneChar.charState.map((oneState, index) => {
                 // TODO: 角色状态的展示, 需要补充图片

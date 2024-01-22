@@ -1,6 +1,6 @@
 // 神里凌华角色牌 以及相关的卡牌的Entity实现
 import { CardCost } from '@src/type/card';
-import { PlayState, PlayerName, changeCost, createCharState } from '../redux/play';
+import { PlayState, PlayerName, changeCost, createCharState, getEntityId } from '../redux/play';
 import { Weapon, Element, TriggerType, SkillType } from '../type/enums';
 import { CharEntity, CharStateEntity, DeltaCost, EquipmentEngity, Skill, Trigger } from '../type/play';
 
@@ -9,10 +9,12 @@ const t = (s: string) => s;
 
 export class KamisatoAyaka implements CharEntity {
   constructor(player: PlayerName, index: number) {
-    // 卡牌id, 用于展示卡牌
-    this.id = 5;
+    // 实体id
+    this.id = getEntityId();
     this.index = index;
     this.name = t('神里绫华');
+    this.icon = '/static/cards/5.png';
+    this.smallIcon = '/static/cards/5.png';
     this.element = [Element.Cryo];
     this.player = player;
     this.health = 10;
@@ -35,6 +37,8 @@ export class KamisatoAyaka implements CharEntity {
   id: number;
   index: number;
   name: string;
+  icon: string;
+  smallIcon: string;
   health: number;
   energy: number;
   energyMax: number;
@@ -77,6 +81,7 @@ export class KamisatoAyaka implements CharEntity {
 // WIP: 角色状态-霰步写在这里
 export class Senho implements CharStateEntity {
   constructor(owner: PlayerName) {
+    this.id = getEntityId();
     this.name = '霰步';
     this.player = owner;
     this.triggerMap = {};
@@ -84,6 +89,7 @@ export class Senho implements CharStateEntity {
   triggerMap: Partial<Record<TriggerType, Trigger[]>>;
   player: PlayerName;
   name?: string;
+  id: number;
   // TODO: 造成伤害前的Trigger, 伤害变更成冰伤害
   // TODO: 造成伤害前的Trigger, 如果装备了天赋牌, 那么冰伤害+1
   // TODO: 回合结束的Trigger, 移除角色状态
@@ -96,7 +102,7 @@ export class Senho implements CharStateEntity {
  */
 export class KamisatoArtKabuki implements Skill {
   constructor() {
-    this.id = 0;
+    this.id = getEntityId();
     this.name = t('神里流·倾');
     this.desc = t('普通攻击, 造成两点物理伤害');
     // TODO: 使用普通攻击的图片
@@ -125,7 +131,7 @@ export class KamisatoArtKabuki implements Skill {
  */
 export class KamisatoArtHyouka implements Skill {
   constructor() {
-    this.id = 0;
+    this.id = getEntityId();
     this.name = t('神里流·冰华');
     this.desc = t('元素战技, 造成三点冰元素伤害');
     // TODO: 使用神里流·冰华的图片
@@ -151,7 +157,7 @@ export class KamisatoArtHyouka implements Skill {
  */
 export class KamisatoArtSoumetsu implements Skill {
   constructor() {
-    this.id = 0;
+    this.id = getEntityId();
     this.name = t('神里流·霜灭');
     this.desc = t('元素爆发, 造成四点冰元素伤害, 召唤霜见雪关扉');
     // TODO: 使用神里流·霜灭的图片

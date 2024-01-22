@@ -6,6 +6,7 @@ import { ActionCard, CardCost, CostType } from '@src/type/card';
 import {
   ActiveStateEntity, CharEntity, CharStateEntity,
   DeltaCost,
+  HistoryMessage,
   LogicEntity,
   LogicRecord, RoundPhase, Skill, StartPhase, SummonsEntity, SupportEntity, Trigger 
 } from '@src/type/play';
@@ -26,6 +27,14 @@ export type Dice = Element | 'omni';
 // 要投掷的骰子类型
 export type RollDice = Dice | 'random';
 export type PlayerName = 'boku' | 'kimi';
+
+let globalEntityId = 0;
+export const getEntityId = () => {
+  return globalEntityId++;
+}
+export const resetEntityId = () => {
+  globalEntityId = 0;
+}
 
 
 /**
@@ -76,6 +85,7 @@ export interface PlayState {
   historyPhase: RoundPhase[],
   currPhase?: RoundPhase,
   nextPhase?: RoundPhase,
+  historyMessages: HistoryMessage[],
 }
 
 const loadFromLocalStorage = () => {
@@ -109,12 +119,17 @@ let initialState: PlayState = {
     tempCards: [],
   },
   historyPhase: [],
+  historyMessages: [],
 };
 
 const playSlice = createSlice({
   name: 'play',
   initialState,
   reducers: {
+    appendHistoryMessages: function(state, action: PayloadAction<{messages: HistoryMessage[]}>) {
+      const { messages } = action.payload;
+      state.historyMessages.push(...messages);
+    },
     setPlayerDeckCode: function(state, action: PayloadAction<{deck: Deck, player: PlayerName}>) {
       const { deck, player } = action.payload;
       if(player === 'boku') {
@@ -283,6 +298,10 @@ const playSlice = createSlice({
         record: []
       };
       state.currPhase = offensiveStartPhase;
+      // 重置了对局消息
+      state.historyMessages = [{
+        message: `对局开始, 先手方为{${offensive === 'boku' ? '我方' : '对方'}}`,
+      }];
     },
     // 朝当前阶段添加一条逻辑记录
     addRecordToCurrPhase: function(state, action: PayloadAction<{record: LogicRecord}>) {
@@ -378,6 +397,7 @@ const playSlice = createSlice({
 });
 
 export const {
+  appendHistoryMessages,
   setPlayerDeckCode,
   initPlayersChar,
   initPlayersPile,

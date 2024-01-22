@@ -1,7 +1,7 @@
 // 游玩页, 用于对局模拟
 
 import { useCallback, useState } from "react";
-import { PlayerName, computeTriggerActions, drawCardsFromPile, goNextPhase, initPlayersChar, initPlayersPile, rollDice, setPlayerDeckCode, startDuel, switchChar } from "../redux/play";
+import { PlayerName, computeTriggerActions, drawCardsFromPile, goNextPhase, initPlayersChar, initPlayersPile, resetEntityId, rollDice, setPlayerDeckCode, startDuel, switchChar } from "../redux/play";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { Deck } from "../redux/deck";
 import MovableWrapper from "../components/play/movable_wrapper";
@@ -43,6 +43,8 @@ function Play() {
 
   const goPlay = () => {
     setPlaying(true);
+    // 对局开始时重置entityId
+    resetEntityId();
     dispatch(initPlayersChar());
     dispatch(initPlayersPile());
     dispatch(startDuel({offensive: offensive}));

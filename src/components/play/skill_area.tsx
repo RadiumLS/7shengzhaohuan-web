@@ -40,9 +40,6 @@ const SkillArea : React.FC<{player: PlayerName}> = (prop) => {
       }, skill);
       return reduceComputedSkill;
     });
-    // TODO: 计算费用之后再更新到组件的skills中
-    console.log(`===== 10000 allActions: ${allActions}`);
-    // HACK: 这个type从changeCost的reducer拷贝过来的
     setSkills(computedSkills);
   }, [currPhase, playState, playerState]);
 
