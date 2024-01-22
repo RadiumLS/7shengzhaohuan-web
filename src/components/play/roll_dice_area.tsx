@@ -2,9 +2,10 @@
 
 import { PhaseType, Element } from "../../type/enums";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { Dice, PlayerName, goNextPhase, rollDice, rerollDice } from "../../redux/play"
+import { Dice, PlayerName, goNextPhase, rollDice, rerollDice, appendHistoryMessages } from "../../redux/play"
 import { RerollPhase, RollPhase, RoundPhase } from "@src/type/play";
 import { useEffect, useState } from "react";
+import { spellDices } from "../../utils/dice";
 
 export const OneDice: React.FC<{dice: Dice}> = ({dice}) => {
   return <div className={`w-16 h-16 border-solid border-1 border-transparent bg-contain flex items-center justify-center`}
@@ -63,6 +64,15 @@ export const RollDiceArea : React.FC<{player: PlayerName}> = (prop) => {
       if(flag) after.push(index);
       return after;
     }, [] as number[]);
+    const beforeRerollMessage = {
+      message: `${player === 'boku' ? '我方' : '对方'}重投前骰子为${spellDices(dices)}`,
+    };
+    const rerollDicesMessage = {
+      message: `${player === 'boku' ? '我方' : '对方'}选择重投骰子${spellDices(dices.filter((_, index) => rerollIndexes.includes(index)))}`,
+    };
+    dispatch(appendHistoryMessages({
+      messages: [beforeRerollMessage, rerollDicesMessage],
+    }))
     dispatch(rerollDice({
       player,
       reroolIndexs: rerollIndexes,
@@ -73,6 +83,11 @@ export const RollDiceArea : React.FC<{player: PlayerName}> = (prop) => {
   }
   const confirmDice = () => {
     // 如果已经没有额外的重掷过程
+    dispatch(appendHistoryMessages({
+      messages: [{
+        message: `${player === 'boku' ? '我方' : '对方'}重投后骰子为${spellDices(dices)}`,
+      }]
+    }));
     // 如果当前是先手方则启动后手方的投掷
     if((currPhase as RerollPhase).offensive === player) {
       const nextRollPlayer = player === 'boku' ? 'kimi' : 'boku';

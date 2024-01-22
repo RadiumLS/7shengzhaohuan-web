@@ -16,6 +16,7 @@ import arrayShuffle from 'array-shuffle';
 import { ActionCardType, PhaseType, TriggerType, Element } from '../type/enums';
 import {getCharacterEntityClassById} from '../utils/entity_class';
 import { rollRandomDice, sortDice } from '../utils/dice'
+import { spellDices } from './../utils/dice';
 
 // TODO: 需要大量设计
 /**

@@ -48,6 +48,20 @@ export const sortDice = (dice: Dice[], priorElement?: Element[]): Dice[] => {
     return priorMap[b] - priorMap[a];
   });
 }
+/** 骰子转换为字符串以方便在信息记录中阅读 */
+export const spellDices = (dices: Dice[]): string => {
+  const nameMap: Record<Dice, string> = {
+    omni: '万',
+    [Element.Pyro]: '火',
+    [Element.Hydro]: '水',
+    [Element.Geo]: '岩',
+    [Element.Electro]: '雷',
+    [Element.Dendro]: '草',
+    [Element.Cryo]: '冰',
+    [Element.Anemo]: '风',
+  };
+  return dices.map((dice) => nameMap[dice]).join('');
+}
 
 /**
  * 计算费用变化, 工具函数, 纯函数

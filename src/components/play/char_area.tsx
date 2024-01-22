@@ -41,7 +41,7 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
     const initAction = switchChar({player, charIndex: index});
     const historyMessage = appendHistoryMessages({
       messages: [{
-        message: `${player}切换至角色:${chars[index].name}`,
+        message: `${player === 'boku' ? '我方' : '对方'}切换至角色:${chars[index].name}`,
       }]
     })
     const allTriggerAction = computeTriggerActions(playState, TriggerType.SwitchEnd, [initAction, historyMessage]);

@@ -117,7 +117,7 @@ function Play() {
         当前行动方: <br/>
         {currPhase?.player && currPhase?.player === 'boku' ? '本方' : '对方'}<br/>
       </div>
-      <div className="absolute w-40 max-h-200 overflow-auto border-solid border-4 border-white bg-[#fffa] left-4 top-40">
+      <div className="absolute w-40 max-h-[450px] overflow-auto border-solid border-4 border-white bg-[#fffa] left-4 top-40">
         {historyMessages.map((message, index) => {
           return <p>
             {message.message}
