@@ -12,7 +12,7 @@ export class KamisatoAyaka implements CharEntity {
     // 实体id
     this.id = getEntityId();
     this.index = index;
-    this.name = t('神里绫华');
+    this.name = t('角色-神里绫华');
     this.icon = '/static/cards/5.png';
     this.smallIcon = '/static/cards/5.png';
     this.element = [Element.Cryo];

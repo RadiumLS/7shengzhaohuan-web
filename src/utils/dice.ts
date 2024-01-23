@@ -127,7 +127,6 @@ export const computeSkillCost = (skill: Skill, deltaCostAction: DeltaCost): {
       applied = true;
     }
   }
-  // XXX: 注意, 费用降低到0之后的计算请在外侧进行, 这里是个纯函数
 
   return {
     computedCost,

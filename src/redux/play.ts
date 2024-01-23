@@ -63,7 +63,7 @@ interface PlayerState {
    */
   tempCards: ActionCard[];
   /** 使用技能/卡牌需要消耗的骰子, 配合骰子选择器使用 */
-  requireCost?: CardCost[];
+  requireCost?: CardCost;
   /** 当前要使用的卡牌 */
   activeCard?: ActionCard;
   /** 当前要使用的技能 */
@@ -87,6 +87,7 @@ export interface PlayState {
   currPhase?: RoundPhase,
   nextPhase?: RoundPhase,
   historyMessages: HistoryMessage[],
+  currentMessages?: HistoryMessage[],
 }
 
 const loadFromLocalStorage = () => {
@@ -130,6 +131,10 @@ const playSlice = createSlice({
     appendHistoryMessages: function(state, action: PayloadAction<{messages: HistoryMessage[]}>) {
       const { messages } = action.payload;
       state.historyMessages.push(...messages);
+    },
+    setCurrentMessages: function(state, action: PayloadAction<HistoryMessage[]>) {
+      const messages = action.payload;
+      state.currentMessages = messages;
     },
     setPlayerDeckCode: function(state, action: PayloadAction<{deck: Deck, player: PlayerName}>) {
       const { deck, player } = action.payload;
@@ -374,7 +379,33 @@ const playSlice = createSlice({
       }
     },
     changeCost: function(state, action:PayloadAction<DeltaCost>) {
-      // TODO: 修改需求的费用, 给骰子选择器使用的requireCost
+      // XXX: 这个changeCost更主要的是为了产生一个约定好的action用于dispatch
+      // 所以这个这里的处理反而是空的
+    },
+    /** 设定需求的骰子数给骰子选择器使用 */
+    setRequireCost: function(state, action:PayloadAction<{
+      player: PlayerName, 
+      requireCost: CardCost,
+    }>) {
+      const { player, requireCost }= action.payload;
+      if(player === 'boku') {
+        state.bokuState.requireCost = requireCost;
+      } else {
+        state.kimiState.requireCost = requireCost;
+      }
+    },
+    /** 设定当前选中将要使用的技能 */
+    setActiveSkill: function(state, action: PayloadAction<{
+      player: PlayerName, 
+      activeSkill: Skill,
+    }>) {
+      const { player, activeSkill }= action.payload;
+      // XXX: 注意, 这里传递的技能的费用信息是不可靠的
+      if(player === 'boku') {
+        state.bokuState.activeSkill = activeSkill;
+      } else {
+        state.kimiState.activeSkill = activeSkill;
+      }
     },
     // 开始处理一个逻辑帧
     beginFrame: function(state, action: PayloadAction<{startAction: PayloadAction[]}>) {
@@ -399,6 +430,7 @@ const playSlice = createSlice({
 
 export const {
   appendHistoryMessages,
+  setCurrentMessages,
   setPlayerDeckCode,
   initPlayersChar,
   initPlayersPile,
@@ -414,6 +446,8 @@ export const {
   rollDice,
   rerollDice,
   changeCost,
+  setRequireCost,
+  setActiveSkill,
 } = playSlice.actions
 export const getAllEntity = (state: Readonly<PlayState>) => {
   // XXX: 可能要考虑Entity的顺序问题……或许需要给Trigger增加优先级？
