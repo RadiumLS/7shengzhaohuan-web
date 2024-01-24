@@ -153,4 +153,86 @@ export const computeSkillCost = (skill: Skill, deltaCostAction: DeltaCost): {
 }
 // TODO: 需要一个工具函数：f(cardEntity, deltaCost) => cost ; 计算卡牌的费用
 
+// 检查requireCost和dices是否匹配的工具函数
+export const checkCostMatch = (requireCost: CardCost, dices: Dice[]): boolean => {
+  // 如果不需要任何骰子, 则直接返回true
+  if(requireCost.length === 0) return true;
+  const remainDices = sortDice([...dices]);
+  let requireDiceCount = 0;
+  // 先检查骰子数量是否一致
+  const requireCostDict: Record<CostType, number> = {
+    matching: 0,
+    unaligned: 0,
+    [Element.Pyro]: 0,
+    [Element.Hydro]: 0,
+    [Element.Geo]: 0,
+    [Element.Electro]: 0,
+    [Element.Dendro]: 0,
+    [Element.Cryo]: 0,
+    [Element.Anemo]: 0,
+    energy: 0,
+    element: 0
+  };
+  // 过一遍骰子需求数量
+  for(let i = 0; i < requireCost.length; i++) {
+    const oneCost = requireCost[i];
+    requireDiceCount += oneCost.cost;
+    requireCostDict[oneCost.type] += oneCost.cost;
+  }
+  // 移除energy和element两个特殊情况的消耗
+  requireCostDict.energy = 0;
+  requireCostDict.element = 0;
+  // 如果需求的总骰子不对应, 则直接返回false
+  if(requireDiceCount !== dices.length) return false;
+  // 检查是否只需求一种颜色的骰子
+  let mixRequire = true;
+  let compareElement: (CostType | undefined) = undefined;
+  let oneCostElement: (CostType | undefined) = undefined;
+  for(const key in requireCostDict) {
+    const value = requireCostDict[key as CostType];
+    if(value === 1) oneCostElement = key as CostType;
+    if(value === requireDiceCount) {
+      mixRequire = false;
+      compareElement = key as CostType;
+      break;
+    };
+  }
+  // 如果只需求一种颜色的骰子
+  if(!mixRequire) {
+    // 如果需求的全部是任意骰, 则只匹配数量后返回true
+    if(compareElement === 'unaligned') return true;
+    // 如果需求的全部是单色骰, 则匹配数量并且检查颜色
+    for(let i = 0; i < remainDices.length; i++) {
+      const dice = remainDices[i];
+      if(dice === 'omni') continue;
+      // 如果需求的是同色骰, 则变更比较色为第一个非万能骰的颜色
+      if(compareElement === 'matching') {
+        compareElement = dice;
+        continue;
+      }
+      if(dice !== compareElement) return false;
+    }
+    return true;
+  } else {
+    // TODO: 需求的是混合骰的情况
+    // 目前只有普通攻击是1元素骰+2任意骰的消耗
+    const unalignCost = requireCostDict.unaligned;
+    // 如果除了任意骰之外, 只消耗一个元素骰的情况 (普通攻击大部分是这种)
+    if((requireDiceCount - unalignCost) === 1) {
+      if(dices.includes('omni')) {
+        return true;
+      }
+      if(dices.includes(oneCostElement as Element)) {
+        return true;
+      }
+    } else {
+      // 远期要考虑同色骰m+任意骰n的情况？
+      // XXX: 每考虑这种情况, 先直接返回false
+      return false;
+    }
+
+    return false;
+  }
+}
+
 //TODO: 做个概率计算的工具函数出来, 方便牌手进行分析
