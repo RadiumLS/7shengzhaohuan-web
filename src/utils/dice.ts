@@ -62,6 +62,23 @@ export const spellDices = (dices: Dice[]): string => {
   };
   return dices.map((dice) => nameMap[dice]).join('');
 }
+export const spellCosts = (costs?: CardCost): string => {
+  if(costs === undefined) return '';
+  const nameMap: Record<CostType, string> = {
+    [Element.Pyro]: '火骰子',
+    [Element.Hydro]: '水骰子',
+    [Element.Geo]: '岩骰子',
+    [Element.Electro]: '雷骰子',
+    [Element.Dendro]: '草骰子',
+    [Element.Cryo]: '冰骰子',
+    [Element.Anemo]: '风骰子',
+    matching: '同色骰',
+    unaligned: '任意骰',
+    energy: '充能',
+    element: '元素骰'
+  };
+  return costs.map((cost) => `${nameMap[cost.type]}${cost.cost}`).join('');
+}
 
 /**
  * 计算费用变化, 工具函数, 纯函数
@@ -70,6 +87,7 @@ export const spellDices = (dices: Dice[]): string => {
  * @returns 计算后的费用, 不会被减到0以下
  */
 export const calculateCost = (originCost: CardCost, deltaCost: CardCost): CardCost => {
+  // TODO: 处理「元素骰」减费的情况, 可能需要特殊处理
   const deltaMap: Partial<Record<CostType, number>> = {};
   for(let i = 0; i < deltaCost.length; i++) {
     const cost = deltaCost[i];

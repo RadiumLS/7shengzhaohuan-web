@@ -7,7 +7,7 @@ import { PhaseType, TriggerType } from "../../type/enums";
 import { DeltaCost, HistoryMessage, RollPhase, Skill, StartPhase } from "@src/type/play";
 import { all } from "axios";
 import { CardCost } from "@src/type/card";
-import { computeSkillCost } from "../../utils/dice";
+import { computeSkillCost, spellCosts } from "../../utils/dice";
 import { spellEntityById } from "../../utils/entity_class";
 
 
@@ -35,7 +35,7 @@ const SkillArea : React.FC<{player: PlayerName}> = (prop) => {
         const {applied, computedCost} = computeSkillCost(prevSkill, deltaCost);
         if(applied) {
           deltaCostAppliedMessages[index].push({
-            message: `${spellEntityById(playState , deltaCost.entityId)}生效, 费用 ${deltaCost.cost}`
+            message: `${spellEntityById(playState , deltaCost.entityId)}生效, 费用 ${spellCosts(deltaCost.cost)}`
           });
           return {
             ...prevSkill,
@@ -45,6 +45,7 @@ const SkillArea : React.FC<{player: PlayerName}> = (prop) => {
           return prevSkill;
         }
       }, skill);
+      setAppliedMessages(deltaCostAppliedMessages);
       return reduceComputedSkill;
     });
     setSkills(computedSkills);

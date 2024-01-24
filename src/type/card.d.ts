@@ -7,7 +7,8 @@ import {
 
 /** 七种元素类型 */
 /** 卡牌消耗类型, 分元素骰, 同属性骰, 无属性骰, 还有充能 */
-type CostType = Element | 'matching' |'unaligned' | 'energy';
+/** 最后一个element是不区分的元素骰费用变化, 在DeltaCost中使用到了「」 */
+type CostType = Element | 'matching' |'unaligned' | 'energy' | 'element';
 /** 消耗, 记录数量和类型*/
 type Cost = {
   type: CostType,
