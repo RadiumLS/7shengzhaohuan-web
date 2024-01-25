@@ -1,7 +1,7 @@
 // 神里凌华角色牌 以及相关的卡牌的Entity实现
 import { CardCost } from '@src/type/card';
-import { PlayState, PlayerName, appendHistoryMessages, changeCost, createCharState, getEntityId } from '../redux/play';
-import { Weapon, Element, TriggerType, SkillType } from '../type/enums';
+import { PlayState, PlayerName, appendHistoryMessages, changeCost, createCharState, dealDamage, getEntityId } from '../redux/play';
+import { Weapon, Element, TriggerType, SkillType, DamageType } from '../type/enums';
 import { CharEntity, CharStateEntity, DeltaCost, EquipmentEngity, Skill, Trigger } from '../type/play';
 
 // 预留的i18n函数
@@ -27,7 +27,7 @@ export class KamisatoAyaka implements CharEntity {
     this.triggerMap = {
       [TriggerType.SwitchEnd]: [this.senhoTrigger],
     };
-    this.skills = [new KamisatoArtKabuki(), new KamisatoArtHyouka(), new KamisatoArtSoumetsu()];
+    this.skills = [new KamisatoArtKabuki(player), new KamisatoArtHyouka(player), new KamisatoArtSoumetsu(player)];
   }
   triggerMap: Partial<Record<TriggerType, Trigger[]>>;
   weaponType: Weapon;
@@ -106,7 +106,8 @@ export class Senho implements CharStateEntity {
  * 普通攻击: 神里流·倾
  */
 export class KamisatoArtKabuki implements Skill {
-  constructor() {
+  constructor(player: PlayerName) {
+    this.player = player;
     this.id = getEntityId();
     this.name = t('神里流·倾');
     this.desc = t('普通攻击, 造成两点物理伤害');
@@ -120,7 +121,20 @@ export class KamisatoArtKabuki implements Skill {
       type: 'unaligned',
       cost: 2,
     }];
+    this.effect = (state) => {
+      const opponentState = this.player === 'boku' ? state.kimiState : state.bokuState;
+      // 注意, 这里没有判断activeCharIndex为undefined的情况, 虽然理论上不会出现
+      const targetChar = opponentState.chars[opponentState.activeCharIndex || 0];
+      return [dealDamage({
+        source: this.id,
+        target: targetChar.id,
+        damageType: DamageType.NormalAttack,
+        element: 'physical',
+        point: 2,
+      })]
+    }
   }
+  player: PlayerName;
   id: number;
   icon?: string | undefined;
   name: string;
@@ -135,7 +149,8 @@ export class KamisatoArtKabuki implements Skill {
  * 元素战技: 神里流·冰华
  */
 export class KamisatoArtHyouka implements Skill {
-  constructor() {
+  constructor(player: PlayerName) {
+    this.player = player;
     this.id = getEntityId();
     this.name = t('神里流·冰华');
     this.desc = t('元素战技, 造成三点冰元素伤害');
@@ -147,6 +162,7 @@ export class KamisatoArtHyouka implements Skill {
       cost: 3,
     }];
   }
+  player: PlayerName;
   id: number;
   icon?: string | undefined;
   name: string;
@@ -161,7 +177,8 @@ export class KamisatoArtHyouka implements Skill {
  * 元素爆发: 神里流·霜灭
  */
 export class KamisatoArtSoumetsu implements Skill {
-  constructor() {
+  constructor(player: PlayerName) {
+    this.player = player;
     this.id = getEntityId();
     this.name = t('神里流·霜灭');
     this.desc = t('元素爆发, 造成四点冰元素伤害, 召唤霜见雪关扉');
@@ -176,6 +193,7 @@ export class KamisatoArtSoumetsu implements Skill {
       cost: 3,
     }];
   }
+  player: PlayerName;
   id: number;
   icon?: string | undefined;
   name: string;

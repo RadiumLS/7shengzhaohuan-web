@@ -9,6 +9,7 @@ import {
   type PhaseType,
   type Element,
   type SkillType,
+  type DamageType
 } from './enums'
 import { type PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 
@@ -72,6 +73,8 @@ interface ActiveStateEntity extends LogicEntity {
  * 技能, 但并不是一个常驻实体
  */
 interface Skill {
+  /** 属于哪个玩家, 用于进行目标判断 */
+  player: PlayerName;
   id: number;
   icon?: string;
   name: string;
@@ -241,4 +244,24 @@ interface HistoryMessage {
    * 比如抽到了什么牌, 掷出了什么骰子
    */
   private?: boolean;
+}
+/**
+ * 对局中的伤害
+ */
+interface Damage {
+  /** 伤害来源, 类型为实体id */
+  source: number;
+  /** 伤害目标, 类型为实体id */
+  target: number;
+  /** 伤害的类型, 例如技能/普攻/元素爆发/元素反应 */
+  damageType: DamageType;
+  /** 元素类型, 比7元素多物理和穿刺两种类型 */
+  element: Element | 'physical' | 'pierce';
+  /** 伤害值 */
+  point: number;
+}
+/**
+ * 描述伤害变化的interface
+ */
+interface DamageChange {
 }

@@ -251,7 +251,7 @@ function Play() {
               width: '300px',
               height: '50px',
             }}>
-            <SkillArea player="kimi"/>
+            <SkillArea player="boku"/>
           </MovableWrapper>
         </>
       }

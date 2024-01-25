@@ -75,6 +75,7 @@ export enum Weapon {
   /** 其他武器, 通常是原魔*/
   Other = 'other', 
 }
+/** 技能类型 */
 export enum SkillType {
   /** 普通攻击*/
   NormalAttack = 'normal_attack',
@@ -82,6 +83,23 @@ export enum SkillType {
   ElementalSkill = 'elemental_skill',
   /** 元素爆发*/
   ElementalBrust = 'elemental_brust',
+}
+/** 伤害来源类型 */
+export enum DamageType {
+  /** 普通攻击*/
+  NormalAttack = 'normal_attack',
+  /** 元素战技*/
+  ElementalSkill = 'elemental_skill',
+  /** 元素爆发*/
+  ElementalBrust = 'elemental_brust',
+  /** 召唤物 */
+  Summons = 'summons',
+  /** 支援物 */
+  Support = 'support',
+  /** 出战状态 */
+  ActiveState = 'active_state',
+  /** 角色状态 */
+  CharState = 'char_state',
 }
 
 // 触发器类型, 先写这么点……好像还有非常多……

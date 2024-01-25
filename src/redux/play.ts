@@ -5,6 +5,7 @@ import type { Deck } from './deck';
 import { ActionCard, CardCost, CostType } from '@src/type/card';
 import {
   ActiveStateEntity, CharEntity, CharStateEntity,
+  Damage,
   DeltaCost,
   HistoryMessage,
   LogicEntity,
@@ -425,6 +426,30 @@ const playSlice = createSlice({
       const targetChar = player === 'boku' ? state.bokuState.chars[charIndex] : state.kimiState.chars[charIndex];
       targetChar.charState.push(charStateEntity);
     },
+    // 造成伤害
+    dealDamage: function(state, action: PayloadAction<Damage>) {
+      const damage = action.payload;
+      // 目前只有角色可以受到伤害, 其他的都是消耗层数/可用次数
+      const allChar = [...state.bokuState.chars, ...state.kimiState.chars]
+      for(let i = 0; i < allChar.length; i++) {
+        const char = allChar[i];
+        if(char.id === damage.target) {
+          char.health -= damage.point;
+          // 死亡判定, 注意如果有免于阵亡的效果, 应该在外层处理
+          if(char.health <= 0) {
+            char.health = 0;
+            char.charState = [];
+            char.element = [];
+            char.weapon = undefined;
+            char.equipment = undefined;
+            char.talent = undefined;
+            char.energy = 0;
+            // XXX: 可能需要一个阵亡标记属性, 用于记录回合内是否有角色阵亡, 否则本大爷的判断会比较麻烦
+          }
+          break;
+        }
+      }
+    },
   }
 });
 
@@ -448,6 +473,7 @@ export const {
   changeCost,
   setRequireCost,
   setActiveSkill,
+  dealDamage,
 } = playSlice.actions
 export const getAllEntity = (state: Readonly<PlayState>) => {
   // XXX: 可能要考虑Entity的顺序问题……或许需要给Trigger增加优先级？
