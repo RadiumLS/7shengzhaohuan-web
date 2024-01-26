@@ -1,8 +1,8 @@
 // 神里凌华角色牌 以及相关的卡牌的Entity实现
 import { CardCost } from '@src/type/card';
-import { PlayState, PlayerName, appendHistoryMessages, changeCost, createCharState, dealDamage, getEntityId } from '../redux/play';
+import play, { PlayState, PlayerName, appendHistoryMessages, changeCost, changeDamage, createCharState, dealDamage, getEntityId } from '../redux/play';
 import { Weapon, Element, TriggerType, SkillType, DamageType } from '../type/enums';
-import { CharEntity, CharStateEntity, DeltaCost, EquipmentEngity, Skill, Trigger } from '../type/play';
+import { CharEntity, CharStateEntity, DamageChange, DeltaCost, EquipmentEngity, Skill, Trigger } from '../type/play';
 
 // 预留的i18n函数
 const t = (s: string) => s;
@@ -67,7 +67,7 @@ export class KamisatoAyaka implements CharEntity {
       })
       // 如果没有附属霰步, 则附属霰步
       if(!existSenho) {
-        const senho = new Senho(this.player);
+        const senho = new Senho(this.player, this.id);
         const newAction = createCharState({
           charIndex: indexAfterSwitch,
           charStateEntity: senho,
@@ -85,18 +85,46 @@ export class KamisatoAyaka implements CharEntity {
 }
 // WIP: 角色状态-霰步写在这里
 export class Senho implements CharStateEntity {
-  constructor(owner: PlayerName) {
+  constructor(owner: PlayerName, charId: number) {
     this.id = getEntityId();
     this.name = '霰步';
     this.player = owner;
     this.triggerMap = {};
+    this.charId = charId;
   }
   triggerMap: Partial<Record<TriggerType, Trigger[]>>;
   player: PlayerName;
+  charId: number;
   name?: string;
   id: number;
-  // TODO: 造成伤害前的Trigger, 伤害变更成冰伤害
-  // TODO: 造成伤害前的Trigger, 如果装备了天赋牌, 那么冰伤害+1
+  damageChangeTrigger: Trigger = (state, actions) => {
+    const playerState = this.player === 'boku' ? state.bokuState : state.kimiState;
+    const selfChar = playerState.chars.find((char) => char.id === this.charId);
+    // 物理伤害转成冰伤害
+    const elementChange: DamageChange = {
+      damageTypes: [],
+      element: ['physical'],
+      delta: 0,
+      damageElementChange: Element.Cryo,
+      // 仅对自身附属的角色生效
+      sourceIds: [this.charId],
+      targetIds: []
+    };
+    actions.push(changeDamage(elementChange));
+
+    if(selfChar && selfChar.talent?.name === 'xxxx') {
+      const cryoDamageChange: DamageChange = {
+        damageTypes: [],
+        element: [Element.Cryo],
+        delta: 1,
+        // 仅对自身附属的角色生效
+        sourceIds: [this.charId],
+        targetIds: []
+      }
+      actions.push(changeDamage(cryoDamageChange));
+    }
+    return actions;
+  }
   // TODO: 回合结束的Trigger, 移除角色状态
 }
 // TODO: 大招召唤物

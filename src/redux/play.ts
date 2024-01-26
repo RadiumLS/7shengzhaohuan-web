@@ -6,6 +6,7 @@ import { ActionCard, CardCost, CostType } from '@src/type/card';
 import {
   ActiveStateEntity, CharEntity, CharStateEntity,
   Damage,
+  DamageChange,
   DeltaCost,
   HistoryMessage,
   LogicEntity,
@@ -383,6 +384,10 @@ const playSlice = createSlice({
       // XXX: 这个changeCost更主要的是为了产生一个约定好的action用于dispatch
       // 所以这个这里的处理反而是空的
     },
+    changeDamage: function(state, action:PayloadAction<DamageChange>) {
+      // XXX: 这个changeDamage更主要的是为了产生一个约定好的action用于dispatch
+      // 所以这个这里的处理反而是空的
+    },
     /** 设定需求的骰子数给骰子选择器使用 */
     setRequireCost: function(state, action:PayloadAction<{
       player: PlayerName, 
@@ -485,6 +490,7 @@ export const {
   rollDice,
   rerollDice,
   changeCost,
+  changeDamage,
   setRequireCost,
   setActiveSkill,
   dealDamage,

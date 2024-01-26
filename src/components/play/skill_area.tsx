@@ -4,11 +4,12 @@ import React, { useEffect, useState } from "react";
 import { PlayerName, computeTriggerActions, goNextPhase, setActiveSkill, setCurrentMessages, setRequireCost, switchChar } from "../../redux/play";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { PhaseType, TriggerType } from "../../type/enums";
-import { DeltaCost, HistoryMessage, RollPhase, Skill, StartPhase } from "@src/type/play";
+import { Damage, DamageChange, DeltaCost, HistoryMessage, RollPhase, Skill, StartPhase } from "@src/type/play";
 import { all } from "axios";
 import { CardCost } from "@src/type/card";
 import { computeSkillCost, spellCosts } from "../../utils/dice";
 import { spellEntityById } from "../../utils/entity_class";
+import { computeDamages } from './../../utils/damage';
 
 
 const SkillArea : React.FC<{player: PlayerName}> = (prop) => {
@@ -62,6 +63,23 @@ const SkillArea : React.FC<{player: PlayerName}> = (prop) => {
       player,
       requireCost: skills[index].cost,
     }));
+    const skill = skills[index];
+    if(skill.effect) {
+      // 伤害试算是在这里触发的
+      const actions = skill.effect(playState);
+      const allActions = computeTriggerActions(playState, TriggerType.DamageChangeBefore, []);
+      const changeDamagePayloads =
+        allActions.filter((action) => action.type === 'play/changeDamage')
+          .map((action) => action.payload as DamageChange);
+      const originDamagePayloads =
+        actions.filter((action) => action.type === 'play/dealDamage')
+          .map((action) => action.payload as Damage);
+      for(let i = 0; i< originDamagePayloads.length; i++) {
+        const oneDamage = originDamagePayloads[i];
+        const xx = computeDamages(playState, oneDamage, changeDamagePayloads);
+      }
+    }
+    // TODO: 补充行动后Trigger等的伤害试算
   }
 
   return <div

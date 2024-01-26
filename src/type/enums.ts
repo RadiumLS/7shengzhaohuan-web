@@ -115,7 +115,11 @@ export enum TriggerType {
   /**
    * 产生伤害时触发器, 如武器牌和绽放反应产生的草原核
    */
-  Damage = 'damage',
+  // Damage = 'damage',
+  /** 伤害变化前触发器, 用于伤害计算 */
+  DamageChangeBefore = 'damageChangeBefore',
+  /** 伤害变化后触发器, 用于扣减层数等 */
+  DamageChangeAfter = 'damageChangeAfter',
   /**
    * 造成伤害时触发器, 如结晶盾和减伤状态
    */

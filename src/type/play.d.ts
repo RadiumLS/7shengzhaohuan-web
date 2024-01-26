@@ -264,4 +264,17 @@ interface Damage {
  * 描述伤害变化的interface
  */
 interface DamageChange {
+  // 生效的伤害类型, 为空则表示全部生效
+  damageTypes: DamageType[]; 
+  // 对指定来源的实体生效, 为空则表示全部生效 
+  sourceIds: number[];
+  // 对指定目标的实体生效, 为空则表示全部生效 
+  targetIds: number[];
+  // 生效的元素类型
+  element: (Element | 'physical' | 'pierce')[];
+  delta: number;
+  // TODO: 增加伤害变化谓词： 伤害变化的函数 f(state, Damage) => Damage
+  // - 并且优先级比delta要高
+  damageElementChange?: (Element | 'physical' | 'pierce'); // 元素类型转换
+  // targetElementChange: 目标的元素附着变化
 }
