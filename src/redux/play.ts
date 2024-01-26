@@ -450,6 +450,20 @@ const playSlice = createSlice({
         }
       }
     },
+    // 附着元素, 注意, 这里是直接修改附着元素, 不是处理元素反应
+    appendElement: function(state, action: PayloadAction<{
+      target: number,
+      elements: Element[],
+    }>) {
+      const { target, elements } = action.payload;
+      const allChar = [...state.bokuState.chars, ...state.kimiState.chars]
+      for(let i = 0; i < allChar.length; i++) {
+        const char = allChar[i];
+        if(char.id === target) {
+          char.appledElement = elements;
+        }
+      }
+    },
   }
 });
 
@@ -474,6 +488,7 @@ export const {
   setRequireCost,
   setActiveSkill,
   dealDamage,
+  appendElement,
 } = playSlice.actions
 export const getAllEntity = (state: Readonly<PlayState>) => {
   // XXX: 可能要考虑Entity的顺序问题……或许需要给Trigger增加优先级？
