@@ -27,7 +27,7 @@ export class KamisatoAyaka implements CharEntity {
     this.triggerMap = {
       [TriggerType.SwitchEnd]: [this.senhoTrigger],
     };
-    this.skills = [new KamisatoArtKabuki(player), new KamisatoArtHyouka(player), new KamisatoArtSoumetsu(player)];
+    this.skills = [new KamisatoArtKabuki(player, this.id), new KamisatoArtHyouka(player, this.id), new KamisatoArtSoumetsu(player, this.id)];
   }
   triggerMap: Partial<Record<TriggerType, Trigger[]>>;
   weaponType: Weapon;
@@ -91,6 +91,9 @@ export class Senho implements CharStateEntity {
     this.player = owner;
     this.triggerMap = {};
     this.charId = charId;
+    this.triggerMap = {
+      [TriggerType.DamageChangeBefore]: [this.damageChangeTrigger],
+    }
   }
   triggerMap: Partial<Record<TriggerType, Trigger[]>>;
   player: PlayerName;
@@ -136,9 +139,10 @@ export class Senho implements CharStateEntity {
  * 普通攻击: 神里流·倾
  */
 export class KamisatoArtKabuki implements Skill {
-  constructor(player: PlayerName) {
+  constructor(player: PlayerName, charId: number) {
     this.player = player;
     this.id = getEntityId();
+    this.charId = charId;
     this.name = t('神里流·倾');
     this.desc = t('普通攻击, 造成两点物理伤害');
     // TODO: 使用普通攻击的图片
@@ -156,7 +160,7 @@ export class KamisatoArtKabuki implements Skill {
       // 注意, 这里没有判断activeCharIndex为undefined的情况, 虽然理论上不会出现
       const targetChar = opponentState.chars[opponentState.activeCharIndex || 0];
       return [dealDamage({
-        source: this.id,
+        source: this.charId,
         target: targetChar.id,
         damageType: DamageType.NormalAttack,
         element: 'physical',
@@ -166,6 +170,7 @@ export class KamisatoArtKabuki implements Skill {
   }
   player: PlayerName;
   id: number;
+  charId: number;
   icon?: string | undefined;
   name: string;
   type: SkillType;
@@ -179,9 +184,10 @@ export class KamisatoArtKabuki implements Skill {
  * 元素战技: 神里流·冰华
  */
 export class KamisatoArtHyouka implements Skill {
-  constructor(player: PlayerName) {
+  constructor(player: PlayerName, charId: number) {
     this.player = player;
     this.id = getEntityId();
+    this.charId = charId;
     this.name = t('神里流·冰华');
     this.desc = t('元素战技, 造成三点冰元素伤害');
     // TODO: 使用神里流·冰华的图片
@@ -194,6 +200,7 @@ export class KamisatoArtHyouka implements Skill {
   }
   player: PlayerName;
   id: number;
+  charId: number;
   icon?: string | undefined;
   name: string;
   type: SkillType;
@@ -207,9 +214,10 @@ export class KamisatoArtHyouka implements Skill {
  * 元素爆发: 神里流·霜灭
  */
 export class KamisatoArtSoumetsu implements Skill {
-  constructor(player: PlayerName) {
+  constructor(player: PlayerName, charId: number) {
     this.player = player;
     this.id = getEntityId();
+    this.charId = charId;
     this.name = t('神里流·霜灭');
     this.desc = t('元素爆发, 造成四点冰元素伤害, 召唤霜见雪关扉');
     // TODO: 使用神里流·霜灭的图片
@@ -225,6 +233,7 @@ export class KamisatoArtSoumetsu implements Skill {
   }
   player: PlayerName;
   id: number;
+  charId: number;
   icon?: string | undefined;
   name: string;
   type: SkillType;

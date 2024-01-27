@@ -1,7 +1,7 @@
 // 对局过程中的角色技能展示区域
 
 import React, { useEffect, useState } from "react";
-import { PlayerName, computeTriggerActions, goNextPhase, setActiveSkill, setCurrentMessages, setRequireCost, switchChar } from "../../redux/play";
+import { PlayerName, computeTriggerActions, goNextPhase, setActiveSkill, setCostMessages, setDamageMessages, setRequireCost, switchChar } from "../../redux/play";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { PhaseType, TriggerType } from "../../type/enums";
 import { Damage, DamageChange, DeltaCost, HistoryMessage, RollPhase, Skill, StartPhase } from "@src/type/play";
@@ -58,12 +58,16 @@ const SkillArea : React.FC<{player: PlayerName}> = (prop) => {
       player,
       activeSkill: skills[index],
     }));
-    dispatch(setCurrentMessages(appliedMessages[index]));
+    dispatch(setCostMessages(appliedMessages[index]));
     dispatch(setRequireCost({
       player,
       requireCost: skills[index].cost,
     }));
     const skill = skills[index];
+    // TODO: 收集伤害试算的结果，然后想办法进行展示
+    const damages: Damage[] = [];
+    // TODO: 收集伤害试算的消息, 然后想办法进行展示
+    const damageMessages: HistoryMessage[] = [];
     if(skill.effect) {
       // 伤害试算是在这里触发的
       const actions = skill.effect(playState);
@@ -75,10 +79,6 @@ const SkillArea : React.FC<{player: PlayerName}> = (prop) => {
       const originDamagePayloads =
         actions.filter((action) => action.type === 'play/dealDamage')
           .map((action) => action.payload as Damage);
-      // TODO: 收集伤害试算的结果，然后想办法进行展示
-      const damages: Damage[] = [];
-      // TODO: 收集伤害试算的消息, 然后想办法进行展示
-      const damageMessages: HistoryMessage[] = [];
       for(let i = 0; i< originDamagePayloads.length; i++) {
         const oneDamage = originDamagePayloads[i];
         const {
@@ -92,6 +92,8 @@ const SkillArea : React.FC<{player: PlayerName}> = (prop) => {
       }
     }
     // TODO: 补充行动后Trigger等的伤害试算
+    // 展示伤害计算的信息
+    dispatch(setDamageMessages(damageMessages));
   }
 
   return <div

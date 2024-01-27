@@ -89,7 +89,8 @@ export interface PlayState {
   currPhase?: RoundPhase,
   nextPhase?: RoundPhase,
   historyMessages: HistoryMessage[],
-  currentMessages?: HistoryMessage[],
+  costMessages?: HistoryMessage[],
+  damageMessages?: HistoryMessage[],
 }
 
 const loadFromLocalStorage = () => {
@@ -134,9 +135,13 @@ const playSlice = createSlice({
       const { messages } = action.payload;
       state.historyMessages.push(...messages);
     },
-    setCurrentMessages: function(state, action: PayloadAction<HistoryMessage[]>) {
+    setCostMessages: function(state, action: PayloadAction<HistoryMessage[]>) {
       const messages = action.payload;
-      state.currentMessages = messages;
+      state.costMessages = messages;
+    },
+    setDamageMessages: function(state, action: PayloadAction<HistoryMessage[]>) {
+      const messages = action.payload;
+      state.damageMessages = messages;
     },
     setPlayerDeckCode: function(state, action: PayloadAction<{deck: Deck, player: PlayerName}>) {
       const { deck, player } = action.payload;
@@ -474,7 +479,8 @@ const playSlice = createSlice({
 
 export const {
   appendHistoryMessages,
-  setCurrentMessages,
+  setCostMessages,
+  setDamageMessages,
   setPlayerDeckCode,
   initPlayersChar,
   initPlayersPile,

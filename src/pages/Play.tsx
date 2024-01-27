@@ -39,7 +39,8 @@ function Play() {
   const kimiDeck = useAppSelector((state) => state.play.kimiState.deck);
   const currPhase = useAppSelector((state) => state.play.currPhase);
   const historyMessages = useAppSelector((state) => state.play.historyMessages);
-  const currentMessages = useAppSelector((state) => state.play.currentMessages);
+  const costMessages = useAppSelector((state) => state.play.costMessages);
+  const damageMessages = useAppSelector((state) => state.play.damageMessages);
 
   const bokuPile = useAppSelector((state) => state.play.bokuState.pileCards);
 
@@ -126,8 +127,16 @@ function Play() {
         })}
       </div>
       <div className="absolute w-60 max-h-[450px] overflow-auto border-solid border-4 border-white bg-[#fffa] left-40 top-40">
-        计算信息: <br/>
-        {currentMessages?.map((message, index) => {
+        费用计算信息: <br/>
+        {costMessages?.map((message, index) => {
+          return <p>
+            {message.message}
+          </p>;
+        })}
+      </div>
+      <div className="absolute w-60 max-h-[450px] overflow-auto border-solid border-4 border-white bg-[#fffa] left-40 top-80">
+        伤害计算信息: <br/>
+        {damageMessages?.map((message, index) => {
           return <p>
             {message.message}
           </p>;

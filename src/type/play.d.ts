@@ -75,7 +75,10 @@ interface ActiveStateEntity extends LogicEntity {
 interface Skill {
   /** 属于哪个玩家, 用于进行目标判断 */
   player: PlayerName;
+  /** 技能的id */
   id: number;
+  /** 技能隶属于哪个角色 */
+  charId: number;
   icon?: string;
   name: string;
   type: SkillType;
