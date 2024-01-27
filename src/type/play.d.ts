@@ -264,6 +264,12 @@ interface Damage {
  * 描述伤害变化的interface
  */
 interface DamageChange {
+  // 伤害变化谓词, 具有很高的优先级, 如果有谓词存在, 那么不使用常规的判断, 而是完全交由谓词判断
+  predicate?: (state: Readonly<PlayState>, originDamage: Damage) => {
+    newDamage: Damage,
+    applied: boolean,
+    message?: string,
+  };
   // 生效的伤害类型, 为空则表示全部生效
   damageTypes: DamageType[]; 
   // 对指定来源的实体生效, 为空则表示全部生效 
@@ -276,5 +282,8 @@ interface DamageChange {
   // TODO: 增加伤害变化谓词： 伤害变化的函数 f(state, Damage) => Damage
   // - 并且优先级比delta要高
   damageElementChange?: (Element | 'physical' | 'pierce'); // 元素类型转换
-  // targetElementChange: 目标的元素附着变化
+  // 伤害变化的来源id
+  entityId: number;
+  // 伤害变化生效后的消息
+  message?: string;
 }

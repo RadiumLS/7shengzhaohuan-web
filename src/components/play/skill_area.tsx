@@ -68,15 +68,27 @@ const SkillArea : React.FC<{player: PlayerName}> = (prop) => {
       // 伤害试算是在这里触发的
       const actions = skill.effect(playState);
       const allActions = computeTriggerActions(playState, TriggerType.DamageChangeBefore, []);
+      // TODO: 元素反应的相关Trigger也要在此处计算
       const changeDamagePayloads =
         allActions.filter((action) => action.type === 'play/changeDamage')
           .map((action) => action.payload as DamageChange);
       const originDamagePayloads =
         actions.filter((action) => action.type === 'play/dealDamage')
           .map((action) => action.payload as Damage);
+      // TODO: 收集伤害试算的结果，然后想办法进行展示
+      const damages: Damage[] = [];
+      // TODO: 收集伤害试算的消息, 然后想办法进行展示
+      const damageMessages: HistoryMessage[] = [];
       for(let i = 0; i< originDamagePayloads.length; i++) {
         const oneDamage = originDamagePayloads[i];
-        const xx = computeDamages(playState, oneDamage, changeDamagePayloads);
+        const {
+          computedDamages,
+          elementChanges,
+          effect,
+          appliedEntityIds,
+          messages,
+        } = computeDamages(playState, oneDamage, changeDamagePayloads);
+        damageMessages.push(...messages);
       }
     }
     // TODO: 补充行动后Trigger等的伤害试算

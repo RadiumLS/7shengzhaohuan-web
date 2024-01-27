@@ -108,7 +108,8 @@ export class Senho implements CharStateEntity {
       damageElementChange: Element.Cryo,
       // 仅对自身附属的角色生效
       sourceIds: [this.charId],
-      targetIds: []
+      targetIds: [],
+      entityId: this.id,
     };
     actions.push(changeDamage(elementChange));
 
@@ -119,7 +120,8 @@ export class Senho implements CharStateEntity {
         delta: 1,
         // 仅对自身附属的角色生效
         sourceIds: [this.charId],
-        targetIds: []
+        targetIds: [],
+        entityId: this.id,
       }
       actions.push(changeDamage(cryoDamageChange));
     }
