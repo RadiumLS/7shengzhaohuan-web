@@ -128,6 +128,7 @@ export class Senho implements CharStateEntity {
       sourceIds: [this.charId],
       targetIds: [],
       entityId: this.id,
+      message: '冰元素附魔, 物理伤害转换为冰元素伤害',
     };
     actions.push(changeDamage(elementChange));
 
@@ -140,6 +141,7 @@ export class Senho implements CharStateEntity {
         sourceIds: [this.charId],
         targetIds: [],
         entityId: this.id,
+        message: '冰元素伤害 +1',
       }
       actions.push(changeDamage(cryoDamageChange));
     }
