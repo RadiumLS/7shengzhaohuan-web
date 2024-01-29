@@ -176,6 +176,7 @@ export const checkCostMatch = (requireCost: CardCost, dices: Dice[]): boolean =>
   // 过一遍骰子需求数量
   for(let i = 0; i < requireCost.length; i++) {
     const oneCost = requireCost[i];
+    if(oneCost.type === 'energy') continue;
     requireDiceCount += oneCost.cost;
     requireCostDict[oneCost.type] += oneCost.cost;
   }
