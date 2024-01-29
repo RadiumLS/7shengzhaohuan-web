@@ -33,6 +33,7 @@ export const computeDamages = (state: Readonly<PlayState>, sourceDamage: Damage,
 } => {
   const appliedEntityIds: number[] = [];
   const messages: {message: string}[] = [];
+  const elementChanges: ElementChange[] = [];
   // const allChar = [...state.bokuState.chars, ...state.kimiState.chars]
   // 经过一系列DamageChange之后的伤害
   let currDamge = {...sourceDamage};
@@ -47,7 +48,20 @@ export const computeDamages = (state: Readonly<PlayState>, sourceDamage: Damage,
       });
     }
   }
-  // let targetChar = allChar.find((char) => char.id === currDamge.target);
+  let targetChar: CharEntity | undefined = undefined;
+  let siblingChars: CharEntity[] = [];
+  targetChar = state.bokuState.chars.find((char) => char.id === currDamge.target);
+  if(targetChar) {
+    siblingChars = state.bokuState.chars;
+  } else {
+    targetChar = state.kimiState.chars.find((char) => char.id === currDamge.target);
+    if(targetChar) {
+      siblingChars = state.kimiState.chars;
+    } else {
+      // XXX: 理论上不会跑到这里
+      throw new Error('unknow damage target');
+    }
+  }
   // TODO: 经过元素反应后的伤害
   // 优先处理扩散反应，因为会额外产生两次计算过程
   if(currDamge.element === Element.Anemo) {
@@ -57,13 +71,30 @@ export const computeDamages = (state: Readonly<PlayState>, sourceDamage: Damage,
     }
     */
   }
+  // TEMP: 先随便搞一下直接附着的情况, 保证往下跑先
+  if(targetChar.appledElement.length === 0) {
+    if(currDamge.element === Element.Cryo
+      || currDamge.element === Element.Dendro
+      || currDamge.element === Element.Electro
+      || currDamge.element === Element.Hydro
+      || currDamge.element === Element.Pyro
+      ) {
+      elementChanges.push({
+        target: targetChar.id,
+        elements: [currDamge.element]
+      })
+      messages.push({
+        message: `${spellEntityById(state , targetChar.id)} 附着 ${spellDamageType(currDamge.element)}`,
+      });
+    }
+  }
   // TODO: 还要额外处理一下冰草共存的情况……
   // TODO: 额外检查是否有火共鸣的火元素反应伤害+3
   // TODO: 好吧, 草神的元素爆发带来的出战状态也会加元素反应伤害……
   return {
     // computedDamages: [sourceDamage],
     computedDamages: [currDamge],
-    elementChanges: [],
+    elementChanges,
     effect: [],
     appliedEntityIds,
     messages,
