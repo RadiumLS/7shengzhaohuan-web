@@ -91,6 +91,8 @@ export interface PlayState {
   historyMessages: HistoryMessage[],
   costMessages?: HistoryMessage[],
   damageMessages?: HistoryMessage[],
+  /** 估算的伤害 */
+  estimateDamages?: Damage[],
 }
 
 const loadFromLocalStorage = () => {
@@ -142,6 +144,10 @@ const playSlice = createSlice({
     setDamageMessages: function(state, action: PayloadAction<HistoryMessage[]>) {
       const messages = action.payload;
       state.damageMessages = messages;
+    },
+    setEstimateDamages: function(state, action: PayloadAction<Damage[]>) {
+      const damages = action.payload;
+      state.estimateDamages = damages;
     },
     setPlayerDeckCode: function(state, action: PayloadAction<{deck: Deck, player: PlayerName}>) {
       const { deck, player } = action.payload;
@@ -481,6 +487,7 @@ export const {
   appendHistoryMessages,
   setCostMessages,
   setDamageMessages,
+  setEstimateDamages,
   setPlayerDeckCode,
   initPlayersChar,
   initPlayersPile,

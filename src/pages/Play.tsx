@@ -14,6 +14,8 @@ import { RollDiceArea } from "../components/play/roll_dice_area";
 import { SelectDiceArea } from "../components/play/select_dice_area";
 import { RoundPhase } from "../type/play";
 import SkillArea from "../components/play/skill_area";
+import { spellEntityById } from "../utils/entity_class";
+import { spellDamageType } from "../utils/damage";
 
 const developDeck1: Deck = {
   deckTitle: '开发用卡组1',
@@ -40,6 +42,7 @@ function Play() {
   const currPhase = useAppSelector((state) => state.play.currPhase);
   const historyMessages = useAppSelector((state) => state.play.historyMessages);
   const costMessages = useAppSelector((state) => state.play.costMessages);
+  const estimateDamages = useAppSelector((state) => state.play.estimateDamages);
   const damageMessages = useAppSelector((state) => state.play.damageMessages);
 
   const bokuPile = useAppSelector((state) => state.play.bokuState.pileCards);
@@ -141,6 +144,12 @@ function Play() {
             {message.message}
           </p>;
         })}
+        伤害估算: <br />
+        {estimateDamages?.map((damage, index) => {
+            const targetEntity = spellEntityById(playState, damage.target);
+            return <p>{targetEntity} 受到 {damage.point} 点 {spellDamageType(damage.element)} 伤害</p>
+          })
+        }
       </div>
       <MovableWrapper defaultPostion={{
         title: 'developArea',

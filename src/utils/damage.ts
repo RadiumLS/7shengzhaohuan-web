@@ -61,7 +61,8 @@ export const computeDamages = (state: Readonly<PlayState>, sourceDamage: Damage,
   // TODO: 额外检查是否有火共鸣的火元素反应伤害+3
   // TODO: 好吧, 草神的元素爆发带来的出战状态也会加元素反应伤害……
   return {
-    computedDamages: [sourceDamage],
+    // computedDamages: [sourceDamage],
+    computedDamages: [currDamge],
     elementChanges: [],
     effect: [],
     appliedEntityIds,
@@ -102,4 +103,20 @@ const elementReaction = (chars: CharEntity[], damage: Damage) : {
     newDamage: damage,
     applied: false,
   }
+}
+
+export const spellDamageType = (damageElement?: (Element | 'physical' | 'pierce')): string => {
+  if(damageElement === undefined) return '';
+  const nameMap: Record<(Element | 'physical' | 'pierce'), string> = {
+    [Element.Pyro]: '火元素',
+    [Element.Hydro]: '水元素',
+    [Element.Geo]: '岩元素',
+    [Element.Electro]: '雷元素',
+    [Element.Dendro]: '草元素',
+    [Element.Cryo]: '冰元素',
+    [Element.Anemo]: '风元素',
+    'physical': '物理',
+    'pierce': '穿刺',
+  };
+  return nameMap[damageElement];
 }

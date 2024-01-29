@@ -1,7 +1,7 @@
 // 对局过程中的角色技能展示区域
 
 import React, { useEffect, useState } from "react";
-import { PlayerName, computeTriggerActions, goNextPhase, setActiveSkill, setCostMessages, setDamageMessages, setRequireCost, switchChar } from "../../redux/play";
+import { PlayerName, computeTriggerActions, goNextPhase, setActiveSkill, setCostMessages, setDamageMessages, setEstimateDamages, setRequireCost, switchChar } from "../../redux/play";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { PhaseType, TriggerType } from "../../type/enums";
 import { Damage, DamageChange, DeltaCost, HistoryMessage, RollPhase, Skill, StartPhase } from "@src/type/play";
@@ -64,9 +64,9 @@ const SkillArea : React.FC<{player: PlayerName}> = (prop) => {
       requireCost: skills[index].cost,
     }));
     const skill = skills[index];
-    // TODO: 收集伤害试算的结果，然后想办法进行展示
-    const damages: Damage[] = [];
-    // TODO: 收集伤害试算的消息, 然后想办法进行展示
+    // 收集伤害试算的结果，然后进行展示
+    const estimateDamages: Damage[] = [];
+    // 收集伤害试算的消息, 然后进行展示
     const damageMessages: HistoryMessage[] = [];
     if(skill.effect) {
       // 伤害试算是在这里触发的
@@ -89,11 +89,13 @@ const SkillArea : React.FC<{player: PlayerName}> = (prop) => {
           messages,
         } = computeDamages(playState, oneDamage, changeDamagePayloads);
         damageMessages.push(...messages);
+        estimateDamages.push(...computedDamages);
       }
     }
     // TODO: 补充行动后Trigger等的伤害试算
     // 展示伤害计算的信息
     dispatch(setDamageMessages(damageMessages));
+    dispatch(setEstimateDamages(estimateDamages));
   }
 
   return <div
