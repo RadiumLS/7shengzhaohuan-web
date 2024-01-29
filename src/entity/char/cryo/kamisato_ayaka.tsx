@@ -1,8 +1,8 @@
 // 神里凌华角色牌 以及相关的卡牌的Entity实现
 import { CardCost } from '@src/type/card';
-import play, { PlayState, PlayerName, appendHistoryMessages, changeCost, changeDamage, createCharState, dealDamage, getEntityId } from '../redux/play';
-import { Weapon, Element, TriggerType, SkillType, DamageType } from '../type/enums';
-import { CharEntity, CharStateEntity, DamageChange, DeltaCost, EquipmentEngity, Skill, Trigger } from '../type/play';
+import play, { PlayState, PlayerName, appendHistoryMessages, changeCost, changeDamage, createCharState, dealDamage, getEntityId } from '../../../redux/play';
+import { Weapon, Element, TriggerType, SkillType, DamageType } from '../../../type/enums';
+import { CharEntity, CharStateEntity, DamageChange, DeltaCost, EquipmentEngity, Skill, Trigger } from '../../../type/play';
 
 // 预留的i18n函数
 const t = (s: string) => s;
@@ -80,6 +80,21 @@ export class KamisatoAyaka implements CharEntity {
         }));
       }
     }
+    return actions;
+  }
+  // DEVELOP: 开发用的减费测试Trigger
+  developTrigger: Trigger = (state, actions) => {
+    // XXX: 真实情况下要从state里面找出对应的减费牌/技能
+    const deltaCost: DeltaCost = {
+      player: this.player,
+      actionCardTypes: [],
+      skillTypes: [SkillType.ElementalSkill, SkillType.NormalAttack],
+      cost: [{
+        type: Element.Cryo,
+        cost: -1,
+      }]
+    }
+    actions.push(changeCost(deltaCost))
     return actions;
   }
 }

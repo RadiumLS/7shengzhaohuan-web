@@ -1,6 +1,6 @@
 // 提供一个用id获取Entity的具体Class的方法
 import { CharEntity, LogicEntity } from '../type/play';
-import { KamisatoAyaka } from '../entity/kamisato_ayaka';
+import { KamisatoAyaka } from '../entity/char/cryo/kamisato_ayaka';
 import { PlayState, PlayerName, getAllEntity } from '../redux/play';
 
 
