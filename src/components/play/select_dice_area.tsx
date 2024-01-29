@@ -2,7 +2,7 @@
 
 import { PhaseType, Element } from "../../type/enums";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { Dice, PlayerName, goNextPhase, rollDice, rerollDice } from "../../redux/play"
+import { Dice, PlayerName, goNextPhase, rollDice, rerollDice, setDice } from "../../redux/play"
 import { useEffect, useState } from "react";
 import { OneDice } from "./roll_dice_area";
 import { checkCostMatch, spellCosts, spellDices } from "../../utils/dice";
@@ -26,12 +26,28 @@ export const SelectDiceArea : React.FC<{player: PlayerName}> = (prop) => {
   const currPhase = useAppSelector((state) => state.play.currPhase);
   const dices = useAppSelector((state) => player === 'boku' ? state.play.bokuState.dice : state.play.kimiState.dice);
   const requireCost =  useAppSelector((state) => player === 'boku' ? state.play.bokuState.requireCost : state.play.kimiState.requireCost);
+  const playerState = useAppSelector((state) => player === 'boku' ? state.play.bokuState : state.play.kimiState);
   useEffect(() => {
     setSelectedFlags(new Array(dices.length).fill(false));
   }, [dices]);
   const confirmDice = () => {
-    // TODO: 检查是否满足消耗条件
-    // TODO: 注意还要检查充能
+    // 检查骰子是否满足消耗条件
+    if(!diceMatchCost) {
+      return;
+    }
+    const energyCost = requireCost?.find((cost) => cost.type === 'energy');
+    // 有充能需求的情况下要检查充能
+    if(energyCost) {
+      const activeIndex = playerState.activeCharIndex;
+      const char =  activeIndex === undefined ? playerState.chars[0] : playerState.chars[activeIndex];
+      if(char.energy != energyCost.cost) return;
+    }
+    // 剩余骰子
+    const leftDices = dices.filter((dice, diceIndex) => (!selectedFlags[diceIndex]));
+    dispatch(setDice({
+      player: player,
+      dices: leftDices,
+    }));
     // TODO: 技能的触发是在这里进行的
   };
   useEffect(() => {

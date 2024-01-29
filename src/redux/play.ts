@@ -348,6 +348,18 @@ const playSlice = createSlice({
         state.kimiState.activeCharIndex = charIndex;
       }
     },
+    // 直接设置玩家的骰子
+    setDice: function(state, action: PayloadAction<{
+      player: PlayerName,
+      dices: Dice[],
+    }>) {
+      const {player, dices} = action.payload;
+      const playerState = player === 'boku' ? state.bokuState : state.kimiState;
+      playerState.dice = dices;
+      state.historyMessages.push({
+        message: `${player === 'boku' ? '我方' : '对方'}的骰子为${spellDices(dices)}`,
+      });
+    },
     // 开局阶段投掷骰子, 注意和重新投掷是有区别的
     rollDice: function(state, action: PayloadAction<{
       player: PlayerName,
@@ -500,6 +512,7 @@ export const {
   createCharState,
   goNextPhase,
   switchChar,
+  setDice,
   rollDice,
   rerollDice,
   changeCost,
