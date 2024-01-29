@@ -6,6 +6,7 @@ import { Dice, PlayerName, goNextPhase, rollDice, rerollDice, setDice } from "..
 import { useEffect, useState } from "react";
 import { OneDice } from "./roll_dice_area";
 import { checkCostMatch, spellCosts, spellDices } from "../../utils/dice";
+import { RoundPhase } from "@src/type/play";
 
 export const SelectDiceArea : React.FC<{player: PlayerName}> = (prop) => {
   const { player } = prop;
@@ -48,7 +49,19 @@ export const SelectDiceArea : React.FC<{player: PlayerName}> = (prop) => {
       player: player,
       dices: leftDices,
     }));
-    // TODO: 技能的触发是在这里进行的
+    const nextPhase: RoundPhase = {
+      id: 0,
+      player: player,
+      name: `结算技能阶段`,
+      type: PhaseType.Process,
+      isActive: false,
+      record: [],
+    };
+    const nextPhaseAction = goNextPhase({
+      nextPhase,
+    });
+    // XXX: 技能的结算移动到Process的Phase中处理了
+    dispatch(nextPhaseAction);
   };
   useEffect(() => {
     if(requireCost) {

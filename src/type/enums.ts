@@ -34,6 +34,8 @@ export enum PhaseType {
    * 回合中的行动阶段
    */
   Action = 'action',
+  /** 进行阶段, 会进行一系列的结算过程 */
+  Process = 'process',
   /**
    * 回合结束阶段, 抽牌, 结算召唤物
    */
