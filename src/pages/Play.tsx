@@ -16,6 +16,7 @@ import { RoundPhase } from "../type/play";
 import SkillArea from "../components/play/skill_area";
 import { spellEntityById } from "../utils/entity_class";
 import { spellDamageType } from "../utils/damage";
+import { ProcessComponent } from "../components/play/process_component";
 
 const developDeck1: Deck = {
   deckTitle: '开发用卡组1',
@@ -150,6 +151,9 @@ function Play() {
             return <p>{targetEntity} 受到 {damage.point} 点 {spellDamageType(damage.element)} 伤害</p>
           })
         }
+      </div>
+      <div className="absolute w-60 max-h-[450px] overflow-auto border-solid border-4 border-white bg-[#fffa] left-80 top-80">
+        <ProcessComponent></ProcessComponent>
       </div>
       <MovableWrapper defaultPostion={{
         title: 'developArea',
