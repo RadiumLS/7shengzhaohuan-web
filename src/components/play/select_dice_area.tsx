@@ -51,6 +51,7 @@ export const SelectDiceArea : React.FC<{player: PlayerName}> = (prop) => {
     }));
     const nextPhase: RoundPhase = {
       id: 0,
+      round: currPhase?.round || 0,
       player: player,
       name: `结算技能阶段`,
       type: PhaseType.Process,

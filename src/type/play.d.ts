@@ -155,6 +155,8 @@ interface RoundPhase {
    * 阶段的id
    */
   id: number,
+  /** 阶段隶属于第几回合 */
+  round: number,
   /**
    * 阶段的名称
    */

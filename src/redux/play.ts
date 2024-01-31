@@ -315,6 +315,7 @@ const playSlice = createSlice({
         offensive: offensive,
         player: offensive,
         id: 0,
+        round: 0,
         name: '开始阶段_先手抽牌',
         type: PhaseType.StartDraw,
         // type: PhaseType.StartDraw,

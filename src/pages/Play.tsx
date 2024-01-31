@@ -103,6 +103,7 @@ function Play() {
     }))
     const nextPhase: RoundPhase = {
       id: 0,
+      round: 1,
       player: offensive,
       name: `${offensive === 'boku' ? '本方': '对方'}行动阶段`,
       type: PhaseType.Action,

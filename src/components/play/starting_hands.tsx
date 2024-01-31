@@ -78,6 +78,7 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
         }));
         const nextPhase: StartPhase = {
           id: 0,
+          round: 0,
           player: player,
           name: `${player === 'boku' ? '本方': '对方'}选择替换手牌`,
           type: PhaseType.StartSwitch,
@@ -150,6 +151,7 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
       const defensivePlayer = player === 'boku' ? 'kimi' : 'boku';
       const nextPhase: StartPhase = {
         id: 0,
+        round: 0,
         player: defensivePlayer,
         name: `开始阶段_后手抽牌`,
         type: PhaseType.StartDraw,
@@ -165,6 +167,7 @@ const StaringHands : React.FC<ShartingHandPorp> = (prop) => {
       // 开启选择出战角色阶段, 由CharArea组件做处理
       const nextPhase: StartPhase = {
         id: 0,
+        round: 0,
         player: (currPhase as StartPhase).offensive,
         name: `开始阶段_先手方选择出战角色`,
         type: PhaseType.StartSelectChar,

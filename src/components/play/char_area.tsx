@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import { PlayerName, appendHistoryMessages, computeTriggerActions, goNextPhase, switchChar } from "../../redux/play";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { PhaseType, TriggerType } from "../../type/enums";
-import { HistoryMessage, RollPhase, StartPhase } from "@src/type/play";
+import { CharEntity, HistoryMessage, RollPhase, StartPhase } from "@src/type/play";
+import { Element } from '@src/type/enums';
 
 
 const CharArea : React.FC<{player: PlayerName}> = (prop) => {
@@ -54,6 +55,7 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
         const defensivePlayer = player === 'boku' ? 'kimi' : 'boku';
         const nextPhase: StartPhase = {
           id: 0,
+          round: 0,
           player: defensivePlayer,
           name: `开始阶段_后手方选择出战角色`,
           type: PhaseType.StartSelectChar,
@@ -70,6 +72,7 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
         // 开启第一个回合的投掷阶段
         const nextPhase: RollPhase = {
           id: 0,
+          round: currPhase.round + 1,
           player: offensive,
           name: `回合阶段_先手方投掷阶段`,
           type: PhaseType.Roll,

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Damage, DamageChange, DeltaCost, HistoryMessage, RollPhase, Skill, StartPhase } from "../../type/play";
 import { computeDamages } from "../../utils/damage";
 
+const ACTION_INTERVAL = 1000;
 
 export const ProcessComponent : React.FC = (prop) => {
   const [processing, setProcessing] = useState<boolean>(false);
@@ -59,8 +60,11 @@ export const ProcessComponent : React.FC = (prop) => {
         setTimeout(() => {
           dispatch(effectList[i]);
           dispatch(setProcessingAction(effectList[i]));
-        }, i * 1000)
+        }, i * ACTION_INTERVAL)
       }
+      setTimeout(() => {
+        // TODO: 结算完毕后, 判断是否需要进行下一阶段
+      }, effectList.length * ACTION_INTERVAL)
     }
   }, [effectList])
 

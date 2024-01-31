@@ -48,6 +48,7 @@ export const RollDiceArea : React.FC<{player: PlayerName}> = (prop) => {
     // 开始的投掷只会有一次, 马上进入同player的重投阶段
     const nextPhase: RerollPhase = {
       id: 0,
+      round: currPhase?.round || 0,
       player: player,
       name: `${player === 'boku' ? '本方': '对方'}选择重掷骰子`,
       type: PhaseType.Reroll,
@@ -93,6 +94,7 @@ export const RollDiceArea : React.FC<{player: PlayerName}> = (prop) => {
       const nextRollPlayer = player === 'boku' ? 'kimi' : 'boku';
       const nextPhase: RollPhase = {
         id: 0,
+        round: currPhase?.round || 0,
         player: nextRollPlayer,
         name: `${nextRollPlayer === 'boku' ? '本方': '对方'}回合开始投掷骰子`,
         type: PhaseType.Roll,
@@ -107,6 +109,7 @@ export const RollDiceArea : React.FC<{player: PlayerName}> = (prop) => {
       const actionPlayer = player === 'boku' ? 'kimi' : 'boku';
       const nextPhase: RoundPhase = {
         id: 0,
+        round: currPhase?.round || 0,
         player: actionPlayer,
         name: `${actionPlayer === 'boku' ? '本方': '对方'}行动阶段`,
         type: PhaseType.Action,
