@@ -72,6 +72,8 @@ interface PlayerState {
   activeSkill?: Skill;
   /** 生效了的费用变化实体id */
   effectedCostEntityIds?: number[];
+  /** 有人倒下的回合数的列表 */
+  charDownRounds: number[];
 }
 // 用boku和kimi来指代两个玩家
 // boku kimi
@@ -88,6 +90,8 @@ export interface PlayState {
   historyPhase: RoundPhase[],
   currPhase?: RoundPhase,
   nextPhase?: RoundPhase,
+  /** 临时阶段, 注意用于角色倒下后的切换角色 */
+  tempPhase?: RoundPhase,
   historyMessages: HistoryMessage[],
   costMessages?: HistoryMessage[],
   damageMessages?: HistoryMessage[],
@@ -117,6 +121,7 @@ let initialState: PlayState = {
     chars: [],
     activeState: [],
     tempCards: [],
+    charDownRounds: [],
   },
   kimiState: {
     dice: [],
@@ -126,6 +131,7 @@ let initialState: PlayState = {
     chars: [],
     activeState: [],
     tempCards: [],
+    charDownRounds: [],
   },
   historyPhase: [],
   historyMessages: [],
@@ -470,16 +476,10 @@ const playSlice = createSlice({
         const char = allChar[i];
         if(char.id === damage.target) {
           char.health -= damage.point;
-          // 死亡判定, 注意如果有免于阵亡的效果, 应该在外层处理
+          // 血量不会降低到0以下
           if(char.health <= 0) {
             char.health = 0;
-            char.charState = [];
-            char.element = [];
-            char.weapon = undefined;
-            char.equipment = undefined;
-            char.talent = undefined;
-            char.energy = 0;
-            // XXX: 可能需要一个阵亡标记属性, 用于记录回合内是否有角色阵亡, 否则本大爷的判断会比较麻烦
+            // XXX: 角色的倒下在技能结算后处理, 这里只处理血量变化
           }
           break;
         }

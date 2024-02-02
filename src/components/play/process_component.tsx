@@ -8,9 +8,24 @@ import { Damage, DamageChange, DeltaCost, HistoryMessage, RollPhase, Skill, Star
 import { computeDamages } from "../../utils/damage";
 
 const ACTION_INTERVAL = 1000;
+/** 正在结算中的effect类型 */
+enum ProcessingEffectType {
+  /** 技能 */
+  SkillEffect,
+  /** 倒下 */
+  DownEffect,
+  /** 使用技能后 */
+  SkillAfterEffect,
+  /** 切换角色后 */
+  SwitchAfterEffect,
+  /** 下一个行动方或者回合结束 */
+  NextRoundPhase,
+}
+const peType = ProcessingEffectType
 
 export const ProcessComponent : React.FC = (prop) => {
   const [processing, setProcessing] = useState<boolean>(false);
+  const [processingType, setProcessingType] = useState<ProcessingEffectType>(peType.SkillEffect)
   const [currEffect, setCurrEffect] = useState<any>(undefined);
   const [effectList, setEffectList] = useState<any[]>([]);
   const dispatch = useAppDispatch();
@@ -54,19 +69,54 @@ export const ProcessComponent : React.FC = (prop) => {
       setEffectList(payloadList);
     }
   }, [activeSkill, processing]);
+
   useEffect(() => {
     if(effectList.length > 0) {
       for(let i=0; i< effectList.length; i++) {
         setTimeout(() => {
           dispatch(effectList[i]);
           dispatch(setProcessingAction(effectList[i]));
+          // TODO: 记录一下对应的消息
         }, i * ACTION_INTERVAL)
       }
       setTimeout(() => {
         // TODO: 结算完毕后, 判断是否需要进行下一阶段
+        setProcessingType((originType) => {
+          if(originType === peType.SkillEffect || originType === peType.SkillAfterEffect) {
+            return peType.DownEffect;
+          }
+          if(originType === peType.DownEffect) {
+            return peType.SkillAfterEffect;
+          }
+          return originType;
+        })
       }, effectList.length * ACTION_INTERVAL)
+    } else {
+      setProcessingType(peType.NextRoundPhase);
     }
   }, [effectList])
+
+  useEffect(() => {
+    if(processingType === peType.DownEffect) {
+      // TODO: 检查倒下的判断
+      // TODO: 设置新的effectList
+    }
+    if(processingType === peType.SwitchAfterEffect) {
+      // TODO: 检查有没有「切换角色后」的effect
+      // TODO: 设置新的effectList
+    }
+    if(processingType === peType.SkillAfterEffect) {
+      // TODO: 检查有没有「使用技能后」的effect
+      // TODO: 设置新的effectList
+      // TODO: 如果没有新的effectList，则setEffectList为空数组, 触发行动方的检查
+    }
+    if(processingType === peType.NextRoundPhase) {
+      // TODO: 检查下个阶段是对方行动/本方行动/回合结束
+    }
+  }, [processingType])
+
+  const checkSkillAfterEffect = (skill: Skill) => {
+  }
 
   if(currPhase?.type !== PhaseType.Process) {
     return <></>;

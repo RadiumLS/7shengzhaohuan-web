@@ -142,4 +142,6 @@ export enum TriggerType {
    * 切换人物前触发器, 如支援牌凯瑟琳和藏镜仕女天赋牌
    */
   SwitchStart = 'switchStart',
+  /** 角色倒下时候的触发器, 比如免于被击倒和野猪公主 */
+  CharDownBefore = 'charDownBefore',
 }
