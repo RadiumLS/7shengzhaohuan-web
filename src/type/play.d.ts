@@ -117,6 +117,8 @@ interface CharEntity extends LogicEntity {
    * 充能上限
    */
   energyMax: number,
+  /** 是否倒下 */
+  isDown?: boolean,
   /**
    * 武器类型
    */

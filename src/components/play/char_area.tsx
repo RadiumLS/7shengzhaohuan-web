@@ -97,11 +97,13 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
     {
       chars.map((oneChar, index) => {
         const {id, icon} = oneChar;
+        const isActiveChar = playerState.activeCharIndex === index;
+        const isCharDown = oneChar.isDown;
         return <div
-          className={`flex-1 relative ${playerState.activeCharIndex === index && (player === 'boku' ? '-top-8' : 'top-8')}`}
+          className={`flex-1 relative ${ isActiveChar && (player === 'boku' ? '-top-8' : 'top-8')} ${isCharDown ? 'opacity-50' : 'opacity-100'}`}
           key={`boku_char_${index}`}
           onClick={() => {
-            trySwitchChar(index);
+            !isCharDown && trySwitchChar(index);
           }}
         >
           <div className="relative w-full h-full">

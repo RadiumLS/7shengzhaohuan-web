@@ -485,6 +485,23 @@ const playSlice = createSlice({
         }
       }
     },
+    // 将角色置为倒下
+    setCharDown: function(state, action: PayloadAction<{charId: number}>) {
+      const downCharId = action.payload.charId;
+      const allChar = [...state.bokuState.chars, ...state.kimiState.chars]
+      const downChar = allChar.find((char) => char.id === downCharId);
+      if(downChar) {
+        downChar.isDown = true;
+        downChar.charState = [];
+        downChar.weapon = undefined;
+        downChar.equipment = undefined;
+        downChar.talent = undefined;
+        downChar.energy = 0;
+        const playerState = downChar.player === 'boku' ? state.bokuState : state.kimiState;
+        // 额外标记对应方有人倒下的回合数
+        playerState.charDownRounds.push(state.currPhase?.round || 0);
+      }
+    },
     // 附着元素, 注意, 这里是直接修改附着元素, 不是处理元素反应
     appendElement: function(state, action: PayloadAction<{
       target: number,
@@ -528,6 +545,7 @@ export const {
   setRequireCost,
   setActiveSkill,
   dealDamage,
+  setCharDown,
   appendElement,
 } = playSlice.actions
 export const getAllEntity = (state: Readonly<PlayState>) => {

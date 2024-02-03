@@ -3,9 +3,10 @@
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { appendElement, computeTriggerActions, dealDamage, setProcessingAction } from "../../redux/play";
 import { PhaseType, TriggerType } from "../../type/enums";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Damage, DamageChange, DeltaCost, HistoryMessage, RollPhase, Skill, StartPhase } from "../../type/play";
 import { computeDamages } from "../../utils/damage";
+import { computeCharDownEffect } from "../../utils/processing";
 
 const ACTION_INTERVAL = 1000;
 /** 正在结算中的effect类型 */
@@ -31,6 +32,9 @@ export const ProcessComponent : React.FC = (prop) => {
   const dispatch = useAppDispatch();
   const currPhase = useAppSelector((state) => state.play.currPhase);
   const playState = useAppSelector((state) => state.play);
+  const getPlayState = useCallback(() => {
+    return playState;
+  }, [playState]);
   const activeSkill = useAppSelector((state) => {
     const currPhase = state.play.currPhase;
     const player = currPhase?.player;
@@ -71,6 +75,7 @@ export const ProcessComponent : React.FC = (prop) => {
   }, [activeSkill, processing]);
 
   useEffect(() => {
+    if(!processing) return;
     if(effectList.length > 0) {
       for(let i=0; i< effectList.length; i++) {
         setTimeout(() => {
@@ -98,8 +103,8 @@ export const ProcessComponent : React.FC = (prop) => {
 
   useEffect(() => {
     if(processingType === peType.DownEffect) {
-      // TODO: 检查倒下的判断
-      // TODO: 设置新的effectList
+      const { effects, appliedEntityIds} = computeCharDownEffect(getPlayState());
+      setEffectList(effects);
     }
     if(processingType === peType.SwitchAfterEffect) {
       // TODO: 检查有没有「切换角色后」的effect
@@ -127,6 +132,6 @@ export const ProcessComponent : React.FC = (prop) => {
   // TODO: 进行阵亡/游戏结束的判定
   // TODO: 没有新的效果需要结算后, 判断进行另一方的行动阶段, 还是继续自己行动
   return <div>
-    processing: {JSON.stringify(processing)}
+    processing: {JSON.stringify(processingType)}
   </div>
 }
