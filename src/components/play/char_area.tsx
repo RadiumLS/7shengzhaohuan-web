@@ -35,6 +35,9 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
         setSwitchConfirm((prev) => !prev);
         setSwitchIndex(index);
       }
+    } else if (playerState.charDownNeedSwitch) {
+        setSwitchConfirm((prev) => !prev);
+        setSwitchIndex(index);
     }
   };
   const switchToChar = (index: number) => {
@@ -97,12 +100,13 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
     {
       chars.map((oneChar, index) => {
         const {id, icon} = oneChar;
-        const isActiveChar = playerState.activeCharIndex === index;
         const isCharDown = oneChar.isDown;
+        const isActiveChar = !isCharDown && playerState.activeCharIndex === index;
         return <div
           className={`flex-1 relative ${ isActiveChar && (player === 'boku' ? '-top-8' : 'top-8')} ${isCharDown ? 'opacity-50' : 'opacity-100'}`}
           key={`boku_char_${index}`}
           onClick={() => {
+            // 阻止切换到已经倒下的角色
             !isCharDown && trySwitchChar(index);
           }}
         >

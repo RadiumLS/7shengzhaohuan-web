@@ -6,7 +6,7 @@ import { CharEntity } from '../type/play';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 /**
- * 核心的伤害计算工具函数, 元素反应的处理也在这个函数内
+ * 核心的判断是否有角色倒下的工具函数
  * @param state 计算时候的全局state
  * @returns 
  */
@@ -17,6 +17,7 @@ export const computeCharDownEffect = (state: Readonly<PlayState>) : {
   appliedEntityIds: number[],
 } => {
   const retEffect: PayloadAction<unknown>[]  = [];
+  const needSwitchCharPlayer = [];
   // TODO: 检查是否又阻止倒下之类的效果
   const allActions = computeTriggerActions(state, TriggerType.CharDownBefore, []);
   // 检查血量为0或者以下的角色, 将其置为倒下状态
@@ -27,8 +28,11 @@ export const computeCharDownEffect = (state: Readonly<PlayState>) : {
       retEffect.push(setCharDown({
         charId: oneChar.id,
       }));
+      needSwitchCharPlayer.push(oneChar.player);
     }
   }
+  // 切换角色阶段在setCharDown中处理
+
   // TODO: 野猪公主的判断要怎么处理好呢？
   // - 可能考虑给野猪公主增加CharDownBeforeTrigger, 或者直接这里做特殊处理？
 

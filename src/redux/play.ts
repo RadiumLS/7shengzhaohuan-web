@@ -74,6 +74,8 @@ interface PlayerState {
   effectedCostEntityIds?: number[];
   /** 有人倒下的回合数的列表 */
   charDownRounds: number[];
+  /** 需要进行倒下切人的标记 */
+  charDownNeedSwitch?: boolean;
 }
 // 用boku和kimi来指代两个玩家
 // boku kimi
@@ -357,8 +359,10 @@ const playSlice = createSlice({
       const { player, charIndex } = action.payload;
       if(player === 'boku') {
         state.bokuState.activeCharIndex = charIndex;
+        state.bokuState.charDownNeedSwitch = false;
       } else {
         state.kimiState.activeCharIndex = charIndex;
+        state.kimiState.charDownNeedSwitch = false;
       }
     },
     // 直接设置玩家的骰子
@@ -500,6 +504,14 @@ const playSlice = createSlice({
         const playerState = downChar.player === 'boku' ? state.bokuState : state.kimiState;
         // 额外标记对应方有人倒下的回合数
         playerState.charDownRounds.push(state.currPhase?.round || 0);
+        const aliveChars = playerState.chars.filter((char) => !char.isDown);
+        if(aliveChars.length > 1) {
+          playerState.charDownNeedSwitch = true;
+        } else if(aliveChars.length === 1) {
+          playerState.activeCharIndex = aliveChars[0].index;
+        } else if(aliveChars.length === 0) {
+          // TODO: 都倒下了, 进入胜负判定阶段
+        }
       }
     },
     // 附着元素, 注意, 这里是直接修改附着元素, 不是处理元素反应
