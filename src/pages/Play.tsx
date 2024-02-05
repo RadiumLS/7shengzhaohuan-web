@@ -94,7 +94,7 @@ function Play() {
     }));
     dispatch(rollDice({
       player: offensive,
-      count: 8,
+      count: 9,
       diceType: 'omni',
     }))
     dispatch(rollDice({

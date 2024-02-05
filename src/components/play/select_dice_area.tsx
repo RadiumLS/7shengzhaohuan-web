@@ -85,7 +85,11 @@ export const SelectDiceArea : React.FC<{player: PlayerName}> = (prop) => {
     
     <div className="w-16 flex flex-col">
       {dices.map((dice, index) => {
-        return <div className={`w-16 h-16 ${selectedFlags[index] ? 'bg-red-500' : ''}`} onClick={() => switchSelectedIndex(index)}>
+        return <div
+          className={`w-16 h-16 ${selectedFlags[index] ? 'bg-red-500' : ''}`}
+          onClick={() => switchSelectedIndex(index)}
+          key={index}
+        >
             <OneDice dice={dice}></OneDice>
         </div>
       })}

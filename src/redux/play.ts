@@ -455,6 +455,18 @@ const playSlice = createSlice({
         state.kimiState.activeSkill = activeSkill;
       }
     },
+    /** 将要使用的技能置为空 */
+    unsetActiveSkill: function(state, action: PayloadAction<{
+      player: PlayerName, 
+    }>) {
+      const { player }= action.payload;
+      // XXX: 注意, 这里传递的技能的费用信息是不可靠的
+      if(player === 'boku') {
+        state.bokuState.activeSkill = undefined;
+      } else {
+        state.kimiState.activeSkill = undefined;
+      }
+    },
     // 开始处理一个逻辑帧
     beginFrame: function(state, action: PayloadAction<{startAction: PayloadAction[]}>) {
       // 注意, 这里是逻辑帧的起始, 也就是说, 一个逻辑帧可能会有多个action
@@ -558,6 +570,7 @@ export const {
   changeDamage,
   setRequireCost,
   setActiveSkill,
+  unsetActiveSkill,
   dealDamage,
   setCharDown,
   appendElement,

@@ -1,7 +1,7 @@
 // 进行结算的组件
 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { appendElement, computeTriggerActions, dealDamage, setProcessingAction } from "../../redux/play";
+import { appendElement, computeTriggerActions, dealDamage, setProcessingAction, unsetActiveSkill } from "../../redux/play";
 import { PhaseType, TriggerType } from "../../type/enums";
 import { useCallback, useEffect, useState } from "react";
 import { Damage, DamageChange, DeltaCost, HistoryMessage, RollPhase, Skill, StartPhase } from "../../type/play";
@@ -55,6 +55,7 @@ export const ProcessComponent : React.FC = (prop) => {
   useEffect(() => {
     if(currPhase?.type === PhaseType.Process && !processing) {
       setProcessing(true);
+      setProcessingType(peType.SkillEffect);
     }
   }, [currPhase, processing])
 
@@ -112,6 +113,12 @@ export const ProcessComponent : React.FC = (prop) => {
     } else if(processingType === peType.SkillAfterEffect) {
       // 如果SkillAfterEffect没有新的effectList, 则进入下一阶段的判断
       setProcessingType(peType.NextRoundPhase);
+      // 并且视为结算已经完成
+      setProcessing(false);
+      // 重设要结算的技能
+      dispatch(unsetActiveSkill({
+        player: currPhase?.player || 'boku',
+      }));
     } else {
       processNext();
     }
