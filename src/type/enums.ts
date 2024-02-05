@@ -44,6 +44,8 @@ export enum PhaseType {
    * 由于阵亡而导致的强制切换角色阶段
    */
   DeadSwitch = 'dead_switch',
+  /** 对局完成, 胜负判定阶段 */
+  Complete = 'complete',
 }
 
 export enum Element {

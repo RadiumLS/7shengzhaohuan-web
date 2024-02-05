@@ -525,7 +525,17 @@ const playSlice = createSlice({
         } else if(aliveChars.length === 1) {
           playerState.activeCharIndex = aliveChars[0].index;
         } else if(aliveChars.length === 0) {
-          // TODO: 都倒下了, 进入胜负判定阶段
+          // 都倒下了, 进入胜负判定阶段
+          const nextPhase: RoundPhase = {
+            id: 0,
+            round: state.currPhase?.round || 0,
+            player: downChar.player,
+            name: `${downChar.player === 'boku' ? '对方' : '本方'}获得胜利`,
+            type: PhaseType.Complete,
+            isActive: false,
+            record: [],
+          };
+          state.currPhase = nextPhase;
         }
       }
     },
