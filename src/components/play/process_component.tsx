@@ -6,7 +6,7 @@ import { PhaseType, TriggerType } from "../../type/enums";
 import { useCallback, useEffect, useState } from "react";
 import { Damage, DamageChange, DeltaCost, HistoryMessage, RollPhase, Skill, StartPhase } from "../../type/play";
 import { computeDamages } from "../../utils/damage";
-import { computeCharDownEffect } from "../../utils/processing";
+import { computeAfterSkillEffect, computeCharDownEffect, computeNextRoundPhaseEffect } from "../../utils/processing";
 
 const ACTION_INTERVAL = 1000;
 /** 正在结算中的effect类型 */
@@ -105,23 +105,21 @@ export const ProcessComponent : React.FC = (prop) => {
         setWaitingSwitch(true);
       } else {
         setTimeout(() => {
-          const nowState = getPlayState();
-          // TODO: 结算完毕后, 判断是否需要进行下一阶段
+          // 结算完毕后, 判断是否需要进行下一阶段
           processNext();
         }, effectList.length * ACTION_INTERVAL)
       }
-    } else {
+    } else if(processingType === peType.SkillAfterEffect) {
+      // 如果SkillAfterEffect没有新的effectList, 则进入下一阶段的判断
       setProcessingType(peType.NextRoundPhase);
-      // processNext();
+    } else {
+      processNext();
     }
   }, [effectList])
   useEffect(() => {
     if(waitingSwitch) {
-      console.log(`====== 9999 waitingSwitch: ${waitingSwitch}`)
       // 检查切人是否已经完成了
       if(!playState.bokuState.charDownNeedSwitch && !playState.kimiState.charDownNeedSwitch) {
-        console.log(`====== 10000 waitingSwitch: ${waitingSwitch}`)
-        console.log(`====== 10000 processingType is : ${processingType}`)
         setWaitingSwitch(false);
         processNext();
       }
@@ -139,13 +137,15 @@ export const ProcessComponent : React.FC = (prop) => {
       // TODO: 设置新的effectList
     // }
     if(processingType === peType.SkillAfterEffect) {
-      setEffectList([]);
+      const { effects, appliedEntityIds} = computeAfterSkillEffect(getPlayState());
+      setEffectList(effects);
       // TODO: 检查有没有「使用技能后」的effect
       // TODO: 设置新的effectList
       // TODO: 如果没有新的effectList，则setEffectList为空数组, 触发行动方的检查
     }
     if(processingType === peType.NextRoundPhase) {
-      // TODO: 检查下个阶段是对方行动/本方行动/回合结束
+      const { effects, appliedEntityIds} = computeNextRoundPhaseEffect(getPlayState());
+      setEffectList(effects);
     }
   }, [processingType])
 

@@ -41,3 +41,38 @@ export const computeCharDownEffect = (state: Readonly<PlayState>) : {
     appliedEntityIds: [],
   }
 }
+
+/**
+ * 核心的处理「使用技能后」触发器的工具函数
+ * @param state 计算时候的全局state
+ * @returns 
+ */
+export const computeAfterSkillEffect = (state: Readonly<PlayState>) : {
+  /** 计算后的其他副作用, 可以dispatch */
+  effects: PayloadAction<unknown>[],
+  /** 生效了的实体id */
+  appliedEntityIds: number[],
+} => {
+  // TODO: 计算使用技能后触发器产生的effect
+  return {
+    effects: [],
+    appliedEntityIds: [],
+  }
+}
+/**
+ * 核心的处理下一个行动方的工具函数
+ * @param state 计算时候的全局state
+ * @returns 
+ */
+export const computeNextRoundPhaseEffect = (state: Readonly<PlayState>) : {
+  /** 计算后的其他副作用, 可以dispatch */
+  effects: PayloadAction<unknown>[],
+  /** 生效了的实体id */
+  appliedEntityIds: number[],
+} => {
+  // TODO: 计算下一个行动方
+  return {
+    effects: [],
+    appliedEntityIds: [],
+  }
+}
