@@ -76,6 +76,8 @@ interface PlayerState {
   charDownRounds: number[];
   /** 需要进行倒下切人的标记 */
   charDownNeedSwitch?: boolean;
+  /** 连续行动的标志量 */
+  continueActionFlag?: boolean,
 }
 // 用boku和kimi来指代两个玩家
 // boku kimi

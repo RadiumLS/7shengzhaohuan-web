@@ -1,8 +1,8 @@
 // 结算的相关工具类, 主要在process_component中使用
-import { PlayState, PlayerName, computeTriggerActions, getAllEntity, setCharDown } from '../redux/play';
-import { TriggerType } from '../type/enums';
+import { PlayState, PlayerName, computeTriggerActions, getAllEntity, goNextPhase, setCharDown } from '../redux/play';
+import { PhaseType, TriggerType } from '../type/enums';
 import { all } from 'axios';
-import { CharEntity } from '../type/play';
+import { CharEntity, RoundPhase } from '../type/play';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 /**
@@ -16,7 +16,7 @@ export const computeCharDownEffect = (state: Readonly<PlayState>) : {
   /** 生效了的实体id */
   appliedEntityIds: number[],
 } => {
-  const retEffect: PayloadAction<unknown>[]  = [];
+  const retEffects: PayloadAction<unknown>[]  = [];
   const needSwitchCharPlayer = [];
   // TODO: 检查是否又阻止倒下之类的效果
   const allActions = computeTriggerActions(state, TriggerType.CharDownBefore, []);
@@ -25,7 +25,7 @@ export const computeCharDownEffect = (state: Readonly<PlayState>) : {
   for(let i=0; i < allChar.length; i++) {
     const oneChar = allChar[i];
     if(!oneChar.isDown && oneChar.health <= 0) {
-      retEffect.push(setCharDown({
+      retEffects.push(setCharDown({
         charId: oneChar.id,
       }));
       needSwitchCharPlayer.push(oneChar.player);
@@ -37,7 +37,7 @@ export const computeCharDownEffect = (state: Readonly<PlayState>) : {
   // - 可能考虑给野猪公主增加CharDownBeforeTrigger, 或者直接这里做特殊处理？
 
   return {
-    effects: retEffect,
+    effects: retEffects,
     appliedEntityIds: [],
   }
 }
@@ -70,9 +70,28 @@ export const computeNextRoundPhaseEffect = (state: Readonly<PlayState>) : {
   /** 生效了的实体id */
   appliedEntityIds: number[],
 } => {
-  // TODO: 计算下一个行动方
+  const retEffects: PayloadAction<unknown>[]  = [];
+  const { currPhase } = state;
+  // 计算下一个行动方
+  if(currPhase) {
+    const currPlayer = currPhase.player;
+    const playerState = currPlayer === 'boku' ? state.bokuState : state.kimiState;
+    const nextPlayer = playerState.continueActionFlag ? currPlayer : (currPlayer === 'boku' ? 'kimi' : 'boku');
+    const nextPhase: RoundPhase = {
+      id: 0,
+      round: 1,
+      player: nextPlayer,
+      name: `${nextPlayer === 'boku' ? '本方': '对方'}行动阶段`,
+      type: PhaseType.Action,
+      isActive: false,
+      record: [],
+    };
+    retEffects.push(goNextPhase({
+      nextPhase, 
+    }));
+  }
   return {
-    effects: [],
+    effects: retEffects,
     appliedEntityIds: [],
   }
 }
