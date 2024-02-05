@@ -79,7 +79,7 @@ export const computeNextRoundPhaseEffect = (state: Readonly<PlayState>) : {
     const nextPlayer = playerState.continueActionFlag ? currPlayer : (currPlayer === 'boku' ? 'kimi' : 'boku');
     const nextPhase: RoundPhase = {
       id: 0,
-      round: 1,
+      round: state.currPhase?.round || 0,
       player: nextPlayer,
       name: `${nextPlayer === 'boku' ? '本方': '对方'}行动阶段`,
       type: PhaseType.Action,

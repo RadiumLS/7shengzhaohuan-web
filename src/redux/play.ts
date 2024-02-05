@@ -126,6 +126,7 @@ let initialState: PlayState = {
     activeState: [],
     tempCards: [],
     charDownRounds: [],
+    continueActionFlag: true,
   },
   kimiState: {
     dice: [],
