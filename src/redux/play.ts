@@ -443,6 +443,11 @@ const playSlice = createSlice({
         state.kimiState.requireCost = requireCost;
       }
     },
+    /** 重置需求的骰子数 */
+    resetRequireCost: function(state) {
+      state.bokuState.requireCost = undefined;
+      state.kimiState.requireCost = undefined;
+    },
     /** 设定当前选中将要使用的技能 */
     setActiveSkill: function(state, action: PayloadAction<{
       player: PlayerName, 
@@ -580,6 +585,7 @@ export const {
   changeCost,
   changeDamage,
   setRequireCost,
+  resetRequireCost,
   setActiveSkill,
   unsetActiveSkill,
   dealDamage,

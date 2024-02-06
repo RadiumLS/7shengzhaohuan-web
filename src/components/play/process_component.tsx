@@ -1,7 +1,7 @@
 // 进行结算的组件
 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { appendElement, computeTriggerActions, dealDamage, setProcessingAction, unsetActiveSkill } from "../../redux/play";
+import { appendElement, computeTriggerActions, dealDamage, resetRequireCost, setProcessingAction, unsetActiveSkill } from "../../redux/play";
 import { PhaseType, TriggerType } from "../../type/enums";
 import { useCallback, useEffect, useState } from "react";
 import { Damage, DamageChange, DeltaCost, HistoryMessage, RollPhase, Skill, StartPhase } from "../../type/play";
@@ -119,6 +119,8 @@ export const ProcessComponent : React.FC = (prop) => {
       dispatch(unsetActiveSkill({
         player: currPhase?.player || 'boku',
       }));
+      // 重设需求的骰子费用
+      dispatch(resetRequireCost());
     } else {
       processNext();
     }
