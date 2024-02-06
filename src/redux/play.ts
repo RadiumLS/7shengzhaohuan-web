@@ -126,7 +126,7 @@ let initialState: PlayState = {
     activeState: [],
     tempCards: [],
     charDownRounds: [],
-    continueActionFlag: true,
+    // continueActionFlag: true,
   },
   kimiState: {
     dice: [],
@@ -423,6 +423,19 @@ const playSlice = createSlice({
         state.kimiState.dice = sortedDices;
       }
     },
+    /** 设置指定角色的充能 */
+    setCharEnergy: function(state, action: PayloadAction<{
+      charId: number,
+      energy: number,
+    }>) {
+      const {charId, energy } = action.payload;
+      const allChar = [...state.bokuState.chars, ...state.kimiState.chars]
+      const targetChar = allChar.find((char) => char.id === charId);
+      if(targetChar) {
+        const targetEnergy = energy < 0 ? 0 : energy;
+        targetChar.energy = targetEnergy > targetChar.energyMax ? targetChar.energyMax : targetEnergy;
+      }
+    },
     changeCost: function(state, action:PayloadAction<DeltaCost>) {
       // XXX: 这个changeCost更主要的是为了产生一个约定好的action用于dispatch
       // 所以这个这里的处理反而是空的
@@ -582,6 +595,7 @@ export const {
   setDice,
   rollDice,
   rerollDice,
+  setCharEnergy,
   changeCost,
   changeDamage,
   setRequireCost,

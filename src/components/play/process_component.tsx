@@ -68,9 +68,16 @@ export const ProcessComponent : React.FC = (prop) => {
       const changeDamagePayloads =
         allActions.filter((action) => action.type === 'play/changeDamage')
           .map((action) => action.payload as DamageChange);
-      const originDamagePayloads =
-        skillEffects.filter((action) => action.type === 'play/dealDamage')
-          .map((action) => action.payload as Damage);
+      let originDamagePayloads: Damage[] = [];
+      let otherEffects: unknown[] = [];
+      for(let i = 0; i< skillEffects.length; i++) {
+        const action = skillEffects[i];
+        if(action.type === 'play/dealDamage') {
+          originDamagePayloads.push(action.payload as Damage);
+        } else {
+          otherEffects.push(action)
+        }
+      }
       for(let i = 0; i< originDamagePayloads.length; i++) {
         const oneDamage = originDamagePayloads[i];
         const {
@@ -83,6 +90,7 @@ export const ProcessComponent : React.FC = (prop) => {
         payloadList.push(...(computedDamages.map((damage) => (dealDamage(damage)))));
         payloadList.push(...(elementChanges.map((elementChange) => (appendElement(elementChange)))));
       }
+      payloadList.push(...otherEffects);
       setEffectList(payloadList);
     }
   }, [activeSkill, processing]);

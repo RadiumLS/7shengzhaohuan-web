@@ -1,6 +1,6 @@
 // 神里凌华角色牌 以及相关的卡牌的Entity实现
 import { CardCost } from '@src/type/card';
-import play, { PlayState, PlayerName, appendHistoryMessages, changeCost, changeDamage, createCharState, dealDamage, getEntityId } from '../../../redux/play';
+import play, { PlayState, PlayerName, appendHistoryMessages, changeCost, changeDamage, createCharState, dealDamage, getEntityId, setCharEnergy } from '../../../redux/play';
 import { Weapon, Element, TriggerType, SkillType, DamageType } from '../../../type/enums';
 import { CharEntity, CharStateEntity, DamageChange, DeltaCost, EquipmentEngity, Skill, Trigger } from '../../../type/play';
 
@@ -174,6 +174,8 @@ export class KamisatoArtKabuki implements Skill {
     }];
     this.effect = (state) => {
       const opponentState = this.player === 'boku' ? state.kimiState : state.bokuState;
+      const myState = this.player === 'boku' ? state.bokuState : state.kimiState;
+      const myChar = myState.chars.find((char) => char.id === this.charId);
       // 注意, 这里没有判断activeCharIndex为undefined的情况, 虽然理论上不会出现
       const targetChar = opponentState.chars[opponentState.activeCharIndex || 0];
       return [dealDamage({
@@ -182,6 +184,9 @@ export class KamisatoArtKabuki implements Skill {
         damageType: DamageType.NormalAttack,
         element: 'physical',
         point: 2,
+      }), setCharEnergy({
+        charId: this.charId,
+        energy: (myChar?.energy || 0 )+ 1,
       })]
     }
   }
