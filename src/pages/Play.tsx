@@ -267,7 +267,7 @@ function Play() {
             }}>
             <SelectDiceArea player="kimi"/>
           </MovableWrapper>
-          <MovableWrapper defaultPostion={{
+          {currPhase.player === 'boku' && <MovableWrapper defaultPostion={{
               title: '本方技能展示组件',
               top: '80%',
               left: '70%',
@@ -275,7 +275,16 @@ function Play() {
               height: '50px',
             }}>
             <SkillArea player="boku"/>
-          </MovableWrapper>
+          </MovableWrapper>}
+          {currPhase.player === 'kimi' && <MovableWrapper defaultPostion={{
+              title: '对方技能展示组件',
+              top: '10%',
+              left: '70%',
+              width: '300px',
+              height: '50px',
+            }}>
+            <SkillArea player="kimi"/>
+          </MovableWrapper>}
         </>
       }
       对局模拟的组件/页面
