@@ -7,11 +7,21 @@ import { PhaseType, TriggerType } from "../../type/enums";
 import { CharEntity, HistoryMessage, RollPhase, StartPhase } from "@src/type/play";
 import { Element } from '@src/type/enums';
 
+/** 切人类型, 前两种可以当作是「自动切人」, 后一种是「手动切人」 */
+enum SwitchType {
+  /** 开局切人 */
+  StartSwitch = 'start_switch',
+  /** 角色倒下进行切人 */
+  CharDownSwitch = 'char_down_switch',
+  /** 行动阶段手动切人 */
+  ManualSwitch = 'manual_switch',
+}
 
 const CharArea : React.FC<{player: PlayerName}> = (prop) => {
   const { player } = prop;
   const [switchConfirm, setSwitchConfirm] = useState<boolean>(false);
   const [switchIndex, setSwitchIndex] = useState<number>(0);
+  const [switchType, setSwitchType] = useState<SwitchType>(SwitchType.StartSwitch);
   // TODO: 展示角色牌
   // TODO: 展示血量、充能
   // TODO: 展示出战状态
@@ -30,14 +40,21 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
     if(currPhase?.player === player) {
       if(currPhase?.type === PhaseType.StartSelectChar
         || currPhase?.type === PhaseType.Action
-        || currPhase?.type === PhaseType.DeadSwitch
+        || playerState.charDownNeedSwitch
       ) {
-        setSwitchConfirm((prev) => !prev);
+        setSwitchType(playerState.charDownNeedSwitch ? SwitchType.CharDownSwitch : SwitchType.StartSwitch);
+        setSwitchConfirm((prev) => {
+          if(switchIndex === index) return !prev;
+          return playerState.activeCharIndex !== index ? true : !prev;
+        });
         setSwitchIndex(index);
+      } 
+      // 行动阶段中的切人是手动切人的情况
+      if(currPhase?.type === PhaseType.Action) {
+        setSwitchType(SwitchType.ManualSwitch);
+        // TODO: 处理属于手动切人的情况
+        // - 计算并设置费用消耗
       }
-    } else if (playerState.charDownNeedSwitch) {
-        setSwitchConfirm((prev) => !prev);
-        setSwitchIndex(index);
     }
   };
   const switchToChar = (index: number) => {
@@ -135,11 +152,16 @@ const CharArea : React.FC<{player: PlayerName}> = (prop) => {
                 </div>
               })}
             </div>
-            {switchConfirm && switchIndex === index &&
+            {switchConfirm && !isActiveChar && switchIndex === index &&
               <div className="absolute w-full h-1/2 bg-slate-400 top-1/4">
                 TODO: 标记切换角色的图片
                 <br/>
-                <button onClick={() => {switchToChar(index)}}>确定切换</button>
+                { switchType !== SwitchType.ManualSwitch &&
+                  <button onClick={() => {switchToChar(index)}}>确定切换</button>
+                }
+                { switchType === SwitchType.ManualSwitch &&
+                  <span>确认消耗骰子后进行切人</span>
+                }
               </div>
             }
             {playerState.activeCharIndex === index && playerState.activeState.length > 0 &&
