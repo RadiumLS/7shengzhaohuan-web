@@ -27,7 +27,7 @@ function DeckCharCard(card: Partial<Pick<CharCard, 'id' | 'health'> & {showHealt
   const {id, health} = card;
   // TODO: 展示生命值
   if(id) {
-    return <img src={`/static/icons/${id}.png`} style={{
+    return <img src={`/static/cards/${id}.png`} style={{
         width: '100%',
         height: '100%',
       }}>
@@ -41,7 +41,7 @@ function DeckCharCard(card: Partial<Pick<CharCard, 'id' | 'health'> & {showHealt
  */
 function DeckActionCard(card: Partial<Pick<ActionCard, 'id' | 'cost'> & {showCost: boolean}>) {
   const {id, cost} = card;
-  return <img src={`/static/icons/${id}.png`} style={{
+  return <img src={`/static/cards/${id}.png`} style={{
       width: '100%',
       height: '100%',
     }}>
