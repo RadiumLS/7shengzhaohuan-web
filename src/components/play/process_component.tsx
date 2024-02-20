@@ -31,6 +31,7 @@ export const ProcessComponent : React.FC = (prop) => {
   const [currEffect, setCurrEffect] = useState<any>(undefined);
   const [effectList, setEffectList] = useState<any[]>([]);
   const processNext = () => {
+    // TODO: skillEffect和skillAfterEffect都变成大数组，逐一处理skillEffect可能的多个effect以及其增伤/减伤等逻辑
     setProcessingType((originType) => {
       if(originType === peType.SkillEffect || originType === peType.SkillAfterEffect) {
         return peType.DownEffect;
@@ -91,6 +92,7 @@ export const ProcessComponent : React.FC = (prop) => {
         payloadList.push(...(elementChanges.map((elementChange) => (appendElement(elementChange)))));
       }
       payloadList.push(...otherEffects);
+      // TODO: otherEffects中可能包含强制切人的情况，可能触发冰棱等效果, 需要处理
       setEffectList(payloadList);
     }
   }, [activeSkill, processing]);
