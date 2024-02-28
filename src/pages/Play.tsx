@@ -1,7 +1,8 @@
 // 游玩页, 用于对局模拟
 import data from '@gi-tcg/data';
-import { Game } from '@gi-tcg/core';
+import { Game, GameState, GameStateLogEntry, NotificationMessage, PlayerConfig, PlayerData, PlayerIO, RpcRequest, RpcResponse, StateData } from '@gi-tcg/core';
 import { createPlayer } from '@gi-tcg/webui';
+import { useState } from 'react';
 
 const playerConfig0 = {
   characters: [1204, 2301, 1705],
@@ -21,7 +22,7 @@ const playerConfig1 = {
     332023, 332017, 332012,
   ],
 };
-export const playerConfigs = [playerConfig0, playerConfig1];
+export const playerConfigs: readonly [PlayerConfig, PlayerConfig] = [playerConfig0, playerConfig1];
 
 
 
@@ -29,39 +30,66 @@ export const playerConfigs = [playerConfig0, playerConfig1];
 
 
 function Play() {
-  const startGame = () => {
-    const standalone = document.querySelector('#standalone');
-
-    const uiIo = createPlayer(document.querySelector('#player0'), 0, {
-      onGiveUp: () => {
-        io0.giveUp = true;
+  const [game, setGame] = useState<Game | null>(null);
+  const [stateLogs, setStateLogs] = useState<GameStateLogEntry[]>([]);
+  const [currentState, setCurrentState] = useState<GameState | null>(null);
+  const [playerData1, setPlayerData1] = useState<PlayerData | null>(null);
+  const [playerData2, setPlayerData2] = useState<PlayerData | null>(null);
+  const startGame = async () => {
+    const playerIO1: PlayerIO = {
+      giveUp: false,
+      notify: function (notification: NotificationMessage): void {
+        const { newState } = notification;
+        console.log(`======10000 player01 notify`)
+        setPlayerData1(newState.players[0]);
+        // throw new Error('Function not implemented.');
       },
-    });
-    const io0 = {
-      ...uiIo,
-      /*
-      notify: (msg) => {
-        // Example for using <gi-tcg-standalone-chessboard>.
-        // Setting "stateData" and "events" prop of this element
-        // will trigger chessboard update.
-        standalone.stateData = msg.newState;
-        standalone.events = msg.events;
-        uiIo.notify(msg);
+      rpc: function <M extends keyof RpcRequest>(method: M, data: RpcRequest[M]): Promise<RpcResponse[M]> {
+        console.log(`======10001 player01 rpc`)
+        console.log(`======10001 mthod: ${method}`)
+        console.log(`======10001 data: ${data}`)
+        return new Promise((r) => {});
+        // throw new Error('Function not implemented.');
+      }
+    }
+    const playerIO2: PlayerIO = {
+      giveUp: false,
+      notify: function (notification: NotificationMessage): void {
+        const { newState } = notification;
+        console.log(`======20000 player02 notify`)
+        setPlayerData2(newState.players[1]);
+        // throw new Error('Function not implemented.');
       },
-      */
-    };
-
-    const io1 = createPlayer(document.querySelector('#player1'), 1);
-
+      rpc: function <M extends keyof RpcRequest>(method: M, data: RpcRequest[M]): Promise<RpcResponse[M]> {
+        console.log(`======20001 player02 rpc`)
+        return new Promise((r) => {});
+        // throw new Error('Function not implemented.');
+      }
+    }
     const game = new Game({
       data,
       io: {
-        pause: async () => new Promise((r) => setTimeout(r, 500)),
-        players: [io0, io1],
+        pause: async (gameState) => {
+          await  new Promise((r) => {
+            setCurrentState(gameState);
+            console.log('pause');
+            const rr = () => {
+              console.log('pause resolve after 1500ms');
+              r(undefined);
+            }
+            setTimeout(rr, 1500);
+          })
+        },
+        players: [playerIO1, playerIO2],
       },
       playerConfigs,
     });
-    game.start();
+    setGame(game);
+    await game.start();
+    setStateLogs(game.stateLog);
+    // setCurrentState(game.stateLog[game.stateLog.length - 1].state);
+  };
+  const initHand = () => {
   };
   return <div className="bp-main-panel" style={{
     backgroundImage: 'url("/static/bg/bp_bg.png")',
@@ -83,17 +111,33 @@ function Play() {
       <a href="https://gi-tcg.guyutongxue.site">https://gi-tcg.guyutongxue.site</a>
     </p>
     <button onClick={startGame}>TTTTT </button>
+    <button onClick={initHand}>TTTTT </button>
     <div style={{width: '100%', height: '800px'}}>
-      <details>
-          <summary>Show standalone chessboard</summary>
-      </details>
-      <div id="player0"></div>
-      <div id="player1"></div>
-
+      {stateLogs && <div>
+        stateLogs.length: {stateLogs.length}
+      </div>}
+      {currentState && <div>
+        <h1>当前阶段{currentState.phase}</h1>
+        <div>
+          <h2>玩家1</h2>
+          <h3>骰子{playerData1?.dice}</h3>
+          <h3>手牌{playerData1?.hands.map((card) => card.definitionId)}</h3>
+          <h3>角色{playerData1?.characters.map((char) => char.definitionId)}</h3>
+          <h3>json{}</h3>
+        </div>
+        <div>
+          <h2>玩家2</h2>
+          <h3>骰子{playerData2?.dice}</h3>
+          <h3>手牌{playerData2?.hands.map((card) => card.definitionId)}</h3>
+          <h3>角色{playerData2?.characters.map((char) => char.definitionId)}</h3>
+          <h3>json{}</h3>
+        </div>
+      </div>}
     </div>
   </div>
 }
 /*
+        <h1>{JSON.stringify(currentState)}</h1>
         <gi-tcg-standalone-chessboard
           who="0"
           id="standalone"
