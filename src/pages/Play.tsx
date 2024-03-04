@@ -2,7 +2,10 @@
 import data from '@gi-tcg/data';
 import { Game, GameState, GameStateLogEntry, NotificationMessage, PlayerConfig, PlayerData, PlayerIO, RpcRequest, RpcResponse, StateData } from '@gi-tcg/core';
 import { createPlayer } from '@gi-tcg/webui';
-import { useState } from 'react';
+import { createContext, useState } from 'react';
+import CardImg from '../components/play/card_img';
+import { useRpcWaitNotify, useWaitNotify } from '../hooks/useWaitNotify';
+import { Chessboard } from '../components/play/chessboard';
 
 const playerConfig0 = {
   characters: [1204, 2301, 1705],
@@ -24,32 +27,36 @@ const playerConfig1 = {
 };
 export const playerConfigs: readonly [PlayerConfig, PlayerConfig] = [playerConfig0, playerConfig1];
 
-
-
-// game.start();
-
+// TODO: 从shareCode获取PlayerConfigs, 主要是卡牌信息
+export const GameStateContext = createContext<GameState | null>(null);
 
 function Play() {
   const [game, setGame] = useState<Game | null>(null);
-  const [stateLogs, setStateLogs] = useState<GameStateLogEntry[]>([]);
   const [currentState, setCurrentState] = useState<GameState | null>(null);
   const [playerData1, setPlayerData1] = useState<PlayerData | null>(null);
   const [playerData2, setPlayerData2] = useState<PlayerData | null>(null);
+  const rpcWaitNotify1 = useRpcWaitNotify();
+  const rpcWaitNotify2 = useRpcWaitNotify();
+
   const startGame = async () => {
+    // TODO: 此时需要使用到的图片资源已经基本确定, 能做个预加载就最好了
     const playerIO1: PlayerIO = {
       giveUp: false,
       notify: function (notification: NotificationMessage): void {
         const { newState } = notification;
-        console.log(`======10000 player01 notify`)
         setPlayerData1(newState.players[0]);
-        // throw new Error('Function not implemented.');
       },
       rpc: function <M extends keyof RpcRequest>(method: M, data: RpcRequest[M]): Promise<RpcResponse[M]> {
         console.log(`======10001 player01 rpc`)
         console.log(`======10001 mthod: ${method}`)
         console.log(`======10001 data: ${data}`)
-        return new Promise((r) => {});
-        // throw new Error('Function not implemented.');
+        return new Promise<any>((resolve, reject) => {
+          if(rpcWaitNotify1[method]) {
+            rpcWaitNotify1[method].wait().then(resolve).catch(reject);
+          } else {
+            reject("Unknown method");
+          }
+        });
       }
     }
     const playerIO2: PlayerIO = {
@@ -58,12 +65,18 @@ function Play() {
         const { newState } = notification;
         console.log(`======20000 player02 notify`)
         setPlayerData2(newState.players[1]);
-        // throw new Error('Function not implemented.');
       },
       rpc: function <M extends keyof RpcRequest>(method: M, data: RpcRequest[M]): Promise<RpcResponse[M]> {
         console.log(`======20001 player02 rpc`)
-        return new Promise((r) => {});
-        // throw new Error('Function not implemented.');
+        console.log(`======20001 mthod: ${method}`)
+        console.log(`======20001 data: ${data}`)
+        return new Promise<any>((resolve, reject) => {
+          if(rpcWaitNotify2[method]) {
+            rpcWaitNotify2[method].wait().then(resolve).catch(reject);
+          } else {
+            reject("Unknown method");
+          }
+        });
       }
     }
     const game = new Game({
@@ -86,63 +99,28 @@ function Play() {
     });
     setGame(game);
     await game.start();
-    setStateLogs(game.stateLog);
     // setCurrentState(game.stateLog[game.stateLog.length - 1].state);
   };
   const initHand = () => {
+    rpcWaitNotify1.switchHands.notify({
+      removedHands: []
+    });
+    rpcWaitNotify2.switchHands.notify({
+      removedHands: []
+    });
   };
   return <div className="bp-main-panel" style={{
     backgroundImage: 'url("/static/bg/bp_bg.png")',
   }}>
-    <p style={{
-      color: 'white',
-      fontSize: '30px',
-    }}>
-      正在尝试使用谷雨同学的核心库进行开发，目前还在施工中。
-    </p>
-    <p style={{
-      color: 'white',
-      fontSize: '30px',
-    }}>
-      谷雨同学已经有了可用的版本，可以从以下链接访问试用：
-      <br />
-      <a href="https://gi-tcg.vercel.app">https://gi-tcg.vercel.app</a>
-      <br />
-      <a href="https://gi-tcg.guyutongxue.site">https://gi-tcg.guyutongxue.site</a>
-    </p>
+    <h1 className='text-white'>TODO: 让玩家输入卡组分享码，然后再开始对局</h1>
     <button onClick={startGame}>TTTTT </button>
-    <button onClick={initHand}>TTTTT </button>
-    <div style={{width: '100%', height: '800px'}}>
-      {stateLogs && <div>
-        stateLogs.length: {stateLogs.length}
-      </div>}
-      {currentState && <div>
-        <h1>当前阶段{currentState.phase}</h1>
-        <div>
-          <h2>玩家1</h2>
-          <h3>骰子{playerData1?.dice}</h3>
-          <h3>手牌{playerData1?.hands.map((card) => card.definitionId)}</h3>
-          <h3>角色{playerData1?.characters.map((char) => char.definitionId)}</h3>
-          <h3>json{}</h3>
-        </div>
-        <div>
-          <h2>玩家2</h2>
-          <h3>骰子{playerData2?.dice}</h3>
-          <h3>手牌{playerData2?.hands.map((card) => card.definitionId)}</h3>
-          <h3>角色{playerData2?.characters.map((char) => char.definitionId)}</h3>
-          <h3>json{}</h3>
-        </div>
-      </div>}
-    </div>
+    <button onClick={initHand}>HHHH </button>
+    <GameStateContext.Provider value={currentState}>
+      <div style={{width: '100%', height: '800px'}}>
+        <Chessboard />
+      </div>
+    </GameStateContext.Provider>
   </div>
 }
-/*
-        <h1>{JSON.stringify(currentState)}</h1>
-        <gi-tcg-standalone-chessboard
-          who="0"
-          id="standalone"
-        ></gi-tcg-standalone-chessboard>
-  const startGame = () => {
-*/
 
 export default Play;
