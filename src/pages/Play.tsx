@@ -4,7 +4,7 @@ import { Game, GameState, GameStateLogEntry, NotificationMessage, PlayerConfig, 
 import { createPlayer } from '@gi-tcg/webui';
 import { createContext, useState } from 'react';
 import CardImg from '../components/play/card_img';
-import { useRpcWaitNotify, useWaitNotify } from '../hooks/useWaitNotify';
+import { RpcWaitNotify, useRpcWaitNotify, useWaitNotify } from '../hooks/useWaitNotify';
 import { Chessboard } from '../components/play/chessboard';
 
 const playerConfig0 = {
@@ -25,16 +25,21 @@ const playerConfig1 = {
     332023, 332017, 332012,
   ],
 };
+// TODO: 从shareCode获取PlayerConfigs, 主要是卡牌信息
 export const playerConfigs: readonly [PlayerConfig, PlayerConfig] = [playerConfig0, playerConfig1];
 
-// TODO: 从shareCode获取PlayerConfigs, 主要是卡牌信息
-export const GameStateContext = createContext<GameState | null>(null);
+type GameContextValue = {
+  gameState?: GameState;
+  playerData: [PlayerData?, PlayerData?];
+  rpcWaitNotify: [RpcWaitNotify, RpcWaitNotify];
+};
+export const GameContext = createContext<GameContextValue | null>(null);
 
 function Play() {
   const [game, setGame] = useState<Game | null>(null);
-  const [currentState, setCurrentState] = useState<GameState | null>(null);
-  const [playerData1, setPlayerData1] = useState<PlayerData | null>(null);
-  const [playerData2, setPlayerData2] = useState<PlayerData | null>(null);
+  const [currentState, setCurrentState] = useState<GameState | undefined>(undefined);
+  const [playerData1, setPlayerData1] = useState<PlayerData | undefined>(undefined);
+  const [playerData2, setPlayerData2] = useState<PlayerData | undefined>(undefined);
   const rpcWaitNotify1 = useRpcWaitNotify();
   const rpcWaitNotify2 = useRpcWaitNotify();
 
@@ -115,11 +120,15 @@ function Play() {
     <h1 className='text-white'>TODO: 让玩家输入卡组分享码，然后再开始对局</h1>
     <button onClick={startGame}>TTTTT </button>
     <button onClick={initHand}>HHHH </button>
-    <GameStateContext.Provider value={currentState}>
+    <GameContext.Provider value={{
+      gameState: currentState,
+      playerData: [playerData1, playerData2],
+      rpcWaitNotify: [rpcWaitNotify1, rpcWaitNotify2],
+    }}>
       <div style={{width: '100%', height: '800px'}}>
         <Chessboard />
       </div>
-    </GameStateContext.Provider>
+    </GameContext.Provider>
   </div>
 }
 

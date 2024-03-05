@@ -23,7 +23,7 @@ export function useWaitNotify<M extends keyof RpcRequest>(): WaitNotify<RpcRespo
 
   return {waiting, wait, notify};
 }
-type RpcWaitNotify = {
+export type RpcWaitNotify = {
   [key in keyof RpcRequest]: WaitNotify<RpcResponse[key]>;
 };
 export function useRpcWaitNotify(): RpcWaitNotify {

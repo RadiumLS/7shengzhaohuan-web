@@ -1,9 +1,10 @@
 import { useContext } from "react"
-import { GameStateContext } from "../../pages/Play"
+import { GameContext } from "../../pages/Play"
 import CardImg from "./card_img"
 
 export const Chessboard: React.FC = () => {
-  const gameState = useContext(GameStateContext)
+  const contextValue = useContext(GameContext);
+  const gameState = contextValue?.gameState;
   return <div>
     <h1>TODO: chessboard组件Here</h1>
       {gameState && <div>
